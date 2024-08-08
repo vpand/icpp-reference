@@ -33,5 +33,7 @@
 
 .DS_Store
 *.vscode
+*.icpp
+*.io
 build/
 html-book*/

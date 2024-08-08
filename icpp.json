@@ -1,5 +1,8 @@
 {
   "name": "man",
+  "assets": [
+    "resource/html-book/reference/en"
+  ],
   "headers": [],
   "header-dirs": [],
   "sources": [
@@ -8,7 +11,7 @@
   "binary-objs": [],
   "binary-bins": [],
   "binary-libs": [
-    "build/install/lib/liblexbor.dylib"
+    "build/install/lib/liblexbor.dll"
   ],
   "include-dirs": [
     "build/install/include"
