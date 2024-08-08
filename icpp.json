@@ -1,0 +1,16 @@
+{
+  "name": "man",
+  "headers": [],
+  "header-dirs": [],
+  "sources": [
+    "icpp/main.cc"
+  ],
+  "binary-objs": [],
+  "binary-bins": [],
+  "binary-libs": [
+    "build/install/lib/liblexbor.dylib"
+  ],
+  "include-dirs": [
+    "build/install/include"
+  ]
+}
