@@ -11,22 +11,59 @@
 
 int main(int argc, const char *argv[]) {
   if (argc == 1) {
-    icpp::prints("Module Man(C++ Manual v1.0.0) usage: icpp man regex\n"
-                 "e.g.:\n\ticpp man filesystem\n\ticpp man "
-                 "\"file.*iterator\"\n\ticpp man \"vector.*push\"\n");
+    icpp::prints("Module CppReference(v1.0.0) usage: icpp refs regex\n"
+                 "e.g.:\n\ticpp refs filesystem\n\ticpp refs "
+                 "\"file.*iterator\"\n\ticpp refs \"vector.*push\"\n");
     return -1;
   }
+
   auto expr = argv[1];
   for (; *expr && !std::isalpha(*expr); expr++)
     ;
+  if (!*expr) {
+    icpp::prints("Regex without any letter doesn't make any sense.\n");
+    return -1;
+  }
+
+  auto prefix = ""s;
+  bool wildcard = false;
+  for (auto ptr = expr; *ptr && std::isalpha(*ptr); prefix += *ptr++)
+    ;
+  for (auto ptr = expr; *ptr && !wildcard; ptr++) {
+    switch (*ptr) {
+    case '.':
+    case '*':
+    case '+':
+    case '?':
+    case '\\':
+      wildcard = true;
+      break;
+    default:
+      break;
+    }
+  }
+
   std::regex pattern(expr, std::regex_constants::extended |
                                std::regex_constants::icase);
   std::vector<std::string_view> founds;
+  bool prefix_matched = false;
   for (auto &t : text_book_list) {
-    std::string text{t};
-    auto words_begin = std::sregex_iterator(text.begin(), text.end(), pattern);
-    auto words_end = std::sregex_iterator();
-    if (std::distance(words_begin, words_end))
+    if (!wildcard) {
+      if (t.find(prefix) != std::string_view::npos)
+        founds.push_back(t);
+      continue;
+    }
+
+    if (!prefix_matched) {
+      if (t.find(prefix) == std::string_view::npos)
+        continue;
+      prefix_matched = true;
+    } else if (t.find(prefix) == std::string_view::npos) {
+      prefix_matched = false;
+      continue;
+    }
+
+    if (std::regex_search(t.data(), t.data() + t.size(), pattern))
       founds.push_back(t);
   }
   if (founds.size() == 0) {
@@ -48,7 +85,7 @@ int main(int argc, const char *argv[]) {
     }
   }
   auto textpath =
-      fs::path(icpp::home_directory()) / ".icpp/asset/man" / founds[sel];
+      fs::path(icpp::home_directory()) / ".icpp/asset/refs" / founds[sel];
   std::ifstream inf(textpath);
   if (!fs::exists(textpath)) {
     icpp::prints("{} is missing.\n", textpath.string());

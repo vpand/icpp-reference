@@ -2,12 +2,12 @@
 An icpp module of the C++ standard library reference.
 
 ```sh
-icpp@vpand icpp-reference % icpp man
-Module Man(C++ Manual v1.0.0) usage: icpp man regex
+icpp@vpand icpp-reference % icpp refs
+Module CppReference(v1.0.0) usage: icpp refs regex
 e.g.:
-        icpp man filesystem
-        icpp man "file.*iterator"
-        icpp man "vector.*push" 
+        icpp refs filesystem
+        icpp refs "file.*iterator"
+        icpp refs "vector.*push" 
 ```
 
 **Follow the one-by-one step to build your own version of icpp-reference module.**
@@ -50,7 +50,7 @@ imod --create=mac-osx-arm64.icpp
 
 ## Test
 ```sh
-icpp@vpand icpp-reference % icpp man "vector.*push"  
+icpp@vpand icpp-reference % icpp refs "vector.*push"  
 std::vector<T,Allocator>::push_back
 
    From cppreference.com
