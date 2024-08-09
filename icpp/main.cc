@@ -12,26 +12,33 @@
 int main(int argc, const char *argv[]) {
   if (argc == 1) {
     icpp::prints("Module Man(C++ Manual v1.0.0) usage: icpp man regex\n"
-                 "e.g.:\n\ticpp man string\n\ticpp man filesystem\n\ticpp man "
-                 "file*iterator\n");
+                 "e.g.:\n\ticpp man filesystem\n\ticpp man "
+                 "\"file.*iterator\"\n\ticpp man \"vector.*push\"\n");
     return -1;
   }
-  std::regex pattern(std::string("*") + argv[1] + "*",
-                     std::regex_constants::ECMAScript |
-                         std::regex_constants::icase);
+  auto expr = argv[1];
+  for (; *expr && !std::isalpha(*expr); expr++)
+    ;
+  std::regex pattern(expr, std::regex_constants::extended |
+                               std::regex_constants::icase);
   std::vector<std::string_view> founds;
   for (auto &t : text_book_list) {
     std::string text{t};
     auto words_begin = std::sregex_iterator(text.begin(), text.end(), pattern);
     auto words_end = std::sregex_iterator();
     if (std::distance(words_begin, words_end))
-      founds.push_back(text);
+      founds.push_back(t);
   }
+  if (founds.size() == 0) {
+    icpp::prints("Nothing found for '{}'.\n", expr);
+    return -1;
+  }
+
   size_t sel = 0;
   if (founds.size() > 1) {
-    icpp::prints("Totally found {} items of {}:\n", founds.size(), argv[1]);
+    icpp::prints("Totally found {} items of '{}':\n", founds.size(), expr);
     for (size_t i = 0; i < founds.size(); i++)
-      icpp::prints(" * [{}] {}\n", i, founds[i]);
+      icpp::prints(" * [{}] {}\n", i, fs::path(founds[i]).stem().string());
     icpp::prints("Which item [0, {}] do you want to browse ? ",
                  founds.size() - 1);
     std::cin >> sel;

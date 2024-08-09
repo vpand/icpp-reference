@@ -6,6 +6,7 @@
   "headers": [],
   "header-dirs": [],
   "sources": [
+    "icpp/text-book.inc",
     "icpp/main.cc"
   ],
   "binary-objs": [],

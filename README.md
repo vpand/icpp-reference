@@ -5,9 +5,9 @@ An icpp module of the C++ standard library reference.
 icpp@vpand icpp-reference % icpp man
 Module Man(C++ Manual v1.0.0) usage: icpp man regex
 e.g.:
-        icpp man string
         icpp man filesystem
-        icpp man file*iterator
+        icpp man "file.*iterator"
+        icpp man "vector.*push" 
 ```
 
 **Follow the one-by-one step to build your own version of icpp-reference module.**
@@ -50,5 +50,41 @@ imod --create=mac-osx-arm64.icpp
 
 ## Test
 ```sh
-icpp man vector*push
+icpp@vpand icpp-reference % icpp man "vector.*push"  
+std::vector<T,Allocator>::push_back
+
+   From cppreference.com
+   < cpp | container | vector
+
+   ...
+      void push_back( const T& value );
+   (1) (constexpr since C++20)
+   void push_back( T&& value );
+   (2) (since C++11)
+   (constexpr since C++20)
+
+   Appends the given element value to the end of the container.
+   1) The new element is initialized as a copy of value.
+   2) value is moved into the new element.
+
+   If after the operation the new size() is greater than old capacity() a
+   reallocation takes place, in which case all iterators (including the
+   end() iterator) and all references to the elements are invalidated.
+   Otherwise only the end() iterator is invalidated.
+
+Parameters
+
+   value - the value of the element to append
+   Type requirements
+   -
+   T must meet the requirements of CopyInsertable in order to use overload
+   (1).
+   -
+   T must meet the requirements of MoveInsertable in order to use overload
+   (2).
+
+Return value
+
+   (none)
+   ...
 ```
