@@ -1,0 +1,201 @@
+std::filesystem::recursive_directory_iterator::disable_recursion_pending
+
+   From cppreference.com
+   < cpp | filesystem | recursive directory iterator
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Filesystem library
+   Classes
+   filesystem::path
+   filesystem::filesystem_error
+   filesystem::directory_entry
+   filesystem::directory_iterator
+   filesystem::recursive_directory_iterator
+
+   filesystem::file_status
+   filesystem::space_info
+   filesystem::file_type
+   filesystem::perms
+   filesystem::perm_options
+   filesystem::copy_options
+   filesystem::directory_options
+   filesystem::file_time_type
+   Functions
+   filesystem::absolute
+   filesystem::canonicalfilesystem::weakly_canonical
+   filesystem::relativefilesystem::proximate
+   filesystem::copy
+   filesystem::copy_file
+   filesystem::copy_symlink
+   filesystem::create_directory
+   filesystem::create_directories
+   filesystem::create_hard_link
+   filesystem::create_symlink
+   filesystem::create_directory_symlink
+   filesystem::current_path
+   filesystem::exists
+   filesystem::equivalent
+   filesystem::file_size
+   filesystem::hard_link_count
+   filesystem::last_write_time
+   filesystem::permissions
+   filesystem::read_symlink
+   filesystem::remove
+   filesystem::remove_all
+   filesystem::rename
+   filesystem::resize_file
+   filesystem::space
+   filesystem::status
+   filesystem::symlink_status
+   filesystem::temp_directory_path
+   File types
+   filesystem::is_block_file
+   filesystem::is_character_file
+   filesystem::is_directory
+   filesystem::is_empty
+   filesystem::status_known
+   filesystem::is_fifo
+   filesystem::is_other
+   filesystem::is_regular_file
+   filesystem::is_socket
+   filesystem::is_symlink
+
+   std::filesystem::recursive_directory_iterator
+   Member functions
+   recursive_directory_iterator::recursive_directory_iterator
+   recursive_directory_iterator::operator*recursive_directory_iterator::op
+   erator->
+   recursive_directory_iterator::options
+   recursive_directory_iterator::depth
+   recursive_directory_iterator::recursion_pending
+   recursive_directory_iterator::operator=
+   recursive_directory_iterator::incrementrecursive_directory_iterator::op
+   erator++
+   recursive_directory_iterator::pop
+   recursive_directory_iterator::disable_recursion_pending
+   Non-member functions
+   begin(std::filesystem::recursive_directory_iterator)end(std::filesystem
+   ::recursive_directory_iterator)
+
+   void disable_recursion_pending();
+                                    (since C++17)
+
+   Disables recursion to the currently referred subdirectory, if any.
+
+   The call modifies the pending recursion flag on the iterator in such a
+   way that the next time increment is called, the iterator will advance
+   within the current directory even if it is currently referring to a
+   subdirectory that hasn't been visited.
+
+   The status of the pending recursion flag can be queried with
+   recursion_pending(), which is false after this call. It is reset back
+   to true after increment, and its initial value is also true.
+
+   The behavior is undefined if *this is the end iterator.
+
+Parameters
+
+   (none)
+
+Return value
+
+   (none)
+
+Exceptions
+
+   May throw implementation-defined exceptions.
+
+Example
+
+   Run this code
+#include <cstdlib>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <string>
+namespace fs = std::filesystem;
+
+int main()
+{
+    fs::current_path(fs::temp_directory_path());
+    fs::create_directories("sandbox/a/b/c");
+    fs::create_directories("sandbox/a/b/d/e");
+    std::ofstream("sandbox/a/b/file1.txt");
+    fs::create_symlink("a", "sandbox/syma");
+    std::system("tree sandbox");
+    for (auto i = fs::recursive_directory_iterator("sandbox");
+         i != fs::recursive_directory_iterator();
+         ++i)
+    {
+        std::cout << std::string(i.depth() * 2, ' ') << *i;
+        if (fs::is_symlink(i->symlink_status()))
+            std::cout << " -> " << fs::read_symlink(*i);
+        std::cout << '\n';
+
+        // do not descend into "b"
+        if (i->path().filename() == "b")
+            i.disable_recursion_pending();
+    }
+    fs::remove_all("sandbox");
+}
+
+   Possible output:
+sandbox
++-- a
+|   +-- b
+|       +-- c
+|       +-- d
+|       |   +-- e
+|       +-- file1.txt
++-- syma -> a
+
+"sandbox/a"
+  "sandbox/a/b"
+"sandbox/syma" -> "a"
+
+See also
+
+   recursion_pending
+   checks whether the recursion is disabled for the current directory
+   (public member function)
+   incrementoperator++
+   advances to the next entry
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/filesystem/recur
+   sive_directory_iterator/disable_recursion_pending&oldid=158194"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 8 September 2023, at 04:22.
+     * This page has been accessed 16,495 times.

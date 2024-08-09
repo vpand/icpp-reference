@@ -1,0 +1,200 @@
+std::tuple_size<std::array>
+
+   From cppreference.com
+   < cpp | container | array
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::array
+   Member types
+   Member functions
+   Element access
+   array::at
+   array::operator[]
+   array::front
+   array::back
+   array::data
+   Iterators
+   array::beginarray::cbegin
+   array::endarray::cend
+   array::rbeginarray::crbegin
+   array::rendarray::crend
+   Capacity
+   array::empty
+   array::size
+   array::max_size
+   Operations
+   array::fill
+   array::swap
+   Non-member functions
+   get(std::array)
+   (C++11)
+   swap(std::array)
+   (C++11)
+   to_array
+   (C++20)
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (C++11)(C++11)(until C++20)(C++11)(until C++20)(C++11)(until
+   C++20)(C++11)(until C++20)(C++11)(until C++20)(C++20)
+   Helper classes
+   tuple_size<std::array>
+   (C++11)
+   tuple_element<std::array>
+   (C++11)
+   Deduction guides (C++17)
+
+   Defined in header <array>
+   template< class T, std::size_t N >
+
+   struct tuple_size< std::array<T, N> > :
+       std::integral_constant<std::size_t, N>
+   { };
+                                     (since C++11)
+
+   Provides access to the number of elements in an std::array as a
+   compile-time constant expression.
+
+Helper variable template
+
+   template< class T >
+   inline constexpr std::size_t tuple_size_v = tuple_size<T>::value;
+                      (since C++17)
+
+Inherited from std::integral_constant
+
+Member constants
+
+   value
+   [static]
+   N, the number of elements in the array
+   (public static member constant)
+
+Member functions
+
+   operator std::size_t
+   converts the object to std::size_t, returns value
+   (public member function)
+   operator()
+   (C++14)
+   returns value
+   (public member function)
+
+Member types
+
+   Type       Definition
+   value_type std::size_t
+   type       std::integral_constant<std::size_t, value>
+
+Example
+
+   Run this code
+#include <array>
+
+int main()
+{
+    auto arr = std::to_array("ABBA");
+    static_assert(std::tuple_size<decltype(arr)>{} == 5);
+}
+
+See also
+
+   Structured binding (C++17) binds the specified names to sub-objects or
+   tuple elements of the initializer
+   tuple_size
+   (C++11)
+   obtains the number of elements of a tuple-like type
+   (class template)
+   std::tuple_size<std::tuple>
+   (C++11)
+   obtains the size of tuple at compile time
+   (class template specialization)
+   std::tuple_size<std::pair>
+   (C++11)
+   obtains the size of a pair
+   (class template specialization)
+   std::tuple_size<std::ranges::subrange>
+   (C++20)
+   obtains the number of components of a std::ranges::subrange
+   (class template specialization)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/array/
+   tuple_size&oldid=170490"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 March 2024, at 05:53.
+     * This page has been accessed 62,584 times.

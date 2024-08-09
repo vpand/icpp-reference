@@ -1,0 +1,192 @@
+std::filesystem::directory_entry::path
+
+   From cppreference.com
+   < cpp | filesystem | directory entry
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Filesystem library
+   Classes
+   filesystem::path
+   filesystem::filesystem_error
+   filesystem::directory_entry
+   filesystem::directory_iterator
+   filesystem::recursive_directory_iterator
+
+   filesystem::file_status
+   filesystem::space_info
+   filesystem::file_type
+   filesystem::perms
+   filesystem::perm_options
+   filesystem::copy_options
+   filesystem::directory_options
+   filesystem::file_time_type
+   Functions
+   filesystem::absolute
+   filesystem::canonicalfilesystem::weakly_canonical
+   filesystem::relativefilesystem::proximate
+   filesystem::copy
+   filesystem::copy_file
+   filesystem::copy_symlink
+   filesystem::create_directory
+   filesystem::create_directories
+   filesystem::create_hard_link
+   filesystem::create_symlink
+   filesystem::create_directory_symlink
+   filesystem::current_path
+   filesystem::exists
+   filesystem::equivalent
+   filesystem::file_size
+   filesystem::hard_link_count
+   filesystem::last_write_time
+   filesystem::permissions
+   filesystem::read_symlink
+   filesystem::remove
+   filesystem::remove_all
+   filesystem::rename
+   filesystem::resize_file
+   filesystem::space
+   filesystem::status
+   filesystem::symlink_status
+   filesystem::temp_directory_path
+   File types
+   filesystem::is_block_file
+   filesystem::is_character_file
+   filesystem::is_directory
+   filesystem::is_empty
+   filesystem::status_known
+   filesystem::is_fifo
+   filesystem::is_other
+   filesystem::is_regular_file
+   filesystem::is_socket
+   filesystem::is_symlink
+
+   std::filesystem::directory_entry
+   Member functions
+   directory_entry::directory_entry
+   Modifiers
+   directory_entry::operator=
+   directory_entry::assign
+   directory_entry::replace_filename
+   directory_entry::refresh
+   Observers
+   directory_entry::pathdirectory_entry::operator const path&
+   directory_entry::exists
+   directory_entry::is_block_file
+   directory_entry::is_character_file
+   directory_entry::is_directory
+   directory_entry::is_fifo
+   directory_entry::is_other
+   directory_entry::is_regular_file
+   directory_entry::is_socket
+   directory_entry::is_symlink
+   directory_entry::file_size
+   directory_entry::hard_link_count
+   directory_entry::last_write_time
+   directory_entry::statusdirectory_entry::symlink_status
+   directory_entry::operator==directory_entry::operator!=directory_entry::
+   operator<directory_entry::operator>directory_entry::operator<=directory
+   _entry::operator>=directory_entry::operator<=>
+   (until C++20)(until C++20)(until C++20)(until C++20)(until
+   C++20)(C++20)
+   Non-member functions
+   operator<<
+
+   const std::filesystem::path& path() const noexcept;
+                                                           (since C++17)
+   operator const std::filesystem::path& () const noexcept;
+                                                           (since C++17)
+
+   Returns the full path the directory entry refers to.
+
+Parameters
+
+   (none)
+
+Return value
+
+   The full path the directory entry refers to.
+
+Example
+
+   Run this code
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+
+namespace fs = std::filesystem;
+
+std::string get_stem(const fs::path& p) { return p.stem().string(); }
+void create_file(const fs::path& p) { std::ofstream o{p}; }
+
+int main()
+{
+    const fs::path dir{"tmp_dir"};
+    fs::create_directory(dir);
+    create_file(dir / "one");
+    create_file(dir / "two");
+    create_file(dir / "three");
+
+    for (const auto& file : fs::directory_iterator(dir))
+    {
+        // Explicit conversion
+        std::cout << get_stem(file.path()) << '\n';
+
+        // Implicit conversion
+        std::cout << get_stem(file) << '\n';
+    }
+
+    fs::remove_all(dir);
+}
+
+   Possible output:
+two
+two
+one
+one
+three
+three
+
+See also
+
+   path
+   (C++17)
+   represents a path
+   (class)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/filesystem/direc
+   tory_entry/path&oldid=159789"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 29 September 2023, at 00:13.
+     * This page has been accessed 93,980 times.

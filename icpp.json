@@ -1,7 +1,7 @@
 {
   "name": "man",
   "assets": [
-    "resource/html-book/reference/en"
+    "resource/text-book"
   ],
   "headers": [],
   "header-dirs": [],
@@ -10,10 +10,6 @@
   ],
   "binary-objs": [],
   "binary-bins": [],
-  "binary-libs": [
-    "build/install/lib/liblexbor.dll"
-  ],
-  "include-dirs": [
-    "build/install/include"
-  ]
+  "binary-libs": [],
+  "include-dirs": []
 }

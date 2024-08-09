@@ -1,0 +1,195 @@
+std::set<Key,Compare,Allocator>::upper_bound
+
+   From cppreference.com
+   < cpp | container | set
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::set
+   Member functions
+   set::set
+   set::~set
+   set::operator=
+   set::get_allocator
+   Iterators
+   set::beginset::cbegin
+   (C++11)
+   set::endset::cend
+   (C++11)
+   set::rbeginset::crbegin
+   (C++11)
+   set::rendset::crend
+   (C++11)
+   Capacity
+   set::size
+   set::max_size
+   set::empty
+   Modifiers
+   set::clear
+   set::erase
+   set::swap
+   set::extract
+   (C++17)
+   set::merge
+   (C++17)
+   set::insert
+   set::insert_range
+   (C++23)
+   set::emplace
+   (C++11)
+   set::emplace_hint
+   (C++11)
+   Lookup
+   set::count
+   set::find
+   set::contains
+   (C++20)
+   set::equal_range
+   set::lower_bound
+   set::upper_bound
+   Observers
+   set::key_comp
+   set::value_comp
+   Non-member functions
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (until C++20)(until C++20)(until C++20)(until C++20)(until
+   C++20)(C++20)
+   std::swap(std::set)
+   erase_if(std::set)
+   (C++20)
+   Deduction guides(C++17)
+
+   iterator upper_bound( const Key& key );
+   (1)
+   const_iterator upper_bound( const Key& key ) const;
+   (2)
+   template< class K >
+   iterator upper_bound( const K& x );
+   (3)                                                (since C++14)
+   template< class K >
+   const_iterator upper_bound( const K& x ) const;
+   (4)                                                (since C++14)
+   1,2) Returns an iterator pointing to the first element that is greater
+   than key.
+   3,4) Returns an iterator pointing to the first element that compares
+   greater to the value x. This overload participates in overload
+   resolution only if the qualified-id Compare::is_transparent is valid
+   and denotes a type. It allows calling this function without
+   constructing an instance of Key.
+
+Parameters
+
+   key - key value to compare the elements to
+   x   - alternative value that can be compared to Key
+
+Return value
+
+   Iterator pointing to the first element that is greater than key. If no
+   such element is found, past-the-end (see end()) iterator is returned.
+
+Complexity
+
+   Logarithmic in the size of the container.
+
+Notes
+
+   Feature-test macro Value Std Feature
+   __cpp_lib_generic_associative_lookup 201304L (C++14) Heterogeneous
+   comparison lookup in associative containers, for overloads (3,4)
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   equal_range
+   returns range of elements matching a specific key
+   (public member function)
+   lower_bound
+   returns an iterator to the first element not less than the given key
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/set/up
+   per_bound&oldid=135452"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 20 November 2021, at 19:40.
+     * This page has been accessed 75,868 times.

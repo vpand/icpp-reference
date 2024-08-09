@@ -1,0 +1,104 @@
+std::execution::transfer
+
+   From cppreference.com
+   < cpp
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Execution Library
+   Senders
+   Sender factories
+   Sender adaptors
+   Adaptors for single-shot and multi-shot senders
+   Adaptors for multi-shot senders
+   Sender consumers
+   Eager execution
+
+   Defined in header <execution>
+   execution::sender auto transfer(
+
+       execution::sender auto input,
+       execution::scheduler auto scheduler
+   );
+
+Parameters
+
+   input     - sender to be transfered on the scheduler
+   scheduler - scheduler on which the sender will run
+
+Return value
+
+   Returns a sender describing the transition from the execution agent of
+   the input sender to the execution agent of the target scheduler.
+
+Example
+
+   Possible usage of execution::transfer.
+execution::scheduler auto cpu_sched = get_system_thread_pool().scheduler();
+execution::scheduler auto gpu_sched = cuda::scheduler();
+
+execution::sender auto cpu_task = execution::schedule(cpu_sched);
+// cpu_task describes the creation of a new task on the system thread pool
+
+execution::sender auto gpu_task = execution::transfer(cpu_task, gpu_sched);
+// gpu_task describes the transition of the task graph described by cpu_task to
+the GPU
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/execution/transf
+   er&oldid=169334"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 January 2024, at 16:43.
+     * This page has been accessed 399 times.

@@ -1,0 +1,238 @@
+std::ctype<CharT>::tolower, std::ctype<CharT>::do_tolower
+
+   From cppreference.com
+   < cpp | locale | ctype
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Localization library
+   Locales and facets
+   Locales
+   has_facet
+   use_facet
+   locale
+   Facet category base classes
+   ctype_base
+   codecvt_base
+   messages_base
+
+   time_base
+   money_base
+   ctype facets
+   ctype
+   ctype<char>
+   ctype_byname
+   codecvt
+   codecvt_byname
+   numeric facets
+   num_get
+   num_put
+   numpunct
+   numpunct_byname
+   collate facets
+   collate
+   collate_byname
+   time facets
+   time_get
+   time_put
+   time_get_byname
+   time_put_byname
+   monetary facets
+   money_get
+   money_put
+   moneypunct
+   moneypunct_byname
+
+   messages facets
+   messages
+   messages_byname
+   Character classification and conversion
+   Character classification
+   isspace
+   isblank
+   (C++11)
+   iscntrl
+   isupper
+   islower
+   isalpha
+   ispunct
+   isdigit
+   isxdigit
+   isalnum
+   isprint
+   isgraph
+   Character conversions
+   toupper
+
+   tolower
+   String and stream conversions
+   wstring_convert
+   (C++11/17/26*)
+   wbuffer_convert
+   (C++11/17/26*)
+   Text encoding identifications
+   text_encoding
+   (C++26)
+   Unicode conversion facets
+   codecvt_utf8
+   (C++11/17/26*)
+   codecvt_utf16
+   (C++11/17/26*)
+   codecvt_utf8_utf16
+   (C++11/17/26*)
+   codecvt_mode
+   (C++11/17/26*)
+   C library locales
+   LC_ALLLC_COLLATELC_CTYPELC_MONETARYLC_NUMERICLC_TIME
+
+   setlocale
+   localeconv
+   lconv
+
+   std::ctype
+   Member functions
+   ctype::ctype
+   ctype::~ctype
+   ctype::isctype::do_is
+   ctype::scan_isctype::do_scan_is
+   ctype::scan_notctype::do_scan_not
+   ctype::toupperctype::do_toupper
+   ctype::tolowerctype::do_tolower
+   ctype::widenctype::do_widen
+   ctype::narrowctype::do_narrow
+   Member functions of ctype<char>
+   ctype<char>::ctype
+   ctype<char>::~ctype
+   ctype<char>::table
+   ctype<char>::classic_table
+   ctype<char>::is
+   ctype<char>::scan_is
+   ctype<char>::scan_not
+
+   Defined in header <locale>
+   public:
+   CharT tolower( CharT c ) const;
+   (1)
+   public:
+   const CharT* tolower( CharT* beg, const CharT* end ) const;
+   (2)
+   protected:
+   virtual CharT do_tolower( CharT c ) const;
+   (3)
+   protected:
+   virtual const CharT* do_tolower( CharT* beg, const CharT* end ) const;
+   (4)
+   1,2) Public member function, calls the protected virtual member
+   function do_tolower of the most derived class.
+   3) Converts the character c to lower case if a lower case form is
+   defined by this locale.
+   4) For every character in the character array [beg, end), for which a
+   lower case form exists, replaces the character with that lower case
+   form.
+
+Parameters
+
+   c - character to convert
+   beg - pointer to the first character in an array of characters to
+   convert
+   end - one past the end pointer for the array of characters to convert
+
+Return value
+
+   1,3) Lower case character or c if no lower case form is listed by this
+   locale.
+   2,4) end
+
+Notes
+
+   Only 1:1 character mapping can be performed by this function, e.g. the
+   Greek uppercase letter 'S' has two lowercase forms, depending on the
+   position in a word: 's' and '*s'. A call to do_tolower cannot be used
+   to obtain the correct lowercase form in this case.
+
+Example
+
+   Run this code
+#include <iostream>
+#include <locale>
+
+void try_lower(const std::ctype<wchar_t>& f, wchar_t c)
+{
+    wchar_t up = f.tolower(c);
+    if (up != c)
+        std::wcout << "Lower case form of \'" << c << "' is " << up << '\n';
+    else
+        std::wcout << '\'' << c << "' has no lower case form\n";
+}
+
+int main()
+{
+    std::locale::global(std::locale("en_US.utf8"));
+    std::wcout.imbue(std::locale());
+    std::wcout << "In US English UTF-8 locale:\n";
+    auto& f = std::use_facet<std::ctype<wchar_t>>(std::locale());
+    try_lower(f, L'S');
+    try_lower(f, L'');
+    try_lower(f, L'A');
+
+    std::wstring str = L"HELLo, wORLD!";
+    std::wcout << "Lowercase form of the string '" << str << "' is ";
+    f.tolower(&str[0], &str[0] + str.size());
+    std::wcout << '\'' << str << "'\n";
+}
+
+   Output:
+In US English UTF-8 locale:
+Lower case form of 'S' is s
+Lower case form of '' is E
+Lower case form of 'A' is a
+Lowercase form of the string 'HELLo, wORLD!' is 'hello, world!'
+
+See also
+
+   toupper
+   invokes do_toupper
+   (public member function)
+   tolower
+   converts a character to lowercase
+   (function)
+   towlower
+   converts a wide character to lowercase
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/locale/ctype/tol
+   ower&oldid=160068"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 3 October 2023, at 10:45.
+     * This page has been accessed 40,071 times.

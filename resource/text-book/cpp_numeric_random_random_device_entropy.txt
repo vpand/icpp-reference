@@ -1,0 +1,273 @@
+std::random_device::entropy
+
+   From cppreference.com
+   < cpp | numeric | random | random device
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Numerics library
+   Common mathematical functions
+   Mathematical special functions (C++17)
+   Mathematical constants (C++20)
+   Basic linear algebra algorithms (C++26)
+   Floating-point environment (C++11)
+   Complex numbers
+   Numeric arrays
+   Pseudo-random number generation
+   Factor operations
+   gcd
+   (C++17)
+   lcm
+   (C++17)
+   Interpolations
+   midpoint
+   (C++20)
+   lerp
+   (C++20)
+   Saturation arithmetic
+   add_sat
+   (C++26)
+   sub_sat
+   (C++26)
+   saturate_cast
+   (C++26)
+   mul_sat
+   (C++26)
+   div_sat
+   (C++26)
+   Generic numeric operations
+   iota
+   (C++11)
+   ranges::iota
+   (C++23)
+   accumulate
+   inner_product
+   adjacent_difference
+   partial_sum
+   reduce
+   (C++17)
+   transform_reduce
+   (C++17)
+   inclusive_scan
+   (C++17)
+   exclusive_scan
+   (C++17)
+   transform_inclusive_scan
+   (C++17)
+   transform_exclusive_scan
+   (C++17)
+   Bit operations
+   has_single_bit
+   (C++20)
+   bit_cast
+   (C++20)
+   bit_ceil
+   (C++20)
+   bit_floor
+   (C++20)
+   bit_width
+   (C++20)
+   rotl
+   (C++20)
+   rotr
+   (C++20)
+   popcount
+   (C++20)
+   countl_zero
+   (C++20)
+   countl_one
+   (C++20)
+   countr_zero
+   (C++20)
+   countr_one
+   (C++20)
+   byteswap
+   (C++23)
+   endian
+   (C++20)
+
+   Pseudo-random number generation
+   Uniform random bit generators
+   uniform_random_bit_generator
+   (C++20)
+   Random number engines
+   linear_congruential_engine
+   (C++11)
+   mersenne_twister_engine
+   (C++11)
+   subtract_with_carry_engine
+   (C++11)
+   Random number engine adaptors
+   discard_block_engine
+   (C++11)
+   independent_bits_engine
+   (C++11)
+   shuffle_order_engine
+   (C++11)
+   Predefined random number generators
+   Non-deterministic random numbers
+   random_device
+   (C++11)
+   Random number distributions
+   Uniform distributions
+   uniform_int_distribution
+   (C++11)
+   uniform_real_distribution
+   (C++11)
+   generate_canonical
+   (C++11)
+   Bernoulli distributions
+   bernoulli_distribution
+   (C++11)
+   binomial_distribution
+   (C++11)
+   negative_binomial_distribution
+   (C++11)
+   geometric_distribution
+   (C++11)
+   Poisson distributions
+   poisson_distribution
+   (C++11)
+   exponential_distribution
+   (C++11)
+   gamma_distribution
+   (C++11)
+   weibull_distribution
+   (C++11)
+   extreme_value_distribution
+   (C++11)
+   Normal distributions
+   normal_distribution
+   (C++11)
+   lognormal_distribution
+   (C++11)
+   chi_squared_distribution
+   (C++11)
+   cauchy_distribution
+   (C++11)
+   fisher_f_distribution
+   (C++11)
+   student_t_distribution
+   (C++11)
+   Sampling distributions
+   discrete_distribution
+   (C++11)
+   piecewise_constant_distribution
+   (C++11)
+   piecewise_linear_distribution
+   (C++11)
+   Utilities
+   generate_canonical
+   (C++11)
+   seed_seq
+   (C++11)
+   Random number algorithms
+   ranges::generate_random
+   (C++26)
+   C random library
+   rand
+   srand
+   RAND_MAX
+
+   std::random_device
+   Member functions
+   random_device::random_device
+   (C++11)
+   Generation
+   random_device::operator()
+   (C++11)
+   Characteristics
+   random_device::entropy
+   (C++11)
+   random_device::min
+   (C++11)
+   random_device::max
+   (C++11)
+
+   double entropy() const noexcept;
+                                   (since C++11)
+
+   Obtains an estimate of the random number device entropy, which is a
+   floating-point value between 0 and log
+   2(max()+1) (which is equal to std::numeric_limits<unsigned
+   int>::digits). If the device has n states whose individual
+   probabilities are P
+   0,...,P
+   n-1, the device entropy S is defined as
+
+   S = -\sumn-1
+   i=0 P
+   ilog(P
+   i)
+
+   A deterministic random number generator (e.g. a pseudo-random engine)
+   has entropy zero.
+
+Return value
+
+   The value of the device entropy, or zero if not applicable.
+
+Notes
+
+   This function is not fully implemented in some standard libraries. For
+   example, LLVM libc++ prior to version 12 always returns zero even
+   though the device is non-deterministic. In comparison, Microsoft Visual
+   C++ implementation always returns 32, and boost.random returns 10.
+
+   The entropy of the Linux kernel device /dev/urandom may be obtained
+   using ioctl RNDGETENTCNT -- that is what std::random_device::entropy()
+   in GNU libstdc++ uses as of version 8.1.
+
+Example
+
+   Example output on one of the implementations
+   Run this code
+#include <iostream>
+#include <random>
+
+int main()
+{
+    std::random_device rd;
+    std::cout << rd.entropy() << '\n';
+}
+
+   Possible output:
+32
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/numeric/random/r
+   andom_device/entropy&oldid=149905"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 31 March 2023, at 12:46.
+     * This page has been accessed 31,840 times.

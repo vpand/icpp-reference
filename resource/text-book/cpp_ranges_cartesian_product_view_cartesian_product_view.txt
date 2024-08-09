@@ -1,0 +1,243 @@
+std::ranges::cartesian_product_view<First, Vs...>::cartesian_product_view
+
+   From cppreference.com
+   < cpp | ranges | cartesian product view
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   std::ranges::cartesian_product_view
+   Member functions
+   cartesian_product_view::cartesian_product_view
+   cartesian_product_view::begin
+   cartesian_product_view::end
+   cartesian_product_view::size
+   Deduction guides
+   Iterator
+   Member functions
+   cartesian_product_view::iterator::iterator
+   cartesian_product_view::iterator::operator*
+   cartesian_product_view::iterator::operator[]
+   cartesian_product_view::iterator::operator++
+   cartesian_product_view::iterator::operator++(int)
+   cartesian_product_view::iterator::operator--
+   cartesian_product_view::iterator::operator--(int)
+   cartesian_product_view::iterator::operator+=
+   cartesian_product_view::iterator::operator-=
+   cartesian_product_view::iterator::next
+   cartesian_product_view::iterator::prev
+   cartesian_product_view::iterator::distance_from
+   Non-member functions
+   operator==(cartesian_product_view::iterator)
+   operator<=>(cartesian_product_view::iterator)
+   operator+(cartesian_product_view::iterator)
+   operator-(cartesian_product_view::iterator)
+   iter_move(cartesian_product_view::iterator)
+   iter_swap(cartesian_product_view::iterator)
+
+ constexpr cartesian_product_view() = default;
+ (1)                                                               (since C++23)
+   constexpr explicit cartesian_product_view( First first_base, Vs...
+   bases );
+ (2)                                                               (since C++23)
+
+   Constructs an cartesian_product_view.
+   1) Default constructor. Default-initializes the underlying data member
+   base_.
+   2) Move constructs the underlying base_ by initializing it with
+   std::move(first_base), std::move(bases)....
+
+Parameters
+
+   first_base - the first view object to adapt
+   bases      - the pack of views objects to adapt
+
+Example
+
+   Run this code
+#include <array>
+#include <format>
+#include <iostream>
+#include <ranges>
+#include <vector>
+
+int main()
+{
+    auto x = std::array{'A', 'B'};
+    auto y = std::vector{1, 2, 3};
+    auto z = std::vector{-1, -2, -3};
+
+    auto v = std::ranges::cartesian_product_view(x, y, z); // overload (2)
+
+    for (int i{1}; auto const& [rx, ry, rz] : v)
+        std::cout << std::format("({} {} {}){}", rx, ry, rz, (i++ % 3) ? ' ' : '
+\n');
+}
+
+   Output:
+(A 1 -1) (A 1 -2) (A 1 -3)
+(A 2 -1) (A 2 -2) (A 2 -3)
+(A 3 -1) (A 3 -2) (A 3 -3)
+(B 1 -1) (B 1 -2) (B 1 -3)
+(B 2 -1) (B 2 -2) (B 2 -3)
+(B 3 -1) (B 3 -2) (B 3 -3)
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/cartesian
+   _product_view/cartesian_product_view&oldid=156736"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 15 August 2023, at 06:47.
+     * This page has been accessed 2,749 times.

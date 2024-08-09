@@ -1,0 +1,567 @@
+std::chrono::from_stream (std::chrono::weekday)
+
+   From cppreference.com
+   < cpp | chrono | weekday
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Date and time utilities
+   Time point
+   time_point
+   (C++11)
+   clock_time_conversion
+   (C++20)
+   clock_cast
+   (C++20)
+   Duration
+   duration
+   (C++11)
+   Clocks
+   system_clock
+   (C++11)
+   steady_clock
+   (C++11)
+   high_resolution_clock
+   (C++11)
+   is_clock
+   (C++20)
+   utc_clock
+   (C++20)
+   tai_clock
+   (C++20)
+   gps_clock
+   (C++20)
+   file_clock
+   (C++20)
+   local_t
+   (C++20)
+   Time of day
+   is_amis_pm
+   (C++20)(C++20)
+   make12make24
+   (C++20)(C++20)
+   hh_mm_ss
+   (C++20)
+   Calendars
+   day
+   (C++20)
+   month
+   (C++20)
+   year
+   (C++20)
+   weekday
+   (C++20)
+   operator/
+   (C++20)
+   year_month_day
+   (C++20)
+   year_month_day_last
+   (C++20)
+   year_month_weekday
+   (C++20)
+   year_month_weekday_last
+   (C++20)
+   weekday_indexed
+   (C++20)
+   weekday_last
+   (C++20)
+   month_day
+   (C++20)
+   month_day_last
+   (C++20)
+   month_weekday
+   (C++20)
+   month_weekday_last
+   (C++20)
+   year_month
+   (C++20)
+   last_speclast
+   (C++20)(C++20)
+   Time zones
+   tzdb
+   (C++20)
+   tzdb_list
+   (C++20)
+   get_tzdbget_tzdb_listreload_tzdbremote_version
+   (C++20)(C++20)(C++20)(C++20)
+   sys_info
+   (C++20)
+   local_info
+   (C++20)
+   nonexistent_local_time
+   (C++20)
+   ambiguous_local_time
+   (C++20)
+   locate_zone
+   (C++20)
+   current_zone
+   (C++20)
+   time_zone
+   (C++20)
+   choose
+   (C++20)
+   zoned_traits
+   (C++20)
+   zoned_time
+   (C++20)
+   time_zone_link
+   (C++20)
+   leap_second
+   (C++20)
+   leap_second_info
+   (C++20)
+   get_leap_second_info
+   (C++20)
+   chrono I/O
+   parse
+   (C++20)
+   C-style date and time
+
+   std::chrono::weekday
+   Member functions
+   weekday::weekday
+   weekday::operator++weekday::operator--
+   weekday::operator+=weekday::operator-=
+   weekday::c_encodingweekday::iso_encoding
+   weekday::ok
+   weekday::operator[]
+   Nonmember functions
+   operator==
+   operator+operator-
+   operator<<
+   from_stream
+   Helper classes
+   formatter<std::chrono::weekday>
+   formatter<std::chrono::hash>
+   (C++26)
+
+   Defined in header <chrono>
+   template< class CharT, class Traits, class Alloc =
+   std::allocator<CharT> >
+
+   std::basic_istream<CharT, Traits>&
+       from_stream( std::basic_istream<CharT, Traits>& is, const CharT*
+   fmt,
+                    std::chrono::weekday& wd,
+                    std::basic_string<CharT, Traits, Alloc>* abbrev =
+   nullptr,
+                    std::chrono::minutes* offset = nullptr );
+                                                     (since C++20)
+
+   Attempts to parse the input stream is into the std::chrono::weekday wd
+   according to the format string fmt.
+
+   Behaves as an UnformattedInputFunction, except that it has an
+   unspecified effect on is.gcount(). After constructing and checking the
+   sentry object, attempts to parse the input stream is into wd according
+   to the format string fmt. If the parse fails to decode a valid weekday,
+   is.setstate(std::ios_base::failbit) is called and wd is not modified.
+
+   If the format specifier %Z is used and successfully parsed, the parsed
+   value is assigned to *abbrev if abbrev is not null. If the format
+   specifier %z or a modified variant is used and successfully parsed, the
+   parsed value is assigned to *offset if offset is not null.
+
+Parameters
+
+   is - an input stream
+   fmt - a format string (see below)
+   wd - object to hold the parse result
+   abbrev - if not null, pointer to an object that will hold the time zone
+   abbreviation or name corresponding to the %Z specifier
+   offset - if not null, pointer to an object that will hold the offset
+   from UTC corresponding to the %z specifier
+
+Format string
+
+   The format string consists of zero or more conversion specifiers and
+   ordinary characters. Each ordinary character, excluding whitespace
+   characters and the terminating null character, matches one identical
+   character from the input stream, or causes the function to fail if the
+   next character on the stream does not compare equal.
+
+   Each whitespace character matches zero or more whitespace characters in
+   the input stream.
+
+   Each unmodified conversion specifier begins with a % character followed
+   by a character that determines the behavior of the specifier. Some
+   conversion specifiers have a modified form in which an E or O modifier
+   character is inserted after the % character. Some conversion specifiers
+   have a modified form in which a width parameter given as a positive
+   decimal integer (shown as N below) is inserted after the % character.
+   Each conversion specifier causes the matched characters to be
+   interpreted as parts of date and time types according to the table
+   below.
+
+   A character sequence in the format string that begins with a % but does
+   not match one of the conversion specifiers below is interpreted as
+   ordinary characters.
+
+   If from_stream fails to parse everything specified by the format
+   string, or if insufficient information is parsed to specify a complete
+   result, or if parsing discloses contradictory information,
+   is.setstate(std::ios_base::failbit) is called.
+
+   The following conversion specifiers are available:
+   Conversion
+   specifier Explanation
+   %% Matches a literal % character.
+   %n Matches one whitespace character.
+   %t Matches zero or one whitespace character.
+   Year
+   %C
+   %NC
+   %EC Parses the century as a decimal number. The width N specifies the
+   maximum number of characters to read. The default width is 2. Leading
+   zeroes are permitted but not required.
+
+   The modified command %EC interprets the locale's alternative
+   representation of the century.
+   %y
+   %Ny
+   %Ey
+   %Oy Parses the last two decimal digits of the year. If the century is
+   not otherwise specified (e.g. with %C), values in the range [69, 99]
+   are presumed to refer to the years 1969 to 1999, and values in the
+   range [00, 68] are presumed to refer to the years 2000 to 2068. The
+   width N specifies the maximum number of characters to read. The default
+   width is 2. Leading zeroes are permitted but not required.
+
+   The modified commands %Ey and %Oy interpret the locale's alternative
+   representation.
+   %Y
+   %NY
+   %EY Parses the year as a decimal number. The width N specifies the
+   maximum number of characters to read. The default width is 4. Leading
+   zeroes are permitted but not required.
+
+   The modified command %EY interprets the locale's alternative
+   representation.
+   Month
+   %b
+   %B
+   %h Parses the locale's full or abbreviated case-insensitive month name.
+   %m
+   %Nm
+   %Om Parses the month as a decimal number (January is 1). The width N
+   specifies the maximum number of characters to read. The default width
+   is 2. Leading zeroes are permitted but not required.
+
+   The modified command %Om interprets the locale's alternative
+   representation.
+   Day
+   %d
+   %Nd
+   %Od
+   %e
+   %Ne
+   %Oe Parses the day of month as a decimal number. The width N specifies
+   the maximum number of characters to read. The default width is 2.
+   Leading zeroes are permitted but not required.
+
+   The modified commands %Od and %Oe interpret the locale's alternative
+   representation.
+   Day of the week
+   %a
+   %A Parses the locale's full or abbreviated case-insensitive weekday
+   name.
+   %u
+   %Nu Parses the ISO weekday as a decimal number (1-7), where Monday is
+   1. The width N specifies the maximum number of characters to read. The
+   default width is 1. Leading zeroes are permitted but not required.
+   %w
+   %Nw
+   %Ow Parses the weekday as a decimal number (0-6), where Sunday is 0.
+   The width N specifies the maximum number of characters to read. The
+   default width is 1. Leading zeroes are permitted but not required.
+
+   The modified command %Ow interprets the locale's alternative
+   representation.
+   ISO 8601 week-based year
+
+   In ISO 8601 weeks begin with Monday and the first week of the year must
+   satisfy the following requirements:
+     * Includes January 4
+     * Includes first Thursday of the year
+
+   %g
+   %Ng Parses the last two decimal digits of the ISO 8601 week-based year.
+   The width N specifies the maximum number of characters to read. The
+   default width is 2. Leading zeroes are permitted but not required.
+   %G
+   %NG Parses the ISO 8601 week-based year as a decimal number. The width
+   N specifies the maximum number of characters to read. The default width
+   is 4. Leading zeroes are permitted but not required.
+   %V
+   %NV Parses the ISO 8601 week of the year as a decimal number. The width
+   N specifies the maximum number of characters to read. The default width
+   is 2. Leading zeroes are permitted but not required.
+   Week/day of the year
+   %j
+   %Nj Parses the day of the year as a decimal number (January 1 is 1).
+   The width N specifies the maximum number of characters to read. The
+   default width is 3. Leading zeroes are permitted but not required.
+   %U
+   %NU
+   %OU Parses the week number of the year as a decimal number. The first
+   Sunday of the year is the first day of week 01. Days of the same year
+   prior to that are in week 00. The width N specifies the maximum number
+   of characters to read. The default width is 2. Leading zeroes are
+   permitted but not required.
+
+   The modified command %OU interprets the locale's alternative
+   representation.
+   %W
+   %NW
+   %OW Parses the week number of the year as a decimal number. The first
+   Monday of the year is the first day of week 01. Days of the same year
+   prior to that are in week 00. The width N specifies the maximum number
+   of characters to read. The default width is 2. Leading zeroes are
+   permitted but not required.
+
+   The modified command %OW interprets the locale's alternative
+   representation.
+   Date
+   %D Equivalent to "%m/%d/%y".
+   %F
+   %NF Equivalent to "%Y-%m-%d". If the width is specified, it is only
+   applied to the %Y.
+   %x
+   %Ex Parses the locale's date representation.
+
+   The modified command %Ex interprets the locale's alternate date
+   representation.
+   Time of day
+   %H
+   %NH
+   %OH Parses the hour (24-hour clock) as a decimal number. The width N
+   specifies the maximum number of characters to read. The default width
+   is 2. Leading zeroes are permitted but not required.
+
+   The modified command %OH interprets the locale's alternative
+   representation.
+   %I
+   %NI
+   %OI Parses the hour (12-hour clock) as a decimal number. The width N
+   specifies the maximum number of characters to read. The default width
+   is 2. Leading zeroes are permitted but not required.
+
+   The modified command %OI interprets the locale's alternative
+   representation.
+   %M
+   %NM
+   %OM Parses the minute as a decimal number. The width N specifies the
+   maximum number of characters to read. The default width is 2. Leading
+   zeroes are permitted but not required.
+
+   The modified command %OM interprets the locale's alternative
+   representation.
+   %S
+   %NS
+   %OS Parses the second as a decimal number. The width N specifies the
+   maximum number of characters to read. The default width is 2. Leading
+   zeroes are permitted but not required.
+
+   The modified command %OS interprets the locale's alternative
+   representation.
+   %p Parses the locale's equivalent of the AM/PM designations associated
+   with a 12-hour clock.
+   %R Equivalent to "%H:%M".
+   %T Equivalent to "%H:%M:%S".
+   %r Parses the locale's 12-hour clock time.
+   %X
+   %EX Parses the locale's time representation.
+
+   The modified command %EX interprets the locale's alternate time
+   representation.
+   Miscellaneous
+   %c
+   %Ec Parses the locale's date and time representation.
+
+   The modified command %Ec interprets the locale's alternative date and
+   time representation.
+   %z
+   %Ez
+   %Oz Parses the offset from UTC in the format [+|-]hh[mm]. For example
+   -0430 refers to 4 hours 30 minutes behind UTC and 04 refers to 4 hours
+   ahead of UTC.
+
+   The modified commands %Ez and %Oz parses the format [+|-]h[h][:mm]
+   (i.e., requiring a : between the hours and minutes and making the
+   leading zero for hour optional).
+   %Z Parses the time zone abbreviation or name, taken as the longest
+   sequence of characters that only contains the characters A through Z, a
+   through z, 0 through 9, -, +, _, and /.
+
+Return value
+
+   is
+
+See also
+
+   parse
+   (C++20)
+   parses a chrono object from a stream
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/chrono/weekday/f
+   rom_stream&oldid=146003"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 December 2022, at 21:46.
+     * This page has been accessed 8,538 times.

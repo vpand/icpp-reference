@@ -1,0 +1,288 @@
+std::ranges::join_with_view<V,Pattern>::iterator
+
+   From cppreference.com
+   < cpp | ranges | join with view
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   std::ranges::join_with_view
+   Member functions
+   join_with_view::join_with_view
+   join_with_view::base
+   join_with_view::begin
+   join_with_view::end
+   Deduction guides
+   Iterator
+   join_with_view::iterator::iterator
+   join_with_view::iterator::operator*
+   join_with_view::iterator::operator++
+   join_with_view::iterator::operator++(int)
+   join_with_view::iterator::operator--
+   join_with_view::iterator::operator--(int)
+   operator==(join_with_view::iterator)
+   iter_move(join_with_view::iterator)
+   iter_swap(join_with_view::iterator)
+   Sentinel
+   join_with_view::sentinel::sentinel
+   operator==(join_with_view::sentinel)
+
+   template< bool Const >
+   class /*iterator*/
+   (since C++23)
+   (exposition only*)
+
+   The return type of join_with_view::begin, and of join_with_view::end
+   when both the outer range V and the inner range
+   ranges::range_reference_t<V> satisfy common_range and the parent
+   join_with_view is a forward_range.
+
+   If either V or Pattern is not a simple view, Const is true for
+   iterators returned from the const overloads, and false otherwise. If V
+   and Pattern are simple views, Const is true if and only if
+   ranges::range_reference_t<V> is a reference.
+
+Member types
+
+   Member type Definition
+   Parent const join_view<V> if Const is true, otherwise join_view<V>
+   (exposition-only member type*)
+   Base const V if Const is true, otherwise V
+   (exposition-only member type*)
+   InnerBase ranges::range_reference_t<Base>
+   (exposition-only member type*)
+   PatternBase const Pattern if Const is true, otherwise Pattern
+   (exposition-only member type*)
+   iterator_concept
+     * std::bidirectional_iterator_tag, if
+          + ranges::range_reference_t<Base> is a reference type,
+          + Base, InnerBase and PatternBase each model
+            bidirectional_range, and
+          + InnerBase and PatternBase each model common_range;
+     * std::forward_iterator_tag, if
+          + ranges::range_reference_t<Base> is a reference type, and
+          + Base and InnerBase each model forward_range;
+     * std::input_iterator_tag otherwise.
+
+   iterator_category
+
+   Defined only if iterator::iterator_concept (see above) denotes
+   std::forward_iterator_tag. Let OUTERC be
+   std::iterator_traits<ranges::iterator_t<Base>>::iterator_category,
+   INNERC be
+   std::iterator_traits<ranges::iterator_t<InnerBase>>::iterator_category,
+   and PATTERNC be
+   std::iterator_traits<ranges::iterator_t<PatternBase>>::iterator_categor
+   y.
+     * std::input_iterator_tag, if
+       std::common_reference_t<ranges::range_reference_t<InnerBase>,
+                               ranges::range_reference_t<PatternBase>>
+       is not a reference type;
+     * std::bidirectional_iterator_tag, if:
+          + OUTERC, INNERC, and PATTERNC each model
+            std::derived_from<std::bidirectional_iterator_tag> and
+          + ranges::range_reference_t<Base> and PatternBase each model
+            common_range;
+     * std::forward_iterator_tag, if OUTERC, INNERC, and PATTERNC each
+       model std::derived_from<std::forward_iterator_tag>;
+     * std::input_iterator_tag otherwise.
+
+   value_type
+
+   std::common_type_t<ranges::range_value_t<InnerBase>,
+                      ranges::range_value_t<PatternBase>>
+   difference_type
+
+   std::common_type_t<ranges::range_difference_t<Base>,
+                      ranges::range_difference_t<InnerBase>,
+                      ranges::range_difference_t<PatternBase>>
+
+Member functions
+
+   (constructor)
+   (C++23)
+   constructs an iterator
+   (public member function)
+   operator*
+   (C++23)
+   accesses the element
+   (public member function)
+   operator++operator++(int)operator--operator--(int)
+   (C++23)
+   advances or decrements the underlying iterator
+   (public member function)
+
+Non-member functions
+
+   operator==
+   (C++23)
+   compares the underlying iterators
+   (function)
+   iter_move
+   (C++23)
+   casts the result of dereferencing the underlying iterator to its
+   associated rvalue reference type
+   (function)
+   iter_swap
+   (C++23)
+   swaps the objects pointed to by two underlying iterators
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/join_with
+   _view/iterator&oldid=157814"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 3 September 2023, at 14:56.
+     * This page has been accessed 3,835 times.

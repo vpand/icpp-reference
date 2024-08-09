@@ -1,0 +1,167 @@
+std::strncat
+
+   From cppreference.com
+   < cpp | string | byte
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated byte strings
+   Functions
+   Character manipulation
+   isalnum
+   isalpha
+   islower
+   isupper
+   isdigit
+   isxdigit
+   isblank
+   (C++11)
+   iscntrl
+   isgraph
+   isspace
+   isprint
+   ispunct
+   tolower
+   toupper
+   Conversions to numeric formats
+   atof
+   atoiatolatoll
+   (C++11)
+   strtolstrtoll
+   (C++11)
+   strtoulstrtoull
+   (C++11)
+   strtofstrtodstrtold
+   (C++11)(C++11)
+   strtoimaxstrtouimax
+   (C++11)(C++11)
+   String manipulation
+   strcpy
+   strncpy
+   strxfrm
+   strcat
+   strncat
+   String examination
+   strlen
+   strcmp
+   strncmp
+   strcoll
+   strchr
+   strrchr
+   strspn
+   strcspn
+   strpbrk
+   strstr
+   strtok
+   Memory manipulation
+   memchr
+   memcmp
+   memset
+   memcpy
+   memmove
+   Miscellaneous
+   strerror
+
+   Defined in header <cstring>
+   char* strncat( char* dest, const char* src, std::size_t count );
+
+   Appends a byte string pointed to by src to a byte string pointed to by
+   dest. At most count characters are copied. The resulting byte string is
+   null-terminated.
+
+   The destination byte string must have enough space for the contents of
+   both dest and src plus the terminating null character, except that the
+   size of src is limited to count.
+
+   The behavior is undefined if the strings overlap.
+
+Parameters
+
+   dest  - pointer to the null-terminated byte string to append to
+   src   - pointer to the null-terminated byte string to copy from
+   count - maximum number of characters to copy
+
+Return value
+
+   dest
+
+Notes
+
+   Because std::strncat needs to seek to the end of dest on each call, it
+   is inefficient to concatenate many strings into one using std::strncat.
+
+Example
+
+   Run this code
+#include <cstdio>
+#include <cstring>
+
+int main()
+{
+    char str[50] = "Hello ";
+    const char str2[50] = "World!";
+    std::strcat(str, str2);
+    std::strncat(str, " Goodbye World!", 3); // may issue "truncated output" war
+ning
+    std::puts(str);
+}
+
+   Output:
+Hello World! Go
+
+See also
+
+   strcat
+   concatenates two strings
+   (function)
+   strcpy
+   copies one string to another
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/byte/strn
+   cat&oldid=152886"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 6 June 2023, at 15:32.
+     * This page has been accessed 55,426 times.

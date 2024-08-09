@@ -1,0 +1,216 @@
+std::hash<std::vector<bool>>
+
+   From cppreference.com
+   < cpp | container | vector bool
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::vector<bool>
+   Member functions
+   vector::vector
+   vector::~vector
+   vector::operator=
+   vector::assign
+   vector::get_allocator
+   Element access
+   vector::at
+   vector::operator[]
+   vector::front
+   vector::back
+   Iterators
+   vector::beginvector::cbegin
+   (C++11)
+   vector::endvector::cend
+   (C++11)
+   vector::rbeginvector::crbegin
+   (C++11)
+   vector::rendvector::crend
+   (C++11)
+   Capacity
+   vector::empty
+   vector::size
+   vector::max_size
+   vector::reserve
+   vector::capacity
+   Modifiers
+   vector::clear
+   vector::insert
+   vector::emplace
+   (C++11)
+   vector::erase
+   vector::push_back
+   vector::emplace_back
+   (C++11)
+   vector::pop_back
+   vector::resize
+   vector::swap
+   std::vector<bool> specific
+   vector<bool>::flip
+   vector<bool>::swap
+   Non-member functions
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (until C++20)(until C++20)(until C++20)(until C++20)(until
+   C++20)(C++20)
+   swap(std::vector<bool>)
+   erase(std::vector<bool>)erase_if(std::vector<bool>)
+   (C++20)(C++20)
+   Helper classes
+   hash<std::vector<bool>>
+   (C++11)
+   Deduction guides(C++17)
+
+   Defined in header <vector>
+   template< class Allocator >
+   struct hash<std::vector<bool, Allocator>>;
+                              (since C++11)
+
+   The template specialization of std::hash for std::vector<bool> allows
+   users to obtain hashes of objects of type std::vector<bool>.
+
+Example
+
+   Run this code
+#include <iostream>
+#include <unordered_set>
+#include <vector>
+
+using vb = std::vector<bool>;
+
+vb to_vector_bool(unsigned n)
+{
+    vb v;
+    do
+    {
+        v.push_back(n & 1);
+        n >>= 1;
+    }
+    while (n);
+    return v;
+}
+
+auto print(const vb& v, bool new_line = true)
+{
+    for (std::cout << "{ "; const bool e : v)
+        std::cout << e << ' ';
+    std::cout << '}' << (new_line ? '\n' : ' ');
+}
+
+int main()
+{
+    for (auto i{0U}; i != 8; ++i)
+    {
+        std::cout << std::hex << std::uppercase;
+        vb v = to_vector_bool(i);
+        std::cout << std::hash<vb>{}(v) << ' ' << std::dec;
+        print(v);
+    }
+
+    // std::hash for vector<bool> makes it possible to keep them in
+    // unordered_* associative containers, such as unordered_set.
+
+    std::unordered_set v{vb{0}, vb{0, 0}, vb{1}, vb{1}, vb{1, 0}, vb{1, 1}};
+
+    for (vb const& e : v)
+        print(e, 0);
+    std::cout << '\n';
+}
+
+   Possible output:
+6D09EE26D5863619 { 0 }
+3C27D9F591D20E49 { 1 }
+E74D3F72B7599C63 { 0 1 }
+EE3BE81F55123770 { 1 1 }
+3AAD2A2EDBEC6C35 { 0 0 1 }
+EB057F773CB64C43 { 1 0 1 }
+6E1354730102BE00 { 0 1 1 }
+E2E622597C18899D { 1 1 1 }
+{ 1 1 } { 1 0 } { 1 } { 0 0 } { 0 }
+
+See also
+
+   hash
+   (C++11)
+   hash function object
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/vector
+   _bool/hash&oldid=165918"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 15 December 2023, at 20:26.
+     * This page has been accessed 41,893 times.

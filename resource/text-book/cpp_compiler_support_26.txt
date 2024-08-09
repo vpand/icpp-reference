@@ -1,0 +1,207 @@
+Compiler support for C++26
+
+   From cppreference.com
+   < cpp | compiler support
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Compiler support
+   C++11
+   C++14
+   C++17
+   C++20
+   C++23
+   C++26
+
+   * - hover over a cell marked with the star * to see additional pop-up
+   notes.
+   DRnn - the number nn after "DR" denotes target C++ revision the Defect
+   Report is applied to, e.g., DR20 -> C++20.
+
+C++26 core language features
+
+   C++26 feature
+     Paper(s)
+
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+   DR98: Removing undefined behavior from lexing P2621R2 Yes 3.3
+   DR98: Making non-encodable string literals ill-formed P1854R4 14 14
+   Unevaluated strings P2361R6 14 17 (partial)*
+   18
+   Adding @, $, and ` to the basic character set P2558R2 Yes
+   constexpr cast from void* P2738R1 14 17
+   DR20: On the ignorability of standard attributes P2552R2 Yes
+   DR11: Static storage for braced initializers P2752R2 14
+   User-generated static_assert messages P2741R3 14 17
+   Placeholder variables with no name P2169R4 14 18
+   Pack indexing P2662R3 19
+   Removing deprecated arithmetic conversion on enumerations P2864R2 14 18
+   DR11/20: Template parameter initialization P2308R1 18
+   Disallow binding a returned reference to a temporary P2748R5 14
+   Attributes for structured bindings P0609R3 15 19
+   Erroneous behavior for uninitialized reads P2795R5
+   = delete("reason"); P2573R2 15 19
+   Variadic friends P2893R3 15
+   DR98: Clarifying rules for brace elision in aggregate initialization
+   P3106R1 17
+   DR20: Disallow module declarations to be macros P3034R1
+   DR11: Trivial infinite loops are not undefined behavior P2809R3 14 19
+
+   C++26 feature
+   Paper(s)
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+
+C++26 library features
+
+   C++26 feature
+     Paper(s)
+
+   GCC libstdc++
+   Clang libc++
+   MSVC STL
+   Apple Clang*
+   IBM Open XL C/C++ for AIX*
+   Sun/Oracle C++*
+   Embarcadero C++ Builder*
+   Testing for success or failure of <charconv> functions P2497R0 14 18
+   std::text_encoding: text encodings identification P1885R12 14
+   Arithmetic overloads of std::to_string and std::to_wstring use
+   std::format P2587R3 14
+   Type checking format args P2757R3
+   Formatting pointers P2510R3 14* 17* 19.40**
+   Hashing support for std::chrono value classes P2592R3
+   Read-Copy Update P2545R4
+   Hazard Pointers P2530R3
+   ADL-proof std::projected P2538R1 14* 18* 19.38**
+   constexpr stable sorting P2562R1
+   Member visit P2637R3 18 (partial)*
+   19
+   std::is_within_lifetime P2641R4
+   Extending associative containers with the remaining heterogeneous
+   overloads P2363R5
+   Enabling the use of std::weak_ptr as keys in unordered associative
+   containers P1901R2
+   Native handles in file streams P1759R6 14 18
+   Interfacing string streams with std::string_view P2495R3 19
+   Interfacing std::bitset with std::string_view P2697R1 18
+   More constexpr for <cmath> and <complex> P1383R2 4.6 (partial)*
+   Adding the new 2022 SI prefixes on ratios: std::quecto, std::ronto,
+   std::ronna, and std::quetta P2734R0 14 17
+   std::function_ref: type-erased callable reference P0792R14
+   std::copyable_function P2548R6
+   std::bind_front, std::bind_back, and std::not_fn to NTTP callables
+   P2714R1
+   std::submdspan() P2630R4
+   Freestanding Language: Optional ::operator new P2013R5 N/A
+   Saturation Arithmetic P0543R3 14 18
+   <debugging>: Debugging Support P2546R5
+   P2810R3
+   <linalg>: A free function linear algebra interface based on the BLAS
+   P1673R13
+   Making assert() macro user friendly P2264R7
+   Runtime format strings P2918R2 14 18
+   std::span over an initializer list P2447R4 18
+   std::span::at() P2821R5 14 18
+   Added tuple protocol to std::complex P2819R2 19
+   A new specification for std::generate_canonical P0952R1
+   Removing deprecated typedef std::allocator::is_always_equal P2868R1 18
+   Removing function overload of std::basic_string::reserve() that takes
+   no argument P2870R3 18
+   Remove deprecated Unicode conversion facets (<codecvt>) P2871R3 18
+   Freestanding: removing std::strtok P2937R0 14 19.40*
+   Freestanding Library: Partial Classes P2407R5 14
+   Freestanding Library: inout expected span P2833R2 14
+   DR23: std::basic_const_iterator should follow its underlying type's
+   convertibility P2836R1 14 19.40*
+   DR20: std::make_format_args now accepts only lvalue references instead
+   of forwarding references P2905R2 14 18 19.40*
+   DR20: Fix formatting of code units as integers P2909R4 13.3 18 19.40*
+   views::concat P2542R7 15
+   Concatenation of strings and string views P2591R5
+   Enabling list-initialization for algorithms P2248R8
+   std::ranges::generate_random P1068R10
+   Comparisons for std::reference_wrapper P2944R3 14 19 (partial)*
+   Padded mdspan layouts P2642R5
+   New CTAD for std::span and std::mdspan with integral constants P3029R1
+   19
+   Atomic maximum and minimum P0493R5
+   std::formatter<std::filesystem::path> P2845R6
+   Printing Blank Lines with std::println() P3142R0 14* 19* 19.41**
+   Undeprecate std::polymorphic_allocator::destroy P2875R4 15 19.41*
+   Remove Deprecated strstreams P2867R1 19
+   Remove Deprecated std::shared_ptr Atomic Access APIs P2869R4 19
+   Remove std::wstring_convert P2872R3 19
+   DR23: Permit an efficient implementation of std::print P3107R3
+
+   C++26 feature
+   Paper(s)
+   GCC libstdc++
+   Clang libc++
+   MSVC STL
+   Apple Clang*
+   IBM Open XL C/C++ for AIX*
+   Sun/Oracle C++*
+   Embarcadero C++ Builder*
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/compiler_support
+   /26&oldid=169958"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 February 2024, at 06:38.
+     * This page has been accessed 65,792 times.

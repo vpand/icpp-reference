@@ -1,0 +1,128 @@
+std::convertible_to
+
+   From cppreference.com
+   < cpp | concepts
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Concepts library
+   Core language concepts
+   same_as
+   derived_from
+   convertible_to
+   common_reference_with
+
+   common_with
+   integral
+   signed_integral
+   unsigned_integral
+   floating_point
+   swappableswappable_with
+   destructible
+   constructible_from
+   default_initializable
+   move_constructible
+   copy_constructible
+   assignable_from
+   Comparison concepts
+   equality_comparableequality_comparable_with
+   totally_orderedtotally_ordered_with
+   Object concepts
+   movable
+   copyable
+   semiregular
+   regular
+   Callable concepts
+   invocableregular_invocable
+   predicate
+   relation
+   equivalence_relation
+   strict_weak_order
+   Exposition-only concepts
+   boolean-testable
+
+   Defined in header <concepts>
+   template< class From, class To >
+
+   concept convertible_to =
+       std::is_convertible_v<From, To> &&
+       requires {
+           static_cast<To>(std::declval<From>());
+       };
+                                   (since C++20)
+
+   The concept convertible_to<From, To> specifies that an expression of
+   the same type and value category as those of std::declval<From>() can
+   be implicitly and explicitly converted to the type To, and the two
+   forms of conversion produce equal results.
+
+Semantic requirements
+
+   convertible_to<From, To> is modeled only if, given a function fun of
+   type std::add_rvalue_reference_t<From>() such that the expression fun()
+   is equality-preserving,
+     * Either
+          + To is neither an object type nor a reference-to-object type,
+            or
+          + static_cast<To>(fun()) is equal to []() -> To { return fun();
+            }(), and
+
+     * One of the following is true:
+          + std::add_rvalue_reference_t<From> is not a reference-to-object
+            type, or
+          + std::add_rvalue_reference_t<From> is an rvalue reference to a
+            non-const-qualified type, and the resulting state of the
+            object referenced by fun() is valid but unspecified after
+            either expression above; or
+          + the object referred to by fun() is not modified by either
+            expression above.
+
+Equality preservation
+
+   Expressions declared in requires expressions of the standard library
+   concepts are required to be equality-preserving (except where stated
+   otherwise).
+
+See also
+
+   is_convertibleis_nothrow_convertible
+   (C++11)(C++20)
+   checks if a type can be converted to the other type
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/concepts/convert
+   ible_to&oldid=161731"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 29 October 2023, at 13:59.
+     * This page has been accessed 94,598 times.

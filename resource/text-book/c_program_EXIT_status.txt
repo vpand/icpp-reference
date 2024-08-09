@@ -1,0 +1,132 @@
+EXIT_SUCCESS, EXIT_FAILURE
+
+   From cppreference.com
+   < c | program
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Program support utilities
+   Program termination
+   abort
+   exit
+   quick_exit
+   (C11)
+   _Exit
+   (C99)
+   atexit
+   at_quick_exit
+   (C11)
+   EXIT_SUCCESSEXIT_FAILURE
+   Unreachable control flow
+   unreachable
+   (C23)
+   Communicating with the environment
+   system
+   getenvgetenv_s
+   (C11)
+   Signals
+   signal
+   raise
+   sig_atomic_t
+   SIG_DFLSIG_IGN
+   SIG_ERR
+   Signal types
+   SIGABRTSIGFPESIGILL
+   SIGINTSIGSEGVSIGTERM
+   Non-local jumps
+   setjmp
+   longjmp
+   Types
+   jmp_buf
+
+   Defined in header <stdlib.h>
+   #define EXIT_SUCCESS /*implementation defined*/
+   #define EXIT_FAILURE /*implementation defined*/
+
+   The EXIT_SUCCESS and EXIT_FAILURE macros expand into integral
+   expressions that can be used as arguments to the exit function (and,
+   therefore, as the values to return from the main function), and
+   indicate program execution status.
+   Constant     Explanation
+   EXIT_SUCCESS successful execution of a program
+   EXIT_FAILURE unsuccessful execution of a program
+
+Notes
+
+   Both EXIT_SUCCESS and the value zero indicate successful program
+   execution status (see exit), although it is not required that
+   EXIT_SUCCESS equals zero.
+
+Example
+
+   Run this code
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    FILE *fp = fopen("data.txt","r");
+    if (fp == NULL)
+    {
+       fprintf(stderr, "fopen() failed in file %s at line # %d", __FILE__,__LINE
+__);
+       exit(EXIT_FAILURE);
+    }
+
+    /* Normal processing continues here. */
+    fclose(fp);
+    printf("Normal Return\n");
+
+    return EXIT_SUCCESS;
+}
+
+   Output:
+fopen() failed in file main.cpp at line # 9
+
+References
+
+     * C17 standard (ISO/IEC 9899:2018):
+
+          + 7.22/3 General utilities <stdlib.h> (p: 248)
+
+     * C11 standard (ISO/IEC 9899:2011):
+
+          + 7.22/3 General utilities <stdlib.h> (p: 340)
+
+     * C99 standard (ISO/IEC 9899:1999):
+
+          + 7.20/3 General utilities <stdlib.h> (p: 306)
+
+     * C89/C90 standard (ISO/IEC 9899:1990):
+
+          + 4.10 General utilities <stdlib.h>
+
+See also
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/program/EXIT_statu
+   s&oldid=140319"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 16 June 2022, at 07:04.
+     * This page has been accessed 201,599 times.

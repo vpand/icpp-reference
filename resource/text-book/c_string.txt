@@ -1,0 +1,47 @@
+Strings library
+
+   From cppreference.com
+   < c
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Strings library
+   Byte strings
+   Multibyte strings
+   Wide strings
+
+Null-terminated byte string management
+
+Null-terminated multibyte string management
+
+Null-terminated wide string management
+
+See also
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/string&oldid=13057
+   0"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 23 June 2021, at 04:39.
+     * This page has been accessed 374,040 times.

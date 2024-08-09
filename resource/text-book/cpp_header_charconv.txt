@@ -1,0 +1,263 @@
+Standard library header <charconv> (C++17)
+
+   From cppreference.com
+   < cpp | header
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Standard library headers
+   Language support
+   <cstddef>
+   <cstdlib>
+   <version> (C++20)
+   <limits>
+   <climits>
+   <cfloat>
+   <cstdint> (C++11)
+   <stdfloat> (C++23)
+   <new>
+   <typeinfo>
+   <source_location> (C++20)
+   <exception>
+   <initializer_list> (C++11)
+   <compare> (C++20)
+   <coroutine> (C++20)
+   <csignal>
+   <csetjmp>
+   <cstdarg>
+   Concepts
+   <concepts> (C++20)
+   Diagnostics
+   <stdexcept>
+   <stacktrace> (C++23)
+   <cassert>
+   <cerrno>
+   <system_error> (C++11)
+   Memory management
+   <memory>
+   <memory_resource> (C++17)
+   <scoped_allocator> (C++11)
+   Metaprogramming
+   <type_traits> (C++11)
+   <ratio> (C++11)
+   General utilities
+   <utility>
+   <tuple> (C++11)
+   <optional> (C++17)
+   <variant> (C++17)
+   <any> (C++17)
+   <debugging> (C++26)
+   <expected> (C++23)
+   <bitset>
+   <functional>
+   <typeindex> (C++11)
+   <execution> (C++17)
+   <charconv> (C++17)
+   <format> (C++20)
+   <bit> (C++20)
+   Strings
+   <string_view> (C++17)
+   <string>
+   <cctype>
+   <cwctype>
+   <cstring>
+   <cwchar>
+   <cuchar> (C++11)
+   Containers
+   <array> (C++11)
+   <deque>
+   <forward_list> (C++11)
+   <list>
+   <vector>
+   <map>
+   <set>
+   <unordered_map> (C++11)
+   <unordered_set> (C++11)
+   <queue>
+   <stack>
+   <flat_map> (C++23)
+   <flat_set> (C++23)
+   <span> (C++20)
+   <mdspan> (C++23)
+   Iterators
+   <iterator>
+   Ranges
+   <ranges> (C++20)
+   <generator> (C++23)
+   Algorithms
+   <algorithm>
+   <numeric>
+   Numerics
+   <cfenv> (C++11)
+   <complex>
+   <random> (C++11)
+   <valarray>
+   <cmath>
+   <linalg> (C++26)
+   <numbers> (C++20)
+   Time
+   <chrono> (C++11)
+   <ctime>
+   Localization
+   <locale>
+   <clocale>
+   <codecvt> (C++11/17/26*)
+   <text_encoding> (C++26)
+   Input/output
+   <iosfwd>
+   <iostream>
+   <ios>
+   <streambuf>
+   <istream>
+   <ostream>
+   <iomanip>
+   <print> (C++23)
+   <sstream>
+   <spanstream> (C++23)
+   <fstream>
+   <syncstream> (C++20)
+   <filesystem> (C++17)
+   <cstdio>
+   <cinttypes> (C++11)
+   <strstream> (C++98/26*)
+   Regular expressions
+   <regex> (C++11)
+   Concurrency support
+   <stop_token> (C++20)
+   <thread> (C++11)
+   <atomic> (C++11)
+   <rcu> (C++26)
+   <stdatomic.h> (C++23)
+   <mutex> (C++11)
+   <shared_mutex> (C++14)
+   <condition_variable> (C++11)
+   <semaphore> (C++20)
+   <latch> (C++20)
+   <barrier> (C++20)
+   <future> (C++11)
+   <hazard_pointer> (C++26)
+   C compatibility
+   <cstdbool> (C++11/17/20*)
+   <ccomplex> (C++11/17/20*)
+   <ctgmath> (C++11/17/20*)
+   <cstdalign> (C++11/17/20*)
+   <ciso646> (until C++20)
+
+   This header is part of the strings library.
+
+Classes
+
+   chars_format
+   (C++17)
+   specifies formatting for std::to_chars and std::from_chars
+   (enum)
+   from_chars_result
+   (C++17)
+   the return type of std::from_chars
+   (class)
+   to_chars_result
+   (C++17)
+   the return type of std::to_chars
+   (class)
+
+Functions
+
+   from_chars
+   (C++17)
+   converts a character sequence to an integer or floating-point value
+   (function)
+   to_chars
+   (C++17)
+   converts an integer or floating-point value to a character sequence
+   (function)
+
+Synopsis
+
+namespace std {
+  // floating-point format for primitive numerical conversion
+  enum class chars_format {
+    scientific = /* unspecified */,
+    fixed = /* unspecified */,
+    hex = /* unspecified */,
+    general = fixed | scientific
+  };
+
+
+  // primitive numerical output conversion
+  struct to_chars_result { // freestanding
+    char* ptr;
+    errc ec;
+    friend bool operator==(const to_chars_result&, const to_chars_result&) = def
+ault;
+    constexpr explicit operator bool() const noexcept { return ec == errc{}; }
+  };
+
+  constexpr
+  to_chars_result to_chars(char* first, char* last, // freestanding
+                           /* integer-type */ value, int base = 10);
+  to_chars_result to_chars(char* first, char* last, // freestanding
+                           bool value, int base = 10) = delete;
+  to_chars_result to_chars(char* first, char* last, // freestanding-deleted
+                           /* floating-point-type */ value);
+  to_chars_result to_chars(char* first, char* last, // freestanding-deleted
+                           /* floating-point-type */ value, chars_format fmt);
+  to_chars_result to_chars(char* first, char* last, // freestanding-deleted
+                           /* floating-point-type */ value,
+                           chars_format fmt, int precision);
+
+  // primitive numerical input conversion
+  struct from_chars_result { // freestanding
+    const char* ptr;
+    errc ec;
+    friend bool operator==(const from_chars_result&, const from_chars_result&) =
+ default;
+    constexpr explicit operator bool() const noexcept { return ec == errc{}; }
+  };
+
+  constexpr
+  from_chars_result from_chars(const char* first, // freestanding
+                               const char* last, /* integer-type */& value,
+                               int base = 10);
+  from_chars_result from_chars(const char* first, // freestanding-deleted
+                               const char* last, /* floating-point-type */& valu
+e,
+                               chars_format fmt = chars_format::general);
+}
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/header/charconv&
+   oldid=163965"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 November 2023, at 08:08.
+     * This page has been accessed 88,196 times.

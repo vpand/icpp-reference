@@ -1,0 +1,548 @@
+std::formatter
+
+   From cppreference.com
+   < cpp | utility | format
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Formatting library
+   Standard format specification
+   Formatting functions
+   format
+   (C++20)
+   format_to
+   (C++20)
+   format_to_n
+   (C++20)
+   formatted_size
+   (C++20)
+   vformat
+   (C++20)
+   vformat_to
+   (C++20)
+   Format strings
+   basic_format_stringformat_stringwformat_string
+   (C++20)(C++20)(C++20)
+   runtime_format
+   (C++26)
+   Formatting concepts
+   formattable
+   (C++23)
+   Formatter
+   formatter
+   (C++20)
+   formatter<pair-or-tuple>
+   (C++23)
+   formatter<range>
+   (C++23)
+   range_formatter
+   (C++23)
+   enable_nonlocking_formatter_optimization
+   (C++23)
+   basic_format_parse_contextformat_parse_contextwformat_parse_context
+   (C++20)(C++20)(C++20)
+   basic_format_contextformat_contextwformat_context
+   (C++20)(C++20)(C++20)
+   range_format
+   (C++23)
+   format_kind
+   (C++23)
+   Formatting arguments
+   basic_format_arg
+   (C++20)
+   basic_format_arg::handle
+   (C++20)
+   basic_format_argsformat_argswformat_args
+   (C++20)(C++20)(C++20)
+   visit_format_arg
+   (C++20) (deprecated in C++26)
+   make_format_argsmake_wformat_args
+   (C++20)(C++20)
+   Format error
+   format_error
+   (C++20)
+
+   Defined in header <format>
+   template< class T, class CharT = char >
+   struct formatter;
+                                          (since C++20)
+
+   The enabled specializations of std::formatter define formatting rules
+   for a given type. Enabled specializations meet the BasicFormatter
+   requirements, and, unless otherwise specified, also meet the Formatter
+   requirements.
+
+   For all types T and CharT for which no specialization std::formatter<T,
+   CharT> is enabled, that specialization is a complete type and is
+   disabled.
+
+   Disabled specializations do not meet the Formatter requirements, and
+   the following are all false:
+     * std::is_default_constructible_v
+     * std::is_copy_constructible_v
+     * std::is_move_constructible_v
+     * std::is_copy_assignable_v
+     * std::is_move_assignable_v.
+
+Basic standard specializations
+
+   In the following list, CharT is either char or wchar_t, ArithmeticT is
+   any cv-unqualified arithmetic type other than char, wchar_t, char8_t,
+   char16_t, or char32_t:
+   Character formatters
+   template<>
+   struct formatter<char, char>;
+   (1)
+   template<>
+   struct formatter<char, wchar_t>;
+   (2)
+   template<>
+   struct formatter<wchar_t, wchar_t>;
+   (3)
+   String formatters
+   template<>
+   struct formatter<CharT*, CharT>;
+   (4)
+   template<>
+   struct formatter<const CharT*, CharT>;
+   (5)
+   template< std::size_t N >
+   struct formatter<CharT[N], CharT>;
+   (6)
+   template< std::size_t N >
+   struct formatter<const CharT[N], CharT>;
+   (7)                                  (until C++23)
+   template< class Traits, class Alloc >
+   struct formatter<std::basic_string<CharT, Traits, Alloc>, CharT>;
+   (8)
+   template< class Traits >
+   struct formatter<std::basic_string_view<CharT, Traits>, CharT>;
+   (9)
+   Arithmetic formatters
+   template<>
+   struct formatter<ArithmeticT, CharT>;
+   (10)
+   Pointer formatters
+   template<>
+   struct formatter<std::nullptr_t, CharT>;
+   (11)
+   template<>
+   struct formatter<void*, CharT>;
+   (12)
+   template<>
+   struct formatter<const void*, CharT>;
+   (13)
+
+   Formatters for other pointers and pointers to members are disabled.
+
+   Specializations such as std::formatter<wchar_t, char> and
+   std::formatter<const char*, wchar_t> that would require encoding
+   conversions are disabled.
+
+   A debug-enabled formatter specialization additionally provides a public
+   non-static member function constexpr void set_debug_format(); which
+   modifies the state of the formatter object so that it will format the
+   values as escaped and quoted, as if the type of the format specifier
+   parsed by the last call to parse were ?.
+
+   Each formatter specialization for string or character type is
+   debug-enabled.
+   (since C++23)
+
+Standard format specification
+
+   This section is incomplete
+   Reason: The standard format specification is moved to a separate page.
+   The section title is temporarily preserved for links to this section.
+   This section will be removed after all those links are settled.
+
+Standard specializations for library types
+
+   std::formatter<std::chrono::duration>
+   (C++20)
+   formatting support for duration
+   (class template specialization)
+   std::formatter<std::chrono::sys_time>
+   (C++20)
+   formatting support for sys_time
+   (class template specialization)
+   std::formatter<std::chrono::utc_time>
+   (C++20)
+   formatting support for utc_time
+   (class template specialization)
+   std::formatter<std::chrono::tai_time>
+   (C++20)
+   formatting support for tai_time
+   (class template specialization)
+   std::formatter<std::chrono::gps_time>
+   (C++20)
+   formatting support for gps_time
+   (class template specialization)
+   std::formatter<std::chrono::file_time>
+   (C++20)
+   formatting support for file_time
+   (class template specialization)
+   std::formatter<std::chrono::local_time>
+   (C++20)
+   formatting support for local_time
+   (class template specialization)
+   std::formatter<std::chrono::day>
+   (C++20)
+   formatting support for day
+   (class template specialization)
+   std::formatter<std::chrono::month>
+   (C++20)
+   formatting support for month
+   (class template specialization)
+   std::formatter<std::chrono::year>
+   (C++20)
+   formatting support for year
+   (class template specialization)
+   std::formatter<std::chrono::weekday>
+   (C++20)
+   formatting support for weekday
+   (class template specialization)
+   std::formatter<std::chrono::weekday_indexed>
+   (C++20)
+   formatting support for weekday_indexed
+   (class template specialization)
+   std::formatter<std::chrono::weekday_last>
+   (C++20)
+   formatting support for weekday_last
+   (class template specialization)
+   std::formatter<std::chrono::month_day>
+   (C++20)
+   formatting support for month_day
+   (class template specialization)
+   std::formatter<std::chrono::month_day_last>
+   (C++20)
+   formatting support for month_day_last
+   (class template specialization)
+   std::formatter<std::chrono::month_weekday>
+   (C++20)
+   formatting support for month_weekday
+   (class template specialization)
+   std::formatter<std::chrono::month_weekday_last>
+   (C++20)
+   formatting support for month_weekday_last
+   (class template specialization)
+   std::formatter<std::chrono::year_month>
+   (C++20)
+   formatting support for year_month
+   (class template specialization)
+   std::formatter<std::chrono::year_month_day>
+   (C++20)
+   formatting support for year_month_day
+   (class template specialization)
+   std::formatter<std::chrono::year_month_day_last>
+   (C++20)
+   formatting support for year_month_day_last
+   (class template specialization)
+   std::formatter<std::chrono::year_month_weekday>
+   (C++20)
+   formatting support for year_month_weekday
+   (class template specialization)
+   std::formatter<std::chrono::year_month_weekday_last>
+   (C++20)
+   formatting support for year_month_weekday_last
+   (class template specialization)
+   std::formatter<std::chrono::hh_mm_ss>
+   (C++20)
+   formatting support for hh_mm_ss
+   (class template specialization)
+   std::formatter<std::chrono::sys_info>
+   (C++20)
+   formatting support for sys_info
+   (class template specialization)
+   std::formatter<std::chrono::local_info>
+   (C++20)
+   formatting support for local_info
+   (class template specialization)
+   std::formatter<std::chrono::zoned_time>
+   (C++20)
+   formatting support for zoned_time
+   (class template specialization)
+   std::formatter<std::basic_stacktrace>
+   (C++23)
+   formatting support for basic_stacktrace
+   (class template specialization)
+   std::formatter<std::stacktrace_entry>
+   (C++23)
+   formatting support for stacktrace_entry
+   (class template specialization)
+   std::formatter<std::thread::id>
+   (C++23)
+   formatting support for thread::id
+   (class template specialization)
+   std::formatter<std::vector<bool>::reference>
+   (C++23)
+   formatting support for vector<bool>::reference
+   (class template specialization)
+   std::formatter<pair-or-tuple>
+   (C++23)
+   formatting support for pair and tuple
+   (class template specialization)
+   std::formatter<range>
+   (C++23)
+   formatting support for ranges
+   (class template specialization)
+   std::formatter<std::stack>
+   (C++23)
+   formatting support for std::stack
+   (class template specialization)
+   std::formatter<std::queue>
+   (C++23)
+   formatting support for std::queue
+   (class template specialization)
+   std::formatter<std::priority_queue>
+   (C++23)
+   formatting support for std::priority_queue
+   (class template specialization)
+   std::formatter<std::filesystem::path>
+   (C++26)
+   formatting support for filesystem::path
+   (class template specialization)
+
+Notes
+
+   Feature-test macro Value Std Feature
+   __cpp_lib_format_uchar 202311L (C++20)
+   (DR) Formatting of code units as unsigned integers
+
+Example
+
+   Run this code
+#include <algorithm>
+#include <format>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string_view>
+
+struct QuotableString : std::string_view
+{};
+
+template<>
+struct std::formatter<QuotableString, char>
+{
+    bool quoted = false;
+
+    template<class ParseContext>
+    constexpr ParseContext::iterator parse(ParseContext& ctx)
+    {
+        auto it = ctx.begin();
+        if (it == ctx.end())
+            return it;
+
+        if (*it == '#')
+        {
+            quoted = true;
+            ++it;
+        }
+        if (it != ctx.end() && *it != '}')
+            throw std::format_error("Invalid format args for QuotableString.");
+
+        return it;
+    }
+
+    template<class FmtContext>
+    FmtContext::iterator format(QuotableString s, FmtContext& ctx) const
+    {
+        std::ostringstream out;
+        if (quoted)
+            out << std::quoted(s);
+        else
+            out << s;
+
+        return std::ranges::copy(std::move(out).str(), ctx.out()).out;
+    }
+};
+
+int main()
+{
+    QuotableString a("be"), a2(R"( " be " )");
+    QuotableString b("a question");
+    std::cout << std::format("To {0} or not to {0}, that is {1}.\n", a, b);
+    std::cout << std::format("To {0:} or not to {0:}, that is {1:}.\n", a, b);
+    std::cout << std::format("To {0:#} or not to {0:#}, that is {1:#}.\n", a2, b
+);
+}
+
+   Output:
+To be or not to be, that is a question.
+To be or not to be, that is a question.
+To " \" be \" " or not to " \" be \" ", that is "a question".
+
+See also
+
+   basic_format_contextformat_contextwformat_context
+   (C++20)(C++20)(C++20)
+   formatting state, including all formatting arguments and the output
+   iterator
+   (class template)
+   formattable
+   (C++23)
+   specifies that a type is formattable, that is, it specializes
+   std::formatter and provides member functions parse and format
+   (concept)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/utility/format/f
+   ormatter&oldid=171219"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 23 April 2024, at 18:07.
+     * This page has been accessed 177,149 times.

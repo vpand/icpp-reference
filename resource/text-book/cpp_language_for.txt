@@ -1,0 +1,380 @@
+for loop
+
+   From cppreference.com
+   < cpp | language
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ language
+   General topics
+   Preprocessor
+   Comments
+   Keywords
+   Escape sequences
+   Flow control
+   Conditional execution statements
+   if
+   switch
+   Iteration statements (loops)
+   for
+   range-for (C++11)
+   while
+   do-while
+   Jump statements
+   continue - break
+   goto - return
+   Functions
+   Function declaration
+   Lambda function expression
+   inline specifier
+   Dynamic exception specifications (until C++17*)
+   noexcept specifier (C++11)
+   Exceptions
+   throw-expression
+   try block
+   handler
+   Namespaces
+   Namespace declaration
+   Namespace aliases
+   Types
+   Fundamental types
+   Enumeration types
+   Function types
+   Class/struct types
+   Union types
+   Specifiers
+   const/volatile
+   decltype (C++11)
+   auto (C++11)
+   constexpr (C++11)
+   consteval (C++20)
+   constinit (C++20)
+   Storage duration specifiers
+   Initialization
+   Default-initialization
+   Value-initialization
+   Zero-initialization
+   Copy-initialization
+   Direct-initialization
+   Aggregate initialization
+   List-initialization (C++11)
+   Constant initialization
+   Reference initialization
+   Expressions
+   Value categories
+   Order of evaluation
+   Operators
+   Operator precedence
+   Alternative representations
+   Literals
+   Boolean - Integer - Floating-point
+   Character - String - nullptr (C++11)
+   User-defined (C++11)
+   Utilities
+   Attributes (C++11)
+   Types
+   typedef declaration
+   Type alias declaration (C++11)
+   Casts
+   Implicit conversions
+   static_cast
+   const_cast
+   Explicit conversions
+   dynamic_cast
+   reinterpret_cast
+   Memory allocation
+   new expression
+   delete expression
+   Classes
+   Class declaration
+   Constructors
+   this pointer
+   Access specifiers
+   friend specifier
+   Class-specific function properties
+   Virtual function
+   override specifier (C++11)
+   final specifier (C++11)
+   explicit (C++11)
+   static
+   Special member functions
+   Default constructor
+   Copy constructor
+   Move constructor (C++11)
+   Copy assignment
+   Move assignment (C++11)
+   Destructor
+   Templates
+   Class template
+   Function template
+   Template specialization
+   Parameter packs (C++11)
+   Miscellaneous
+   Inline assembly
+   History of C++
+
+   Statements
+   Labels
+   label : statement
+   Expression statements
+   expression ;
+   Compound statements
+   { statement... }
+   Selection statements
+   if
+   switch
+   Iteration statements
+   while
+   do while
+   for
+   range for (C++11)
+   Jump statements
+   break
+   continue
+   return
+   goto
+   Declaration statements
+   declaration ;
+   Try blocks
+   try block
+   Transactional memory
+   synchronized, atomic_commit, etc (TM TS)
+
+   Executes init-statement once, then executes statement and
+   iteration-expression repeatedly, until the value of condition becomes
+   false. The test takes place before each iteration.
+
+Syntax
+
+       formal syntax:
+   attr¿(optional) for ( init-statement condition¿(optional) ;
+   iteration-expression¿(optional) ) statement
+       informal syntax:
+   attr¿(optional) for ( declaration-or-expression¿(optional) ;
+   condition¿(optional) ; expression¿(optional) ) statement
+   attr - (since C++11) any number of attributes.
+   init-statement - one of
+     * an expression statement (which may be a null statement ";").
+     * a simple declaration, typically a declaration of a loop counter
+       variable with initializer, but it may declare arbitrary many
+       variables or structured bindings(since C++17).
+
+     * an alias declaration.
+
+   (since C++23)
+
+          Note that any init-statement must end with a semicolon ;, which
+          is why it is often described informally as an expression or a
+          declaration followed by a semicolon.
+
+   condition - either
+     * an expression which is contextually convertible to bool. This
+       expression is evaluated before each iteration, and if its value
+       converts to false, the loop is exited.
+     * a declaration of a single variable with a brace-or-equals
+       initializer. The initializer is evaluated before each iteration,
+       and if the value of the declared variable converts to false, the
+       loop is exited.
+
+   iteration-expression - any expression, which is executed after every
+   iteration of the loop and before re-evaluating condition. Typically,
+   this is the expression that increments the loop counter.
+   statement - any statement, typically a compound statement, which is the
+   body of the loop.
+
+Explanation
+
+   The above syntax produces code equivalent to:
+   {
+
+          init-statement
+          while ( condition ) {
+
+                statement
+                iteration-expression ;
+
+          }
+
+   }
+
+   Except that
+   1) The scope of init-statement and the scope of condition are the same.
+   2) The scope of statement and the scope of iteration-expression are
+   disjoint and nested within the scope of init-statement and condition.
+   3) continue in statement will execute iteration-expression.
+   4) Empty condition is equivalent to while (true).
+
+   If the execution of the loop needs to be terminated at some point,
+   break statement can be used as terminating statement.
+
+   If the execution of the loop needs to be continued at the end of the
+   loop body, continue statement can be used as shortcut.
+
+   As is the case with while loop, if statement is a single statement (not
+   a compound statement), the scope of variables declared in it is limited
+   to the loop body as if it was a compound statement.
+for (;;)
+    int n;
+// n goes out of scope
+
+Keywords
+
+   for
+
+Notes
+
+   As part of the C++ forward progress guarantee, the behavior is
+   undefined if a loop, unless it is a trivial infinite loop,(since C++26)
+   has no observable behavior (does not make calls to I/O functions,
+   access volatile objects, or perform atomic or synchronization
+   operations) does not terminate. Compilers are permitted to remove such
+   loops.
+
+   A trivial infinite loop is one of the following forms:
+   while ( true-condition ) ;
+   do ; while ( true-condition ) ;
+   do ; while ( true-condition ) { }
+   for ( declaration-or-expression¿(optional) ; true-condition¿(optional)
+   ; expression¿(optional) ) ;
+   for ( declaration-or-expression¿(optional) ; true-condition¿(optional)
+   ; expression¿(optional) ) { }
+
+   and the true-condition is a constant expression that evaluates to true,
+   then its statement is replaced with std::this_thread::yield();; this
+   replacement is implementation-defined in the freestanding
+   implementation.
+   (since C++26)
+
+   While in C names declared in the scope of init-statement and condition
+   can be shadowed in the scope of statement, it is forbidden in C++:
+for (int i = 0;;)
+{
+    long i = 1;   // valid C, invalid C++
+    // ...
+}
+
+Example
+
+   Run this code
+#include <iostream>
+#include <vector>
+
+int main()
+{
+    std::cout << "1) typical loop with a single statement as the body:\n";
+    for (int i = 0; i < 10; ++i)
+        std::cout << i << ' ';
+
+    std::cout << "\n\n" "2) init-statement can declare multiple names, as\n"
+                 "long as they can use the same decl-specifier-seq:\n";
+    for (int i = 0, *p = &i; i < 9; i += 2)
+        std::cout << i << ':' << *p << ' ';
+
+    std::cout << "\n\n" "3) condition may be a declaration:\n";
+    char cstr[] = "Hello";
+    for (int n = 0; char c = cstr[n]; ++n)
+        std::cout << c;
+
+    std::cout << "\n\n" "4) init-statement can use the auto type specifier:\n";
+    std::vector<int> v = {3, 1, 4, 1, 5, 9};
+    for (auto iter = v.begin(); iter != v.end(); ++iter)
+        std::cout << *iter << ' ';
+
+    std::cout << "\n\n" "5) init-statement can be an expression:\n";
+    int n = 0;
+    for (std::cout << "Loop start\n";
+         std::cout << "Loop test\n";
+         std::cout << "Iteration " << ++n << '\n')
+    {
+        if (n > 1)
+            break;
+    }
+
+    std::cout << "\n" "6) constructors and destructors of objects created\n"
+                 "in the loop's body are called per each iteration:\n";
+    struct S
+    {
+        S(int x, int y) { std::cout << "S::S(" << x << ", " << y << "); "; }
+        ~S() { std::cout << "S::~S()\n"; }
+    };
+    for (int i{0}, j{5}; i < j; ++i, --j)
+        S s{i, j};
+
+    std::cout << "\n" "7) init-statement can use structured bindings:\n";
+    long arr[]{1, 3, 7};
+    for (auto [i, j, k] = arr; i + j < k; ++i)
+        std::cout << i + j << ' ';
+    std::cout << '\n';
+}
+
+   Output:
+1) typical loop with a single statement as the body:
+0 1 2 3 4 5 6 7 8 9
+
+2) init-statement can declare multiple names, as
+long as they can use the same decl-specifier-seq:
+0:0 2:2 4:4 6:6 8:8
+
+3) condition may be a declaration:
+Hello
+
+4) init-statement can use the auto type specifier:
+3 1 4 1 5 9
+
+5) init-statement can be an expression:
+Loop start
+Loop test
+Iteration 1
+Loop test
+Iteration 2
+Loop test
+
+6) constructors and destructors of objects created
+in the loop's body are called per each iteration:
+S::S(0, 5); S::~S()
+S::S(1, 4); S::~S()
+S::S(2, 3); S::~S()
+
+7) init-statement can use structured bindings:
+4 5 6
+
+See also
+
+   range-for loop(C++11) executes loop over range
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/language/for&old
+   id=165265"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 7 December 2023, at 15:59.
+     * This page has been accessed 732,080 times.

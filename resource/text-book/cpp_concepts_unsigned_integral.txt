@@ -1,0 +1,145 @@
+std::unsigned_integral
+
+   From cppreference.com
+   < cpp | concepts
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Concepts library
+   Core language concepts
+   same_as
+   derived_from
+   convertible_to
+   common_reference_with
+
+   common_with
+   integral
+   signed_integral
+   unsigned_integral
+   floating_point
+   swappableswappable_with
+   destructible
+   constructible_from
+   default_initializable
+   move_constructible
+   copy_constructible
+   assignable_from
+   Comparison concepts
+   equality_comparableequality_comparable_with
+   totally_orderedtotally_ordered_with
+   Object concepts
+   movable
+   copyable
+   semiregular
+   regular
+   Callable concepts
+   invocableregular_invocable
+   predicate
+   relation
+   equivalence_relation
+   strict_weak_order
+   Exposition-only concepts
+   boolean-testable
+
+   Defined in header <concepts>
+   template< class T >
+   concept unsigned_integral = std::integral<T> &&
+   !std::signed_integral<T>;
+                               (since C++20)
+
+   The concept unsigned_integral<T> is satisfied if and only if T is an
+   integral type and std::is_signed_v<T> is false.
+
+Notes
+
+   unsigned_integral<T> may be satisfied by a type that is not an unsigned
+   integer type, for example, bool.
+
+Example
+
+   Run this code
+#include <concepts>
+#include <iostream>
+#include <string_view>
+
+void test(std::signed_integral auto x, std::string_view text = "")
+{
+    std::cout << text << " (" + (text == "") << x << ") is a signed integral\n";
+}
+
+void test(std::unsigned_integral auto x, std::string_view text = "")
+{
+    std::cout << text << " (" + (text == "") << x << ") is an unsigned integral\
+n";
+}
+
+void test(auto x, std::string_view text = "")
+{
+    std::cout << text << " (" + (text == "") << x << ") is non-integral\n";
+}
+
+int main()
+{
+    test(42);               // signed
+    test(0xFULL, "0xFULL"); // unsigned
+    test('A');              // platform-dependent
+    test(true, "true");     // unsigned
+    test(4e-2, "4e-2");     // non-integral (hex-float)
+    test("\int \int ");             // non-integral
+}
+
+   Possible output:
+(42) is a signed integral
+0xFULL (15) is an unsigned integral
+(A) is a signed integral
+true (1) is an unsigned integral
+4e-2 (0.04) is non-integral
+(\int \int ) is non-integral
+
+See also
+
+   is_integral
+   (C++11)
+   checks if a type is an integral type
+   (class template)
+   is_signed
+   (C++11)
+   checks if a type is a signed arithmetic type
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/concepts/unsigne
+   d_integral&oldid=161995"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 4 November 2023, at 15:49.
+     * This page has been accessed 26,683 times.

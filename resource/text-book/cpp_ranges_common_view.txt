@@ -1,0 +1,364 @@
+std::ranges::views::common, std::ranges::common_view
+
+   From cppreference.com
+   < cpp | ranges
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   std::ranges::common_view
+   Member functions
+   common_view::common_view
+   common_view::base
+   common_view::begin
+   common_view::end
+   common_view::size
+   Deduction guides
+
+   Defined in header <ranges>
+   template< ranges::view V >
+
+       requires (not ranges::common_range<V> and
+                 std::copyable<ranges::iterator_t<V>>)
+   class common_view
+       : public ranges::view_interface<common_view<V>>
+   (1)                                 (since C++20)
+   namespace views {
+
+       inline constexpr /* unspecified */ common = /* unspecified */;
+   }
+   (2)                                 (since C++20)
+   Call signature
+   template< ranges::viewable_range R >
+
+       requires /* see below */
+   constexpr ranges::view auto common( R&& r );
+                                       (since C++20)
+   1) Adapts a given view with different types for iterator/sentinel pair
+   into a view that is also a common_range. A common_view always has the
+   same iterator/sentinel type.
+   2) RangeAdaptorObject. Let e be a subexpression. Then the expression
+   views::common(e) is expression-equivalent to:
+     * views::all(e), if it is a well-formed expression and decltype((e))
+       models common_range;
+     * common_view{e} otherwise.
+
+Data members
+
+   Member name Definition
+   base_ (private) The underlying view of type V.
+   (exposition-only member object*)
+
+Member functions
+
+   (constructor)
+   (C++20)
+   constructs a common_view
+   (public member function)
+   base
+   (C++20)
+   returns a copy of the underlying (adapted) view
+   (public member function)
+   begin
+   (C++20)
+   returns an iterator to the beginning
+   (public member function)
+   end
+   (C++20)
+   returns an iterator to the end
+   (public member function)
+   size
+   (C++20)
+   returns the number of elements. Provided only if the underlying
+   (adapted) range satisfies sized_range.
+   (public member function)
+
+Inherited from std::ranges::view_interface
+
+   empty
+   (C++20)
+   returns whether the derived view is empty. Provided if it satisfies
+   sized_range or forward_range.
+   (public member function of std::ranges::view_interface<D>)
+   cbegin
+   (C++23)
+   returns a constant iterator to the beginning of the range.
+   (public member function of std::ranges::view_interface<D>)
+   cend
+   (C++23)
+   returns a sentinel for the constant iterator of the range.
+   (public member function of std::ranges::view_interface<D>)
+   operator bool
+   (C++20)
+   returns whether the derived view is not empty. Provided if
+   ranges::empty is applicable to it.
+   (public member function of std::ranges::view_interface<D>)
+   data
+   (C++20)
+   gets the address of derived view's data. Provided if its iterator type
+   satisfies contiguous_iterator.
+   (public member function of std::ranges::view_interface<D>)
+   front
+   (C++20)
+   returns the first element in the derived view. Provided if it satisfies
+   forward_range.
+   (public member function of std::ranges::view_interface<D>)
+   back
+   (C++20)
+   returns the last element in the derived view. Provided if it satisfies
+   bidirectional_range and common_range.
+   (public member function of std::ranges::view_interface<D>)
+   operator[]
+   (C++20)
+   returns the n^th element in the derived view. Provided if it satisfies
+   random_access_range.
+   (public member function of std::ranges::view_interface<D>)
+
+Deduction guides
+
+Helper templates
+
+   template< class T >
+
+   inline constexpr bool
+   enable_borrowed_range<std::ranges::common_view<T>> =
+       std::ranges::enable_borrowed_range<T>;
+                      (since C++20)
+
+   This specialization of std::ranges::enable_borrowed_range makes
+   common_view satisfy borrowed_range when the underlying view satisfies
+   it.
+
+Notes
+
+   common_view can be useful for working with legacy algorithms that
+   expect the iterator and sentinel are of the same type.
+
+Example
+
+   Run this code
+#include <iostream>
+#include <iterator>
+#include <list>
+#include <numeric>
+#include <ranges>
+
+int main()
+{
+    auto v1 = {1, 2, 3, 4, 5};
+    auto i1 = std::counted_iterator{v1.begin(), std::ssize(v1)};
+    auto r1 = std::ranges::subrange{i1, std::default_sentinel};
+//  auto e1 = std::accumulate(r1.begin(), r1.end(), 0); // error: "common range"
+ required
+    auto c1 = std::ranges::common_view{r1};
+    std::cout << "accumulate: " << std::accumulate(c1.begin(), c1.end(), 0) << '
+\n';
+
+    // inherited from ranges::view_interface:
+    std::cout << "c1.front(): " << c1.front() << '\n';
+    std::cout << "c1.back(): " << c1.back() << '\n';
+    std::cout << "c1.data(): " << c1.data() << '\n';
+    std::cout << "c1[0]: " << c1[0] << '\n';
+
+    auto v2 = std::list{1, 2, 3, 4, 5};
+    auto i2 = std::counted_iterator{v2.begin(), std::ssize(v2)};
+    auto r2 = std::ranges::subrange{i2, std::default_sentinel};
+//  auto e2 = std::accumulate(r2.begin(), r2.end(), 0); // error: "common range"
+ required
+    auto c2 = std::ranges::common_view{ r2 };
+    std::cout << "accumulate: " << std::accumulate(c2.begin(), c2.end(), 0) << '
+\n';
+
+    // inherited from ranges::view_interface:
+    std::cout << "c2.front(): " << c2.front() << '\n';
+//  auto e3 = c2.back(); // error: "bidirectional range" required
+//  auto e4 = c2.data(); // error: "contiguous range" required
+//  auto e5 = c2[0];     // error: "random access range" required
+}
+
+   Possible output:
+accumulate: 15
+c1.front(): 1
+c1.back(): 5
+c1.data(): 0x7f19937f00d0
+c1[0]: 1
+accumulate: 15
+c2.front(): 1
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 3494 C++20 common_view was never a borrowed_range it is a
+   borrowed_range if its underlying view is
+
+See also
+
+   ranges::common_range
+   (C++20)
+   specifies that a range has identical iterator and sentinel types
+   (concept)
+   common_iterator
+   (C++20)
+   adapts an iterator type and its sentinel into a common iterator type
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/common_vi
+   ew&oldid=160618"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 12 October 2023, at 14:22.
+     * This page has been accessed 24,193 times.

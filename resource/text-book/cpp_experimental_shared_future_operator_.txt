@@ -1,0 +1,109 @@
+std::experimental::shared_future<T>::operator=
+
+   From cppreference.com
+   < cpp | experimental | shared future
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Extensions for concurrency
+   std::future extensions
+   experimental::future
+   experimental::shared_future
+   experimental::when_all
+   experimental::when_any
+   experimental::make_ready_future
+   experimental::make_exceptional_future
+   Latches and barriers
+   experimental::latch
+   experimental::barrier
+   experimental::flex_barrier
+   Atomic smart pointers
+   experimental::atomic_shared_ptr
+   experimental::atomic_weak_ptr
+
+   std::experimental::shared_future
+   shared_future::shared_future
+   shared_future::operator=
+   shared_future::is_ready
+   shared_future::then
+
+   std::experimental::shared_future<T>& operator=( const
+   std::experimental::shared_future<T>& other );
+   (1)
+   std::experimental::shared_future<T>& operator=(
+   std::experimental::shared_future<T>&& other ) noexcept;
+   (2)
+
+   Assigns the contents of another std::experimental::shared_future
+   object.
+   1) Releases any shared state and assigns the contents of other to
+   *this. After the assignment, this->valid() == other.valid().
+   2) Releases any shared state and move-assigns the contents of other to
+   *this. After the assignment, other.valid() == false and this->valid()
+   will yield the same value as other.valid() before the assignment.
+
+Parameters
+
+   other - a std::experimental::shared_future object to assign from
+
+Return value
+
+   *this
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/sha
+   red_future/operator%3D&oldid=155805"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 30 July 2023, at 10:00.
+     * This page has been accessed 6,396 times.

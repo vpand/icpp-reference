@@ -1,0 +1,94 @@
+std::execution::upon_stopped
+
+   From cppreference.com
+   < cpp
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Execution Library
+   Senders
+   Sender factories
+   Sender adaptors
+   Adaptors for single-shot and multi-shot senders
+   Adaptors for multi-shot senders
+   Sender consumers
+   Eager execution
+
+   Defined in header <execution>
+   execution::sender auto upon_stopped(
+
+       execution::sender auto input,
+       std::invocable auto function
+   );
+                                       (since C++26)
+
+Parameters
+
+   input - sender which once gets "stop token", will notify the new node
+   to execute the function
+   function - invocable to be called in case a "stopped" signal is sent to
+   the input sender
+
+Return value
+
+   Returns a sender describing the task graph described by the input
+   sender, with an added node of invoking the provided function in case
+   the "stopped" signal is sent to the input sender.
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/execution/upon_s
+   topped&oldid=169357"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 January 2024, at 19:21.
+     * This page has been accessed 466 times.

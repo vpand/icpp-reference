@@ -1,0 +1,325 @@
+C23
+
+   From cppreference.com
+   < c
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Versions
+   C89
+   C95
+   C99
+   C11
+   C17
+   C23
+   Current Status
+
+   The next generation of the C standard.
+     * The latest publicly available WD of C23 (n3220, 2024-02-22).
+     * The latest WD of C23 (n3149, 2023-07-09, a password-protected zip
+       archive, see n3150).
+
+   This section is incomplete
+   Reason: accepted changes not yet included in the working draft
+
+Obsolete
+
+Removed
+
+     * Old-style function declarations and definitions
+     * Representations for signed integers other than two's complement
+     * Permission that u/U-prefixed character constants and string
+       literals may be not UTF-16/32
+     * Mixed wide string literal concatenation
+     * Support for calling realloc() with zero size (the behavior becomes
+       undefined)
+     * __alignof_is_defined and __alignas_is_defined
+     * static_assert is not provided as a macro defined in <assert.h>
+       (becomes a keyword)
+     * thread_local is not provided as a macro defined in <threads.h>
+       (becomes a keyword)
+
+Deprecated
+
+     * <stdnoreturn.h>
+     * Old feature-test macros
+          + __STDC_IEC_559__
+          + __STDC_IEC_559_COMPLEX__
+     * _Noreturn function specifier
+     * _Noreturn attribute token
+     * asctime()
+     * ctime()
+     * DECIMAL_DIG (use the appropriate type-specific macro
+       (FLT_DECIMAL_DIG, etc) instead)
+     * Definition of following numeric limit macros in <math.h> (they
+       should be used via <float.h>)
+          + INFINITY
+          + DEC_INFINITY
+          + NAN
+          + DEC_NAN
+     * __bool_true_false_are_defined
+
+New language features
+
+     * Decimal floating-point types (_Decimal32, _Decimal64, and
+       _Decimal128)
+     * Bit-precise integers (_BitInt)
+     * Binary integer constants
+     * u8 character constants
+     * Type change of u8 string literals
+     * Digit separator '
+     * Empty initializer ={}
+     * Attributes
+          + [[deprecated]]
+          + [[fallthrough]]
+          + [[maybe_unused]]
+          + [[nodiscard]]
+          + [[noreturn]]
+          + [[reproducible]]
+          + [[unsequenced]]
+     * Unnamed parameters in function definitions
+     * Identical cvr-qualifications for array types and their element
+       types
+     * Single-argument _Static_assert
+     * static_assert becomes a keyword (may be a predefined macro for
+       compatibility reasons)
+     * thread_local becomes a keyword (may be a predefined macro for
+       compatibility reasons)
+     * Labels followed by declarations and }
+     * nullptr constant and the associated nullptr_t type
+     * true and false become keywords (may be predefined macros for
+       compatibility reasons)
+     * New preprocessor directives
+          + #elifdef
+          + #elifndef
+          + #warning
+          + #embed
+     * Pragmas for rounding direction
+          + STDC FENV_ROUND
+          + STDC FENV_DEC_ROUND
+
+Feature test macros for optional features
+
+     * __STDC_IEC_60559_BFP__
+          + Indicates IEEE-754 binary floating-point arithmetic and
+            required math functions are supported.
+
+                This macro supersedes __STDC_IEC_559__.
+
+     * __STDC_IEC_60559_DFP__
+          + Indicates IEEE-754 decimal floating-point arithmetic and
+            required math functions are supported.
+     * __STDC_IEC_60559_COMPLEX__
+          + Indicates IEEE-754 complex arithmetic and required math
+            functions are supported.
+
+                This macro supersedes __STDC_IEC_559_COMPLEX__.
+
+New library features
+
+New headers
+
+     * <stdbit.h>
+     * <stdckdint.h>
+
+Library features
+
+     * Extended binary floating-point math functions
+          +
+
+   This section is incomplete
+   Reason: List TBD
+     * Decimal floating-point math functions
+          + -dN variants for existing and new floating-point math
+            functions
+          + quantizedN()
+          + samequantumdN()
+          + quantumdN()
+          + llquantexpdN()
+          + encodedecdN()
+          + decodedecdN()
+          + encodebindN()
+          + decodebindN()
+     * Floating-point formatting functions
+     * Library support for UTF-8
+          + char8_t type alias
+          + mbrtoc8()
+          + c8rtomb()
+          + atomic_char8_t type alias
+          + ATOMIC_CHAR8_T_LOCK_FREE test macro
+     * memset_explicit()
+     * POSIX functions
+          + memccpy()
+          + strdup()
+          + strndup()
+          + gmtime_r()
+          + localtime_r()
+          + Extensions for strftime() and wcsftime()
+     * Extensions for fscanf() and fprintf() function families
+          + wN and wfN length modifiers for [u]intN_t and [u]int_fastN_t
+            respectively
+          + H, D, and DD length modifiers for _Decimal32, _Decimal64, and
+            _Decimal128 respectively
+          + b conversion specifier for unsigned integer types
+     * timespec_getres()
+     * Macro constants for width of integer types
+     * Additional numeric limit macros for floating-point types
+     * Library version-test macros
+          + __STDC_VERSION_FENV_H__
+          + __STDC_VERSION_MATH_H__
+          + __STDC_VERSION_STDINT_H__
+          + __STDC_VERSION_STDLIB_H__
+          + __STDC_VERSION_TGMATH_H__
+          + __STDC_VERSION_TIME_H__
+          + __STDC_VERSION_STDCKDINT_H__
+          + __STDC_VERSION_STDBIT_H__
+
+Defect reports
+
+   Defect Reports fixed in C23 (? defects)
+     * DR 440
+     * DR 432
+     * DR 467
+     * DR 476
+     * DR 482
+     * DR 488
+     * DR 489
+     * DR 494
+     * DR 496
+     * DR 497
+     * DR 499
+     * DR 500
+     * DR 501
+
+Compiler support
+
+C23 core language features
+
+   This section is incomplete
+   Reason: status for Apple Clang and other compilers supporting C2x
+
+   C23 feature
+     Paper(s)
+
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+   _Static_assert with no message N2265 9 9 Yes Yes 6.5 2021.1.2 (clang
+   based)
+   [[nodiscard]] N2267 10 9 Yes 6.4 2021.1.2 (clang based)
+   [[maybe_unused]] N2270 10 9 Yes 6.4 2021.1.2 (clang based)
+   [[deprecated]] N2334 10 9 Yes 6.4 2021.1.2 (clang based)
+   Attributes N2335
+   N2554 10 9 Yes 6.4 2021.1.2 (clang based)
+   IEEE 754 decimal floating-point types N2341 4.2 (partial)* 13.0
+   (partial)*
+   [[fallthrough]] N2408 10 9 Yes 6.4 2021.1.2 (clang based)
+   u8 character constants N2418 10 15 6.5 2022.2
+   Removal of function definitions without prototype N2432 10 15 2022.2
+   [[nodiscard]] with message N2448 11 10 Yes 6.4 2021.1.2 (clang based)
+   Unnamed parameters in function definitions N2480 11 11 Yes 6.4 2021.1.2
+   (clang based)
+   Labels before declarations and end of blocks N2508 11 16 Partial* 6.5
+   17.0*
+   Binary integer constants N2549 4.3*
+   11 2.9*
+   9 19.0 (2015)** Yes 6.5 11.0*
+   __has_c_attribute in preprocessor conditionals N2553 11 9 Yes 6.5
+   2021.1.2 (clang based)
+   Allow duplicate attributes N2557 11 13 Yes 6.5 2021.4 (clang-based
+   IEEE 754 interchange and extended types N2601 7 (partial)* 6 (partial)*
+   Partial*
+   Digit separators N2626 12 13 19.0 (2015)** Yes 6.5 18.0*
+   #elifdef and #elifndef N2645 12 13
+
+   13.1.6*
+   6.5 2021.4
+   Type change of u8 string literals N2653
+   [[maybe_unused]] for labels N2662 11 16 6.5 2022.2
+   #warning N2686 Yes Yes Yes 6.5 Yes
+   Bit-precise integer types (_BitInt) N2763 14 15 6.5 2022.2
+   [[noreturn]] N2764 13 15 6.5 2022.2
+   Suffixes for bit-precise integer constants N2775 14 15 2022.2
+   __has_include in preprocessor conditionals N2799 5 Yes 19.11* Yes 6.5
+   18.0
+   Identifier Syntax using Unicode Standard Annex 31 N2836 13 15 6.5
+   2022.2
+   Removal of function declarations without prototype N2841 13 15 2022.2
+
+   Empty initializers N2900 Partial* Partial* Partial* Partial* Partial*
+
+   typeof and typeof_unqual N2927
+   N2930 Partial*
+   13 Partial*
+   16 19.39* Partial* Partial* Partial* Partial*
+   New spelling of keywords N2934 13 16 6.5
+   Predefined true and false N2935 13 15 2022.2
+   [[unsequenced]] and [[reproducible]] N2956
+   Relax requirements for variadic parameter list N2975 13 16 6.5 2023.1
+   Type inference in object definitions N3007 13
+   #embed N3017
+   constexpr objects N3018 13
+   Improved Normal Enumerations N3029 13
+   Enhancements to Enumerations N3030 13 Maybe
+   __VA_OPT__ N3033 8 12 6.5
+   Storage-class specifiers for compound literals N3038 13
+   nullptr N3042 13 16
+
+   C23 feature
+   Paper(s)
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+
+C23 library features
+
+   This section is incomplete
+   Reason: a different list for C standard libraries
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/23&oldid=169721"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 9 February 2024, at 22:39.
+     * This page has been accessed 222,225 times.

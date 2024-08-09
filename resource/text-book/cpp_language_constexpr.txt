@@ -1,0 +1,566 @@
+constexpr specifier (since C++11)
+
+   From cppreference.com
+   < cpp | language
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ language
+   General topics
+   Preprocessor
+   Comments
+   Keywords
+   Escape sequences
+   Flow control
+   Conditional execution statements
+   if
+   switch
+   Iteration statements (loops)
+   for
+   range-for (C++11)
+   while
+   do-while
+   Jump statements
+   continue - break
+   goto - return
+   Functions
+   Function declaration
+   Lambda function expression
+   inline specifier
+   Dynamic exception specifications (until C++17*)
+   noexcept specifier (C++11)
+   Exceptions
+   throw-expression
+   try block
+   handler
+   Namespaces
+   Namespace declaration
+   Namespace aliases
+   Types
+   Fundamental types
+   Enumeration types
+   Function types
+   Class/struct types
+   Union types
+   Specifiers
+   const/volatile
+   decltype (C++11)
+   auto (C++11)
+   constexpr (C++11)
+   consteval (C++20)
+   constinit (C++20)
+   Storage duration specifiers
+   Initialization
+   Default-initialization
+   Value-initialization
+   Zero-initialization
+   Copy-initialization
+   Direct-initialization
+   Aggregate initialization
+   List-initialization (C++11)
+   Constant initialization
+   Reference initialization
+   Expressions
+   Value categories
+   Order of evaluation
+   Operators
+   Operator precedence
+   Alternative representations
+   Literals
+   Boolean - Integer - Floating-point
+   Character - String - nullptr (C++11)
+   User-defined (C++11)
+   Utilities
+   Attributes (C++11)
+   Types
+   typedef declaration
+   Type alias declaration (C++11)
+   Casts
+   Implicit conversions
+   static_cast
+   const_cast
+   Explicit conversions
+   dynamic_cast
+   reinterpret_cast
+   Memory allocation
+   new expression
+   delete expression
+   Classes
+   Class declaration
+   Constructors
+   this pointer
+   Access specifiers
+   friend specifier
+   Class-specific function properties
+   Virtual function
+   override specifier (C++11)
+   final specifier (C++11)
+   explicit (C++11)
+   static
+   Special member functions
+   Default constructor
+   Copy constructor
+   Move constructor (C++11)
+   Copy assignment
+   Move assignment (C++11)
+   Destructor
+   Templates
+   Class template
+   Function template
+   Template specialization
+   Parameter packs (C++11)
+   Miscellaneous
+   Inline assembly
+   History of C++
+
+   Declarations
+   Overview
+   Declaration syntax
+   decl-specifier-seq
+   Declarator
+   Conflicting declarations
+   Specifiers
+   typedef
+   inline
+   virtual function specifier
+   explicit function specifier
+   friend
+   constexpr
+   (C++11)
+   consteval
+   (C++20)
+   constinit
+   (C++20)
+   Storage class specifiers
+   Translation-unit-local (C++20)
+   class/struct
+   union
+   enum
+   decltype
+   (C++11)
+   auto
+   (C++11)
+   alignas
+   (C++11)
+   constvolatile
+   Pack indexing specifier (C++26)
+   Elaborated type specifier
+   Attributes (C++11)
+   Declarators
+   Reference
+   Pointer
+   Array
+   Block declarations
+   Simple-declaration
+   ->Structured binding declaration (C++17)
+   Alias declaration (C++11)
+   Namespace alias definition
+   using declaration
+   using directive
+   static_assert declaration (C++11)
+   asm declaration
+   Opaque enum declaration (C++11)
+   Other declarations
+   Namespace definition
+   Function declaration
+   Class template declaration
+   Function template declaration
+   Explicit template instantiation (C++11)
+   Explicit template specialization
+   Linkage specification
+   Attribute declaration (C++11)
+   Empty declaration
+
+          + constexpr - specifies that the value of a variable or function
+            can appear in constant expressions
+
+Explanation
+
+   The constexpr specifier declares that it is possible to evaluate the
+   value of the function or variable at compile time. Such variables and
+   functions can then be used where only compile time constant expressions
+   are allowed (provided that appropriate function arguments are given).
+
+   A constexpr specifier used in an object declaration or non-static
+   member function(until C++14) implies const. A constexpr specifier used
+   in a function or static data member(since C++17) declaration implies
+   inline. If any declaration of a function or function template has a
+   constexpr specifier, then every declaration must contain that
+   specifier.
+
+constexpr variable
+
+   A constexpr variable must satisfy the following requirements:
+
+          + its type must be a LiteralType
+          + it must be immediately initialized
+          + the full-expression of its initialization, including all
+            implicit conversions, constructors calls, etc, must be a
+            constant expression
+
+          + it must have constant destruction, i.e. either:
+
+               o it is not of class type nor (possibly multi-dimensional)
+                 array thereof, or
+               o it is of class type or (possibly multi-dimensional) array
+                 thereof, that class type has a constexpr destructor, and
+                 for a hypothetical expression e whose only effect is to
+                 destroy the object, e would be a core constant expression
+                 if the lifetime of the object and its non-mutable
+                 subobjects (but not its mutable subobjects) were
+                 considered to start within e.
+
+   If a constexpr variable is not translation-unit-local, it should not be
+   initialized to refer to a translation-unit-local entity that is usable
+   in constant expressions, nor have a subobject that refers to such an
+   entity. Such initialization is disallowed in a module interface unit
+   (outside its private-module-fragment, if any) or a module partition,
+   and is deprecated in any other context.
+   (since C++20)
+
+constexpr function
+
+   A constexpr function must satisfy the following requirements:
+
+          + it must not be virtual
+          + it must not be a function try block
+
+   (until C++20)
+
+          + it must not be a coroutine
+
+   (since C++20)
+
+          + for constructor and destructor(since C++20), the class must
+            have no virtual base classes
+
+          + its return value (if any) and each of its parameters must be
+            of a LiteralType
+          + there exists at least one set of argument values such that an
+            invocation of the function could be an evaluated subexpression
+            of a core constant expression (for constructors, use in a
+            constant initializer is sufficient). No diagnostic is required
+            for a violation of this bullet.
+
+   (until C++23)
+
+          + the function body must be either deleted or defaulted or
+            contain only the following:
+
+               o null statements (plain semicolons)
+               o static_assert declarations
+               o typedef declarations and alias declarations that do not
+                 define classes or enumerations
+               o using declarations
+               o using directives
+               o if the function is not a constructor, exactly one return
+                 statement
+
+   (until C++14)
+
+          + the function body must not contain:
+
+               o a goto statement
+               o a statement with a label other than case and default
+
+               o a try block
+               o an asm declaration
+               o a definition of a variable for which no initialization is
+                 performed
+
+   (until C++20)
+
+               o a definition of a variable of non-literal type
+               o a definition of a variable of static or thread storage
+                 duration
+
+                (A function body that is = default; or = delete; contains
+                none of the above.)
+
+   (since C++14)
+   (until C++23)
+
+constexpr constructor
+
+   A constexpr constructor whose function body is not = delete; must
+   satisfy the following additional requirements:
+
+          + for the constructor of a class or struct, every base class
+            sub-object and every non-variant non-static data member must
+            be initialized. If the class is a union-like class, for each
+            of its non-empty anonymous union members, exactly one variant
+            member must be initialized
+          + for the constructor of a non-empty union, exactly one
+            non-static data member must be initialized
+
+   (until C++20)
+
+          + every constructor selected to initializing non-static data
+            members and base class must be a constexpr constructor.
+
+constexpr destructor
+
+   Destructors cannot be constexpr, but a trivial destructor can be
+   implicitly called in constant expressions.
+   (until C++20)
+
+   A constexpr destructor whose function body is not = delete; must
+   satisfy the following additional requirement:
+
+          + every destructor used to destroy non-static data members and
+            base class must be a constexpr destructor.
+
+   (since C++20)
+   (until C++23)
+
+   For constexpr function templates and constexpr member functions of
+   class templates, at least one specialization must satisfy the
+   abovementioned requirements. Other specializations are still considered
+   as constexpr, even though a call to such a function cannot appear in a
+   constant expression.
+
+   If no specialization of the template would satisfy the requirements for
+   a constexpr function when considered as a non-template function, the
+   template is ill-formed, no diagnostic required.
+   (until C++23)
+
+   A constexpr function implicitly becomes an immediate function if it is
+   not marked consteval, uses an immediate function in a non-constant
+   manner, and is
+     * a call operator of a lambda, or
+     * a defaulted special member function, or
+     * a specialization of a templated entity marked constexpr.
+
+   (since C++20)
+
+Notes
+
+   Because the noexcept operator always returns true for a constant
+   expression, it can be used to check if a particular invocation of a
+   constexpr function takes the constant expression branch:
+constexpr int f();
+constexpr bool b1 = noexcept(f()); // false, undefined constexpr function
+constexpr int f() { return 0; }
+constexpr bool b2 = noexcept(f()); // true, f() is a constant expression
+
+   (until C++17)
+
+   It is possible to write a constexpr function whose invocation can never
+   satisfy the requirements of a core constant expression:
+void f(int& i) // not a constexpr function
+{
+    i = 0;
+}
+
+constexpr void g(int& i) // well-formed since C++23
+{
+    f(i); // unconditionally calls f, cannot be a constant expression
+}
+
+   (since C++23)
+
+   Constexpr constructors are permitted for classes that aren't literal
+   types. For example, the default constructor of std::shared_ptr is
+   constexpr, allowing constant initialization.
+
+   Reference variables can be declared constexpr (their initializers have
+   to be reference constant expressions):
+static constexpr int const& x = 42; // constexpr reference to a const int object
+                                    // (the object has static storage duration
+                                    //  due to life extension by a static refere
+nce)
+
+   Even though try blocks and inline assembly are allowed in constexpr
+   functions, throwing exceptions or executing the assembly is still
+   disallowed in a constant expression.
+
+   If a variable has constant destruction, there is no need to generate
+   machine code in order to call destructor for it, even if its destructor
+   is not trivial.
+
+   A non-lambda, non-special-member, and non-templated constexpr function
+   cannot implicitly become an immediate function. Users need to
+   explicitly mark it consteval to make such an intended function
+   definition well-formed.
+   (since C++20)
+   Feature-test macro Value Std Feature
+   __cpp_constexpr 200704L (C++11) constexpr
+   201304L (C++14) Relaxed constexpr, non-const constexpr methods
+   201603L (C++17) Constexpr lambda
+   201907L (C++20) Trivial default initialization and asm-declaration in
+   constexpr functions
+   202002L (C++20) Changing the active member of a union in constant
+   evaluation
+   202110L (C++23) Non-literal variables, labels, and goto statements in
+   constexpr functions
+   202207L (C++23) Relaxing some constexpr restrictions
+   202211L (C++23) Permitting static constexpr variables in constexpr
+   functions
+   202306L (C++26) Constexpr cast from void*: towards constexpr
+   type-erasure
+   __cpp_constexpr_in_decltype 201711L (C++11)
+   (DR) Generation of function and variable definitions when needed for
+   constant evaluation
+   __cpp_constexpr_dynamic_alloc 201907L (C++20) Operations for dynamic
+   storage duration in constexpr functions
+
+Keywords
+
+   constexpr
+
+Example
+
+   Defines C++11/14 constexpr functions that compute factorials; defines a
+   literal type that extends string literals:
+   Run this code
+#include <iostream>
+#include <stdexcept>
+
+// C++11 constexpr functions use recursion rather than iteration
+constexpr int factorial(int n)
+{
+    return n <= 1 ? 1 : (n * factorial(n - 1));
+}
+
+// C++14 constexpr functions may use local variables and loops
+#if __cplusplus >= 201402L
+constexpr int factorial_cxx14(int n)
+{
+    int res = 1;
+    while (n > 1)
+        res *= n--;
+    return res;
+}
+#endif // C++14
+
+// A literal class
+class conststr
+{
+    const char* p;
+    std::size_t sz;
+public:
+    template<std::size_t N>
+    constexpr conststr(const char(&a)[N]): p(a), sz(N - 1) {}
+
+    // constexpr functions signal errors by throwing exceptions
+    // in C++11, they must do so from the conditional operator ?:
+    constexpr char operator[](std::size_t n) const
+    {
+        return n < sz ? p[n] : throw std::out_of_range("");
+    }
+
+    constexpr std::size_t size() const { return sz; }
+};
+
+// C++11 constexpr functions had to put everything in a single return statement
+// (C++14 does not have that requirement)
+constexpr std::size_t countlower(conststr s, std::size_t n = 0,
+                                             std::size_t c = 0)
+{
+    return n == s.size() ? c :
+        'a' <= s[n] && s[n] <= 'z' ? countlower(s, n + 1, c + 1)
+                                   : countlower(s, n + 1, c);
+}
+
+// An output function that requires a compile-time constant, for testing
+template<int n>
+struct constN
+{
+    constN() { std::cout << n << '\n'; }
+};
+
+int main()
+{
+    std::cout << "4! = ";
+    constN<factorial(4)> out1; // computed at compile time
+
+    volatile int k = 8; // disallow optimization using volatile
+    std::cout << k << "! = " << factorial(k) << '\n'; // computed at run time
+
+    std::cout << "The number of lowercase letters in \"Hello, world!\" is ";
+    constN<countlower("Hello, world!")> out2; // implicitly converted to constst
+r
+
+    constexpr int a[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+    constexpr int length_a = sizeof a / sizeof(int); // std::size(a) in C++17,
+                                                      // std::ssize(a) in C++20
+    std::cout << "Array of length " << length_a << " has elements: ";
+    for (int i = 0; i < length_a; ++i)
+        std::cout << a[i] << ' ';
+    std::cout << '\n';
+}
+
+   Output:
+4! = 24
+8! = 40320
+The number of lowercase letters in "Hello, world!" is 9
+Array of length 12 has elements: 0 1 2 3 4 5 6 7 8 0 0 0
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   CWG 1712 C++14 a constexpr variable template was required to have all
+   its declarations contain the constexpr specifier
+   (it is redundant because there cannot be more than one
+   declaration of a variable template with the constexpr specifier) not
+   required anymore
+   CWG 1911 C++11 constexpr constructors for non-literal types were not
+   allowed allowed in constant initialization
+   CWG 2004 C++11 copy/move of a union with a mutable member
+   was allowed in a constant expression mutable variants disqualify
+   implicit copy/move
+   CWG 2163 C++14 labels were allowed in constexpr functions
+   even though gotos are prohibited labels also prohibited
+   CWG 2268 C++11 copy/move of a union with a mutable member was
+   prohibited by the resolution of CWG issue 2004 allowed if the object is
+   created
+   within the constant expression
+
+See also
+
+   constant expression defines an expression that can be evaluated at
+   compile time
+   consteval specifier(C++20) specifies that a function is an immediate
+   function, that is, every call to the function must be in a constant
+   evaluation
+   constinit specifier(C++20) asserts that a variable has static
+   initialization, i.e. zero initialization and constant initialization
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/language/constex
+   pr&oldid=172261"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 6 June 2024, at 01:56.
+     * This page has been accessed 2,452,015 times.

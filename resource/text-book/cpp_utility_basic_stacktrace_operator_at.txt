@@ -1,0 +1,182 @@
+std::basic_stacktrace<Allocator>::operator[]
+
+   From cppreference.com
+   < cpp | utility | basic stacktrace
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Diagnostics library
+   Exception handling
+   exception
+   uncaught_exceptionuncaught_exceptions
+   (until C++20*)(C++17)
+   exception_ptr
+   (C++11)
+   make_exception_ptr
+   (C++11)
+   current_exception
+   (C++11)
+   rethrow_exception
+   (C++11)
+   nested_exception
+   (C++11)
+   throw_with_nested
+   (C++11)
+   rethrow_if_nested
+   (C++11)
+   Exception handling failures
+   terminate
+   terminate_handler
+   get_terminate
+   (C++11)
+   set_terminate
+   bad_exception
+   unexpected
+   (until C++17*)
+   unexpected_handler
+   (until C++17*)
+   get_unexpected
+   (C++11)(until C++17*)
+   set_unexpected
+   (until C++17*)
+   Error codes
+   Error codes
+   errno
+   Exception categories
+   logic_error
+   invalid_argument
+   domain_error
+   length_error
+   out_of_range
+   runtime_error
+   range_error
+   overflow_error
+   underflow_error
+   tx_exception
+   (TM TS)
+   System error support
+   error_category
+   (C++11)
+   generic_category
+   (C++11)
+   system_category
+   (C++11)
+   error_condition
+   (C++11)
+   errc
+   (C++11)
+   error_code
+   (C++11)
+   system_error
+   (C++11)
+   Assertions
+   assert
+   Stacktrace
+   stacktrace_entry
+   (C++23)
+   basic_stacktrace
+   (C++23)
+
+   std::basic_stacktrace
+   Member functions
+   basic_stacktrace::basic_stacktrace
+   basic_stacktrace::~basic_stacktrace
+   basic_stacktrace::operator=
+   basic_stacktrace::current
+   basic_stacktrace::get_allocator
+   Iterators
+   basic_stacktrace::beginbasic_stacktrace::cbegin
+   basic_stacktrace::endbasic_stacktrace::cend
+   basic_stacktrace::rbeginbasic_stacktrace::crbegin
+   basic_stacktrace::rendbasic_stacktrace::crend
+   Capacity
+   basic_stacktrace::empty
+   basic_stacktrace::size
+   basic_stacktrace::max_size
+   Element access
+   basic_stacktrace::operator[]
+   basic_stacktrace::at
+   Modifiers
+   basic_stacktrace::swap
+   Non-member functions
+   operator==
+   operator<=>
+   swap(std::basic_stacktrace)
+   to_string(std::basic_stacktrace)
+   operator<<
+   Helper classes
+   hash<std::basic_stacktrace>
+   formatter<std::basic_stacktrace>
+
+   const_reference operator[]( size_type pos ) const;
+                                                     (since C++23)
+
+   Returns a reference to the entry at specified location pos. No bounds
+   checking is performed.
+
+   If pos is not within the range of the stacktrace, i.e. pos >= size(),
+   the behavior is undefined.
+
+Parameters
+
+   pos - position of the stacktrace entry to return
+
+Return value
+
+   Reference to the requested entry.
+
+Exceptions
+
+   Throws nothing.
+
+Complexity
+
+   Constant.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   at
+   access specified stacktrace entry with bounds checking
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/utility/basic_st
+   acktrace/operator_at&oldid=128999"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 May 2021, at 00:39.
+     * This page has been accessed 6,265 times.

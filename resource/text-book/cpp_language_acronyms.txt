@@ -1,0 +1,214 @@
+Acronyms
+
+   From cppreference.com
+   < cpp | language
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ language
+   General topics
+   Preprocessor
+   Comments
+   Keywords
+   Escape sequences
+   Flow control
+   Conditional execution statements
+   if
+   switch
+   Iteration statements (loops)
+   for
+   range-for (C++11)
+   while
+   do-while
+   Jump statements
+   continue - break
+   goto - return
+   Functions
+   Function declaration
+   Lambda function expression
+   inline specifier
+   Dynamic exception specifications (until C++17*)
+   noexcept specifier (C++11)
+   Exceptions
+   throw-expression
+   try block
+   handler
+   Namespaces
+   Namespace declaration
+   Namespace aliases
+   Types
+   Fundamental types
+   Enumeration types
+   Function types
+   Class/struct types
+   Union types
+   Specifiers
+   const/volatile
+   decltype (C++11)
+   auto (C++11)
+   constexpr (C++11)
+   consteval (C++20)
+   constinit (C++20)
+   Storage duration specifiers
+   Initialization
+   Default-initialization
+   Value-initialization
+   Zero-initialization
+   Copy-initialization
+   Direct-initialization
+   Aggregate initialization
+   List-initialization (C++11)
+   Constant initialization
+   Reference initialization
+   Expressions
+   Value categories
+   Order of evaluation
+   Operators
+   Operator precedence
+   Alternative representations
+   Literals
+   Boolean - Integer - Floating-point
+   Character - String - nullptr (C++11)
+   User-defined (C++11)
+   Utilities
+   Attributes (C++11)
+   Types
+   typedef declaration
+   Type alias declaration (C++11)
+   Casts
+   Implicit conversions
+   static_cast
+   const_cast
+   Explicit conversions
+   dynamic_cast
+   reinterpret_cast
+   Memory allocation
+   new expression
+   delete expression
+   Classes
+   Class declaration
+   Constructors
+   this pointer
+   Access specifiers
+   friend specifier
+   Class-specific function properties
+   Virtual function
+   override specifier (C++11)
+   final specifier (C++11)
+   explicit (C++11)
+   static
+   Special member functions
+   Default constructor
+   Copy constructor
+   Move constructor (C++11)
+   Copy assignment
+   Move assignment (C++11)
+   Destructor
+   Templates
+   Class template
+   Function template
+   Template specialization
+   Parameter packs (C++11)
+   Miscellaneous
+   Inline assembly
+   History of C++
+
+   Acronym Full name See also
+   AAA Almost Always Auto GOTW #94
+   ABC Abstract Base Class
+   ABI Application Binary Interface Itanium C++ ABI
+   ADL Argument-Dependent Lookup
+   ADT Abstract Data Type
+   API Application Programming Interface
+   CAS Compare-And-Swap; Copy And Swap compare_exchange
+   COW Copy-On-Write
+   CPO Customization Point Object [customization.point.object],
+   RangeAdaptorObject, RangeAdaptorClosureObject
+   CRTP Curiously Recurring Template Pattern std::enable_shared_from_this,
+   std::ranges::view_interface
+   CTAD Class Template Argument Deduction
+   EBO
+   EBCO Empty Base (Class) Optimization [[no_unique_address]],
+   std::allocator, std::default_delete
+   ICE Internal Compiler Error; Integer Constant Expression
+   IFNDR Ill-Formed, No Diagnostic Required
+   IIILE Immediately Invoked Initializing Lambda Expression
+   IPO Inter-Procedural Optimization
+   LTO Link-Time Optimization
+   NDR No Diagnostic Required
+   NRVO Named Return Value Optimization
+   NSDMI Non-Static Data Member Initialization
+   NTBS Null-Terminated Byte Strings
+   NTTP Non-Type Template Parameter
+   ODR One Definition Rule
+   OOP Object-Oriented Programming
+   PIMPL Pointer to IMPLementation
+   POCCA Propagate on Container Copy Assignment
+   POCMA Propagate on Container Move Assignment
+   POCS Propagate on Container Swap
+   POD Plain Old Data (PODType) ScalarType, TrivialType,
+   StandardLayoutType
+   RAII Resource Acquisition Is Initialization
+   RACO Range Adaptor Closure Object RangeAdaptorClosureObject
+   RAO Range Adaptor Object RangeAdaptorObject
+   RTTI RunTime Type Identification std::type_info
+   RVO Return Value Optimization
+   SBO Small Buffer Optimization
+   SBRM Scope-Bound Resource Management, see RAII
+   SCARY Seemingly erroneous (appearing Constrained by conflicting generic
+   parameters), but Actually work with the Right implementation
+   (unconstrained bY the conflict due to minimized dependencies).
+   stroustrup.com/SCARY
+   SFINAE Substitution Failure Is Not An Error std::enable_if, std::void_t
+   SIOF Static Initialization Order Fiasco
+   SOCCC Select On Container Copy Construction
+   SOO Small Object Optimization std::move_only_function, std::function,
+   std::any
+   SSO Small String Optimization std::basic_string
+   TMP Template Meta Programming <type_traits>
+   TU Translation Unit Modules, TU-local
+   UB Undefined Behavior
+   UDC User-defined conversion operator
+   UDL User-Defined Literals
+   WPO Whole-Program Optimization
+
+External links
+
+     "A C++ acronym glossary" by Arthur O'Dwyer, 2019/08
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/language/acronym
+   s&oldid=153384"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 14 June 2023, at 13:33.
+     * This page has been accessed 31,685 times.

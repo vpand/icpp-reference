@@ -1,0 +1,282 @@
+std::from_chars_result
+
+   From cppreference.com
+   < cpp | utility
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Defined in header <charconv>
+   struct from_chars_result;
+                               (since C++17)
+
+   std::from_chars_result is the return type of std::from_chars. It has no
+   base classes, and only has the following members.
+
+Data members
+
+   Member name                    Definition
+   ptr
+   a pointer of type const char*
+   (public member object)
+   ec
+   an error code of type std::errc
+   (public member object)
+
+Member and friend functions
+
+operator==(std::from_chars_result)
+
+   friend bool operator==( const from_chars_result&,
+                           const from_chars_result& ) = default;
+                                                    (since C++20)
+
+   Compares the two arguments using default comparisons (which uses
+   operator== to compare ptr and ec respectively).
+
+   This function is not visible to ordinary unqualified or qualified
+   lookup, and can only be found by argument-dependent lookup when
+   std::from_chars_result is an associated class of the arguments.
+
+   The != operator is synthesized from operator==.
+
+operator bool
+
+   constexpr explicit operator bool() const noexcept;
+                                                     (since C++26)
+
+   Checks whether the conversion is successful. Returns ec == std::errc{}.
+
+Notes
+
+   Feature-test macro Value Std Feature
+   __cpp_lib_to_chars 201611L (C++17) Elementary string conversions
+   (std::to_chars, std::from_chars)
+   202306L (C++26) Testing for success or failure of <charconv> functions
+
+Example
+
+   Run this code
+#include <cassert>
+#include <charconv>
+#include <iomanip>
+#include <iostream>
+#include <optional>
+#include <string_view>
+#include <system_error>
+
+int main()
+{
+    for (std::string_view const str : {"1234", "15 foo", "bar", " 42", "50000000
+00"})
+    {
+        std::cout << "String: " << std::quoted(str) << ". ";
+        int result{};
+        auto [ptr, ec] = std::from_chars(str.data(), str.data() + str.size(), re
+sult);
+
+        if (ec == std::errc())
+            std::cout << "Result: " << result << ", ptr -> " << std::quoted(ptr)
+ << '\n';
+        else if (ec == std::errc::invalid_argument)
+            std::cout << "This is not a number.\n";
+        else if (ec == std::errc::result_out_of_range)
+            std::cout << "This number is larger than an int.\n";
+    }
+
+    // C++23's constexpr from_char demo / C++26's operator bool() demo:
+    auto to_int = [](std::string_view s) -> std::optional<int>
+    {
+        int value{};
+#if __cpp_lib_to_chars >= 202306L
+        if (std::from_chars(s.data(), s.data() + s.size(), value))
+#else
+        if (std::from_chars(s.data(), s.data() + s.size(), value).ec == std::err
+c{})
+#endif
+            return value;
+        else
+            return std::nullopt;
+    };
+
+    assert(to_int("42") == 42);
+    assert(to_int("foo") == std::nullopt);
+#if __cpp_lib_constexpr_charconv and __cpp_lib_optional >= 202106
+    static_assert(to_int("42") == 42);
+    static_assert(to_int("foo") == std::nullopt);
+#endif
+}
+
+   Output:
+String: "1234". Result: 1234, ptr -> ""
+String: "15 foo". Result: 15, ptr -> " foo"
+String: "bar". This is not a number.
+String: " 42". This is not a number.
+String: "5000000000". This number is larger than an int.
+
+See also
+
+   from_chars
+   (C++17)
+   converts a character sequence to an integer or floating-point value
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/utility/from_cha
+   rs_result&oldid=170886"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 13 April 2024, at 04:04.
+     * This page has been accessed 11,582 times.

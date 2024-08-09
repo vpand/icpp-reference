@@ -1,0 +1,114 @@
+Predefined Boolean constants (since C23)
+
+   From cppreference.com
+   < c | language
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   C language
+   Basic concepts
+   Keywords
+   Preprocessor
+   Statements
+   Expressions
+   Initialization
+   Declarations
+   Functions
+   Miscellaneous
+   History of C
+   Technical Specifications
+
+   Expressions
+   General
+   value category
+   evaluation order and sequence points
+   constant expressions
+   implicit conversions
+   generic selection (C11)
+   constants and literals
+   integer constant
+   floating constant
+   character constant
+   true/false
+   (C23)
+   nullptr
+   (C23)
+   string literal
+   compound literal (C99)
+   operators
+   operator precedence
+   member access and indirection
+   logical operators
+   comparison operators
+   arithmetic operators
+   assignment operators
+   increment and decrement
+   function call, comma, conditional operator
+   sizeof
+   _Alignof
+   (C11)
+   cast operators
+
+Syntax
+
+   true  (1) (since C23)
+   false (2) (since C23)
+
+Explanation
+
+   Keywords true and false represent predefined constants. They are
+   non-lvalues of type bool.
+
+Notes
+
+   See integral conversions for implicit conversions from bool to other
+   types and boolean conversions for the implicit conversions from other
+   types to bool.
+
+   Until C23, true and false were implemented as macros provided in
+   <stdbool.h>. An implementation may also define bool, true, and false as
+   predefined macros in C23 for compatibility.
+
+Example
+
+   Run this code
+#include <stdio.h>
+
+int main(void)
+{
+    printf("%d\n%d\n", true, false);
+}
+
+   Output:
+1
+0
+
+See also
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/language/bool_cons
+   tant&oldid=159615"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 25 September 2023, at 17:00.
+     * This page has been accessed 13,085 times.

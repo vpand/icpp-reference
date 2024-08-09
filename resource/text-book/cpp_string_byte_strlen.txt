@@ -1,0 +1,166 @@
+std::strlen
+
+   From cppreference.com
+   < cpp | string | byte
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated byte strings
+   Functions
+   Character manipulation
+   isalnum
+   isalpha
+   islower
+   isupper
+   isdigit
+   isxdigit
+   isblank
+   (C++11)
+   iscntrl
+   isgraph
+   isspace
+   isprint
+   ispunct
+   tolower
+   toupper
+   Conversions to numeric formats
+   atof
+   atoiatolatoll
+   (C++11)
+   strtolstrtoll
+   (C++11)
+   strtoulstrtoull
+   (C++11)
+   strtofstrtodstrtold
+   (C++11)(C++11)
+   strtoimaxstrtouimax
+   (C++11)(C++11)
+   String manipulation
+   strcpy
+   strncpy
+   strxfrm
+   strcat
+   strncat
+   String examination
+   strlen
+   strcmp
+   strncmp
+   strcoll
+   strchr
+   strrchr
+   strspn
+   strcspn
+   strpbrk
+   strstr
+   strtok
+   Memory manipulation
+   memchr
+   memcmp
+   memset
+   memcpy
+   memmove
+   Miscellaneous
+   strerror
+
+   Defined in header <cstring>
+   std::size_t strlen( const char* str );
+
+   Returns the length of the given byte string, that is, the number of
+   characters in a character array whose first element is pointed to by
+   str up to and not including the first null character. The behavior is
+   undefined if there is no null character in the character array pointed
+   to by str.
+
+Parameters
+
+   str - pointer to the null-terminated byte string to be examined
+
+Return value
+
+   The length of the null-terminated string str.
+
+Possible implementation
+
+std::size_t strlen(const char* start)
+{
+    // NB: start is not checked for nullptr!
+    const char* end = start;
+    while (*end != '\0')
+        ++end;
+    return end - start;
+}
+
+Example
+
+   Run this code
+#include <cstring>
+#include <iostream>
+
+int main()
+{
+    const char str[] = "dog cat\0mouse";
+
+    std::cout << "without null character: " << std::strlen(str) << '\n'
+              << "with null character: " << sizeof str << '\n';
+}
+
+   Output:
+without null character: 7
+with null character: 14
+
+See also
+
+   wcslen
+   returns the length of a wide string
+   (function)
+   mblen
+   returns the number of bytes in the next multibyte character
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/byte/strl
+   en&oldid=161177"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 22 October 2023, at 15:22.
+     * This page has been accessed 401,029 times.

@@ -1,0 +1,156 @@
+std::time_base
+
+   From cppreference.com
+   < cpp | locale
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Localization library
+   Locales and facets
+   Locales
+   has_facet
+   use_facet
+   locale
+   Facet category base classes
+   ctype_base
+   codecvt_base
+   messages_base
+
+   time_base
+   money_base
+   ctype facets
+   ctype
+   ctype<char>
+   ctype_byname
+   codecvt
+   codecvt_byname
+   numeric facets
+   num_get
+   num_put
+   numpunct
+   numpunct_byname
+   collate facets
+   collate
+   collate_byname
+   time facets
+   time_get
+   time_put
+   time_get_byname
+   time_put_byname
+   monetary facets
+   money_get
+   money_put
+   moneypunct
+   moneypunct_byname
+
+   messages facets
+   messages
+   messages_byname
+   Character classification and conversion
+   Character classification
+   isspace
+   isblank
+   (C++11)
+   iscntrl
+   isupper
+   islower
+   isalpha
+   ispunct
+   isdigit
+   isxdigit
+   isalnum
+   isprint
+   isgraph
+   Character conversions
+   toupper
+
+   tolower
+   String and stream conversions
+   wstring_convert
+   (C++11/17/26*)
+   wbuffer_convert
+   (C++11/17/26*)
+   Text encoding identifications
+   text_encoding
+   (C++26)
+   Unicode conversion facets
+   codecvt_utf8
+   (C++11/17/26*)
+   codecvt_utf16
+   (C++11/17/26*)
+   codecvt_utf8_utf16
+   (C++11/17/26*)
+   codecvt_mode
+   (C++11/17/26*)
+   C library locales
+   LC_ALLLC_COLLATELC_CTYPELC_MONETARYLC_NUMERICLC_TIME
+
+   setlocale
+   localeconv
+   lconv
+
+   Defined in header <locale>
+   class time_base;
+
+   The class std::time_base provides the date order constants which are
+   inherited by the std::time_get facets.
+
+Member types
+
+   Member type Definition
+   enum dateorder { no_order, dmy, mdy, ymd, ydm }; Unscoped enumeration
+   type
+   Enumeration constant Definition
+   no_order             Unspecified order
+   dmy                  Day, month, year (european) order
+   mdy                  Month, day, year (american) order
+   ymd                  Year, month, day (asian) order
+   ydm                  Year, day, month
+
+See also
+
+   do_date_order
+   [virtual]
+   obtains preferred ordering of day, month, and year
+   (virtual protected member function of std::time_get<CharT,InputIt>)
+   do_get_date
+   [virtual]
+   extracts month, day, and year from input stream
+   (virtual protected member function of std::time_get<CharT,InputIt>)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/locale/time_base
+   &oldid=160529"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 11 October 2023, at 10:33.
+     * This page has been accessed 25,795 times.

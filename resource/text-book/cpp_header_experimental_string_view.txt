@@ -1,0 +1,347 @@
+Experimental library header <experimental/string_view>
+
+   From cppreference.com
+   < cpp | header | experimental
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Standard library headers
+   Language support
+   <cstddef>
+   <cstdlib>
+   <version> (C++20)
+   <limits>
+   <climits>
+   <cfloat>
+   <cstdint> (C++11)
+   <stdfloat> (C++23)
+   <new>
+   <typeinfo>
+   <source_location> (C++20)
+   <exception>
+   <initializer_list> (C++11)
+   <compare> (C++20)
+   <coroutine> (C++20)
+   <csignal>
+   <csetjmp>
+   <cstdarg>
+   Concepts
+   <concepts> (C++20)
+   Diagnostics
+   <stdexcept>
+   <stacktrace> (C++23)
+   <cassert>
+   <cerrno>
+   <system_error> (C++11)
+   Memory management
+   <memory>
+   <memory_resource> (C++17)
+   <scoped_allocator> (C++11)
+   Metaprogramming
+   <type_traits> (C++11)
+   <ratio> (C++11)
+   General utilities
+   <utility>
+   <tuple> (C++11)
+   <optional> (C++17)
+   <variant> (C++17)
+   <any> (C++17)
+   <debugging> (C++26)
+   <expected> (C++23)
+   <bitset>
+   <functional>
+   <typeindex> (C++11)
+   <execution> (C++17)
+   <charconv> (C++17)
+   <format> (C++20)
+   <bit> (C++20)
+   Strings
+   <string_view> (C++17)
+   <string>
+   <cctype>
+   <cwctype>
+   <cstring>
+   <cwchar>
+   <cuchar> (C++11)
+   Containers
+   <array> (C++11)
+   <deque>
+   <forward_list> (C++11)
+   <list>
+   <vector>
+   <map>
+   <set>
+   <unordered_map> (C++11)
+   <unordered_set> (C++11)
+   <queue>
+   <stack>
+   <flat_map> (C++23)
+   <flat_set> (C++23)
+   <span> (C++20)
+   <mdspan> (C++23)
+   Iterators
+   <iterator>
+   Ranges
+   <ranges> (C++20)
+   <generator> (C++23)
+   Algorithms
+   <algorithm>
+   <numeric>
+   Numerics
+   <cfenv> (C++11)
+   <complex>
+   <random> (C++11)
+   <valarray>
+   <cmath>
+   <linalg> (C++26)
+   <numbers> (C++20)
+   Time
+   <chrono> (C++11)
+   <ctime>
+   Localization
+   <locale>
+   <clocale>
+   <codecvt> (C++11/17/26*)
+   <text_encoding> (C++26)
+   Input/output
+   <iosfwd>
+   <iostream>
+   <ios>
+   <streambuf>
+   <istream>
+   <ostream>
+   <iomanip>
+   <print> (C++23)
+   <sstream>
+   <spanstream> (C++23)
+   <fstream>
+   <syncstream> (C++20)
+   <filesystem> (C++17)
+   <cstdio>
+   <cinttypes> (C++11)
+   <strstream> (C++98/26*)
+   Regular expressions
+   <regex> (C++11)
+   Concurrency support
+   <stop_token> (C++20)
+   <thread> (C++11)
+   <atomic> (C++11)
+   <rcu> (C++26)
+   <stdatomic.h> (C++23)
+   <mutex> (C++11)
+   <shared_mutex> (C++14)
+   <condition_variable> (C++11)
+   <semaphore> (C++20)
+   <latch> (C++20)
+   <barrier> (C++20)
+   <future> (C++11)
+   <hazard_pointer> (C++26)
+   C compatibility
+   <cstdbool> (C++11/17/20*)
+   <ccomplex> (C++11/17/20*)
+   <ctgmath> (C++11/17/20*)
+   <cstdalign> (C++11/17/20*)
+   <ciso646> (until C++20)
+
+   Experimental library headers
+   Execution P2300
+   <experimental/execution>
+   Filesystem TS
+   <experimental/filesystem>
+   Parallelism TS (v1, v2)
+   experimental/algorithm
+   experimental/execution_policy
+   experimental/exception_list
+   experimental/numeric
+   <experimental/simd>
+   experimental/task_block
+   Library Fundamentals TS (v1, v2, v3)
+   experimental/algorithm
+   <experimental/any>
+   experimental/array
+   experimental/chrono
+   experimental/deque
+   experimental/forward_list
+   <experimental/functional>
+   experimental/future
+   experimental/iterator
+   experimental/list
+   experimental/map
+   experimental/memory
+   <experimental/memory_resource>
+   experimental/numeric
+   <experimental/optional>
+   experimental/propagate_const
+   experimental/random
+   experimental/ratio
+   experimental/regex
+   experimental/scope
+   experimental/set
+   experimental/source_location
+   experimental/string
+   <experimental/string_view>
+   experimental/system_error
+   experimental/tuple
+   experimental/type_traits
+   experimental/unordered_map
+   experimental/unordered_set
+   experimental/utility
+   experimental/vector
+   Concurrency TS
+   experimental/atomic
+   experimental/barrier
+   experimental/future
+   experimental/latch
+   Ranges TS
+   <experimental/ranges/algorithm>
+   <experimental/ranges/concepts>
+   <experimental/ranges/functional>
+   <experimental/ranges/iterator>
+   <experimental/ranges/random>
+   <experimental/ranges/tuple>
+   <experimental/ranges/type_traits>
+   <experimental/ranges/utility>
+   Coroutines TS
+   experimental/coroutine
+   Networking TS
+   experimental/buffer
+   experimental/executor
+   experimental/internet
+   experimental/io_context
+   <experimental/net>
+   experimental/netfwd
+   experimental/socket
+   experimental/timer
+   Reflection TS
+   <experimental/reflect>
+
+   This header is part of the Library Fundamentals TS (v1, v2).
+
+Classes
+
+   Name Description
+   std::experimental::basic_string_view (library fundamentals TS) Class
+   template representing a reference to a character string (class
+   template)
+   std::experimental::string_view (library fundamentals TS)
+   std::experimental::basic_string_view<char> (typedef)
+   std::experimental::wstring_view (library fundamentals TS)
+   std::experimental::basic_string_view<wchar_t> (typedef)
+   std::experimental::u16string_view (library fundamentals TS)
+   std::experimental::basic_string_view<char16_t> (typedef)
+   std::experimental::u32string_view (library fundamentals TS)
+   std::experimental::basic_string_view<char32_t> (typedef)
+   std::hash<std::experimental::string_view> (library fundamentals TS)
+   (class template specialization)
+   std::hash<std::experimental::u16string_view> (library fundamentals TS)
+   (class template specialization)
+   std::hash<std::experimental::u32string_view> (library fundamentals TS)
+   (class template specialization)
+   std::hash<std::experimental::wstring_view> (library fundamentals TS)
+   (class template specialization)
+
+Functions
+
+   operator==operator!=operator<operator>operator<=operator>=
+   lexicographically compares two views
+   (function template)
+
+Output
+
+   operator<<
+   performs stream output on views
+   (function template)
+
+Synopsis
+
+namespace std {
+  namespace experimental {
+  inline namespace fundamentals_v1 {
+
+    // 7.2, Class template basic_string_view
+    template<class CharT, class Traits = char_traits<CharT>>
+        class basic_string_view;
+
+    // 7.9, basic_string_view non-member comparison functions
+    template<class CharT, class Traits>
+    constexpr bool operator==(basic_string_view<CharT, Traits> x,
+                              basic_string_view<CharT, Traits> y) noexcept;
+    template<class CharT, class Traits>
+    constexpr bool operator!=(basic_string_view<CharT, Traits> x,
+                              basic_string_view<CharT, Traits> y) noexcept;
+    template<class CharT, class Traits>
+    constexpr bool operator< (basic_string_view<CharT, Traits> x,
+                                 basic_string_view<CharT, Traits> y) noexcept;
+    template<class CharT, class Traits>
+    constexpr bool operator> (basic_string_view<CharT, Traits> x,
+                              basic_string_view<CharT, Traits> y) noexcept;
+    template<class CharT, class Traits>
+    constexpr bool operator<=(basic_string_view<CharT, Traits> x,
+                                 basic_string_view<CharT, Traits> y) noexcept;
+    template<class CharT, class Traits>
+    constexpr bool operator>=(basic_string_view<CharT, Traits> x,
+                              basic_string_view<CharT, Traits> y) noexcept;
+    // /* see description */, sufficient additional overloads of comparison func
+tions
+
+    // 7.10, Inserters and extractors
+    template<class CharT, class Traits>
+      basic_ostream<CharT, Traits>&
+        operator<<(basic_ostream<CharT, Traits>& os,
+                   basic_string_view<CharT, Traits> str);
+
+    // basic_string_view typedef names
+    typedef basic_string_view<char> string_view;
+    typedef basic_string_view<char16_t> u16string_view;
+    typedef basic_string_view<char32_t> u32string_view;
+    typedef basic_string_view<wchar_t> wstring_view;
+
+  }  // namespace fundamentals_v1
+  }  // namespace experimental
+
+  // 7.11, Hash support
+  template <class T> struct hash;
+  template <> struct hash<experimental::string_view>;
+  template <> struct hash<experimental::u16string_view>;
+  template <> struct hash<experimental::u32string_view>;
+  template <> struct hash<experimental::wstring_view>;
+
+}  // namespace std
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimen
+   tal/string_view&oldid=146961"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 25 January 2023, at 10:22.
+     * This page has been accessed 30,921 times.

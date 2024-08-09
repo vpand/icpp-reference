@@ -1,0 +1,194 @@
+std::experimental::ranges::BidirectionalIterator
+
+   From cppreference.com
+   < cpp | experimental | ranges
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Ranges
+   Concepts
+   General utilities
+   Iterators
+   Ranges
+   Algorithms
+
+   Iterators library
+   Iterator concepts
+   Readable
+   Writable
+   WeaklyIncrementable
+   Incrementable
+   Iterator
+   Sentinel
+   SizedSentinel
+   InputIterator
+   ForwardIterator
+   BidirectionalIterator
+   RandomAccessIterator
+   OutputIterator
+   Indirect callable concepts
+   IndirectUnaryInvocableIndirectRegularUnaryInvocable
+   IndirectUnaryPredicate
+
+   IndirectRelation
+
+   IndirectStrictWeakOrder
+
+   Common algorithm requirements
+   IndirectlyMovable
+   IndirectlyMovableStorable
+
+   IndirectlyCopyable
+   IndirectlyCopyableStorable
+   IndirectlySwappable
+   IndirectlyComparable
+   Permutable
+   Mergeable
+   Sortable
+   Concept utilities
+   indirect_result_of
+   projected
+   Iterator utilities and operations
+   iter_move
+   iter_swap
+   advance
+   distance
+   next
+   prev
+   Iterator traits
+   difference_type
+   value_type
+   reference_trvalue_reference_titer_common_reference_t
+   iterator_category
+   input_iterator_tagoutput_iterator_tagforward_iterator_tagbidirectional_
+   iterator_tagrandom_access_iterator_tag
+   ranges::iterator_traits
+   std::iterator_traits<InputIterator>std::iterator_traits<OutputIterator>
+   Iterator adaptors
+   reverse_iterator
+   move_iterator
+   move_sentinel
+   back_insert_iterator
+   front_insert_iterator
+   insert_iterator
+   common_iterator
+   counted_iterator
+   default_sentinel
+   danglingborrowed_iterator_t
+   unreachable
+   Stream iterators
+   istream_iterator
+   ostream_iterator
+   istreambuf_iterator
+   ostreambuf_iterator
+
+   Defined in header <experimental/ranges/iterator>
+   template< class I >
+
+   concept bool BidirectionalIterator =
+       ForwardIterator<I> &&
+       DerivedFrom<ranges::iterator_category_t<I>,
+   ranges::bidirectional_iterator_tag> &&
+       requires(I i) {
+           { --i } -> Same<I>&;
+           { i-- } -> Same<I>&&;
+       };
+                                                   (ranges TS)
+
+   The concept BidirectionalIterator<I> refines ForwardIterator by adding
+   the ability to move an iterator backward.
+
+   A bidirectional iterator r is said to be decrementable if and only if
+   there exists some s such that ++s == r. All decrementable iterators r
+   shall be in the domain of the expressions --r and r--.
+
+   Let a and b be decrementable objects of type I.
+   BidirectionalIterator<I> is satisfied only if:
+     * Pre-decrement yields an lvalue that refers to the operand:
+       std::addressof(--a) == std::addressof(a).
+     * Post-decrement yields the previous value of the operand: if bool(a
+       == b), then bool(a-- == b).
+     * Post-decrement and pre-decrement perform the same modification on
+       its operand: If bool(a == b), then after evaluating both a-- and
+       --b, bool(a == b) still holds.
+     * Increment and decrement are inverses of each other:
+
+          + If a is incrementable and bool(a == b), then bool(--(++a) ==
+            b).
+          + If bool(a == b), then bool(++(--a) == b).
+
+Equality preservation
+
+   An expression is equality preserving if it results in equal outputs
+   given equal inputs.
+     * The inputs to an expression consist of its operands.
+     * The outputs of an expression consist of its result and all operands
+       modified by the expression (if any).
+
+   Every expression required to be equality preserving is further required
+   to be stable: two evaluations of such an expression with the same input
+   objects must have equal outputs absent any explicit intervening
+   modification of those input objects.
+
+   Unless noted otherwise, every expression used in a requires-expression
+   is required to be equality preserving and stable, and the evaluation of
+   the expression may only modify its non-constant operands. Operands that
+   are constant must not be modified.
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ran
+   ges/iterator/BidirectionalIterator&oldid=155398"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 24 July 2023, at 17:03.
+     * This page has been accessed 19,552 times.

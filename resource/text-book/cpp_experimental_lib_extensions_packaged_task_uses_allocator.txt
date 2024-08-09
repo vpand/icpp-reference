@@ -1,0 +1,144 @@
+std::uses_allocator<std::experimental::packaged_task>
+
+   From cppreference.com
+   < cpp | experimental | lib extensions | packaged task
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Library fundamentals
+   experimental::optional
+   experimental::any
+   experimental::basic_string_view
+   experimental::sample
+   experimental::shared_ptr
+   experimental::weak_ptr
+   experimental::apply
+   experimental::invocation_typeexperimental::raw_invocation_type
+   experimental::search
+   experimental::default_searcherexperimental::make_default_searcher
+   experimental::boyer_moore_searcherexperimental::make_boyer_moore_search
+   er
+   experimental::boyer_moore_horspool_searcherexperimental::make_boyer_moo
+   re_horspool_searcher
+   Type-erased and polymorphic allocators
+   Variable templates for type traits
+
+   Polymorphic allocator library
+   polymorphic_allocator
+   Convenience aliases for containers using polymorphic_allocator
+   Memory resource classes
+   memory_resource
+   synchronized_pool_resource
+   unsynchronized_pool_resource
+   monotonic_buffer_resource
+   resource_adaptor
+   Global memory resources
+   new_delete_resource
+   null_memory_resource
+   get_default_resource
+   set_default_resource
+   Type-erased allocator support for existing classes
+   function
+   packaged_task
+   promise
+
+   Defined in header <experimental/future>
+   template< class R, class Alloc >
+
+   struct uses_allocator<std::experimental::packaged_task<R>, Alloc>
+       : std::true_type {};
+                                          (library fundamentals TS)
+
+   This specialization of std::uses_allocator informs other library
+   components that all objects of type std::experimental::packaged_task
+   support uses-allocator construction.
+
+Inherited from std::integral_constant
+
+Member constants
+
+   value
+   [static]
+   true
+   (public static member constant)
+
+Member functions
+
+   operator bool
+   converts the object to bool, returns value
+   (public member function)
+   operator()
+   (C++14)
+   returns value
+   (public member function)
+
+Member types
+
+   Type       Definition
+   value_type bool
+   type       std::integral_constant<bool, value>
+
+See also
+
+   uses_allocator
+   (C++11)
+   checks if the specified type supports uses-allocator construction
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/lib
+   _extensions/packaged_task/uses_allocator&oldid=154978"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 17 July 2023, at 02:27.
+     * This page has been accessed 7,565 times.

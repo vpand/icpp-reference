@@ -1,0 +1,223 @@
+std::ranges::range_adaptor_closure
+
+   From cppreference.com
+   < cpp | ranges
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   Defined in header <ranges>
+   template< class D >
+
+       requires std::is_object_v<D> && std::same_as<D,
+   std::remove_cv_t<D>>
+   class range_adaptor_closure {};
+                             (since C++23)
+
+   std::ranges::range_adaptor_closure is a helper class template for
+   defining a RangeAdaptorClosureObject.
+
+   Let t be the object of type T, the implementation ensures that t is a
+   range adaptor closure object if all the requirements are met:
+     * t is a unary function object that takes one range argument.
+     * T has exactly one public base class
+       ranges::range_adaptor_closure<T>, and T has no base classes of type
+       ranges::range_adaptor_closure<U> for any other type U.
+     * T does not satisfy range.
+
+Example
+
+   Run this code
+#include <ranges>
+#include <string_view>
+
+// Define Slice as a range adaptor closure
+struct Slice : std::ranges::range_adaptor_closure<Slice>
+{
+    std::size_t start = 0;
+    std::size_t end = std::string_view::npos;
+
+    constexpr std::string_view operator()(std::string_view sv) const
+    {
+        return sv.substr(start, end - start);
+    }
+};
+
+int main()
+{
+    constexpr std::string_view str = "01234567";
+
+    constexpr Slice slicer{.start = 1, .end = 6};
+
+    constexpr auto sv1 = slicer(str); // use slicer as a normal function object
+    constexpr auto sv2 = str | slicer; // use slicer as a range adaptor closure
+object
+    static_assert(sv1 == "12345");
+    static_assert(sv2 == "12345");
+
+    // range adaptor closures can be composed
+    constexpr auto slice_and_drop
+        = slicer
+        | std::views::drop_while([](char ch) { return ch != '3'; });
+    static_assert(std::string_view(str | slice_and_drop) == "345");
+}
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/range_ada
+   ptor_closure&oldid=159782"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 September 2023, at 11:19.
+     * This page has been accessed 6,936 times.

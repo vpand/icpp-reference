@@ -1,0 +1,395 @@
+std::common_type<std::chrono::duration>
+
+   From cppreference.com
+   < cpp | chrono | duration
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Date and time utilities
+   Time point
+   time_point
+   (C++11)
+   clock_time_conversion
+   (C++20)
+   clock_cast
+   (C++20)
+   Duration
+   duration
+   (C++11)
+   Clocks
+   system_clock
+   (C++11)
+   steady_clock
+   (C++11)
+   high_resolution_clock
+   (C++11)
+   is_clock
+   (C++20)
+   utc_clock
+   (C++20)
+   tai_clock
+   (C++20)
+   gps_clock
+   (C++20)
+   file_clock
+   (C++20)
+   local_t
+   (C++20)
+   Time of day
+   is_amis_pm
+   (C++20)(C++20)
+   make12make24
+   (C++20)(C++20)
+   hh_mm_ss
+   (C++20)
+   Calendars
+   day
+   (C++20)
+   month
+   (C++20)
+   year
+   (C++20)
+   weekday
+   (C++20)
+   operator/
+   (C++20)
+   year_month_day
+   (C++20)
+   year_month_day_last
+   (C++20)
+   year_month_weekday
+   (C++20)
+   year_month_weekday_last
+   (C++20)
+   weekday_indexed
+   (C++20)
+   weekday_last
+   (C++20)
+   month_day
+   (C++20)
+   month_day_last
+   (C++20)
+   month_weekday
+   (C++20)
+   month_weekday_last
+   (C++20)
+   year_month
+   (C++20)
+   last_speclast
+   (C++20)(C++20)
+   Time zones
+   tzdb
+   (C++20)
+   tzdb_list
+   (C++20)
+   get_tzdbget_tzdb_listreload_tzdbremote_version
+   (C++20)(C++20)(C++20)(C++20)
+   sys_info
+   (C++20)
+   local_info
+   (C++20)
+   nonexistent_local_time
+   (C++20)
+   ambiguous_local_time
+   (C++20)
+   locate_zone
+   (C++20)
+   current_zone
+   (C++20)
+   time_zone
+   (C++20)
+   choose
+   (C++20)
+   zoned_traits
+   (C++20)
+   zoned_time
+   (C++20)
+   time_zone_link
+   (C++20)
+   leap_second
+   (C++20)
+   leap_second_info
+   (C++20)
+   get_leap_second_info
+   (C++20)
+   chrono I/O
+   parse
+   (C++20)
+   C-style date and time
+
+   std::chrono::duration
+   Member functions
+   duration::duration
+   duration::operator=
+   duration::count
+   duration::zero
+   duration::min
+   duration::max
+   duration::operator+duration::operator-
+   duration::operator++duration::operator--
+   duration::operator+=duration::operator-=duration::operator*=duration::o
+   perator/=duration::operator%=
+   Non-member functions
+   operator+operator-operator*operator/operator%
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (until C++20)(C++20)
+   operator<<
+   (C++20)
+   duration_cast
+   floor
+   (C++17)
+   ceil
+   (C++17)
+   round
+   (C++17)
+   abs
+   (C++17)
+   operator""h
+   (C++14)
+   operator""min
+   (C++14)
+   operator""s
+   (C++14)
+   operator""ms
+   (C++14)
+   operator""us
+   (C++14)
+   operator""ns
+   (C++14)
+   from_stream
+   (C++20)
+   Helper classes
+   common_type
+   treat_as_floating_point
+
+   duration_values
+   formatter<std::chrono::duration>
+   (C++20)
+   hash<std::chrono::duration>
+   (C++26)
+
+   Defined in header <chrono>
+   template< class Rep1, class Period1, class Rep2, class Period2 >
+
+   struct common_type<std::chrono::duration<Rep1, Period1>,
+                      std::chrono::duration<Rep2, Period2>> {
+       typedef std::chrono::duration<
+           typename std::common_type<Rep1, Rep2>::type, /*see note*/>
+   type;
+   };
+                                                                   (since C++11)
+
+   Exposes the type named type, which is the common type of two
+   std::chrono::durations, whose period is the greatest common divisor of
+   Period1 and Period2.
+
+Note
+
+   The period of the resulting duration can be computed by forming a ratio
+   of the greatest common divisor of Period1::num and Period2::num and the
+   least common multiple of Period1::den and Period2::den.
+
+Example
+
+   Run this code
+#include <chrono>
+#include <iostream>
+#include <type_traits>
+
+// std::chrono already finds the greatest common divisor,
+// likely using std::common_type<>. We make the type
+// deduction externally.
+
+template<typename T,typename S>
+constexpr auto durationDiff(const T& t, const S& s)
+    -> typename std::common_type<T,S>::type
+{
+    typedef typename std::common_type<T,S>::type Common;
+    return Common(t) - Common(s);
+}
+
+int main()
+{
+    using namespace std::literals;
+
+    constexpr auto ms = 30ms;
+    constexpr auto us = 1100us;
+    constexpr auto diff = durationDiff(ms, us);
+
+    std::cout << ms << " - " << us << " = " << diff << '\n';
+}
+
+   Output:
+30ms - 1100us = 28900us
+
+See also
+
+   std::common_type<std::chrono::time_point>
+   (C++11)
+   specializes the std::common_type trait
+   (class template specialization)
+   common_type
+   (C++11)
+   determines the common type of a group of types
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/chrono/duration/
+   common_type&oldid=166718"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 21 December 2023, at 17:52.
+     * This page has been accessed 31,933 times.

@@ -1,0 +1,174 @@
+std::wmemchr
+
+   From cppreference.com
+   < cpp | string | wide
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated wide strings
+   Functions
+   Character manipulation
+   iswalnum
+   iswalpha
+   iswlower
+   iswupper
+   iswdigit
+   iswxdigit
+   iswblank
+   (C++11)
+   wctype
+   iswctype
+   iswcntrl
+   iswgraph
+   iswspace
+   iswprint
+   iswpunct
+   towlower
+   towupper
+   wctrans
+   towctrans
+   Conversions to numeric formats
+   wcstolwcstoll
+   (C++11)
+   wcstoulwcstoull
+   (C++11)
+   wcstofwcstodwcstold
+   (C++11)(C++11)
+   wcstoimaxwcstouimax
+   (C++11)(C++11)
+   String manipulation
+   wcslen
+   wcscpy
+   wcsncpy
+   wcscat
+   wcsncat
+   wcscmp
+   wcscoll
+   wcsncmp
+   wcsxfrm
+   wcschr
+   wcsrchr
+   wcspbrk
+   wcsspn
+   wcscspn
+   wcsstr
+   wcstok
+   Array manipulation
+   wmemcpy
+   wmemmove
+   wmemcmp
+   wmemchr
+   wmemset
+
+   Defined in header <cwchar>
+   const wchar_t* wmemchr( const wchar_t* ptr, wchar_t ch, std::size_t
+   count );
+   (1)
+         wchar_t* wmemchr(       wchar_t* ptr, wchar_t ch, std::size_t
+   count );
+   (2)
+
+   Locates the first occurrence of wide character ch in the initial count
+   wide characters of the wide character array pointed to by ptr.
+
+   If count is zero, the function returns a null pointer.
+
+Parameters
+
+   ptr   - pointer to the wide character array to be examined
+   ch    - wide character to search for
+   count - number of wide characters to examine
+
+Return value
+
+   Pointer to the location of the wide character, or a null pointer if no
+   such character is found.
+
+Example
+
+   Run this code
+#include <clocale>
+#include <cwchar>
+#include <iostream>
+#include <locale>
+
+int main()
+{
+    const wchar_t str[] = L"º»¡,º\0º»¸,º._";
+    wchar_t target = L'¸';
+    const std::size_t sz = sizeof str / sizeof *str;
+    if (const wchar_t* result = std::wmemchr(str, target, sz))
+    {
+        std::setlocale(LC_ALL, "en_US.utf8");
+        std::wcout.imbue(std::locale("en_US.utf8"));
+        std::wcout << "Found '" << target << "' at position " << result - str <<
+ '\n';
+    }
+}
+
+   Possible output:
+Found '¸' at position 14
+
+See also
+
+   memchr
+   searches an array for the first occurrence of a character
+   (function)
+   strchr
+   finds the first occurrence of a character
+   (function)
+   wcschr
+   finds the first occurrence of a wide character in a wide string
+   (function)
+   findfind_iffind_if_not
+   (C++11)
+   finds the first element satisfying specific criteria
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/wide/wmem
+   chr&oldid=153723"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 18 June 2023, at 11:41.
+     * This page has been accessed 23,618 times.

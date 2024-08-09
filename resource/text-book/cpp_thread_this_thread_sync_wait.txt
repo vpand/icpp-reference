@@ -1,0 +1,106 @@
+std::execution::sync_wait
+
+   From cppreference.com
+   < cpp | thread
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Execution Library
+   Senders
+   Sender factories
+   Sender adaptors
+   Adaptors for single-shot and multi-shot senders
+   Adaptors for multi-shot senders
+   Sender consumers
+   Eager execution
+
+   Defined in header <execution>
+   auto sync_wait( execution::sender auto sender )
+
+       requires (/*always-sends-some-values*/(sender))
+           -> std::optional<std::tuple</*value-sent-by*/(sender)>>;
+                                                  (since C++26)
+
+Parameters
+
+   sender - sender upon which the completion of sync_wait is blocked
+
+Return value
+
+   Returns an optional tuple of values that were sent by the provided
+   sender on its completion of work.
+
+Notes
+
+   The sender returned by sync_wait similarly to ensure_started, except
+   that it blocks the current std::thread or thread of main until the work
+   is completed.
+
+See also
+
+   ensure_started
+   Eagerly starts a sender, returning a sender that will deliver the
+   results to a receiver to which it is connected and started, if any.
+   When the result sender is not connected to a receiver, or if the
+   resulting operation state is not started, the results are ignored. If
+   such a sender is destroyed before the underlying operation completes,
+   the operation continues running detached.
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/thread/this_thre
+   ad/sync_wait&oldid=172312"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 8 June 2024, at 16:30.
+     * This page has been accessed 60 times.

@@ -1,0 +1,169 @@
+std::unexpected
+
+   From cppreference.com
+   < cpp | error
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Diagnostics library
+   Exception handling
+   exception
+   uncaught_exceptionuncaught_exceptions
+   (until C++20*)(C++17)
+   exception_ptr
+   (C++11)
+   make_exception_ptr
+   (C++11)
+   current_exception
+   (C++11)
+   rethrow_exception
+   (C++11)
+   nested_exception
+   (C++11)
+   throw_with_nested
+   (C++11)
+   rethrow_if_nested
+   (C++11)
+   Exception handling failures
+   terminate
+   terminate_handler
+   get_terminate
+   (C++11)
+   set_terminate
+   bad_exception
+   unexpected
+   (until C++17*)
+   unexpected_handler
+   (until C++17*)
+   get_unexpected
+   (C++11)(until C++17*)
+   set_unexpected
+   (until C++17*)
+   Error codes
+   Error codes
+   errno
+   Exception categories
+   logic_error
+   invalid_argument
+   domain_error
+   length_error
+   out_of_range
+   runtime_error
+   range_error
+   overflow_error
+   underflow_error
+   tx_exception
+   (TM TS)
+   System error support
+   error_category
+   (C++11)
+   generic_category
+   (C++11)
+   system_category
+   (C++11)
+   error_condition
+   (C++11)
+   errc
+   (C++11)
+   error_code
+   (C++11)
+   system_error
+   (C++11)
+   Assertions
+   assert
+   Stacktrace
+   stacktrace_entry
+   (C++23)
+   basic_stacktrace
+   (C++23)
+
+   Defined in header <exception>
+   void unexpected();
+                                  (until C++11)
+   [[noreturn]] void unexpected();
+   (since C++11)
+   (deprecated)
+   (removed in C++17)
+
+   std::unexpected() is called by the C++ runtime when a dynamic exception
+   specification is violated: an exception is thrown from a function whose
+   exception specification forbids exceptions of this type.
+
+   std::unexpected() may also be called directly from the program.
+
+   In either case, std::unexpected calls the currently installed
+   std::unexpected_handler. The default std::unexpected_handler calls
+   std::terminate.
+
+   If a destructor reset the unexpected handler during stack unwinding and
+   the unwinding later led to unexpected being called, the handler that
+   was installed at the end of the throw expression is the one that will
+   be called (note: it was ambiguous whether re-throwing applied the new
+   handlers).
+   (until C++11)
+
+   If a destructor reset the unexpected handler during stack unwinding, it
+   is unspecified which handler is called if the unwinding later led to
+   unexpected being called.
+   (since C++11)
+
+Exceptions
+
+   Throw any exception thrown by the currently installed
+   std::unexpected_handler.
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 2111 C++11 effect of calling std::set_unexpected during stack
+   unwinding differs from C++98 and breaks some ABIs made unspecified
+
+See also
+
+   unexpected
+   (C++23)
+   represented as an unexpected value
+   (class template)
+   unexpected_handler
+   (removed in C++17)
+   the type of the function called by std::unexpected
+   (typedef)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/error/unexpected
+   &oldid=170049"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 3 March 2024, at 19:54.
+     * This page has been accessed 97,449 times.

@@ -1,0 +1,193 @@
+fputs
+
+   From cppreference.com
+   < c | io
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   File input/output
+   Types and objects
+   FILE
+   fpos_t
+
+   stdinstdoutstderr
+   Functions
+   File access
+   fopenfopen_s
+   (C11)
+   freopenfreopen_s
+   (C11)
+   fwide
+   (C95)
+   setbuf
+   setvbuf
+   fclose
+   fflush
+   Direct input/output
+   fread
+   fwrite
+   Unformatted input/output
+   fgetc
+   fgets
+   fputc
+   fputs
+   getchar
+   getsgets_s
+   (until C11)(C11)
+   putchar
+   puts
+   ungetc
+   fgetwcgetwc
+   (C95)(C95)
+   fgetws
+   (C95)
+   fputwcputwc
+   (C95)(C95)
+   fputws
+   (C95)
+   getwchar
+   (C95)
+   putwchar
+   (C95)
+   ungetwc
+   (C95)
+   Formatted input
+   scanffscanfsscanfscanf_sfscanf_ssscanf_s
+   (C11)(C11)(C11)
+   wscanffwscanfswscanfwscanf_sfwscanf_sswscanf_s
+   (C95)(C95)(C95)(C11)(C11)(C11)
+   vscanfvfscanfvsscanfvscanf_svfscanf_svsscanf_s
+   (C99)(C99)(C99)(C11)(C11)(C11)
+   vwscanfvfwscanfvswscanfvwscanf_svfwscanf_svswscanf_s
+   (C99)(C99)(C99)(C11)(C11)(C11)
+   Formatted output
+   printffprintfsprintfsnprintfprintf_sfprintf_ssprintf_ssnprintf_s
+   (C99)(C11)(C11)(C11)(C11)
+   wprintffwprintfswprintfwprintf_sfwprintf_sswprintf_ssnwprintf_s
+   (C95)(C95)(C95)(C11)(C11)(C11)(C11)
+   vprintfvfprintfvsprintfvsnprintfvprintf_svfprintf_svsprintf_svsnprintf_
+   s
+   (C99)(C11)(C11)(C11)(C11)
+   vwprintfvfwprintfvswprintfvwprintf_svfwprintf_svswprintf_svsnwprintf_s
+   (C95)(C95)(C95)(C11)(C11)(C11)(C11)
+   File positioning
+   ftell
+   fgetpos
+   fseek
+   fsetpos
+   rewind
+   Error handling
+   clearerr
+   feof
+   ferror
+   perror
+   Operations on files
+   remove
+   rename
+   tmpfiletmpfile_s
+   (C11)
+   tmpnamtmpnam_s
+   (C11)
+
+   Defined in header <stdio.h>
+   int fputs( const char          *str, FILE          *stream );
+                                                                (until C99)
+   int fputs( const char *restrict str, FILE *restrict stream );
+                                                                (since C99)
+
+   Writes every character from the null-terminated string str to the
+   output stream stream, as if by repeatedly executing fputc.
+
+   The terminating null character from str is not written.
+
+Parameters
+
+   str    - null-terminated character string to be written
+   stream - output stream
+
+Return value
+
+   On success, returns a non-negative value
+
+   On failure, returns EOF and sets the error indicator (see ferror()) on
+   stream.
+
+Notes
+
+   The related function puts appends a newline character to the output,
+   while fputs writes the string unmodified.
+
+   Different implementations return different non-negative numbers: some
+   return the last character written, some return the number of characters
+   written (or INT_MAX if the string was longer than that), some simply
+   return a non-negative constant such as zero.
+
+Example
+
+   Run this code
+#include <stdio.h>
+
+int main(void)
+{
+    int rc = fputs("Hello World", stdout);
+
+    if (rc == EOF)
+       perror("fputs()"); // POSIX requires that errno is set
+}
+
+   Output:
+Hello World
+
+References
+
+     * C11 standard (ISO/IEC 9899:2011):
+
+          + 7.21.7.4 The fputs function (p: 331-332)
+
+     * C99 standard (ISO/IEC 9899:1999):
+
+          + 7.19.7.4 The fputs function (p: 297)
+
+     * C89/C90 standard (ISO/IEC 9899:1990):
+
+          + 4.9.7.4 The fputs function
+
+See also
+
+   printffprintfsprintfsnprintfprintf_sfprintf_ssprintf_ssnprintf_s
+   (C99)(C11)(C11)(C11)(C11)
+   prints formatted output to stdout, a file stream or a buffer
+   (function)
+   puts
+   writes a character string to stdout
+   (function)
+   fgets
+   gets a character string from a file stream
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/io/fputs&oldid=857
+   57"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 13 May 2016, at 08:49.
+     * This page has been accessed 81,395 times.

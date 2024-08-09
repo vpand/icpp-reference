@@ -1,0 +1,355 @@
+std::basic_string<CharT,Traits,Allocator>::append
+
+   From cppreference.com
+   < cpp | string | basic string
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   std::basic_string
+   Member functions
+   basic_string::basic_string
+   basic_string::~basic_string
+   basic_string::operator=
+   basic_string::assign
+   basic_string::assign_range
+   (C++23)
+   basic_string::get_allocator
+   Element access
+   basic_string::at
+   basic_string::operator[]
+   basic_string::front
+   (DR*)
+   basic_string::back
+   (DR*)
+   basic_string::data
+   basic_string::c_str
+   basic_string::operator
+    basic_string_view
+   (C++17)
+   Iterators
+   basic_string::beginbasic_string::cbegin
+   (C++11)
+   basic_string::endbasic_string::cend
+   (C++11)
+   basic_string::rbeginbasic_string::crbegin
+   (C++11)
+   basic_string::rendbasic_string::crend
+   (C++11)
+   Capacity
+   basic_string::empty
+   basic_string::sizebasic_string::length
+   basic_string::max_size
+   basic_string::reserve
+   basic_string::capacity
+   basic_string::shrink_to_fit
+   (DR*)
+   Modifiers
+   basic_string::clear
+   basic_string::insert
+   basic_string::insert_range
+   (C++23)
+   basic_string::erase
+   basic_string::push_back
+   basic_string::pop_back
+   (DR*)
+   basic_string::append
+   basic_string::append_range
+   (C++23)
+   basic_string::operator+=
+   basic_string::replace
+   basic_string::replace_with_range
+   (C++23)
+   basic_string::copy
+   basic_string::resize
+   basic_string::resize_and_overwrite
+   (C++23)
+   basic_string::swap
+   Search
+   basic_string::find
+   basic_string::rfind
+   basic_string::find_first_of
+   basic_string::find_first_not_of
+   basic_string::find_last_of
+   basic_string::find_last_not_of
+   Operations
+   basic_string::compare
+   basic_string::starts_with
+   (C++20)
+   basic_string::ends_with
+   (C++20)
+   basic_string::contains
+   (C++23)
+   basic_string::substr
+   Constants
+   basic_string::npos
+   Non-member functions
+   operator+
+   swap(std::basic_string)
+   erase(std::basic_string)erase_if(std::basic_string)
+   (C++20)(C++20)
+   I/O
+   operator<<operator>>
+   getline
+   Comparison
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (until C++20)(until C++20)(until C++20)(until C++20)(until
+   C++20)(C++20)
+   Numeric conversions
+   stoistolstoll
+   (C++11)(C++11)(C++11)
+   stoulstoull
+   (C++11)(C++11)
+   stofstodstold
+   (C++11)(C++11)(C++11)
+   to_string
+   (C++11)
+   to_wstring
+   (C++11)
+   Literals
+   operator""s
+   (C++14)
+   Helper classes
+   hash<std::basic_string>
+   (C++11)
+   Deduction guides (C++17)
+
+   basic_string& append( size_type count, CharT ch );
+   (1) (constexpr since C++20)
+   basic_string& append( const basic_string& str );
+   (2) (constexpr since C++20)
+   (3)
+   basic_string& append( const basic_string& str,
+                         size_type pos, size_type count );
+   (until C++14)
+   basic_string& append( const basic_string& str,
+                         size_type pos, size_type count = npos );
+   (since C++14)
+   (constexpr since C++20)
+   basic_string& append( const CharT* s, size_type count );
+   (4) (constexpr since C++20)
+   basic_string& append( const CharT* s );
+   (5) (constexpr since C++20)
+   template< class InputIt >
+   basic_string& append( InputIt first, InputIt last );
+   (6) (constexpr since C++20)
+   basic_string& append( std::initializer_list<CharT> ilist );
+   (7) (since C++11)
+   (constexpr since C++20)
+   template< class StringViewLike >
+   basic_string& append( const StringViewLike& t );
+   (8) (since C++17)
+   (constexpr since C++20)
+   template< class StringViewLike >
+
+   basic_string& append( const StringViewLike& t,
+                         size_type pos, size_type count = npos );
+   (9) (since C++17)
+   (constexpr since C++20)
+
+   Appends additional characters to the string.
+   1) Appends count copies of character ch.
+   2) Appends string str.
+   3) Appends a substring [pos, pos + count) of str.
+     * If the requested substring lasts past the end of the string, or if
+       count == npos, the appended substring is [pos, size()).
+     * If pos > str.size(), std::out_of_range is thrown.
+
+   4) Appends characters in the range [s, s + count). This range can
+   contain null characters.
+   If [s, s + count) is not a valid range, the behavior is undefined.
+   5) Appends the null-terminated character string pointed to by s, as if
+   by append(s, Traits::length(s)).
+   6) Appends characters in the range [first, last).
+
+   This overload has the same effect as overload (1) if InputIt is an
+   integral type.
+   (until C++11)
+
+   This overload only participates in overload resolution if InputIt
+   qualifies as a LegacyInputIterator.
+   (since C++11)
+   7) Appends characters from the initializer list ilist.
+   8) Implicitly converts t to a string view sv as if by
+   std::basic_string_view<CharT, Traits> sv = t;, then appends all
+   characters from sv as if by append(sv.data(), sv.size()).
+   This overload participates in overload resolution only if
+   std::is_convertible_v<const StringViewLike&,
+                         std::basic_string_view<CharT, Traits>> is true
+   and std::is_convertible_v<const StringViewLike&, const CharT*> is
+   false.
+   9) Implicitly converts t to a string view sv as if by
+   std::basic_string_view<CharT, Traits> sv = t;, then appends the
+   characters from the subview [pos, pos + count) of sv.
+     * If the requested subview extends past the end of sv, or if count ==
+       npos, the appended subview is [pos, sv.size()).
+     * If pos >= sv.size(), std::out_of_range is thrown.
+
+   This overload participates in overload resolution only if
+   std::is_convertible_v<const StringViewLike&,
+                         std::basic_string_view<CharT, Traits>> is true
+   and std::is_convertible_v<const StringViewLike&, const CharT*> is
+   false.
+
+Parameters
+
+   count - number of characters to append
+   pos - the index of the first character to append
+   ch - character value to append
+   first, last - range of characters to append
+   str - string to append
+   s - pointer to the character string to append
+   ilist - initializer list with the characters to append
+   t - object convertible to std::basic_string_view with the characters to
+   append
+
+Return value
+
+   *this
+
+Complexity
+
+   There are no standard complexity guarantees, typical implementations
+   behave similar to std::vector::insert().
+
+Exceptions
+
+   If the operation would result in size() > max_size(), throws
+   std::length_error.
+
+   If an exception is thrown for any reason, this function has no effect
+   (strong exception safety guarantee).
+
+Example
+
+   Run this code
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::basic_string<char> str = "string";
+    const char* cptr = "C-string";
+    const char carr[] = "Two and one";
+
+    std::string output;
+
+    // 1) Append a char 3 times.
+    // Notice, this is the only overload accepting chars.
+    output.append(3, '*');
+    std::cout << "1) " << output << '\n';
+
+    // 2) Append a whole string
+    output.append(str);
+    std::cout << "2) " << output << '\n';
+
+    // 3) Append part of a string (last 3 letters, in this case)
+    output.append(str, 3, 3);
+    std::cout << "3) " << output << '\n';
+
+    // 4) Append part of a C-string
+    // Notice, because `append` returns *this, we can chain calls together
+    output.append(1, ' ').append(carr, 4);
+    std::cout << "4) " << output << '\n';
+
+    // 5) Append a whole C-string
+    output.append(cptr);
+    std::cout << "5) " << output << '\n';
+
+    // 6) Append range
+    output.append(&carr[3], std::end(carr));
+    std::cout << "6) " << output << '\n';
+
+    // 7) Append initializer list
+    output.append({' ', 'l', 'i', 's', 't'});
+    std::cout << "7) " << output << '\n';
+}
+
+   Output:
+1) ***
+2) ***string
+3) ***stringing
+4) ***stringing Two
+5) ***stringing Two C-string
+6) ***stringing Two C-string and one
+7) ***stringing Two C-string and one list
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 847 C++98 there was no exception safety guarantee added strong
+   exception safety guarantee
+   LWG 2946 C++17 overload (8) causes ambiguity in some cases avoided by
+   making it a template
+
+See also
+
+   append_range
+   (C++23)
+   appends a range of characters to the end
+   (public member function)
+   operator+=
+   appends characters to the end
+   (public member function)
+   strcat
+   concatenates two strings
+   (function)
+   strncat
+   concatenates a certain amount of characters of two strings
+   (function)
+   wcscat
+   appends a copy of one wide string to another
+   (function)
+   wcsncat
+   appends a certain amount of wide characters from one wide string to
+   another
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/basic_str
+   ing/append&oldid=171134"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 22 April 2024, at 10:53.
+     * This page has been accessed 357,247 times.

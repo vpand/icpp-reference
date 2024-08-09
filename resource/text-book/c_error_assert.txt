@@ -1,0 +1,139 @@
+assert
+
+   From cppreference.com
+   < c | error
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Error handling
+   Error codes
+   Error codes
+   errno
+   Assertions
+   assert
+   static_assert
+   (C11)(removed in C23)
+   Bounds checking
+   set_constraint_handler_s
+   (C11)
+   abort_handler_s
+   (C11)
+   ignore_handler_s
+   (C11)
+
+   Defined in header <assert.h>
+   #ifdef NDEBUG
+
+   #define assert(condition) ((void)0)
+   #else
+   #define assert(condition) /*implementation defined*/
+   #endif
+
+   The definition of the macro assert depends on another macro, NDEBUG,
+   which is not defined by the standard library.
+
+   If NDEBUG is defined as a macro name at the point in the source code
+   where <assert.h> is included, then assert does nothing.
+
+   If NDEBUG is not defined, then assert checks if its argument (which
+   must have scalar type) compares equal to zero. If it does, assert
+   outputs implementation-specific diagnostic information on the standard
+   error output and calls abort(). The diagnostic information is required
+   to include the text of expression, as well as the values of the
+   predefined variable __func__ and of(since C99) the predefined macros
+   __FILE__ and __LINE__.
+
+Parameters
+
+   condition - expression of scalar type
+
+Return value
+
+   (none)
+
+Notes
+
+   There is no standardized interface to add an additional message to
+   assert errors. A portable way to include one is to use a comma
+   operator:
+assert(("There are five lights", 2 + 2 == 5));
+
+   The implementation of assert in Microsoft CRT does not conform to C99
+   and later revisions, because its underlying function (_wassert) takes
+   neither __func__ nor an equivalent replacement.
+
+Example
+
+   Run this code
+#include <stdio.h>
+// uncomment to disable assert()
+// #define NDEBUG
+#include <assert.h>
+#include <math.h>
+
+int main(void)
+{
+    double x = -1.0;
+    assert(x >= 0.0);
+    printf("sqrt(x) = %f\n", sqrt(x));
+
+    return 0;
+}
+
+   Output:
+output with NDEBUG not defined:
+a.out: main.cpp:10: main: Assertion `x >= 0.0' failed.
+
+output with NDEBUG defined:
+sqrt(x) = -nan
+
+References
+
+     * C17 standard (ISO/IEC 9899:2018):
+
+          + 7.2.1.1 The assert macro (p: 135)
+
+     * C11 standard (ISO/IEC 9899:2011):
+
+          + 7.2.1.1 The assert macro (p: 186-187)
+
+     * C99 standard (ISO/IEC 9899:1999):
+
+          + 7.2.1.1 The assert macro (p: 169)
+
+     * C89/C90 standard (ISO/IEC 9899:1990):
+
+          + 4.2.1.1 The assert macro
+
+See also
+
+   abort
+   causes abnormal program termination (without cleaning up)
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/error/assert&oldid
+   =132267"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 9 August 2021, at 19:40.
+     * This page has been accessed 133,447 times.

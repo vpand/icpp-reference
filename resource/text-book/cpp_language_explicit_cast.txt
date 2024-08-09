@@ -1,0 +1,540 @@
+Explicit type conversion
+
+   From cppreference.com
+   < cpp | language
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ language
+   General topics
+   Preprocessor
+   Comments
+   Keywords
+   Escape sequences
+   Flow control
+   Conditional execution statements
+   if
+   switch
+   Iteration statements (loops)
+   for
+   range-for (C++11)
+   while
+   do-while
+   Jump statements
+   continue - break
+   goto - return
+   Functions
+   Function declaration
+   Lambda function expression
+   inline specifier
+   Dynamic exception specifications (until C++17*)
+   noexcept specifier (C++11)
+   Exceptions
+   throw-expression
+   try block
+   handler
+   Namespaces
+   Namespace declaration
+   Namespace aliases
+   Types
+   Fundamental types
+   Enumeration types
+   Function types
+   Class/struct types
+   Union types
+   Specifiers
+   const/volatile
+   decltype (C++11)
+   auto (C++11)
+   constexpr (C++11)
+   consteval (C++20)
+   constinit (C++20)
+   Storage duration specifiers
+   Initialization
+   Default-initialization
+   Value-initialization
+   Zero-initialization
+   Copy-initialization
+   Direct-initialization
+   Aggregate initialization
+   List-initialization (C++11)
+   Constant initialization
+   Reference initialization
+   Expressions
+   Value categories
+   Order of evaluation
+   Operators
+   Operator precedence
+   Alternative representations
+   Literals
+   Boolean - Integer - Floating-point
+   Character - String - nullptr (C++11)
+   User-defined (C++11)
+   Utilities
+   Attributes (C++11)
+   Types
+   typedef declaration
+   Type alias declaration (C++11)
+   Casts
+   Implicit conversions
+   static_cast
+   const_cast
+   Explicit conversions
+   dynamic_cast
+   reinterpret_cast
+   Memory allocation
+   new expression
+   delete expression
+   Classes
+   Class declaration
+   Constructors
+   this pointer
+   Access specifiers
+   friend specifier
+   Class-specific function properties
+   Virtual function
+   override specifier (C++11)
+   final specifier (C++11)
+   explicit (C++11)
+   static
+   Special member functions
+   Default constructor
+   Copy constructor
+   Move constructor (C++11)
+   Copy assignment
+   Move assignment (C++11)
+   Destructor
+   Templates
+   Class template
+   Function template
+   Template specialization
+   Parameter packs (C++11)
+   Miscellaneous
+   Inline assembly
+   History of C++
+
+   Expressions
+   General
+   Value categories
+   Order of evaluation
+   Constant expressions
+   Primary expressions
+   Lambda expressions (C++11)
+   Pack indexing expression (C++26)
+   Potentially-evaluated expressions
+   Literals
+   Integer literals
+   Floating-point literals
+   Boolean literals
+   Character literals
+   Escape sequences
+   String literals
+   Null pointer literal (C++11)
+   User-defined literal (C++11)
+   Operators
+   Assignment operators
+   Increment and decrement
+   Arithmetic operators
+   Logical operators
+   Comparison operators
+   Member access operators
+   Other operators
+   new-expression
+   delete-expression
+   throw-expression
+   alignof
+   sizeof
+   sizeof... (C++11)
+   typeid
+   noexcept (C++11)
+   Fold expressions (C++17)
+   Alternative representations of operators
+   Precedence and associativity
+   Operator overloading
+   Default comparisons (C++20)
+   Conversions
+   Implicit conversions
+   Explicit conversions
+   Usual arithmetic conversions
+   User-defined conversion
+   const_cast
+   static_cast
+   dynamic_cast
+   reinterpret_cast
+
+   Converts between types using a combination of explicit and implicit
+   conversions.
+
+Syntax
+
+   ( target-type ) expression                   (1)
+   target-type ( expression-list¿(optional) )   (2)
+   target-type { expression-list¿(optional) }   (3) (since C++11)
+   template-name ( expression-list¿(optional) ) (4) (since C++17)
+   template-name { expression-list¿(optional) } (5) (since C++17)
+   auto ( expression )                          (6) (since C++23)
+   auto { expression }                          (7) (since C++23)
+
+   Returns a value of type target-type.
+
+Explanation
+
+   1) When the C-style cast expression is encountered, the compiler
+   attempts to interpret it as the following cast expressions, in this
+   order:
+   a) const_cast<target-type>(expression);
+   b) static_cast<target-type>(expression), with extensions: pointer or
+   reference to a derived class is additionally allowed to be cast to
+   pointer or reference to unambiguous base class (and vice versa) even if
+   the base class is inaccessible (that is, this cast ignores the private
+   inheritance specifier). Same applies to casting pointer to member to
+   pointer to member of unambiguous non-virtual base;
+   c) static_cast (with extensions) followed by const_cast;
+   d) reinterpret_cast<target-type>(expression);
+   e) reinterpret_cast followed by const_cast.
+   The first choice that satisfies the requirements of the respective cast
+   operator is selected, even if it cannot be compiled (see example). If
+   the cast can be interpreted in more than one way as static_cast
+   followed by a const_cast, it cannot be compiled.
+   In addition, C-style cast notation is allowed to cast from, to, and
+   between pointers to incomplete class type. If both expression and
+   target-type are pointers to incomplete class types, it is unspecified
+   whether static_cast or reinterpret_cast gets selected.
+   2) The functional-style cast expression consists of a simple type
+   specifier or a typedef specifier (in other words, a single-word type
+   name, that is, cases such as unsigned int(expression) and
+   int*(expression) are not valid), followed by a comma-separated list of
+   expressions in parentheses.
+     * If there is exactly one expression in parentheses, this cast
+       expression is exactly equivalent to the corresponding C-style cast
+       expression.
+     * If there are more than one expression or braced-init-list(since
+       C++11) in parentheses, target-type must be a class with a suitably
+       declared constructor. This expression is a prvalue of type
+       target-type designating a temporary(until C++17)whose result object
+       is(since C++17) direct-initialized with ( expression-list ) as the
+       initializer.
+     * If there's no expression in parentheses: if target-type names a
+       non-array complete object type, this expression is a prvalue of
+       type target-type, designating a temporary(until C++17)whose result
+       object is (possibly with added cv-qualifiers)(since C++17) of that
+       type. If target-type is an object type, the object is
+       value-initialized. If target-type is (possibly cv-qualified) void,
+       the expression is a void prvalue without a result object(since
+       C++17).
+
+   3) A single-word type name followed by a brace-enclosed initializer
+   list is a prvalue of the specified type designating a temporary(until
+   C++17)whose result object is(since C++17) direct-list-initialized with
+   { expression-list } as the initializer. If target-type is (possibly
+   cv-qualified) void, the expression is a void prvalue without a result
+   object(since C++17). This is the only cast expression that can create
+   an array prvalue.(until C++20)
+   4,5) Same as (2,3), except first performs class template argument
+   deduction.
+   6,7) The auto specifier is replaced with the type deduced from
+   expression. The result is always a prvalue of an object type.
+
+   As with all cast expressions, the result is:
+     * an lvalue if target-type is an lvalue reference type or an rvalue
+       reference to function type(since C++11);
+
+     * an xvalue if target-type is an rvalue reference to object type;
+
+   (since C++11)
+     * a prvalue otherwise.
+
+Ambiguity Resolution
+
+Ambiguous declaration statement
+
+   In the case of an ambiguity between an expression statement with a
+   function-style cast expression as its leftmost subexpression and a
+   declaration statement, the ambiguity is resolved by treating it as a
+   declaration. This disambiguation is purely syntactic: it does not
+   consider the meaning of names occurring in the statement other than
+   whether they are type names:
+struct M {};
+struct L { L(M&); };
+
+M n;
+void f()
+{
+    M(m);    // declaration, equivalent to M m;
+    L(n);    // ill-formed declaration, equivalent to L n;
+    L(l)(m); // still a declaration, equivalent to L l((m));
+}
+
+   However, if the outermost declarator in the ambiguous declaration
+   statement has a trailing return type, the statement will only be
+   treated as a declaration statement if the trailing return type starts
+   with auto:
+struct M;
+
+struct S
+{
+    S* operator()();
+    int N;
+    int M;
+
+    void mem(S s)
+    {
+        auto(s)()->M; // expression (S::M hides ::M), invalid before C++23
+    }
+};
+
+void f(S s)
+{
+    {
+        auto(s)()->N; // expression, invalid before C++23
+        auto(s)()->M; // function declaration, equivalent to M s();
+    }
+    {
+        S(s)()->N;    // expression
+        S(s)()->M;    // expression
+    }
+}
+
+   (since C++11)
+
+Ambiguous function parameter
+
+   The ambiguity above can also occur in the context of a declaration. In
+   that context, the choice is between an object declaration with a
+   function-style cast as the initializer and a declaration involving a
+   function declarator with a redundant set of parentheses around a
+   parameter name. The resolution is also to consider any construct, such
+   as the potential parameter declaration, that could possibly be a
+   declaration to be a declaration:
+struct S
+{
+    S(int);
+};
+
+void foo(double a)
+{
+    S w(int(a)); // function declaration: has a parameter `a` of type int
+    S x(int());  // function declaration: has an unnamed parameter of type int(*
+)()
+                 // that is adjusted from int()
+
+    // Ways to avoid ambiguity:
+    S y((int(a))); // object declaration: extra pair of parentheses
+    S y((int)a);   // object declaration: C-style cast
+    S z = int(a);  // object declaration: no ambiguity for this syntax
+}
+
+   However, if the outermost declarator in the ambiguous parameter
+   declaration has a trailing return type, the ambiguity will only be
+   resolved by treating it as a declaration if it starts with auto:
+typedef struct BB { int C[2]; } *B, C;
+
+void foo()
+{
+    S a(B()->C);    // object declaration: B()->C cannot declare a parameter
+    S b(auto()->C); // function declaration: has an unnamed parameter of type C(
+*)()
+                    // that us adjusted from C()
+}
+
+   (since C++11)
+
+Ambiguous type-id
+
+   An ambiguity can arise from the similarity between a function-style
+   cast and a type-id. The resolution is that any construct that could
+   possibly be a type-id in its syntactic context shall be considered a
+   type-id:
+// `int()` and `int(unsigned(a))` can both be parsed as type-id:
+// `int()`            represents a function returning int
+//                    and taking no argument
+// `int(unsigned(a))` represents a function returning int
+//                    and taking an argument of type unsigned
+void foo(signed char a)
+{
+    sizeof(int());            // type-id (ill-formed)
+    sizeof(int(a));           // expression
+    sizeof(int(unsigned(a))); // type-id (ill-formed)
+
+    (int()) + 1;            // type-id (ill-formed)
+    (int(a)) + 1;           // expression
+    (int(unsigned(a))) + 1; // type-id (ill-formed)
+}
+
+   However, if the outermost abstract-declarator in the ambiguous type-id
+   has a trailing return type, the ambiguity will only be resolved by
+   treating it as a type-id if it starts with auto:
+typedef struct BB { int C[2]; } *B, C;
+
+void foo()
+{
+    sizeof(B()->C[1]);    // OK, sizeof(expression)
+    sizeof(auto()->C[1]); // error: sizeof of a function returning an array
+}
+
+   (since C++11)
+
+Notes
+
+   Feature-test macro  Value    Std         Feature
+   __cpp_auto_cast    202110L (C++23) auto(x) and auto{x}
+
+Example
+
+   Run this code
+#include <cassert>
+#include <iostream>
+
+double f = 3.14;
+unsigned int n1 = (unsigned int)f; // C-style cast
+unsigned int n2 = unsigned(f);     // function-style cast
+
+class C1;
+class C2;
+C2* foo(C1* p)
+{
+    return (C2*)p; // casts incomplete type to incomplete type
+}
+
+void cpp23_decay_copy_demo()
+{
+    auto inc_print = [](int& x, const int& y)
+    {
+        ++x;
+        std::cout << "x:" << x << ", y:" << y << '\n';
+    };
+
+    int p{1};
+    inc_print(p, p); // prints x:2 y:2, because param y here is an alias of p
+    int q{1};
+    inc_print(q, auto{q}); // prints x:2 y:1, auto{q} (C++23) casts to prvalue,
+                           // so the param y is a copy of q (not an alias of q)
+}
+
+// In this example, C-style cast is interpreted as static_cast
+// even though it would work as reinterpret_cast
+struct A {};
+struct I1 : A {};
+struct I2 : A {};
+struct D : I1, I2 {};
+
+int main()
+{
+    D* d = nullptr;
+//  A* a = (A*)d;                   // compile-time error
+    A* a = reinterpret_cast<A*>(d); // this compiles
+    assert(a == nullptr);
+
+    cpp23_decay_copy_demo();
+}
+
+   Output:
+x:2 y:2
+x:2 y:1
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   CWG 1223
+   (P2915R0) C++11 the addition of trailing return type introduced more
+   ambiguities resolves them
+   CWG 2620 C++98 the resolution of ambiguous function parameters might be
+   misinterpreted improved the wording
+
+References
+
+     * C++23 standard (ISO/IEC 14882:2023):
+
+          + 7.6.1.4 Explicit type conversion (functional notation)
+            [expr.type.conv]
+
+          + 7.6.3 Explicit type conversion (cast notation) [expr.cast]
+
+     * C++20 standard (ISO/IEC 14882:2020):
+
+          + 7.6.1.4 Explicit type conversion (functional notation)
+            [expr.type.conv]
+
+          + 7.6.3 Explicit type conversion (cast notation) [expr.cast]
+
+     * C++17 standard (ISO/IEC 14882:2017):
+
+          + 8.2.3 Explicit type conversion (functional notation)
+            [expr.type.conv]
+
+          + 8.4 Explicit type conversion (cast notation) [expr.cast]
+
+     * C++14 standard (ISO/IEC 14882:2014):
+
+          + 5.2.3 Explicit type conversion (functional notation)
+            [expr.type.conv]
+
+          + 5.4 Explicit type conversion (cast notation) [expr.cast]
+
+     * C++11 standard (ISO/IEC 14882:2011):
+
+          + 5.2.3 Explicit type conversion (functional notation)
+            [expr.type.conv]
+
+          + 5.4 Explicit type conversion (cast notation) [expr.cast]
+
+     * C++03 standard (ISO/IEC 14882:2003):
+
+          + 5.2.3 Explicit type conversion (functional notation)
+            [expr.type.conv]
+
+          + 5.4 Explicit type conversion (cast notation) [expr.cast]
+
+     * C++98 standard (ISO/IEC 14882:1998):
+
+          + 5.2.3 Explicit type conversion (functional notation)
+            [expr.type.conv]
+
+          + 5.4 Explicit type conversion (cast notation) [expr.cast]
+
+See also
+
+   const_cast conversion       adds or removes const
+   static_cast conversion      performs basic conversions
+   dynamic_cast conversion     performs checked polymorphic conversions
+   reinterpret_cast conversion performs general low-level conversions
+   standard conversions        implicit conversions from one type to another
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/language/explici
+   t_cast&oldid=171540"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 6 May 2024, at 04:07.
+     * This page has been accessed 584,508 times.

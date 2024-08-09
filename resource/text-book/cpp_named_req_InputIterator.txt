@@ -1,0 +1,275 @@
+C++ named requirements: LegacyInputIterator
+
+   From cppreference.com
+   < cpp | named req
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ named requirements
+   Basic
+   DefaultConstructible
+   CopyAssignable
+   CopyConstructible
+   MoveAssignable
+   (C++11)
+   MoveConstructible
+   (C++11)
+   Destructible
+   Type properties
+   ScalarType
+   TriviallyCopyable
+   (C++11)
+   StandardLayoutType
+   (C++11)
+   PODType
+   TrivialType
+   (C++11)
+   ImplicitLifetimeType
+   Library-Wide
+   EqualityComparable
+   LessThanComparable
+   Swappable
+   ValueSwappable
+   (C++11)
+   NullablePointer
+   (C++11)
+   Hash
+   (C++11)
+   Allocator
+   FunctionObject
+   Callable
+   Predicate
+   BinaryPredicate
+   Compare
+   Container
+   Container
+   SequenceContainer
+   ContiguousContainer
+   (C++17)
+   ReversibleContainer
+   AssociativeContainer
+   AllocatorAwareContainer
+   UnorderedAssociativeContainer
+   (C++11)
+   Container Elements
+   DefaultInsertable
+   (C++11)
+   CopyInsertable
+   (C++11)
+   MoveInsertable
+   (C++11)
+   EmplaceConstructible
+   (C++11)
+   Erasable
+   (C++11)
+   Iterator
+   LegacyIterator
+   LegacyOutputIterator
+   LegacyInputIterator
+   LegacyForwardIterator
+   LegacyBidirectionalIterator
+   LegacyRandomAccessIterator
+   LegacyContiguousIterator
+   (C++17)
+   ConstexprIterator
+   (C++20)
+   Stream I/O
+   FormattedInputFunction
+   UnformattedInputFunction
+   FormattedOutputFunction
+   UnformattedOutputFunction
+   Formatters
+   BasicFormatter
+   (C++20)
+   Formatter
+   (C++20)
+   Random Numbers
+   SeedSequence
+   (C++11)
+   RandomNumberEngine
+   (C++11)
+   RandomNumberDistribution
+   (C++11)
+   UniformRandomBitGenerator
+   (C++11)
+   RandomNumberEngineAdaptor
+   (C++11)
+   Concurrency
+   BasicLockable
+   (C++11)
+   Lockable
+   (C++11)
+   TimedLockable
+   (C++11)
+   SharedLockable
+   (C++14)
+   SharedTimedLockable
+   (C++14)
+   Mutex
+   (C++11)
+   TimedMutex
+   (C++11)
+   SharedMutex
+   (C++17)
+   SharedTimedMutex
+   (C++14)
+   Ranges
+   RangeAdaptorObject
+   (C++20)
+   RangeAdaptorClosureObject
+   (C++20)
+   Other
+   CharTraits
+   RegexTraits
+   (C++11)
+   BitmaskType
+   LiteralType
+   (C++11)
+   NumericType
+   UnaryTypeTrait
+   (C++11)
+   BinaryTypeTrait
+   (C++11)
+   TransformationTrait
+   (C++11)
+   Clock
+   (C++11)
+   TrivialClock
+   (C++11)
+
+   A LegacyInputIterator is a LegacyIterator that can read from the
+   pointed-to element. LegacyInputIterators only guarantee validity for
+   single pass algorithms: once a LegacyInputIterator i has been
+   incremented, all copies of its previous value may be invalidated.
+
+Requirements
+
+   The type It satisfies LegacyInputIterator if
+     * The type It satisfies LegacyIterator
+     * The type It satisfies EqualityComparable
+
+   And, given
+     * i and j, values of type It or const It
+     * r, an lvalue of type It
+     * reference, the type denoted by std::iterator_traits<It>::reference
+     * value_type, the type denoted by
+       std::iterator_traits<It>::value_type
+
+   The following expressions must be valid and have their specified
+   effects
+   Expression Return type Equivalent expression Notes
+   i != j contextually convertible to bool !(i == j) Precondition: (i, j)
+   is in the domain of ==.
+   *i reference, convertible to value_type If i == j and (i, j) is in the
+   domain of == then this is equivalent to *j.
+
+   Precondition: i is dereferenceable.
+
+   The expression (void)*i, *i is equivalent to *i.
+   i->m (*i).m Precondition: i is dereferenceable.
+   ++r It&
+
+   Precondition: r is dereferenceable.
+
+   Postcondition: r is dereferenceable or r is past-the-end.
+
+   Postcondition: Any copies of the previous value of r are no longer
+   required to be either dereferenceable or to be in the domain of ==.
+   (void)r++ (void)++r
+   *r++ convertible to value_type value_type x = *r;
+
+   ++r;
+   return x;
+
+Notes
+
+   "in the domain of ==" means equality comparison is defined between the
+   two iterator values. For input iterators, equality comparison does not
+   need to be defined for all values, and the set of the values in the
+   domain of == may change over time.
+
+   The reference type for an input iterator that is not also a
+   LegacyForwardIterator does not have to be a reference type:
+   dereferencing an input iterator may return a proxy object or value_type
+   itself by value (as in the case of std::istreambuf_iterator).
+
+Concept
+
+   For the definition of std::iterator_traits, the following
+   exposition-only concept is defined.
+   template<class I>
+
+   concept __LegacyInputIterator =
+   __LegacyIterator<I> && std::equality_comparable<I> && requires(I i)
+   {
+       typename std::incrementable_traits<I>::difference_type;
+       typename std::indirectly_readable_traits<I>::value_type;
+       typename std::common_reference_t<std::iter_reference_t<I>&&,
+                                        typename
+   std::indirectly_readable_traits<I>::value_type&>;
+       *i++;
+       typename std::common_reference_t<decltype(*i++)&&,
+                                        typename
+   std::indirectly_readable_traits<I>::value_type&>;
+       requires std::signed_integral<typename
+   std::incrementable_traits<I>::difference_type>;
+   };
+
+   where the exposition-only concept __LegacyIterator is described in
+   LegacyIterator.
+   (since C++20)
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 98 C++98 the return type of *i++ was value_type it can be any type
+   convertible to value_type
+
+See also
+
+   input_iterator
+   (C++20)
+   specifies that a type is an input iterator, that is, its referenced
+   values can be read and it can be both pre- and post-incremented
+   (concept)
+   Iterator library provides definitions for iterators, iterator traits,
+   adaptors, and utility functions
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/named_req/InputI
+   terator&oldid=171803"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 16 May 2024, at 13:08.
+     * This page has been accessed 373,449 times.

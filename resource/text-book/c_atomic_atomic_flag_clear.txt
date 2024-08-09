@@ -1,0 +1,139 @@
+atomic_flag_clear, atomic_flag_clear_explicit
+
+   From cppreference.com
+   < c | atomic
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Concurrency support library
+   Threads
+   thrd_create
+   thrd_equal
+   thrd_current
+
+   thrd_sleep
+   thrd_yield
+   thrd_exit
+   thrd_detach
+   thrd_join
+   thrd_successthrd_timedoutthrd_busythrd_nomemthrd_error
+
+   Atomic operations
+   atomic_init
+   ATOMIC_VAR_INIT
+   (until C23)
+   ATOMIC_***_LOCK_FREE
+   atomic_is_lock_free
+   atomic_store
+   atomic_load
+   atomic_exchange
+   atomic_compare_exchange
+   atomic_fetch_add
+   atomic_fetch_sub
+   atomic_fetch_or
+   atomic_fetch_xor
+   atomic_fetch_and
+   Atomic flags
+   atomic_flag
+   ATOMIC_FLAG_INIT
+   atomic_flag_test_and_set
+   atomic_flag_clear
+   Memory ordering
+   memory_order
+   kill_dependency
+   atomic_thread_fence
+   atomic_signal_fence
+   Mutual exclusion
+   mtx_init
+   mtx_lock
+   mtx_timedlock
+   mtx_trylock
+   call_once
+   mtx_unlock
+   mtx_destroy
+   mtx_plainmtx_recursivemtx_timed
+   Condition variables
+   cnd_init
+   cnd_signal
+   cnd_broadcast
+   cnd_wait
+   cnd_timedwait
+   cnd_destroy
+   Thread-local storage
+   thread_local
+   TSS_DTOR_ITERATIONS
+
+   tss_create
+   tss_get
+   tss_set
+   tss_delete
+
+   Defined in header <stdatomic.h>
+   void atomic_flag_clear( volatile atomic_flag* obj );
+   (1)                                                        (since C11)
+   void atomic_flag_clear_explicit( volatile atomic_flag* obj,
+   memory_order order );
+   (2)                                                        (since C11)
+
+   Atomically changes the state of a atomic_flag pointed to by obj to
+   clear (false). The first version orders memory accesses according to
+   memory_order_seq_cst, the second version orders memory accesses
+   according to order.
+
+   The argument is pointer to a volatile atomic flag to accept addresses
+   of both non-volatile and volatile (e.g. memory-mapped I/O) atomic
+   flags.
+
+Parameters
+
+   obj - pointer to the atomic flag object to modify
+   order - the memory synchronization ordering for this operation: all
+   values are permitted
+
+Return value
+
+   (none)
+
+References
+
+     * C17 standard (ISO/IEC 9899:2018):
+
+          + 7.17.8.2 The atomic_flag_clear functions (p: 209)
+
+     * C11 standard (ISO/IEC 9899:2011):
+
+          + 7.17.8.2 The atomic_flag_clear functions (p: 286)
+
+See also
+
+   atomic_flag_test_and_setatomic_flag_test_and_set_explicit
+   (C11)
+   sets an atomic_flag to true and returns the old value
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/atomic/atomic_flag
+   _clear&oldid=138685"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 12 March 2022, at 23:31.
+     * This page has been accessed 22,654 times.

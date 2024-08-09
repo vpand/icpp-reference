@@ -1,0 +1,197 @@
+std::countr_zero
+
+   From cppreference.com
+   < cpp | numeric
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Numerics library
+   Common mathematical functions
+   Mathematical special functions (C++17)
+   Mathematical constants (C++20)
+   Basic linear algebra algorithms (C++26)
+   Floating-point environment (C++11)
+   Complex numbers
+   Numeric arrays
+   Pseudo-random number generation
+   Factor operations
+   gcd
+   (C++17)
+   lcm
+   (C++17)
+   Interpolations
+   midpoint
+   (C++20)
+   lerp
+   (C++20)
+   Saturation arithmetic
+   add_sat
+   (C++26)
+   sub_sat
+   (C++26)
+   saturate_cast
+   (C++26)
+   mul_sat
+   (C++26)
+   div_sat
+   (C++26)
+   Generic numeric operations
+   iota
+   (C++11)
+   ranges::iota
+   (C++23)
+   accumulate
+   inner_product
+   adjacent_difference
+   partial_sum
+   reduce
+   (C++17)
+   transform_reduce
+   (C++17)
+   inclusive_scan
+   (C++17)
+   exclusive_scan
+   (C++17)
+   transform_inclusive_scan
+   (C++17)
+   transform_exclusive_scan
+   (C++17)
+   Bit operations
+   has_single_bit
+   (C++20)
+   bit_cast
+   (C++20)
+   bit_ceil
+   (C++20)
+   bit_floor
+   (C++20)
+   bit_width
+   (C++20)
+   rotl
+   (C++20)
+   rotr
+   (C++20)
+   popcount
+   (C++20)
+   countl_zero
+   (C++20)
+   countl_one
+   (C++20)
+   countr_zero
+   (C++20)
+   countr_one
+   (C++20)
+   byteswap
+   (C++23)
+   endian
+   (C++20)
+
+   Defined in header <bit>
+   template< class T >
+   constexpr int countr_zero( T x ) noexcept;
+                          (since C++20)
+
+   Returns the number of consecutive 0 bits in the value of x, starting
+   from the least significant bit ("right").
+
+   This overload participates in overload resolution only if T is an
+   unsigned integer type (that is, unsigned char, unsigned short, unsigned
+   int, unsigned long, unsigned long long, or an extended unsigned integer
+   type).
+
+Parameters
+
+   x - value of unsigned integer type
+
+Return value
+
+   The number of consecutive 0 bits in the value of x, starting from the
+   least significant bit.
+
+Notes
+
+   Feature-test macro  Value    Std      Feature
+   __cpp_lib_bitops   201907L (C++20) Bit operations
+
+Example
+
+   Run this code
+#include <bit>
+#include <bitset>
+#include <cstdint>
+#include <iostream>
+
+int main()
+{
+    for (const std::uint8_t i : {0, 0b11111111, 0b00011100, 0b00011101})
+        std::cout << "countr_zero( " << std::bitset<8>(i) << " ) = "
+                  << std::countr_zero(i) << '\n';
+}
+
+   Output:
+countr_zero( 00000000 ) = 8
+countr_zero( 11111111 ) = 0
+countr_zero( 00011100 ) = 2
+countr_zero( 00011101 ) = 0
+
+See also
+
+   countl_zero
+   (C++20)
+   counts the number of consecutive 0 bits, starting from the most
+   significant bit
+   (function template)
+   countl_one
+   (C++20)
+   counts the number of consecutive 1 bits, starting from the most
+   significant bit
+   (function template)
+   countr_one
+   (C++20)
+   counts the number of consecutive 1 bits, starting from the least
+   significant bit
+   (function template)
+   popcount
+   (C++20)
+   counts the number of 1 bits in an unsigned integer
+   (function template)
+   allanynone
+   checks if all, any or none of the bits are set to true
+   (public member function of std::bitset<N>)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/numeric/countr_z
+   ero&oldid=151491"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 8 May 2023, at 11:43.
+     * This page has been accessed 41,756 times.

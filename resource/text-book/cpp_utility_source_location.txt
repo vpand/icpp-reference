@@ -1,0 +1,286 @@
+std::source_location
+
+   From cppreference.com
+   < cpp | utility
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   std::source_location
+   Member functions
+   Creation
+   source_location::source_location
+   source_location::current
+   Field access
+   source_location::line
+   source_location::column
+   source_location::file_name
+   source_location::function_name
+
+   Defined in header <source_location>
+   struct source_location;
+                                      (since C++20)
+
+   The std::source_location class represents certain information about the
+   source code, such as file names, line numbers, and function names.
+   Previously, functions that desire to obtain this information about the
+   call site (for logging, testing, or debugging purposes) must use macros
+   so that predefined macros like __LINE__ and __FILE__ are expanded in
+   the context of the caller. The std::source_location class provides a
+   better alternative.
+
+   std::source_location meets the DefaultConstructible, CopyConstructible,
+   CopyAssignable and Destructible requirements. Lvalue of
+   std::source_location meets the Swappable requirement.
+
+   Additionally, the following conditions are true:
+     * std::is_nothrow_move_constructible_v<std::source_location>,
+     * std::is_nothrow_move_assignable_v<std::source_location>, and
+     * std::is_nothrow_swappable_v<std::source_location>.
+
+   It is intended that std::source_location has a small size and can be
+   copied efficiently.
+
+   It is unspecified whether the copy/move constructors and the copy/move
+   assignment operators of std::source_location are trivial and/or
+   constexpr.
+
+Member functions
+
+Creation
+
+   (constructor)
+   constructs a new source_location with implementation-defined values
+   (public member function)
+   current
+   [static]
+   constructs a new source_location corresponding to the location of the
+   call site
+   (public static member function)
+
+Field access
+
+   line
+   return the line number represented by this object
+   (public member function)
+   column
+   return the column number represented by this object
+   (public member function)
+   file_name
+   return the file name represented by this object
+   (public member function)
+   function_name
+   return the name of the function represented by this object, if any
+   (public member function)
+
+Notes
+
+   Feature-test macro Value Std Feature
+   __cpp_lib_source_location 201907L (C++20) Source-code information
+   capture (std::source_location)
+
+Example
+
+   Run this code
+#include <iostream>
+#include <source_location>
+#include <string_view>
+
+void log(const std::string_view message,
+         const std::source_location location =
+               std::source_location::current())
+{
+    std::clog << "file: "
+              << location.file_name() << '('
+              << location.line() << ':'
+              << location.column() << ") `"
+              << location.function_name() << "`: "
+              << message << '\n';
+}
+
+template<typename T>
+void fun(T x)
+{
+    log(x); // line 20
+}
+
+int main(int, char*[])
+{
+    log("Hello world!"); // line 25
+    fun("Hello C++20!");
+}
+
+   Possible output:
+file: main.cpp(25:8) `int main(int, char**)`: Hello world!
+file: main.cpp(20:8) `void fun(T) [with T = const char*]`: Hello C++20!
+
+See also
+
+   #line
+   changes the source code's line number and, optionally, the current file
+   name
+   (preprocessing directive)
+   stacktrace_entry
+   (C++23)
+   representation of an evaluation in a stacktrace
+   (class)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/utility/source_l
+   ocation&oldid=170556"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 1 April 2024, at 12:12.
+     * This page has been accessed 251,366 times.

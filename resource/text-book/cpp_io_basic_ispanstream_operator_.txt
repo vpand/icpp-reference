@@ -1,0 +1,160 @@
+std::basic_ispanstream<CharT,Traits>::operator=
+
+   From cppreference.com
+   < cpp | io | basic ispanstream
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Input/output library
+   I/O manipulators
+   Print functions (C++23)
+   C-style I/O
+   Buffers
+   basic_streambuf
+   basic_filebuf
+   basic_stringbuf
+   basic_spanbuf
+   (C++23)
+   strstreambuf
+   (C++98/26*)
+   basic_syncbuf
+   (C++20)
+   Streams
+   Abstractions
+   ios_base
+   basic_ios
+   basic_istream
+   basic_ostream
+   basic_iostream
+   File I/O
+   basic_ifstream
+   basic_ofstream
+   basic_fstream
+   String I/O
+   basic_istringstream
+   basic_ostringstream
+   basic_stringstream
+   Array I/O
+   basic_ispanstream
+   (C++23)
+   basic_ospanstream
+   (C++23)
+   basic_spanstream
+   (C++23)
+   istrstream
+   (C++98/26*)
+   ostrstream
+   (C++98/26*)
+   strstream
+   (C++98/26*)
+   Synchronized Output
+   basic_osyncstream
+   (C++20)
+   Types
+   streamoff
+   streamsize
+   fpos
+   Error category interface
+   iostream_category
+   (C++11)
+   io_errc
+   (C++11)
+
+   std::basic_ispanstream
+   Member functions
+   basic_ispanstream::basic_ispanstream
+   (C++23)
+   basic_ispanstream::operator=
+   (C++23)
+   basic_ispanstream::swap
+   (C++23)
+   basic_ispanstream::rdbuf
+   (C++23)
+   Underlying buffer operations
+   basic_ispanstream::span
+   (C++23)
+   Non-member functions
+   swap(std::basic_ipanstream)
+   (C++23)
+
+ basic_ispanstream& operator=( basic_ispanstream&& other );
+ (1)                                                               (since C++23)
+ basic_ispanstream& operator=( const basic_ispanstream& ) = delete;
+ (2)                                                               (since C++23)
+   1) Move assigns the other to *this, effectively move-assigning both the
+   std::basic_istream base class subobject and the wrapped
+   std::basic_spanbuf.
+   2) Copy assignment operator is deleted. basic_ispanstream is not copy
+   assignable.
+
+   Note that move assignment operator of the base class swaps all stream
+   state variables (except for rdbuf()) between *this and other.
+
+   It is implementation-defined whether the std::basic_spanbuf wrapped in
+   other still holds an underlying buffer after the move assignment.
+
+Parameters
+
+   other - another stream to move from
+
+Return value
+
+   *this
+
+Exceptions
+
+   May throw implementation-defined exceptions.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   operator=
+   (C++23)
+   assigns a basic_spanbuf object
+   (public member function of std::basic_spanbuf<CharT,Traits>)
+   operator=
+   (C++11)
+   move-assigns from another basic_istream
+   (protected member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ispanst
+   ream/operator%3D&oldid=130847"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 June 2021, at 07:55.
+     * This page has been accessed 3,908 times.

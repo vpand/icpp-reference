@@ -1,0 +1,137 @@
+C11
+
+   From cppreference.com
+   < c
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Versions
+   C89
+   C95
+   C99
+   C11
+   C17
+   C23
+   Current Status
+
+   ISO/IEC 9899:2011, a.k.a. C11, is a previous revision of the C
+   standard.
+
+Obsolete
+
+Removed
+
+     * gets()
+
+New language features
+
+     * Multithreaded environments
+          + Atomic objects (_Atomic)
+          + Thread local storage (_Thread_local)
+     * Enhanced alignment support
+          + Alignment query (_Alignof)
+          + Alignment strengthening (_Alignas)
+          + Over-aligned types
+     * Unicode support
+          + u/U character constants
+          + u8/u/U string literals
+     * Generic selection expressions (_Generic)
+     * Non-returning functions (_Noreturn)
+     * Anonymous struct and union members
+     * Fine-grained evaluation order
+     * Extending the lifetime of temporary objects
+     * _Static_assert
+     * Analyzability
+
+Feature test macros for optional features
+
+     * __STDC_ANALYZABLE__
+          + Indicates analyzability is supported.
+     * __STDC_LIB_EXT1__
+          + Indicates bounds checking functions are supported.
+     * __STDC_NO_ATOMICS__
+          + Indicates atomic objects and the atomic operation library are
+            not supported.
+     * __STDC_NO_COMPLEX__
+          + Indicates complex types and the complex math functions are not
+            supported.
+
+                These features were mandatory in C99.
+
+     * __STDC_NO_THREADS__
+          + Indicates thread local storage and the thread support library
+            are not supported.
+     * __STDC_NO_VLA__
+          + Indicates variable length arrays and variably modified types
+            are not supported.
+
+                These features were mandatory in C99.
+
+New library features
+
+New headers
+
+     * <stdalign.h>
+     * <stdatomic.h>
+     * <stdnoreturn.h>
+     * <threads.h>
+     * <uchar.h>
+
+Library features
+
+     * Concurrency support library
+     * aligned_alloc()
+     * UTF-16/32 type aliases
+          + char16_t
+          + char32_t
+     * UTF-16/32 conversion functions
+          + mbrtoc16()
+          + mbrtoc32()
+          + c16rtomb()
+          + c32rtomb()
+     * quick_exit
+     * at_quick_exit
+     * Exclusive modes of fopen() and freopen() ("x")
+     * Bounds checking functions
+     * timespec
+     * timespec_get()
+     * CMPLX(F|L)?
+     * New numeric limit macros
+          + (FLT|DBL|LDBL)_DECIMAL_DIG
+          + (FLT|DBL|LDBL)_TRUE_MIN
+          + (FLT|DBL|LDBL)_HAS_SUBNORM
+     * Thread local errno
+
+Defect reports
+
+   Template:c/language/history/DR11
+
+Compiler support
+
+   Template:c/compiler support/11
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/11&oldid=140861"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 7 July 2022, at 14:32.
+     * This page has been accessed 73,807 times.

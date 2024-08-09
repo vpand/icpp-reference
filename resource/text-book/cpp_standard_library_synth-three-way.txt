@@ -1,0 +1,151 @@
+synth-three-way, synth-three-way-result
+
+   From cppreference.com
+   < cpp | standard library
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Standard library
+   Exposition-only entities
+   decay-copy
+   (C++11)
+   synth-three-waysynth-three-way-result
+   (C++20)(C++20)
+
+   constexpr auto synth-three-way = /* see below */;
+   (1) (since C++20)
+   (exposition only*)
+   template< class T, class U = T >
+
+   using synth-three-way-result =
+       decltype(synth-three-way(std::declval<T&>(), std::declval<U&>()));
+   (2) (since C++20)
+   (exposition only*)
+   1) A function object whose operator() behaves as the synthesized
+   three-way comparison function. Equivalent to:
+constexpr auto synth-three-way =
+    []<class T, class U>(const T& t, const U& u)
+        requires requires
+        {
+            { t < u } -> boolean-testable;
+            { u < t } -> boolean-testable;
+        }
+    {
+        if constexpr (std::three_way_comparable_with<T, U>)
+            return t <=> u;
+        else
+        {
+            if (t < u)
+                return std::weak_ordering::less;
+            if (u < t)
+                return std::weak_ordering::greater;
+            return std::weak_ordering::equivalent;
+        }
+    };
+
+   2) The return type of the operator() of (1) (synth-three-way).
+
+Parameters
+
+   t, u - the values to be compared
+
+Return value
+
+   The compare result.
+
+See also
+
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   lexicographically compares the values in the pair
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   lexicographically compares the values in the tuple
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (C++11)(C++11)(removed in C++20)(C++11)(removed in
+   C++20)(C++11)(removed in C++20)(C++11)(removed in C++20)(C++11)(removed
+   in C++20)(C++20)
+   lexicographically compares the values of two arrays
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   lexicographically compares the values of two deques
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (C++11)(C++11)(removed in C++20)(C++11)(removed in
+   C++20)(C++11)(removed in C++20)(C++11)(removed in C++20)(C++11)(removed
+   in C++20)(C++20)
+   lexicographically compares the values of two forward_lists
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   lexicographically compares the values of two lists
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   lexicographically compares the values of two vectors
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   lexicographically compares the values of two maps
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   lexicographically compares the values of two multimaps
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   lexicographically compares the values of two sets
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   lexicographically compares the values of two multisets
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/standard_library
+   /synth-three-way&oldid=156904"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 17 August 2023, at 00:44.
+     * This page has been accessed 4,489 times.

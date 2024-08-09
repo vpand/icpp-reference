@@ -1,0 +1,164 @@
+std::experimental::ranges::Sentinel
+
+   From cppreference.com
+   < cpp | experimental | ranges
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Ranges
+   Concepts
+   General utilities
+   Iterators
+   Ranges
+   Algorithms
+
+   Iterators library
+   Iterator concepts
+   Readable
+   Writable
+   WeaklyIncrementable
+   Incrementable
+   Iterator
+   Sentinel
+   SizedSentinel
+   InputIterator
+   ForwardIterator
+   BidirectionalIterator
+   RandomAccessIterator
+   OutputIterator
+   Indirect callable concepts
+   IndirectUnaryInvocableIndirectRegularUnaryInvocable
+   IndirectUnaryPredicate
+
+   IndirectRelation
+
+   IndirectStrictWeakOrder
+
+   Common algorithm requirements
+   IndirectlyMovable
+   IndirectlyMovableStorable
+
+   IndirectlyCopyable
+   IndirectlyCopyableStorable
+   IndirectlySwappable
+   IndirectlyComparable
+   Permutable
+   Mergeable
+   Sortable
+   Concept utilities
+   indirect_result_of
+   projected
+   Iterator utilities and operations
+   iter_move
+   iter_swap
+   advance
+   distance
+   next
+   prev
+   Iterator traits
+   difference_type
+   value_type
+   reference_trvalue_reference_titer_common_reference_t
+   iterator_category
+   input_iterator_tagoutput_iterator_tagforward_iterator_tagbidirectional_
+   iterator_tagrandom_access_iterator_tag
+   ranges::iterator_traits
+   std::iterator_traits<InputIterator>std::iterator_traits<OutputIterator>
+   Iterator adaptors
+   reverse_iterator
+   move_iterator
+   move_sentinel
+   back_insert_iterator
+   front_insert_iterator
+   insert_iterator
+   common_iterator
+   counted_iterator
+   default_sentinel
+   danglingborrowed_iterator_t
+   unreachable
+   Stream iterators
+   istream_iterator
+   ostream_iterator
+   istreambuf_iterator
+   ostreambuf_iterator
+
+   Defined in header <experimental/ranges/iterator>
+   template< class S, class I >
+
+   concept bool Sentinel =
+       Semiregular<S> && Iterator<I> &&
+       WeaklyEqualityComparableWith<S, I>;
+                                                   (ranges TS)
+
+   The Sentinel concept specifies the relationship between an Iterator
+   type and a Semiregular type whose values denote a range.
+
+   Let s and i be values of type S and I, respectively, such that [i, s)
+   denotes a range. Sentinel<S, I> is satisfied only if:
+     * i == s is well-defined.
+     * If bool(i != s) then i is dereferenceable and [++i, s) denotes a
+       range.
+
+   The domain of == can change over time. Given an iterator i and sentinel
+   s such that [i, s) denotes a range and i != s, [i, s) is not required
+   to continue to denote a range after incrementing any iterator equal to
+   i (and so i == s is no longer required to be well-defined after such an
+   increment).
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/ran
+   ges/iterator/Sentinel&oldid=155550"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 July 2023, at 00:06.
+     * This page has been accessed 13,575 times.

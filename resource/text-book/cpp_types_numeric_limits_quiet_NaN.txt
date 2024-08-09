@@ -1,0 +1,323 @@
+std::numeric_limits<T>::quiet_NaN
+
+   From cppreference.com
+   < cpp | types | numeric limits
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Type support
+   Basic types
+   Fixed width integer types (C++11)
+   Fixed width floating-point types (C++23)
+   ptrdiff_t
+   size_t
+   max_align_t
+   (C++11)
+   byte
+   (C++17)
+   nullptr_t
+   (C++11)
+   offsetof
+   NULL
+   Numeric limits
+   numeric_limits
+   C numeric limits interface
+   Runtime type information
+   type_info
+   type_index
+   (C++11)
+   bad_typeid
+   bad_cast
+
+   std::numeric_limits
+   Static constants
+   numeric_limits::is_specialized
+   numeric_limits::is_signed
+   numeric_limits::is_integer
+   numeric_limits::is_exact
+   numeric_limits::has_infinity
+   numeric_limits::has_quiet_NaN
+   numeric_limits::has_signaling_NaN
+   numeric_limits::has_denorm
+   numeric_limits::has_denorm_loss
+   numeric_limits::round_style
+   numeric_limits::is_iec559
+   numeric_limits::is_bounded
+   numeric_limits::is_modulo
+   numeric_limits::digits
+   numeric_limits::digits10
+   numeric_limits::max_digits10
+   (C++11)
+   numeric_limits::radix
+   numeric_limits::min_exponent
+   numeric_limits::min_exponent10
+   numeric_limits::max_exponent
+   numeric_limits::max_exponent10
+   numeric_limits::traps
+   numeric_limits::tinyness_before
+   Static member functions
+   numeric_limits::min
+   numeric_limits::lowest
+   (C++11)
+   numeric_limits::max
+   numeric_limits::epsilon
+   numeric_limits::round_error
+   numeric_limits::infinity
+   numeric_limits::quiet_NaN
+   numeric_limits::signaling_NaN
+   numeric_limits::denorm_min
+   Helper types
+   float_round_style
+   float_denorm_style
+
+   static T quiet_NaN() throw();
+                                           (until C++11)
+   static constexpr T quiet_NaN() noexcept;
+                                           (since C++11)
+
+   Returns the special value "quiet not-a-number", as represented by the
+   floating-point type T. Only meaningful if
+   std::numeric_limits<T>::has_quiet_NaN == true. In IEEE 754, the most
+   common binary representation of floating-point numbers, any value with
+   all bits of the exponent set and at least one bit of the fraction set
+   represents a NaN. It is implementation-defined which values of the
+   fraction represent quiet or signaling NaNs, and whether the sign bit is
+   meaningful.
+
+Return value
+
+   T                                std::numeric_limits<T>::quiet_NaN()
+   /* non-specialized */            T()
+   bool                             false
+   char                             0
+   signed char                      0
+   unsigned char                    0
+   wchar_t                          0
+   char8_t (since C++20)            0
+   char16_t (since C++11)           0
+   char32_t (since C++11)           0
+   short                            0
+   unsigned short                   0
+   int                              0
+   unsigned int                     0
+   long                             0
+   unsigned long                    0
+   long long (since C++11)          0
+   unsigned long long (since C++11) 0
+   float                            implementation-defined (may be NAN)
+   double                           implementation-defined
+   long double                      implementation-defined
+
+Notes
+
+   A NaN never compares equal to itself. Copying a NaN may not preserve
+   its bit representation.
+
+Example
+
+   Several ways to generate a NaN (the output string is
+   compiler-specific):
+   Run this code
+#include <iostream>
+#include <limits>
+#include <cmath>
+
+int main()
+{
+    std::cout << std::numeric_limits<double>::quiet_NaN()     << ' ' // nan
+              << std::numeric_limits<double>::signaling_NaN() << ' ' // nan
+              << std::acos(2)    << ' '   // nan
+              << std::tgamma(-1) << ' '   // nan
+              << std::log(-1)    << ' '   // nan
+              << std::sqrt(-1)   << ' '   // -nan
+              << 0 / 0.0         << '\n'; // -nan
+
+    std::cout << "NaN == NaN? " << std::boolalpha
+              << ( std::numeric_limits<double>::quiet_NaN() ==
+                   std::numeric_limits<double>::quiet_NaN() ) << '\n';
+}
+
+   Possible output:
+nan nan nan nan nan -nan -nan
+NaN == NaN? false
+
+See also
+
+   has_quiet_NaN
+   [static]
+   identifies floating-point types that can represent the special value
+   "quiet not-a-number" (NaN)
+   (public static member constant)
+   signaling_NaN
+   [static]
+   returns a signaling NaN value of the given floating-point type
+   (public static member function)
+   nannanfnanl
+   (C++11)(C++11)(C++11)
+   not-a-number (NaN)
+   (function)
+   isnan
+   (C++11)
+   checks if the given number is NaN
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/types/numeric_li
+   mits/quiet_NaN&oldid=148440"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 22 February 2023, at 00:00.
+     * This page has been accessed 182,874 times.

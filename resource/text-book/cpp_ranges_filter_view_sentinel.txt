@@ -1,0 +1,255 @@
+std::ranges::filter_view<V,Pred>::sentinel
+
+   From cppreference.com
+   < cpp | ranges | filter view
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   std::ranges::filter_view
+   Member functions
+   filter_view::filter_view
+   filter_view::base
+   filter_view::pred
+   filter_view::begin
+   filter_view::end
+   Deduction guides
+   Iterator
+   filter_view::iterator::iterator
+   filter_view::iterator::base
+   filter_view::iterator::operator*filter_view::iterator::operator->
+   filter_view::iterator::operator++
+   filter_view::iterator::operator++(int)
+   filter_view::iterator::operator--
+   filter_view::iterator::operator--(int)
+   operator==(filter_view::iterator)
+   iter_move(filter_view::iterator)
+   iter_swap(filter_view::iterator)
+   Sentinel
+   filter_view::sentinel::sentinel
+   filter_view::sentinel::base
+   operator==(filter_view::iterator, filter_view::sentinel)
+
+   class /*sentinel*/;
+   (since C++20)
+   (exposition only*)
+
+   The return type of filter_view::end when the underlying view type (V)
+   does not model common_range.
+
+Data members
+
+   Member name Definition
+   end_ (private) The sentinel of the underlying view.
+   (exposition-only member object*)
+
+Member functions
+
+   (constructor)
+   (C++20)
+   constructs a sentinel
+   (public member function)
+   base
+   (C++20)
+   returns the underlying sentinel
+   (public member function)
+
+std::ranges::filter_view::sentinel::sentinel
+
+   /*sentinel*/() = default;
+   (1)                                                    (since C++20)
+   constexpr explicit /*sentinel*/( filter_view& parent );
+   (2)                                                    (since C++20)
+   1) Value-initializes end_ via its default member initializer (=
+   ranges::sentinel_t<V>()).
+   2) Initializes end_ with ranges::end(parent.base_).
+
+std::ranges::filter_view::sentinel::base
+
+   constexpr ranges::sentinel_t<V> base() const;
+                                                (since C++20)
+
+   Equivalent to return end_;.
+
+Non-member functions
+
+   operator==
+   (C++20)
+   compares the underlying iterator and the underlying sentinel
+   (function)
+
+operator==(std::ranges::filter_view::iterator,
+std::ranges::filter_view::sentinel)
+
+   friend constexpr bool operator==( const /*iterator*/& x,
+                                     const /*sentinel*/& y );
+                                                           (since C++20)
+
+   Equivalent to return x.current_ == y.end_;, where current_ is the
+   underlying iterator wrapped in filter_view::iterator.
+
+   The != operator is synthesized from operator==.
+
+   This function is not visible to ordinary unqualified or qualified
+   lookup, and can only be found by argument-dependent lookup when
+   std::ranges::filter_view::sentinel is an associated class of the
+   arguments.
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/filter_vi
+   ew/sentinel&oldid=157823"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 3 September 2023, at 15:12.
+     * This page has been accessed 4,727 times.

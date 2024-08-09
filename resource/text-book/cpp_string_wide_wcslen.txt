@@ -1,0 +1,167 @@
+std::wcslen
+
+   From cppreference.com
+   < cpp | string | wide
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated wide strings
+   Functions
+   Character manipulation
+   iswalnum
+   iswalpha
+   iswlower
+   iswupper
+   iswdigit
+   iswxdigit
+   iswblank
+   (C++11)
+   wctype
+   iswctype
+   iswcntrl
+   iswgraph
+   iswspace
+   iswprint
+   iswpunct
+   towlower
+   towupper
+   wctrans
+   towctrans
+   Conversions to numeric formats
+   wcstolwcstoll
+   (C++11)
+   wcstoulwcstoull
+   (C++11)
+   wcstofwcstodwcstold
+   (C++11)(C++11)
+   wcstoimaxwcstouimax
+   (C++11)(C++11)
+   String manipulation
+   wcslen
+   wcscpy
+   wcsncpy
+   wcscat
+   wcsncat
+   wcscmp
+   wcscoll
+   wcsncmp
+   wcsxfrm
+   wcschr
+   wcsrchr
+   wcspbrk
+   wcsspn
+   wcscspn
+   wcsstr
+   wcstok
+   Array manipulation
+   wmemcpy
+   wmemmove
+   wmemcmp
+   wmemchr
+   wmemset
+
+   Defined in header <cwchar>
+   std::size_t wcslen( const wchar_t* str );
+
+   Returns the length of a wide string, that is the number of non-null
+   wide characters that precede the terminating null wide character.
+
+   The behavior is undefined if there is no null character in the wide
+   character array pointed to by str.
+
+Parameters
+
+   str - pointer to the null-terminated wide string to be examined
+
+Return value
+
+   The length of the null-terminated wide string str.
+
+Possible implementation
+
+std::size_t wcslen(const wchar_t* start)
+{
+    // NB: start is not checked for nullptr!
+    const wchar_t* end = start;
+    while (*end != L'\0')
+        ++end;
+    return end - start;
+}
+
+Example
+
+   Run this code
+#include <clocale>
+#include <cwchar>
+#include <iostream>
+
+int main()
+{
+    const wchar_t* str = L"zeroRiA6Ru!¾keroSiNaPuSu!PaNiTUSiYUMeN6ToDei6Su,_Wa-6
+RuDo!";
+
+    std::setlocale(LC_ALL, "en_US.utf8");
+    std::wcout.imbue(std::locale("en_US.utf8"));
+    std::wcout << "The length of \"" << str << "\" is " << std::wcslen(str) << '
+\n';
+}
+
+   Output:
+The length of "zeroRiA6Ru!¾keroSiNaPuSu!PaNiTUSiYUMeN6ToDei6Su,_Wa-6RuDo!" is 32
+
+See also
+
+   strlen
+   returns the length of a given string
+   (function)
+   mblen
+   returns the number of bytes in the next multibyte character
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/wide/wcsl
+   en&oldid=161178"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 22 October 2023, at 15:32.
+     * This page has been accessed 44,681 times.

@@ -1,0 +1,221 @@
+std::get(std::array)
+
+   From cppreference.com
+   < cpp | container | array
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::array
+   Member types
+   Member functions
+   Element access
+   array::at
+   array::operator[]
+   array::front
+   array::back
+   array::data
+   Iterators
+   array::beginarray::cbegin
+   array::endarray::cend
+   array::rbeginarray::crbegin
+   array::rendarray::crend
+   Capacity
+   array::empty
+   array::size
+   array::max_size
+   Operations
+   array::fill
+   array::swap
+   Non-member functions
+   get(std::array)
+   (C++11)
+   swap(std::array)
+   (C++11)
+   to_array
+   (C++20)
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (C++11)(C++11)(until C++20)(C++11)(until C++20)(C++11)(until
+   C++20)(C++11)(until C++20)(C++11)(until C++20)(C++20)
+   Helper classes
+   tuple_size<std::array>
+   (C++11)
+   tuple_element<std::array>
+   (C++11)
+   Deduction guides (C++17)
+
+   Defined in header <array>
+   template< std::size_t I, class T, std::size_t N >
+   T& get( std::array<T,N>& a ) noexcept;
+   (1) (since C++11)
+   (constexpr since C++14)
+   template< std::size_t I, class T, std::size_t N >
+   T&& get( std::array<T,N>&& a ) noexcept;
+   (2) (since C++11)
+   (constexpr since C++14)
+   template< std::size_t I, class T, std::size_t N >
+   const T& get( const std::array<T,N>& a ) noexcept;
+   (3) (since C++11)
+   (constexpr since C++14)
+   template< std::size_t I, class T, std::size_t N >
+   const T&& get( const std::array<T,N>&& a ) noexcept;
+   (4) (since C++11)
+   (constexpr since C++14)
+
+   Extracts the I^th element from the array using tuple-like interface.
+
+   I must be an integer value in range [0, N). This is enforced at compile
+   time as opposed to at() or operator[].
+
+Parameters
+
+   a - array whose contents to extract
+
+Return value
+
+   A reference to the I^th element of a.
+
+Complexity
+
+   Constant.
+
+Example
+
+   Run this code
+#include <array>
+#include <iostream>
+
+constexpr std::array v{1, 2, 3};
+static_assert(get<0>(v) == 1 && get<1>(v) == 2 && get<2>(v) == 3);
+
+int main()
+{
+    std::array<int, 3> a;
+
+    // set values:
+    get<0>(a) = 1, get<1>(a) = 2, get<2>(a) = 3;
+
+    // get values:
+    std::cout << '(' << get<0>(a) << ',' << get<1>(a) << ',' << get<2>(a) << ")\
+n";
+}
+
+   Output:
+(1,2,3)
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 2485 C++11 there are no overloads for const array&& the overloads
+   are added
+
+See also
+
+   Structured binding (C++17) binds the specified names to sub-objects or
+   tuple elements of the initializer
+   operator[]
+   access specified element
+   (public member function)
+   at
+   access specified element with bounds checking
+   (public member function)
+   get(std::tuple)
+   (C++11)
+   tuple accesses specified element
+   (function template)
+   get(std::pair)
+   (C++11)
+   accesses an element of a pair
+   (function template)
+   get(std::variant)
+   (C++17)
+   reads the value of the variant given the index or the type (if the type
+   is unique), throws on error
+   (function template)
+   get(std::ranges::subrange)
+   (C++20)
+   obtains iterator or sentinel from a std::ranges::subrange
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/array/
+   get&oldid=171513"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 5 May 2024, at 14:02.
+     * This page has been accessed 115,032 times.

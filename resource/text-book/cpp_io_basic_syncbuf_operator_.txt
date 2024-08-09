@@ -1,0 +1,171 @@
+std::basic_syncbuf<CharT,Traits,Allocator>::operator=
+
+   From cppreference.com
+   < cpp | io | basic syncbuf
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Input/output library
+   I/O manipulators
+   Print functions (C++23)
+   C-style I/O
+   Buffers
+   basic_streambuf
+   basic_filebuf
+   basic_stringbuf
+   basic_spanbuf
+   (C++23)
+   strstreambuf
+   (C++98/26*)
+   basic_syncbuf
+   (C++20)
+   Streams
+   Abstractions
+   ios_base
+   basic_ios
+   basic_istream
+   basic_ostream
+   basic_iostream
+   File I/O
+   basic_ifstream
+   basic_ofstream
+   basic_fstream
+   String I/O
+   basic_istringstream
+   basic_ostringstream
+   basic_stringstream
+   Array I/O
+   basic_ispanstream
+   (C++23)
+   basic_ospanstream
+   (C++23)
+   basic_spanstream
+   (C++23)
+   istrstream
+   (C++98/26*)
+   ostrstream
+   (C++98/26*)
+   strstream
+   (C++98/26*)
+   Synchronized Output
+   basic_osyncstream
+   (C++20)
+   Types
+   streamoff
+   streamsize
+   fpos
+   Error category interface
+   iostream_category
+   (C++11)
+   io_errc
+   (C++11)
+
+   std::basic_syncbuf
+   Public member functions
+   basic_syncbuf::basic_syncbuf
+   (C++20)
+   basic_syncbuf::operator=
+   (C++20)
+   basic_syncbuf::~basic_syncbuf
+   (C++20)
+   basic_syncbuf::swap
+   (C++20)
+   basic_syncbuf::emit
+   (C++20)
+   basic_syncbuf::get_wrapped
+   (C++20)
+   basic_syncbuf::get_allocator
+   (C++20)
+   basic_syncbuf::set_emit_on_sync
+   (C++20)
+   Protected member functions
+   basic_syncbuf::sync
+   (C++20)
+   Non-member functions
+   swap(std::basic_syncbuf)
+   (C++20)
+
+   basic_syncbuf& operator=( basic_syncbuf&& other );
+
+   First, calls emit() to transmit all pending output (and delayed flush,
+   if any) to the wrapped stream.
+
+   Then performs move-assignment by moving all contents from other,
+   including the temporary storage, the wrapped stream pointer, policy,
+   and all other state (such as the mutex pointer). After move, other is
+   not associated with a stream, and other.get_wrapped() == nullptr. The
+   put area member pointers of the base class std::basic_streambuf of
+   other are guaranteed to be null. Destroying a moved-from other will not
+   produce any output.
+
+   If
+   std::allocator_traits<Allocator>::propagate_on_container_move_assignmen
+   t::value is false, then the allocator is unchanged. Otherwise, after
+   move-assignment, get_allocator() equals other.get_allocator().
+
+Parameters
+
+   other - another std::basic_syncbuf to move from
+
+Return value
+
+   *this
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   operator=
+   assigns a basic_osyncstream object
+   (public member function of
+   std::basic_osyncstream<CharT,Traits,Allocator>)
+   (constructor)
+   constructs a basic_syncbuf object
+   (public member function)
+   emit
+   atomically transmits the entire internal buffer to the wrapped
+   streambuf
+   (public member function)
+   swap
+   swaps two basic_syncbuf objects
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_syncbuf
+   /operator%3D&oldid=144216"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 10 October 2022, at 11:41.
+     * This page has been accessed 8,326 times.

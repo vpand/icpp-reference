@@ -1,0 +1,260 @@
+C++ named requirements: ReversibleContainer
+
+   From cppreference.com
+   < cpp | named req
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ named requirements
+   Basic
+   DefaultConstructible
+   CopyAssignable
+   CopyConstructible
+   MoveAssignable
+   (C++11)
+   MoveConstructible
+   (C++11)
+   Destructible
+   Type properties
+   ScalarType
+   TriviallyCopyable
+   (C++11)
+   StandardLayoutType
+   (C++11)
+   PODType
+   TrivialType
+   (C++11)
+   ImplicitLifetimeType
+   Library-Wide
+   EqualityComparable
+   LessThanComparable
+   Swappable
+   ValueSwappable
+   (C++11)
+   NullablePointer
+   (C++11)
+   Hash
+   (C++11)
+   Allocator
+   FunctionObject
+   Callable
+   Predicate
+   BinaryPredicate
+   Compare
+   Container
+   Container
+   SequenceContainer
+   ContiguousContainer
+   (C++17)
+   ReversibleContainer
+   AssociativeContainer
+   AllocatorAwareContainer
+   UnorderedAssociativeContainer
+   (C++11)
+   Container Elements
+   DefaultInsertable
+   (C++11)
+   CopyInsertable
+   (C++11)
+   MoveInsertable
+   (C++11)
+   EmplaceConstructible
+   (C++11)
+   Erasable
+   (C++11)
+   Iterator
+   LegacyIterator
+   LegacyOutputIterator
+   LegacyInputIterator
+   LegacyForwardIterator
+   LegacyBidirectionalIterator
+   LegacyRandomAccessIterator
+   LegacyContiguousIterator
+   (C++17)
+   ConstexprIterator
+   (C++20)
+   Stream I/O
+   FormattedInputFunction
+   UnformattedInputFunction
+   FormattedOutputFunction
+   UnformattedOutputFunction
+   Formatters
+   BasicFormatter
+   (C++20)
+   Formatter
+   (C++20)
+   Random Numbers
+   SeedSequence
+   (C++11)
+   RandomNumberEngine
+   (C++11)
+   RandomNumberDistribution
+   (C++11)
+   UniformRandomBitGenerator
+   (C++11)
+   RandomNumberEngineAdaptor
+   (C++11)
+   Concurrency
+   BasicLockable
+   (C++11)
+   Lockable
+   (C++11)
+   TimedLockable
+   (C++11)
+   SharedLockable
+   (C++14)
+   SharedTimedLockable
+   (C++14)
+   Mutex
+   (C++11)
+   TimedMutex
+   (C++11)
+   SharedMutex
+   (C++17)
+   SharedTimedMutex
+   (C++14)
+   Ranges
+   RangeAdaptorObject
+   (C++20)
+   RangeAdaptorClosureObject
+   (C++20)
+   Other
+   CharTraits
+   RegexTraits
+   (C++11)
+   BitmaskType
+   LiteralType
+   (C++11)
+   NumericType
+   UnaryTypeTrait
+   (C++11)
+   BinaryTypeTrait
+   (C++11)
+   TransformationTrait
+   (C++11)
+   Clock
+   (C++11)
+   TrivialClock
+   (C++11)
+
+   A ReversibleContainer is a Container that has iterators that meet the
+   requirements of either LegacyBidirectionalIterator or
+   LegacyRandomAccessIterator. Such iterators allow a ReversibleContainer
+   to be iterated over in reverse.
+
+Requirements
+
+   A type satisfies ReversibleContainer if it satisfies Container, its
+   iterator type belongs to the bidirectional or random access iterator
+   categories and, given the following types and values, the semantic and
+   complexity requirements in the tables below are satisfied:
+   Type  Definition
+   X     an ReversibleContainer type
+   T     the value_type of X
+   Value Definition
+   a     a value of type X
+
+Types
+
+   Name Type Requirements
+   typename X::reverse_iterator std::reverse_iterator<X::iterator> an
+   iterator type whose value type is T
+   typename X::const_reverse_iterator
+   std::reverse_iterator<X::const_iterator>  a constant iterator type
+   whose value type is T
+
+Expressions
+
+   The types reverse_iterator and const_reverse_iterator in the following
+   table denote typename X::reverse_iterator and typename
+   X::const_reverse_iterator respectively.
+   Expression Type Semantics  Complexity
+   a.rbegin() reverse_iterator
+   const_reverse_iterator for constant a reverse_iterator(a.end())
+   Constant
+   a.rend() reverse_iterator
+   const_reverse_iterator for constant a reverse_iterator(a.begin())
+   Constant
+   a.crbegin() const_reverse_iterator const_cast<const X&>(a).rbegin()
+   Constant
+   a.crend() const_reverse_iterator const_cast<const X&>(a).rend()
+   Constant
+
+Standard library
+
+     * std::array
+     * std::deque
+     * std::list
+     * std::vector
+     * std::map
+     * std::multimap
+     * std::set
+     * std::multiset
+
+Example
+
+   The following example iterates over a vector (which has random-access
+   iterators) in reverse.
+   Run this code
+#include <iostream>
+#include <vector>
+
+int main()
+{
+    std::vector<int> v = {3, 1, 4, 1, 5, 9};
+
+    for (std::vector<int>::const_reverse_iterator i{v.crbegin()}; i != v.crend()
+; ++i)
+        std::cout << *i << ' ';
+    std::cout << '\n';
+}
+
+   Output:
+9 5 1 4 1 3
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 2105 C++98 typename X::const_reverse_iterator was
+   required to be an iterator type of value type const T required to be a
+   constant
+   iterator type of value type T
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/named_req/Revers
+   ibleContainer&oldid=170017"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 1 March 2024, at 02:54.
+     * This page has been accessed 72,613 times.

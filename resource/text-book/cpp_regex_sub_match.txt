@@ -1,0 +1,193 @@
+std::sub_match
+
+   From cppreference.com
+   < cpp | regex
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Regular expressions library
+   Classes
+   basic_regex
+   (C++11)
+   sub_match
+   (C++11)
+   match_results
+   (C++11)
+   Algorithms
+   regex_match
+   (C++11)
+   regex_search
+   (C++11)
+   regex_replace
+   (C++11)
+   Iterators
+   regex_iterator
+   (C++11)
+   regex_token_iterator
+   (C++11)
+   Exceptions
+   regex_error
+   (C++11)
+   Traits
+   regex_traits
+   (C++11)
+   Constants
+   syntax_option_type
+   (C++11)
+   match_flag_type
+   (C++11)
+   error_type
+   (C++11)
+   Regex Grammar
+   Modified ECMAScript-262
+   (C++11)
+
+   std::sub_match
+   Member functions
+   sub_match::sub_match
+   sub_match::length
+   sub_match::strsub_match::operator string_type
+   sub_match::compare
+   Non-member functions
+   operator==operator!=operator<<operator<=operator>operator>=operator<=>
+   (until C++20)(until C++20)(until C++20)(until C++20)(until
+   C++20)(C++20)
+   operator<<
+
+   Defined in header <regex>
+   template< class BidirIt >
+   class sub_match;
+                            (since C++11)
+
+   The class template std::sub_match is used by the regular expression
+   engine to denote sequences of characters matched by marked
+   sub-expressions. A match is a [begin, end) pair within the target range
+   matched by the regular expression, but with additional observer
+   functions to enhance code clarity.
+
+   Only the default constructor is publicly accessible. Instances of
+   std::sub_match are normally constructed and populated as a part of a
+   std::match_results container during the processing of one of the regex
+   algorithms.
+
+   The member functions return defined default values unless the matched
+   member is true.
+
+   std::sub_match inherits from std::pair<BidirIt, BidirIt>, although it
+   cannot be treated as a std::pair object because member functions such
+   as assignment will not work as expected.
+
+Type requirements
+
+   -
+   BidirIt must meet the requirements of LegacyBidirectionalIterator.
+
+Specializations
+
+   Several specializations for common character sequence types are
+   provided:
+   Defined in header <regex>
+   Type             Definition
+   std::csub_match  std::sub_match<const char*>
+   std::wcsub_match std::sub_match<const wchar_t*>
+   std::ssub_match  std::sub_match<std::string::const_iterator>
+   std::wssub_match std::sub_match<std::wstring::const_iterator>
+
+Member types
+
+   Member type     Definition
+   iterator        BidirIt
+   value_type      std::iterator_traits<BidirIt>::value_type
+   difference_type std::iterator_traits<BidirIt>::difference_type
+   string_type     std::basic_string<value_type>
+
+Member objects
+
+   bool matched
+   Indicates if this match was successful
+   (public member object)
+
+Inherited from std::pair
+
+   BidirIt first
+   Start of the match sequence.
+   (public member object)
+   BidirIt second
+   One-past-the-end of the match sequence.
+   (public member object)
+
+Member functions
+
+   This section is incomplete
+   Reason: Apply LWG 3204, add the swap() member function
+   (constructor)
+   constructs the match object
+   (public member function)
+
+Observers
+
+   length
+   returns the length of the match (if any)
+   (public member function)
+   stroperator string_type
+   converts to the underlying string type
+   (public member function)
+   compare
+   compares matched subsequence (if any)
+   (public member function)
+
+Non-member functions
+
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (removed in C++20)(removed in C++20)(removed in C++20)(removed in
+   C++20)(removed in C++20)(C++20)
+   compares a sub_match with another sub_match, a string, or a character
+   (function template)
+   operator<<
+   outputs the matched character subsequence
+   (function template)
+
+See also
+
+   regex_token_iterator
+   (C++11)
+   iterates through the specified sub-expressions within all regex matches
+   in a given string or through unmatched substrings
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/regex/sub_match&
+   oldid=161058"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 21 October 2023, at 10:32.
+     * This page has been accessed 123,315 times.

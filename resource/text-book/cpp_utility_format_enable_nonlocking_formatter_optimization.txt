@@ -1,0 +1,311 @@
+std::enable_nonlocking_formatter_optimization
+
+   From cppreference.com
+   < cpp | utility | format
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Formatting library
+   Standard format specification
+   Formatting functions
+   format
+   (C++20)
+   format_to
+   (C++20)
+   format_to_n
+   (C++20)
+   formatted_size
+   (C++20)
+   vformat
+   (C++20)
+   vformat_to
+   (C++20)
+   Format strings
+   basic_format_stringformat_stringwformat_string
+   (C++20)(C++20)(C++20)
+   runtime_format
+   (C++26)
+   Formatting concepts
+   formattable
+   (C++23)
+   Formatter
+   formatter
+   (C++20)
+   formatter<pair-or-tuple>
+   (C++23)
+   formatter<range>
+   (C++23)
+   range_formatter
+   (C++23)
+   enable_nonlocking_formatter_optimization
+   (C++23)
+   basic_format_parse_contextformat_parse_contextwformat_parse_context
+   (C++20)(C++20)(C++20)
+   basic_format_contextformat_contextwformat_context
+   (C++20)(C++20)(C++20)
+   range_format
+   (C++23)
+   format_kind
+   (C++23)
+   Formatting arguments
+   basic_format_arg
+   (C++20)
+   basic_format_arg::handle
+   (C++20)
+   basic_format_argsformat_argswformat_args
+   (C++20)(C++20)(C++20)
+   visit_format_arg
+   (C++20) (deprecated in C++26)
+   make_format_argsmake_wformat_args
+   (C++20)(C++20)
+   Format error
+   format_error
+   (C++20)
+
+   Defined in header <format>
+   template< class T >
+   constexpr bool enable_nonlocking_formatter_optimization = false;
+                             (since C++23)
+
+   This template can be used by implementations to enable efficient
+   implementations of std::print and std::println.
+
+   If std::enable_nonlocking_formatter_optimization<T> is true, printing
+   an argument of type T can be performed in a more efficient way (see
+   std::print for details). std::enable_nonlocking_formatter_optimization
+   specializations can be true in the following cases:
+     * T is one of the types where std::format<T, CharT> is a basic
+       standard specialization (see below).
+     * A program may specialize this template for any cv-unqualified
+       program-defined type T. Such specializations must be usable in
+       constant expressions and have type const bool.
+
+Basic standard specializations
+
+   In the following list, CharT is either char or wchar_t, ArithmeticT is
+   any cv-unqualified arithmetic type other than char, wchar_t, char8_t,
+   char16_t, or char32_t:
+   Nonlocking flag for character formatters
+   template<>
+   inline constexpr bool enable_nonlocking_formatter_optimization<CharT> =
+   true;
+   (1)
+   Nonlocking flag for string formatters
+   template<>
+   inline constexpr bool enable_nonlocking_formatter_optimization<CharT*>
+   = true;
+   (2)
+   template<>
+   inline constexpr bool enable_nonlocking_formatter_optimization<const
+   CharT*> = true;
+   (3)
+   template< std::size_t N >
+   inline constexpr bool
+   enable_nonlocking_formatter_optimization<CharT[N]> = true;
+   (4)
+   template< class Traits, class Alloc >
+
+   inline constexpr bool enable_nonlocking_formatter_optimization
+       <std::basic_string<CharT, Traits, Alloc>> = true;
+   (5)
+   template< class Traits >
+
+   inline constexpr bool enable_nonlocking_formatter_optimization
+       <std::basic_string_view<CharT, Traits>> = true;
+   (6)
+   Nonlocking flag for arithmetic formatters
+   template<>
+   inline constexpr bool
+   enable_nonlocking_formatter_optimization<ArithmeticT> = true;
+   (7)
+   Nonlocking flag for pointer formatters
+   template<>
+   inline constexpr bool
+   enable_nonlocking_formatter_optimization<std::nullptr_t> = true;
+   (8)
+   template<>
+   inline constexpr bool enable_nonlocking_formatter_optimization<void*> =
+   true;
+   (9)
+   template<>
+   inline constexpr bool enable_nonlocking_formatter_optimization<const
+   void*> = true;
+   (10)
+
+See also
+
+   formatter
+   (C++20)
+   defines formatting rules for a given type
+   (class template)
+   print
+   (C++23)
+   prints to stdout or a file stream using formatted representation of the
+   arguments
+   (function template)
+   println
+   (C++23)
+   same as std::print except that each print is terminated by additional
+   new line
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/utility/format/e
+   nable_nonlocking_formatter_optimization&oldid=171306"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 25 April 2024, at 23:33.
+     * This page has been accessed 191 times.

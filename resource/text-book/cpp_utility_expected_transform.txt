@@ -1,0 +1,310 @@
+std::expected<T,E>::transform
+
+   From cppreference.com
+   < cpp | utility | expected
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   std::expected
+   Member functions
+   expected::expected
+   expected::~expected
+   expected::operator=
+   Observers
+   expected::operator->expected::operator*
+   expected::operator boolexpected::has_value
+   expected::value
+   expected::error
+   expected::value_or
+   Monadic operations
+   expected::and_then
+   expected::or_else
+   expected::transform
+   expected::transform_error
+   Modifiers
+   expected::emplace
+   expected::swap
+   Non-member functions
+   operator==
+   swap(std::expected)
+   Helper classes
+   unexpected
+   bad_expected_access
+   unexpect_tunexpect
+
+   template< class F >
+   constexpr auto transform( F&& f ) &;
+   (1)                (since C++23)
+   template< class F >
+   constexpr auto transform( F&& f ) const&;
+   (2)                (since C++23)
+   template< class F >
+   constexpr auto transform( F&& f ) &&;
+   (3)                (since C++23)
+   template< class F >
+   constexpr auto transform( F&& f ) const&&;
+   (4)                (since C++23)
+
+   If *this contains an expected value, invokes f and returns a
+   std::expected object that contains its result; otherwise, returns a
+   std::expected object that contains a copy of error().
+
+   If T is not (possibly cv-qualified) void, the contained value (obtained
+   from operator*) is passed as an argument to f; otherwise f takes no
+   argument.
+   1,2) Given type U as
+     * std::remove_cv_t<std::invoke_result_t<F>> if T is (possibly
+       cv-qualified) void, or
+     * std::remove_cv_t<std::invoke_result_t<F, decltype(**this)>>
+       otherwise,
+
+   and expression /* invoke-expr */ as
+     * std::invoke(std::forward<F>(f)) if T is (possibly cv-qualified)
+       void, or
+     * std::invoke(std::forward<F>(f), **this) otherwise.
+
+   If U is not a valid value type for std::expected, or U u(/* invoke-expr
+   */); is ill-formed when std::is_void_v<U> is false, the program is
+   ill-formed.
+   The effect is equivalent to
+if (has_value())
+{
+    if constexpr (std::is_void_v<U>)
+    {
+        /* invoke-expr */;
+        return std::expected<U, E>();
+    }
+    else
+        // the returned std::expected object contains an expected value,
+        // which is direct-non-list-initialized with /* invoke-expr */
+        return /* an std::expected<U, E> object */;
+}
+else
+    return std::expected<U, E>(std::unexpect, error());
+
+   These overloads participate in overload resolution only if
+   std::is_constructible_v<E, decltype(error())> is true.
+   3,4) Given type U as
+     * std::remove_cv_t<std::invoke_result_t<F>> if T is (possibly
+       cv-qualified) void, or
+     * std::remove_cv_t<std::invoke_result_t<F,
+       decltype(std::move(**this))>> otherwise,
+
+   and expression /* invoke-expr */ as
+     * std::invoke(std::forward<F>(f)) if T is (possibly cv-qualified)
+       void, or
+     * std::invoke(std::forward<F>(f), std::move(**this)) otherwise.
+
+   If U is not a valid value type for std::expected, or U u(/* invoke-expr
+   */); is ill-formed when std::is_void_v<U> is false, the program is
+   ill-formed.
+   The effect is equivalent to
+if (has_value())
+{
+    if constexpr (std::is_void_v<U>)
+    {
+        /* invoke-expr */;
+        return std::expected<U, E>();
+    }
+    else
+        // the returned std::expected object contains an expected value,
+        // which is direct-non-list-initialized with /* invoke-expr */
+        return /* an std::expected<U, E> object */;
+}
+else
+    return std::expected<U, E>(std::unexpect, std::move(error()));
+
+   These overloads participate in overload resolution only if
+   std::is_constructible_v<E, decltype(std::move(error()))> is true.
+
+Parameters
+
+   f - a suitable function or Callable object whose call signature returns
+   a non-reference type
+
+Return value
+
+   A std::expected object containing either the result of f or an error
+   value, as described above.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 3938 C++23 transform was ill-formed if T is not (possibly
+   cv-qualified) void and E is not copyable made well-formed
+
+See also
+
+   transform_error
+   returns the expected itself if it contains an expected value;
+   otherwise, returns an expected containing the transformed unexpected
+   value
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/utility/expected
+   /transform&oldid=162412"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 10 November 2023, at 02:42.
+     * This page has been accessed 5,944 times.

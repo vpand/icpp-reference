@@ -1,0 +1,274 @@
+Atomic operations library
+
+   From cppreference.com
+   < cpp
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Atomic operations library
+   Types
+   atomic
+   (C++11)
+   atomic_ref
+   (C++20)
+   Functions
+   atomic_storeatomic_store_explicit
+   (C++11)(C++11)
+   atomic_loadatomic_load_explicit
+   (C++11)(C++11)
+   atomic_exchangeatomic_exchange_explicit
+   (C++11)(C++11)
+   atomic_compare_exchange_weakatomic_compare_exchange_weak_explicitatomic
+   _compare_exchange_strongatomic_compare_exchange_strong_explicit
+   (C++11)(C++11)(C++11)(C++11)
+   atomic_fetch_addatomic_fetch_add_explicit
+   (C++11)(C++11)
+   atomic_fetch_subatomic_fetch_sub_explicit
+   (C++11)(C++11)
+   atomic_fetch_andatomic_fetch_and_explicit
+   (C++11)(C++11)
+   atomic_fetch_oratomic_fetch_or_explicit
+   (C++11)(C++11)
+   atomic_fetch_xoratomic_fetch_xor_explicit
+   (C++11)(C++11)
+   atomic_is_lock_free
+   (C++11)
+   atomic_waitatomic_wait_explicit
+   (C++20)(C++20)
+   atomic_notify_one
+   (C++20)
+   atomic_notify_all
+   (C++20)
+   Atomic flags
+   atomic_flag
+   (C++11)
+   atomic_flag_test_and_setatomic_flag_test_and_set_explicit
+   (C++11)(C++11)
+   atomic_flag_clearatomic_flag_clear_explicit
+   (C++11)(C++11)
+   atomic_flag_testatomic_flag_test_explicit
+   (C++20)(C++20)
+   atomic_flag_waitatomic_flag_wait_explicit
+   (C++20)(C++20)
+   atomic_flag_notify_one
+   (C++20)
+   atomic_flag_notify_all
+   (C++20)
+   Initialization
+   atomic_init
+   (C++11)(deprecated in C++20)
+   ATOMIC_VAR_INIT
+   (C++11)(deprecated in C++20)
+   ATOMIC_FLAG_INIT
+   (C++11)(deprecated in C++20)
+   Memory ordering
+   memory_order
+   (C++11)
+   kill_dependency
+   (C++11)
+   atomic_thread_fence
+   (C++11)
+   atomic_signal_fence
+   (C++11)
+
+   The atomic library provides components for fine-grained atomic
+   operations allowing for lockless concurrent programming. Each atomic
+   operation is indivisible with regards to any other atomic operation
+   that involves the same object. Atomic objects are free of data races.
+   Defined in header <atomic>
+
+Atomic types
+
+   atomic
+   (C++11)
+   atomic class template and specializations for bool, integral,
+   floating-point,(since C++20) and pointer types
+   (class template)
+   atomic_ref
+   (C++20)
+   provides atomic operations on non-atomic objects
+   (class template)
+
+Operations on atomic types
+
+   atomic_is_lock_free
+   (C++11)
+   checks if the atomic type's operations are lock-free
+   (function template)
+   atomic_storeatomic_store_explicit
+   (C++11)(C++11)
+   atomically replaces the value of the atomic object with a non-atomic
+   argument
+   (function template)
+   atomic_loadatomic_load_explicit
+   (C++11)(C++11)
+   atomically obtains the value stored in an atomic object
+   (function template)
+   atomic_exchangeatomic_exchange_explicit
+   (C++11)(C++11)
+   atomically replaces the value of the atomic object with non-atomic
+   argument and returns the old value of the atomic
+   (function template)
+   atomic_compare_exchange_weakatomic_compare_exchange_weak_explicitatomic
+   _compare_exchange_strongatomic_compare_exchange_strong_explicit
+   (C++11)(C++11)(C++11)(C++11)
+   atomically compares the value of the atomic object with non-atomic
+   argument and performs atomic exchange if equal or atomic load if not
+   (function template)
+   atomic_fetch_addatomic_fetch_add_explicit
+   (C++11)(C++11)
+   adds a non-atomic value to an atomic object and obtains the previous
+   value of the atomic
+   (function template)
+   atomic_fetch_subatomic_fetch_sub_explicit
+   (C++11)(C++11)
+   subtracts a non-atomic value from an atomic object and obtains the
+   previous value of the atomic
+   (function template)
+   atomic_fetch_andatomic_fetch_and_explicit
+   (C++11)(C++11)
+   replaces the atomic object with the result of bitwise AND with a
+   non-atomic argument and obtains the previous value of the atomic
+   (function template)
+   atomic_fetch_oratomic_fetch_or_explicit
+   (C++11)(C++11)
+   replaces the atomic object with the result of bitwise OR with a
+   non-atomic argument and obtains the previous value of the atomic
+   (function template)
+   atomic_fetch_xoratomic_fetch_xor_explicit
+   (C++11)(C++11)
+   replaces the atomic object with the result of bitwise XOR with a
+   non-atomic argument and obtains the previous value of the atomic
+   (function template)
+   atomic_waitatomic_wait_explicit
+   (C++20)(C++20)
+   blocks the thread until notified and the atomic value changes
+   (function template)
+   atomic_notify_one
+   (C++20)
+   notifies a thread blocked in atomic_wait
+   (function template)
+   atomic_notify_all
+   (C++20)
+   notifies all threads blocked in atomic_wait
+   (function template)
+
+Flag type and operations
+
+   atomic_flag
+   (C++11)
+   the lock-free boolean atomic type
+   (class)
+   atomic_flag_test_and_setatomic_flag_test_and_set_explicit
+   (C++11)(C++11)
+   atomically sets the flag to true and returns its previous value
+   (function)
+   atomic_flag_clearatomic_flag_clear_explicit
+   (C++11)(C++11)
+   atomically sets the value of the flag to false
+   (function)
+   atomic_flag_testatomic_flag_test_explicit
+   (C++20)(C++20)
+   atomically returns the value of the flag
+   (function)
+   atomic_flag_waitatomic_flag_wait_explicit
+   (C++20)(C++20)
+   blocks the thread until notified and the flag changes
+   (function)
+   atomic_flag_notify_one
+   (C++20)
+   notifies a thread blocked in atomic_flag_wait
+   (function)
+   atomic_flag_notify_all
+   (C++20)
+   notifies all threads blocked in atomic_flag_wait
+   (function)
+
+Initialization
+
+   atomic_init
+   (C++11)(deprecated in C++20)
+   non-atomic initialization of a default-constructed atomic object
+   (function template)
+   ATOMIC_VAR_INIT
+   (C++11)(deprecated in C++20)
+   constant initialization of an atomic variable of static storage
+   duration
+   (function macro)
+   ATOMIC_FLAG_INIT
+   (C++11)
+   initializes an std::atomic_flag to false
+   (macro constant)
+
+Memory synchronization ordering
+
+   memory_order
+   (C++11)
+   defines memory ordering constraints for the given atomic operation
+   (enum)
+   kill_dependency
+   (C++11)
+   removes the specified object from the std::memory_order_consume
+   dependency tree
+   (function template)
+   atomic_thread_fence
+   (C++11)
+   generic memory order-dependent fence synchronization primitive
+   (function)
+   atomic_signal_fence
+   (C++11)
+   fence between a thread and a signal handler executed in the same thread
+   (function)
+
+C Compatibility for atomic types
+
+   Defined in header <stdatomic.h>
+   _Atomic
+   (C++23)
+   compatibility macro such that _Atomic(T) is identical to std::atomic<T>
+   (function macro)
+
+   Neither the _Atomic macro, nor any of the non-macro global namespace
+   declarations are provided by any C++ standard library header other than
+   <stdatomic.h>.
+   (since C++23)
+
+See also
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/atomic&oldid=161
+   424"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 26 October 2023, at 09:03.
+     * This page has been accessed 600,589 times.

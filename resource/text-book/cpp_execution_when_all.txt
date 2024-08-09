@@ -1,0 +1,106 @@
+std::execution::when_all
+
+   From cppreference.com
+   < cpp
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Execution Library
+   Senders
+   Sender factories
+   Sender adaptors
+   Adaptors for single-shot and multi-shot senders
+   Adaptors for multi-shot senders
+   Sender consumers
+   Eager execution
+
+   Defined in header <execution>
+   execution::sender auto when_all(
+
+       execution::sender auto ...inputs
+   );
+                                   (since C++26)
+
+Parameters
+
+   inputs - senders upon which the completion of when_all is blocked. Can
+   only include senders that can complete with a single set of values.
+
+Return value
+
+   Returns a sender that completes once all of the input senders have
+   completed. The values sent by this sender are the values sent by each
+   of the input senders, in order of the arguments passed to when_all.
+
+Notes
+
+     * The sender returned by when_all completes inline on the execution
+       resource on which the last input sender completes, unless stop is
+       requested before when_all is started, in which case it completes
+       inline within the call to start.
+
+See also
+
+   when_all
+   (concurrency TS)
+   produces a future that becomes ready when all given futures or
+   shared_futures are ready
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/execution/when_a
+   ll&oldid=169419"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 30 January 2024, at 09:19.
+     * This page has been accessed 496 times.

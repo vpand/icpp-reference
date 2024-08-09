@@ -1,0 +1,80 @@
+Current Status
+
+   From cppreference.com
+   < cpp
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Versions
+   C++98
+   C++03
+   C++11
+   C++14
+   C++17
+   C++20
+   C++23
+   C++26
+   Current Status
+
+   Recent milestones: C++20 published, C++23 underway
+
+   C++20 has been published, and work is now underway on C++23.
+
+   Starting in 2012, the committee has transitioned to a "decoupled" model
+   where major pieces of work can progress independently from the Standard
+   itself and be delivered in "feature branch" TSes. Vendors can choose to
+   implement these, and the community can gain experience with the
+   std::experimental version of each feature. This lets us learn and
+   adjust each feature's design based on experience before it is cast in
+   stone when merged into the "trunk" C++ Standard itself. In the
+   meantime, the Standard can be delivered on a more regular cadence with
+   smaller and more predictable batches of features. This approach also
+   helps C++ compilers to track the Standard more closely and add both the
+   experimental and the draft-final C++ features in a more consistent
+   order. The current schedule is in paper P1000.
+
+   You can also visit open-std.org to get the latest C++ standards
+   committee papers. Reading through those proposals, you can track the
+   C++ developing trends and know how does a cool idea turned into the
+   standard. However, those papers ARE NOT and also SHOULD NOT BE TREATED
+   AS the standard documents.
+
+See also
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/current_status&o
+   ldid=139533"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 6 May 2022, at 19:11.
+     * This page has been accessed 22,317 times.

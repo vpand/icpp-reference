@@ -1,0 +1,166 @@
+std::memchr
+
+   From cppreference.com
+   < cpp | string | byte
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated byte strings
+   Functions
+   Character manipulation
+   isalnum
+   isalpha
+   islower
+   isupper
+   isdigit
+   isxdigit
+   isblank
+   (C++11)
+   iscntrl
+   isgraph
+   isspace
+   isprint
+   ispunct
+   tolower
+   toupper
+   Conversions to numeric formats
+   atof
+   atoiatolatoll
+   (C++11)
+   strtolstrtoll
+   (C++11)
+   strtoulstrtoull
+   (C++11)
+   strtofstrtodstrtold
+   (C++11)(C++11)
+   strtoimaxstrtouimax
+   (C++11)(C++11)
+   String manipulation
+   strcpy
+   strncpy
+   strxfrm
+   strcat
+   strncat
+   String examination
+   strlen
+   strcmp
+   strncmp
+   strcoll
+   strchr
+   strrchr
+   strspn
+   strcspn
+   strpbrk
+   strstr
+   strtok
+   Memory manipulation
+   memchr
+   memcmp
+   memset
+   memcpy
+   memmove
+   Miscellaneous
+   strerror
+
+   Defined in header <cstring>
+   const void* memchr( const void* ptr, int ch, std::size_t count );
+         void* memchr(       void* ptr, int ch, std::size_t count );
+
+   Converts ch to unsigned char and locates the first occurrence of that
+   value in the initial count bytes (each interpreted as unsigned char) of
+   the object pointed to by ptr.
+
+   This function behaves as if it reads the bytes sequentially and stops
+   as soon as a matching bytes is found: if the array pointed to by ptr is
+   smaller than count, but the match is found within the array, the
+   behavior is well-defined.
+   (since C++17)
+
+Parameters
+
+   ptr   - pointer to the object to be examined
+   ch    - byte to search for
+   count - max number of bytes to examine
+
+Return value
+
+   Pointer to the location of the byte, or a null pointer if no such byte
+   is found.
+
+Example
+
+   Search an array of characters.
+   Run this code
+#include <cstring>
+#include <iostream>
+
+int main()
+{
+    char arr[] = {'a', '\0', 'a', 'A', 'a', 'a', 'A', 'a'};
+    char *pc = (char*) std::memchr(arr, 'A', sizeof arr);
+    if (pc != nullptr)
+        std::cout << "search character found\n";
+    else
+        std::cout << "search character not found\n";
+}
+
+   Output:
+search character found
+
+See also
+
+   strchr
+   finds the first occurrence of a character
+   (function)
+   findfind_iffind_if_not
+   (C++11)
+   finds the first element satisfying specific criteria
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/byte/memc
+   hr&oldid=152823"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 5 June 2023, at 10:14.
+     * This page has been accessed 46,831 times.

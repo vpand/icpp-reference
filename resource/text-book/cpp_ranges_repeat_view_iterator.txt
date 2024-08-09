@@ -1,0 +1,370 @@
+std::ranges::repeat_view<W, Bound>::iterator
+
+   From cppreference.com
+   < cpp | ranges | repeat view
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   std::ranges::repeat_view
+   Member functions
+   repeat_view::repeat_view
+   repeat_view::begin
+   repeat_view::end
+   repeat_view::size
+   Deduction guides
+   Iterator
+   Member functions
+   repeat_view::iterator::iterator
+   repeat_view::iterator::operator*
+   repeat_view::iterator::operator[]
+   repeat_view::iterator::operator++
+   repeat_view::iterator::operator++(int)
+   repeat_view::iterator::operator--
+   repeat_view::iterator::operator--(int)
+   repeat_view::iterator::operator+=
+   repeat_view::iterator::operator-=
+   Non-member functions
+   operator==(repeat_view::iterator)
+   operator<=>(repeat_view::iterator)
+   operator+(repeat_view::iterator)
+   operator-(repeat_view::iterator)
+
+   struct /*iterator*/;
+   (since C++23)
+   (exposition only*)
+
+   The return type of repeat_view::begin.
+
+Member types
+
+   Member type       Definition
+   index-type
+     * std::ptrdiff_t, if Bound is the same as
+       std::unreachable_sentinel_t. Otherwise,
+     * Bound.
+       (exposition-only member type*)
+
+   iterator_concept  std::random_access_iterator_tag
+   iterator_category std::random_access_iterator_tag
+   value_type        W
+   difference_type
+     * /*index-type*/, if /*is-signed-like*/</*index-type*/> is true,
+     * /*iota-diff-t*/(/*index-type*/) otherwise, where /*iota-diff-t*/
+       has the same meaning as in iota_view.
+
+Data members
+
+   Member name Definition
+   value_ (private) A pointer of type const W* that holds the pointer to
+   the value to repeat.
+   (exposition-only member object*)
+   current_ (private) An object of type /*index-type*/ that holds the
+   current position.
+   (exposition-only member object*)
+
+Member functions
+
+   (constructor)
+   (C++23)
+   constructs an iterator
+   (public member function)
+   operator*
+   (C++23)
+   returns the current subrange
+   (public member function)
+   operator[]
+   (C++23)
+   accesses an element by index
+   (public member function)
+   operator++operator++(int)operator--operator--(int)operator+=operator-=
+   (C++23)
+   advances or decrements the underlying iterator
+   (public member function)
+
+std::ranges::repeat_view::iterator::iterator
+
+   /*iterator*/() = default;
+   (1) (since C++23)
+   constexpr explicit /*iterator*/(
+       const W* value, /*index-type*/ b = /*index-type*/() );
+   (2) (since C++23)
+   (exposition only*)
+   1) Value initializes the data members:
+     * value_ with nullptr_t via its default member initializer;
+     * index_ via its default member initializer (= /*index-type*/()).
+
+   2) Value initializes value_ with value and bound_ with b. If Bound is
+   not std::unreachable_sentinel_t then b must be non-negative. This
+   constructor is not a part of the public interface.
+
+std::ranges::repeat_view::iterator::operator*
+
+   constexpr const W& operator*() const noexcept;
+                                                 (since C++23)
+
+   Equivalent to return *value_;.
+
+std::ranges::repeat_view::iterator::operator[]
+
+ constexpr const W& operator[]( difference_type n ) const noexcept;
+                                                                   (since C++23)
+
+   Equivalent to return *(*this + n);.
+
+std::ranges::repeat_view::iterator::operator++
+
+   constexpr /*iterator*/& operator++();
+   (1)                                  (since C++23)
+   constexpr void operator++(int);
+   (2)                                  (since C++23)
+   1) Equivalent to ++current_; return *this;.
+   2) Equivalent to auto tmp = *this; ++*this; return tmp;.
+
+std::ranges::repeat_view::iterator::operator--
+
+   constexpr /*iterator*/& operator--();
+   (1)                                    (since C++23)
+   constexpr /*iterator*/ operator--(int);
+   (2)                                    (since C++23)
+   1) Equivalent to --current_; return *this;. If Bound is not
+   std::unreachable_sentinel_t then bound_ must be positive.
+   2) Equivalent to auto tmp = *this; --*this; return tmp;.
+
+std::ranges::repeat_view::iterator::operator+=
+
+   constexpr /*iterator*/& operator+=( difference_type n );
+                                                           (since C++23)
+
+   Equivalent to current_ += n; return *this;. If Bound is not
+   std::unreachable_sentinel_t then (bound_ + n) must be non-negative.
+
+std::ranges::repeat_view::iterator::operator-=
+
+   constexpr /*iterator*/& operator-=( difference_type n );
+                                                           (since C++23)
+
+   Equivalent to current_ -= n; return *this;. If Bound is not
+   std::unreachable_sentinel_t, then (bound_ - n) must be non-negative.
+
+Non-member functions
+
+   operator==operator<=>
+   (C++23)
+   compares the underlying iterators
+   (function)
+   operator+operator-
+   (C++23)
+   performs iterator arithmetic
+   (function)
+
+operator==, <=>(std::ranges::repeat_view::iterator)
+
+   friend constexpr bool operator==( const /*iterator*/& x, const
+   /*iterator*/& y );
+   (1)                                                            (since C++23)
+   friend constexpr auto operator<=>( const /*iterator*/& x, const
+   /*iterator*/& y );
+   (2)                                                            (since C++23)
+   1) Equivalent to x.current_ == y.current_.
+   2) Equivalent to x.current_ <=> y.current_.
+
+   The != operator is synthesized from operator==.
+
+   These functions are not visible to ordinary unqualified or qualified
+   lookup, and can only be found by argument-dependent lookup when
+   iterator is an associated class of the arguments.
+
+operator+(std::ranges::repeat_view::iterator)
+
+   friend constexpr /*iterator*/ operator+( /*iterator*/ i,
+   difference_type n );
+   (1)                                                        (since C++23)
+   friend constexpr /*iterator*/ operator+( difference_type n,
+   /*iterator*/ i );
+   (2)                                                        (since C++23)
+
+   Equivalent to i += n; return i;.
+
+   These functions are not visible to ordinary unqualified or qualified
+   lookup, and can only be found by argument-dependent lookup when
+   iterator is an associated class of the arguments.
+
+operator-(std::ranges::repeat_view::iterator)
+
+   friend constexpr /*iterator*/ operator-( /*iterator*/ i,
+   difference_type n );
+ (1)                                                               (since C++23)
+   friend constexpr difference_type operator-( const /*iterator*/& x,
+                                               const /*iterator*/& y );
+ (2)                                                               (since C++23)
+   1) Equivalent to i -= n; return i;.
+   2) Equivalent to return static_cast<difference_type>(x.current_) -
+   static_cast<difference_type>(y.current_);.
+
+   These functions are not visible to ordinary unqualified or qualified
+   lookup, and can only be found by argument-dependent lookup when
+   iterator is an associated class of the arguments.
+
+Notes
+
+   iterator is always random_access_iterator.
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/repeat_vi
+   ew/iterator&oldid=157831"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 3 September 2023, at 15:30.
+     * This page has been accessed 3,465 times.

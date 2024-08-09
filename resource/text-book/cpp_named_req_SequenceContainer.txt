@@ -1,0 +1,467 @@
+C++ named requirements: SequenceContainer
+
+   From cppreference.com
+   < cpp | named req
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ named requirements
+   Basic
+   DefaultConstructible
+   CopyAssignable
+   CopyConstructible
+   MoveAssignable
+   (C++11)
+   MoveConstructible
+   (C++11)
+   Destructible
+   Type properties
+   ScalarType
+   TriviallyCopyable
+   (C++11)
+   StandardLayoutType
+   (C++11)
+   PODType
+   TrivialType
+   (C++11)
+   ImplicitLifetimeType
+   Library-Wide
+   EqualityComparable
+   LessThanComparable
+   Swappable
+   ValueSwappable
+   (C++11)
+   NullablePointer
+   (C++11)
+   Hash
+   (C++11)
+   Allocator
+   FunctionObject
+   Callable
+   Predicate
+   BinaryPredicate
+   Compare
+   Container
+   Container
+   SequenceContainer
+   ContiguousContainer
+   (C++17)
+   ReversibleContainer
+   AssociativeContainer
+   AllocatorAwareContainer
+   UnorderedAssociativeContainer
+   (C++11)
+   Container Elements
+   DefaultInsertable
+   (C++11)
+   CopyInsertable
+   (C++11)
+   MoveInsertable
+   (C++11)
+   EmplaceConstructible
+   (C++11)
+   Erasable
+   (C++11)
+   Iterator
+   LegacyIterator
+   LegacyOutputIterator
+   LegacyInputIterator
+   LegacyForwardIterator
+   LegacyBidirectionalIterator
+   LegacyRandomAccessIterator
+   LegacyContiguousIterator
+   (C++17)
+   ConstexprIterator
+   (C++20)
+   Stream I/O
+   FormattedInputFunction
+   UnformattedInputFunction
+   FormattedOutputFunction
+   UnformattedOutputFunction
+   Formatters
+   BasicFormatter
+   (C++20)
+   Formatter
+   (C++20)
+   Random Numbers
+   SeedSequence
+   (C++11)
+   RandomNumberEngine
+   (C++11)
+   RandomNumberDistribution
+   (C++11)
+   UniformRandomBitGenerator
+   (C++11)
+   RandomNumberEngineAdaptor
+   (C++11)
+   Concurrency
+   BasicLockable
+   (C++11)
+   Lockable
+   (C++11)
+   TimedLockable
+   (C++11)
+   SharedLockable
+   (C++14)
+   SharedTimedLockable
+   (C++14)
+   Mutex
+   (C++11)
+   TimedMutex
+   (C++11)
+   SharedMutex
+   (C++17)
+   SharedTimedMutex
+   (C++14)
+   Ranges
+   RangeAdaptorObject
+   (C++20)
+   RangeAdaptorClosureObject
+   (C++20)
+   Other
+   CharTraits
+   RegexTraits
+   (C++11)
+   BitmaskType
+   LiteralType
+   (C++11)
+   NumericType
+   UnaryTypeTrait
+   (C++11)
+   BinaryTypeTrait
+   (C++11)
+   TransformationTrait
+   (C++11)
+   Clock
+   (C++11)
+   TrivialClock
+   (C++11)
+
+   A SequenceContainer is a Container that stores objects of the same type
+   in a linear arrangement.
+
+Requirements
+
+Legend
+
+   X A sequence container class
+   T The element type of X
+   a A value of type X
+   u The name of a declared variable
+   A The allocator type of X:
+     * X::allocator_type if it exists,
+     * otherwise std::allocator<T>
+
+   i, j LegacyInputIterators such that [i, j) is a valid range and that
+   the iterators refer to elements implicitly convertible to value_type
+   rg (since C++23) A value of a type R that models
+   container-compatible-range<T>
+   il (since C++11) An object of type std::initializer_list<value_type>
+   n A value of type X::size_type
+   p A valid const iterator into a
+   q A valid dereferenceable const iterator into a
+   q1, q2 Two const iterators into a such that [q1, q2) is a valid range
+   t An lvalue or const rvalue(since C++11) of type X::value_type
+   rv (since C++11) A non-const rvalue of type X::value_type
+   Args (since C++11) A template parameter pack
+   args (since C++11) A function parameter pack with the pattern Arg&&
+
+   The type X satisfies SequenceContainer if
+     * The type X satisfies Container, and
+     * The following statements and expressions must be valid and have
+       their specified effects for all sequence containers except
+       std::array (see notes)(since C++11):
+
+   Statement Effects     Conditions^[1]
+   X u(n, t) Constructs the sequence container holding n copies of t. Pre
+   T is CopyInsertable into X.
+   Post  std::distance(u.begin(), u.end())
+       == n is true.
+   X u(i, j) Constructs the sequence container equal, element-wise, to the
+   range [i, j). Pre T is EmplaceConstructible from *i into X.
+   Post std::distance(u.begin(), u.end())
+       == std::distance(i, j) is true.
+   Expression Type Effects Conditions
+   X(std::from_range, rg)
+   (since C++23) X Constructs the sequence container equal, element-wise,
+   to the range rg. Pre T is EmplaceConstructible into X from
+   *ranges::begin(rg).
+   Post
+     * Each iterator in the range rg is dereferenced once.
+     * std::distance(begin(), end())
+           == ranges::distance(rg) is true.
+
+   X(il)
+   (since C++11) X Equivalent to X(il.begin(),
+     il.end()). No explicit requirement
+   a = il
+   (since C++11) X& Assigns the range represented by il into a.^[2] Pre T
+   is CopyInsertable and CopyAssignable.
+   Post Existing elements of a are destroyed or assigned to.
+   a.emplace(p, args)
+   (since C++11) iterator Insert an object of type T, constructed with
+   std::forward<Args>(args) before p. Pre T is EmplaceConstructible.
+   Post The returned iterator points at the element constructed from args
+   into a.
+   a.insert(p, t) iterator Inserts a copy of t before p. Pre T is
+   CopyInsertable.
+   Post The returned iterator points at the copy of t inserted into a.
+   a.insert(p, rv)
+   (since C++11) iterator Inserts a copy of rv before p, possibly using
+   move semantics. Pre T is MoveInsertable.
+   Post The returned iterator points at the copy of rv inserted into a.
+   a.insert(p, n, t) iterator Inserts n copies of t before p. Pre T is
+   CopyInsertable and CopyAssignable.
+   Post The returned iterator points at the copy of the first element
+   inserted into a or is p for n == 0.
+   a.insert(p, i, j) iterator Inserts copies of elements in [i, j) before
+   p. Pre T is EmplaceConstructible and i and j are not in a.
+   Post
+     * Each iterator in [i, j) is dereferenced once.
+     * The returned iterator points at the copy of the first element
+       inserted into a or is p for i == j.
+
+   a.insert_range(p, rg)
+   (since C++23) iterator Inserts copies of elements in rg before p. Pre
+     * T is EmplaceConstructible into X from *ranges::begin(rg).
+     * rg and a do not overlap.
+
+   Post
+     * Each iterator in the range rg is dereferenced once.
+     * The returned iterator points at the copy of the first element
+       inserted into a or at p if rg is empty.
+
+   a.insert(p, il)
+   (since C++11) iterator Equivalent to a.insert(p,
+            il.begin(),
+            il.end()). Pre No explicit requirement
+   Post The returned iterator points at the copy of the first element
+   inserted into a or is p if il is empty.
+   a.erase(q) iterator Erases the element pointed to by q. Pre No explicit
+   requirement
+   Post The returned iterator points at the element that was immediately
+   following q prior to erasure, or a.end() if no such element exists.
+   a.erase(q1, q2) iterator Erases elements in [q1, q2). Pre No explicit
+   requirement
+   Post The returned iterator points at the element that was pointed by q2
+   prior to any erasure, or a.end() if no such element exists.
+   a.clear() void Destroys all elements in a. Pre No explicit requirement
+   Post
+     * All references, pointers, and iterators are invalidated, including
+       the end iterator.
+     * a.empty() is true.
+
+   a.assign(i, j) void Replaces elements in a with a copy of [i, j). Pre
+     * T is EmplaceConstructible.
+     * i and j are not in a.
+
+   Post Each iterator in [i, j) is dereferenced once.
+   a.assign_range(rg)
+   (since C++23) void Replaces elements in a with a copy of each element
+   in rg. Pre
+     * T^[3] is EmplaceConstructible into X from *ranges::begin(rg).
+     * rg and a do not overlap.
+
+   Post
+     * Each iterator in the range rg is dereferenced once.
+     * All references, pointers, and iterators are invalidated.
+
+   a.assign(il)
+   (since C++11) void Equivalent to a.assign(il.begin(),
+            il.end()). No explicit requirement
+   a.assign(n, t) void Replaces elements in a with n copies of t. Pre T is
+   CopyInsertable and CopyAssignable.
+   Post No explicit requirement
+   Notes
+    1. ^| For an expression whose effect is equivalent to some other
+       operations, the conditions of the expressions inside those
+       operations are inherited on top of the conditions listed in the
+       table.
+    2. ^| std::array supports assignment from a braced-init-list, but not
+       from an std::initializer_list.
+    3. ^| T and R are types such that ranges::assignable_from<T&,
+       ranges::range_reference_t<R>> is modeled.
+
+Optional operations
+
+   The following expressions must be valid and have their specified
+   effects for the sequence containers named, all operations except
+   prepend_range and append_range(since C++23) take amortized constant
+   time:
+   Expression Type Effects     Preconditions^[1] Containers
+   a.front() reference, or
+
+   const_reference for const a
+   Returns *a.begin(). No explicit requirement std::basic_string,
+   std::array, std::deque, std::forward_list, std::list, std::vector
+   a.back() reference, or
+
+   const_reference for const a
+   Equivalent to auto tmp = a.end();
+   --tmp;
+   return *tmp;. No explicit requirement std::basic_string, std::array,
+   std::deque, std::list, std::vector
+   a.emplace_front(args)
+   (since C++11) void Prepends a T constructed with std::forward<Args>
+       (args).... T is EmplaceConstructible into X from args. std::deque,
+   std::forward_list, std::list
+   a.emplace_back(args)
+   (since C++11) void Appends a T constructed with std::forward<Args>
+       (args).... T is EmplaceConstructible into X from args. std::deque,
+   std::list, std::vector
+   a.push_front(t) void Prepends a copy of t. T is CopyInsertable into X.
+   std::deque, std::forward_list, std::list
+   a.push_front(rv)
+   (since C++11) void Prepends a copy of rv, possibly using move
+   semantics. T is MoveInsertable into X. std::deque, std::forward_list,
+   std::list
+   a.prepend_range(rg)
+   (since C++23) void Inserts^[2] copies of elements in rg before begin(),
+   each iterator in rg is dereferenced once. T is EmplaceConstructible
+   into X from *ranges::begin(rg). std::deque, std::forward_list,
+   std::list
+   a.push_back(t) void Appends a copy of t. T is CopyInsertable into X.
+   std::basic_string, std::deque, std::list, std::vector
+   a.push_back(rv)
+   (since C++11) void Appends a copy of rv, possibly using move semantics.
+   T is MoveInsertable into X. std::basic_string, std::deque, std::list,
+   std::vector
+   a.append_range(rg)
+   (since C++23) void Inserts^[2] copies of elements in rg before end()
+   dereferencing each iterator in rg once. T is EmplaceConstructible into
+   X from *ranges::begin(rg). std::deque, std::list, std::vector
+   a.pop_front() void Destroys the first element. a.empty() is false.
+   std::deque, std::forward_list, std::list
+   a.pop_back() void Destroys the last element. a.empty() is false.
+   std::basic_string, std::deque, std::list, std::vector
+   a[n] reference, or
+
+   const_reference for const a
+   Equivalent to return
+       *(a.begin() + n);. No explicit requirement std::basic_string,
+   std::array, std::deque, std::vector
+   a.at(n) reference, or
+
+   const_reference for const a
+   Returns *(a.begin() + n), throws std::out_of_range if n >= size(). No
+   explicit requirement std::basic_string, std::array, std::deque,
+   std::vector
+   Notes
+    1. ^| For an expression whose effect is equivalent to some other
+       operations, the preconditions of the expressions inside those
+       operations are inherited on top of the preconditions listed in the
+       table.
+    2. ^| ^2.0 ^2.1 Insertion order, relative to order of elements in rg,
+       is non-reversing.
+
+   Additionally, for every sequence container:
+     * A constructor template that takes two input iterators and the
+       member function template overloads of insert, append, assign,
+       replace that take two input iterators do not participate in
+       overload resolution if the corresponding template argument does not
+       satisfy LegacyInputIterator.
+
+     * A deduction guide that has either a LegacyInputIterator or an
+       Allocator template parameter does not participate in overload
+       resolution if the type that does not qualify as an input iterator
+       or an allocator respectively is deduced for that parameter.
+
+   (since C++17)
+
+Sequence containers in the standard library
+
+   basic_string
+   stores and manipulates sequences of characters
+   (class template)
+   array
+   (C++11)
+   static contiguous array
+   (class template)
+   vector
+   dynamic contiguous array
+   (class template)
+   deque
+   double-ended queue
+   (class template)
+   forward_list
+   (C++11)
+   singly-linked list
+   (class template)
+   list
+   doubly-linked list
+   (class template)
+
+Trade-offs / usage notes
+
+   std::vector Fast access but mostly inefficient insertions/deletions
+   std::array Fast access but fixed number of elements
+   std::list
+   std::forward_list Efficient insertion/deletion in the middle of the
+   sequence
+   std::deque Efficient insertion/deletion at the beginning and at the end
+   of the sequence
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 139 C++98 the optional operations were not required to
+   be implemented for the designated containers required with
+   amortized time
+   LWG 149 C++98 a.insert(p, t) returned iterator while
+   a.insert(p, n, t) and a.insert(p, n, t) returned void they all return
+   iterator
+   LWG 151 C++98 q1 was required to be dereferenceable^[1] it can be
+   non-dereferenceable
+   LWG 355 C++98 calling a.back() or a.pop_back() would
+   execute --a.end(), which is dangerous^[2] decrements a copy
+   of a.end() instead
+   LWG 589 C++98 the elements that i and j refer to
+   might not be convertible to value_type they are implicitly
+   convertible to value_type
+   LWG 3927 C++98 operator[] had no implicit requirement added the
+   implicit requirement
+    1. ^| It is a defect because it makes the behavior of
+       a.erase(a.begin(), a.end()) undefined is a is an empty container.
+    2. ^| If the type of a.end() is a fundamental type, --a.end() is
+       ill-formed. It is dangerous when the type of a is templated, in
+       this case this bug can be difficult to be found.
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/named_req/Sequen
+   ceContainer&oldid=168511"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 7 January 2024, at 01:57.
+     * This page has been accessed 127,288 times.

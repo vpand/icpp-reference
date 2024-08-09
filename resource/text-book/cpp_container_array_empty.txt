@@ -1,0 +1,179 @@
+std::array<T,N>::empty
+
+   From cppreference.com
+   < cpp | container | array
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::array
+   Member types
+   Member functions
+   Element access
+   array::at
+   array::operator[]
+   array::front
+   array::back
+   array::data
+   Iterators
+   array::beginarray::cbegin
+   array::endarray::cend
+   array::rbeginarray::crbegin
+   array::rendarray::crend
+   Capacity
+   array::empty
+   array::size
+   array::max_size
+   Operations
+   array::fill
+   array::swap
+   Non-member functions
+   get(std::array)
+   (C++11)
+   swap(std::array)
+   (C++11)
+   to_array
+   (C++20)
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (C++11)(C++11)(until C++20)(C++11)(until C++20)(C++11)(until
+   C++20)(C++11)(until C++20)(C++11)(until C++20)(C++20)
+   Helper classes
+   tuple_size<std::array>
+   (C++11)
+   tuple_element<std::array>
+   (C++11)
+   Deduction guides (C++17)
+
+   constexpr bool empty() const noexcept;
+   (since C++11)
+   (until C++20)
+   [[nodiscard]] constexpr bool empty() const noexcept;
+                                                       (since C++20)
+
+   Checks if the container has no elements, i.e. whether begin() == end().
+
+Parameters
+
+   (none)
+
+Return value
+
+   true if the container is empty, false otherwise.
+
+Complexity
+
+   Constant.
+
+Example
+
+   The following code uses empty to check if a std::array contains any
+   elements:
+   Run this code
+#include <array>
+#include <iostream>
+
+int main()
+{
+    std::array<int, 4> numbers{3, 1, 4, 1};
+    std::array<int, 0> no_numbers;
+
+    std::cout << std::boolalpha;
+    std::cout << "numbers.empty(): " << numbers.empty() << '\n';
+    std::cout << "no_numbers.empty(): " << no_numbers.empty() << '\n';
+}
+
+   Output:
+numbers.empty(): false
+no_numbers.empty(): true
+
+See also
+
+   size
+   returns the number of elements
+   (public member function)
+   empty
+   (C++17)
+   checks whether the container is empty
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/array/
+   empty&oldid=119360"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 31 May 2020, at 14:41.
+     * This page has been accessed 72,875 times.

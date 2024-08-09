@@ -1,0 +1,223 @@
+std::iswalpha
+
+   From cppreference.com
+   < cpp | string | wide
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated wide strings
+   Functions
+   Character manipulation
+   iswalnum
+   iswalpha
+   iswlower
+   iswupper
+   iswdigit
+   iswxdigit
+   iswblank
+   (C++11)
+   wctype
+   iswctype
+   iswcntrl
+   iswgraph
+   iswspace
+   iswprint
+   iswpunct
+   towlower
+   towupper
+   wctrans
+   towctrans
+   Conversions to numeric formats
+   wcstolwcstoll
+   (C++11)
+   wcstoulwcstoull
+   (C++11)
+   wcstofwcstodwcstold
+   (C++11)(C++11)
+   wcstoimaxwcstouimax
+   (C++11)(C++11)
+   String manipulation
+   wcslen
+   wcscpy
+   wcsncpy
+   wcscat
+   wcsncat
+   wcscmp
+   wcscoll
+   wcsncmp
+   wcsxfrm
+   wcschr
+   wcsrchr
+   wcspbrk
+   wcsspn
+   wcscspn
+   wcsstr
+   wcstok
+   Array manipulation
+   wmemcpy
+   wmemmove
+   wmemcmp
+   wmemchr
+   wmemset
+
+   Defined in header <cwctype>
+   int iswalpha( std::wint_t ch );
+
+   Checks if the given wide character is an alphabetic character, i.e.
+   either an uppercase letter (ABCDEFGHIJKLMNOPQRSTUVWXYZ), a lowercase
+   letter (abcdefghijklmnopqrstuvwxyz) or any alphabetic character
+   specific to the current locale.
+
+   If the value of ch is neither representable as a wchar_t nor equal to
+   the value of the macro WEOF, the behavior is undefined.
+
+Parameters
+
+   ch - wide character
+
+Return value
+
+   Non-zero value if the wide character is an alphabetic character, 0
+   otherwise.
+
+Notes
+
+   ISO 30112 specifies which Unicode characters are include in POSIX alpha
+   category.
+
+Example
+
+   Run this code
+#include <clocale>
+#include <cwctype>
+#include <iostream>
+
+int main()
+{
+    wchar_t c = L'\u0b83'; // Tamil sign Visarga ('')
+
+    std::cout << std::hex << std::showbase << std::boolalpha;
+    std::cout << "in the default locale, iswalpha(" << (std::wint_t)c << ") = "
+              << (bool)std::iswalpha(c) << '\n';
+
+    std::setlocale(LC_ALL, "en_US.utf8");
+    std::cout << "in Unicode locale, iswalpha(" << (std::wint_t)c << ") = "
+              << (bool)std::iswalpha(c) << '\n';
+}
+
+   Possible output:
+in the default locale, iswalpha(0xb83) = false
+in Unicode locale, iswalpha(0xb83) = true
+
+See also
+
+   isalpha(std::locale)
+   checks if a character is classified as alphabetic by a locale
+   (function template)
+   isalpha
+   checks if a character is alphabetic
+   (function)
+   ASCII values characters
+
+   iscntrl
+   iswcntrl
+
+   isprint
+   iswprint
+
+   isspace
+   iswspace
+
+   isblank
+   iswblank
+
+   isgraph
+   iswgraph
+
+   ispunct
+   iswpunct
+
+   isalnum
+   iswalnum
+
+   isalpha
+   iswalpha
+
+   isupper
+   iswupper
+
+   islower
+   iswlower
+
+   isdigit
+   iswdigit
+
+   isxdigit
+   iswxdigit
+   decimal hexadecimal octal
+   0-8 \x0-\x8 \0-\10 control codes (NUL, etc.) !=0 0 0 0 0 0 0 0 0 0 0 0
+   9 \x9 \11 tab (\t) !=0 0 !=0 !=0 0 0 0 0 0 0 0 0
+   10-13 \xA-\xD \12-\15 whitespaces (\n, \v, \f, \r) !=0 0 !=0 0 0 0 0 0
+   0 0 0 0
+   14-31 \xE-\x1F \16-\37 control codes !=0 0 0 0 0 0 0 0 0 0 0 0
+   32 \x20 \40 space 0 !=0 !=0 !=0 0 0 0 0 0 0 0 0
+   33-47 \x21-\x2F \41-\57 !"#$%&'()*+,-./ 0 !=0 0 0 !=0 !=0 0 0 0 0 0 0
+   48-57 \x30-\x39 \60-\71 0123456789 0 !=0 0 0 !=0 0 !=0 0 0 0 !=0 !=0
+   58-64 \x3A-\x40 \72-\100 :;<=>?@ 0 !=0 0 0 !=0 !=0 0 0 0 0 0 0
+   65-70 \x41-\x46 \101-\106 ABCDEF 0 !=0 0 0 !=0 0 !=0 !=0 !=0 0 0 !=0
+   71-90 \x47-\x5A \107-\132 GHIJKLMNOP
+   QRSTUVWXYZ 0 !=0 0 0 !=0 0 !=0 !=0 !=0 0 0 0
+   91-96 \x5B-\x60 \133-\140 [\]^_` 0 !=0 0 0 !=0 !=0 0 0 0 0 0 0
+   97-102 \x61-\x66 \141-\146 abcdef 0 !=0 0 0 !=0 0 !=0 !=0 0 !=0 0 !=0
+   103-122 \x67-\x7A \147-\172 ghijklmnop
+   qrstuvwxyz 0 !=0 0 0 !=0 0 !=0 !=0 0 !=0 0 0
+   123-126 \x7B-\x7E \172-\176 {|}~ 0 !=0 0 0 !=0 !=0 0 0 0 0 0 0
+   127 \x7F \177 backspace character (DEL) !=0 0 0 0 0 0 0 0 0 0 0 0
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/wide/iswa
+   lpha&oldid=148839"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 7 March 2023, at 03:14.
+     * This page has been accessed 32,295 times.

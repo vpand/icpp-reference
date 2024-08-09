@@ -1,0 +1,546 @@
+Default comparisons (since C++20)
+
+   From cppreference.com
+   < cpp | language
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ language
+   General topics
+   Preprocessor
+   Comments
+   Keywords
+   Escape sequences
+   Flow control
+   Conditional execution statements
+   if
+   switch
+   Iteration statements (loops)
+   for
+   range-for (C++11)
+   while
+   do-while
+   Jump statements
+   continue - break
+   goto - return
+   Functions
+   Function declaration
+   Lambda function expression
+   inline specifier
+   Dynamic exception specifications (until C++17*)
+   noexcept specifier (C++11)
+   Exceptions
+   throw-expression
+   try block
+   handler
+   Namespaces
+   Namespace declaration
+   Namespace aliases
+   Types
+   Fundamental types
+   Enumeration types
+   Function types
+   Class/struct types
+   Union types
+   Specifiers
+   const/volatile
+   decltype (C++11)
+   auto (C++11)
+   constexpr (C++11)
+   consteval (C++20)
+   constinit (C++20)
+   Storage duration specifiers
+   Initialization
+   Default-initialization
+   Value-initialization
+   Zero-initialization
+   Copy-initialization
+   Direct-initialization
+   Aggregate initialization
+   List-initialization (C++11)
+   Constant initialization
+   Reference initialization
+   Expressions
+   Value categories
+   Order of evaluation
+   Operators
+   Operator precedence
+   Alternative representations
+   Literals
+   Boolean - Integer - Floating-point
+   Character - String - nullptr (C++11)
+   User-defined (C++11)
+   Utilities
+   Attributes (C++11)
+   Types
+   typedef declaration
+   Type alias declaration (C++11)
+   Casts
+   Implicit conversions
+   static_cast
+   const_cast
+   Explicit conversions
+   dynamic_cast
+   reinterpret_cast
+   Memory allocation
+   new expression
+   delete expression
+   Classes
+   Class declaration
+   Constructors
+   this pointer
+   Access specifiers
+   friend specifier
+   Class-specific function properties
+   Virtual function
+   override specifier (C++11)
+   final specifier (C++11)
+   explicit (C++11)
+   static
+   Special member functions
+   Default constructor
+   Copy constructor
+   Move constructor (C++11)
+   Copy assignment
+   Move assignment (C++11)
+   Destructor
+   Templates
+   Class template
+   Function template
+   Template specialization
+   Parameter packs (C++11)
+   Miscellaneous
+   Inline assembly
+   History of C++
+
+   Expressions
+   General
+   Value categories
+   Order of evaluation
+   Constant expressions
+   Primary expressions
+   Lambda expressions (C++11)
+   Pack indexing expression (C++26)
+   Potentially-evaluated expressions
+   Literals
+   Integer literals
+   Floating-point literals
+   Boolean literals
+   Character literals
+   Escape sequences
+   String literals
+   Null pointer literal (C++11)
+   User-defined literal (C++11)
+   Operators
+   Assignment operators
+   Increment and decrement
+   Arithmetic operators
+   Logical operators
+   Comparison operators
+   Member access operators
+   Other operators
+   new-expression
+   delete-expression
+   throw-expression
+   alignof
+   sizeof
+   sizeof... (C++11)
+   typeid
+   noexcept (C++11)
+   Fold expressions (C++17)
+   Alternative representations of operators
+   Precedence and associativity
+   Operator overloading
+   Default comparisons (C++20)
+   Conversions
+   Implicit conversions
+   Explicit conversions
+   Usual arithmetic conversions
+   User-defined conversion
+   const_cast
+   static_cast
+   dynamic_cast
+   reinterpret_cast
+
+   Provides a way to request the compiler to generate consistent
+   comparison operators for a class.
+
+Syntax
+
+   return-type class-name¿::operatorop
+       (const class-name¿&) const &(optional) = default; (1) (since C++20)
+   friend return-type operatorop¿(const class-name¿&, const class-name¿&)
+   = default; (2) (since C++20)
+   friend return-type operatorop¿(class-name¿, class-name¿) = default; (3)
+   (since C++20)
+   return-type class-name¿::operatorop
+       (this const class-name¿&, const class-name¿&) = default; (4) (since
+   C++23)
+   return-type class-name¿::operatorop¿(this class-name¿, class-name¿) =
+   default; (5) (since C++23)
+   op          - a comparison operator (<=>, ==, !=, <, >, <=, or >=)
+   return-type - return type of the operator function. Must be
+     * auto or one of three comparison category types if op is <=>,
+     * otherwise, bool
+
+Explanation
+
+   1) Declare the defaulted comparison function as a member function.
+   2) Declare the defaulted comparison function as a non-member function.
+   3) Declare the defaulted comparison function as a non-member function.
+   Arguments are passed by value.
+   (since C++20)
+   4) Declare the defaulted comparison function as an explicit object
+   member function.
+   5) Declare the defaulted comparison function as an explicit object
+   member function. Arguments are passed by value.
+   (since C++23)
+
+   The three-way comparison function (whether defaulted or not) is called
+   whenever values are compared using <, >, <=, >=, or <=> and overload
+   resolution selects this overload.
+
+   The equality comparison function (whether defaulted or not) is called
+   whenever values are compared using == or != and overload resolution
+   selects this overload.
+
+   Like defaulted special member functions, a defaulted comparison
+   function is defined if odr-used or needed for constant evaluation.
+   This section is incomplete
+   Reason: mention special overload resolution rule for comparison
+   operators added in C++20
+
+Defaulted comparisons
+
+Defaulted three-way comparison
+
+   The default operator<=> performs lexicographical comparison by
+   successively comparing the base (left-to-right depth-first) and then
+   non-static member (in declaration order) subobjects of T to compute
+   <=>, recursively expanding array members (in order of increasing
+   subscript), and stopping early when a not-equal result is found, that
+   is:
+for /*each base or member subobject o of T*/
+    if (auto cmp = static_cast<R>(compare(lhs.o, rhs.o)); cmp != 0)
+        return cmp;
+return static_cast<R>(strong_ordering::equal);
+
+   It is unspecified whether virtual base subobjects are compared more
+   than once.
+
+   If the declared return type is auto, then the actual return type is the
+   common comparison category of the base and member subobject and member
+   array elements to be compared (see std::common_comparison_category).
+   This makes it easier to write cases where the return type non-trivially
+   depends on the members, such as:
+template<class T1, class T2>
+struct P
+{
+    T1 x1;
+    T2 x2;
+    friend auto operator<=>(const P&, const P&) = default;
+};
+
+   Let R be the return type, each pair of subobjects a, b is compared as
+   follows:
+     * If a <=> b is usable and can be explicitly converted to R using
+       static_cast, the result of comparison is static_cast<R>(a <=> b).
+     * Otherwise, if overload resolution for a <=> b is performed and
+       finds at least one viable candidate, the comparison is not defined
+       (operator<=> is defined as deleted).
+     * Otherwise, if R is not a comparison category type (see below), or
+       either a == b or a < b is not usable, the comparison is not defined
+       (operator<=> is defined as deleted).
+     * Otherwise, if R is std::strong_ordering, the result is
+
+a == b ? R::equal :
+a < b  ? R::less :
+         R::greater
+
+     * Otherwise, if R is std::weak_ordering, the result is
+
+a == b ? R::equivalent :
+a < b  ? R::less :
+         R::greater
+
+     * Otherwise (R is std::partial_ordering), the result is
+
+a == b ? R::equivalent :
+a < b  ? R::less :
+b < a  ? R::greater :
+         R::unordered
+
+   Per the rules for any operator<=> overload, a defaulted <=> overload
+   will also allow the type to be compared with <, <=, >, and >=.
+
+   If operator<=> is defaulted and operator== is not declared at all, then
+   operator== is implicitly defaulted.
+   Run this code
+#include <compare>
+#include <iostream>
+#include <set>
+
+struct Point
+{
+    int x;
+    int y;
+    auto operator<=>(const Point&) const = default;
+    // ... non-comparison functions ...
+};
+// compiler generates all six two-way comparison operators
+
+int main()
+{
+    Point pt1{1, 1}, pt2{1, 2};
+    std::set<Point> s; // OK
+    s.insert(pt1);     // OK
+
+    std::cout << std::boolalpha
+        << (pt1 == pt2) << ' '  // false; operator== is implicitly defaulted.
+        << (pt1 != pt2) << ' '  // true
+        << (pt1 <  pt2) << ' '  // true
+        << (pt1 <= pt2) << ' '  // true
+        << (pt1 >  pt2) << ' '  // false
+        << (pt1 >= pt2) << ' '; // false
+}
+
+Defaulted equality comparison
+
+   A class can define operator== as defaulted, with a return value of
+   bool. This will generate an equality comparison of each base class and
+   member subobject, in their declaration order. Two objects are equal if
+   the values of their base classes and members are equal. The test will
+   short-circuit if an inequality is found in members or base classes
+   earlier in declaration order.
+
+   Per the rules for operator==, this will also allow inequality testing:
+   Run this code
+#include <iostream>
+
+struct Point
+{
+    int x;
+    int y;
+    bool operator==(const Point&) const = default;
+    // ... non-comparison functions ...
+};
+// compiler generates element-wise equality testing
+
+int main()
+{
+    Point pt1{3, 5}, pt2{2, 5};
+    std::cout << std::boolalpha
+        << (pt1 != pt2) << '\n'  // true
+        << (pt1 == pt1) << '\n'; // true
+
+    struct [[maybe_unused]] { int x{}, y{}; } p, q;
+    // if (p == q) { } // Error: 'operator==' is not defined
+}
+
+Other defaulted comparison operators
+
+   Any of the four relational operators can be explicitly defaulted. A
+   defaulted relational operator must have the return type bool.
+
+   Such operator will be deleted if overload resolution over x <=> y
+   (considering also operator<=> with reversed order of parameters) fails,
+   or if this operator@ is not applicable to the result of that x <=> y.
+   Otherwise, the defaulted operator@ calls x <=> y @ 0 if an operator<=>
+   with the original order of parameters was selected by overload
+   resolution, or 0 @ y <=> x otherwise:
+struct HasNoRelational {};
+
+struct C
+{
+    friend HasNoRelational operator<=>(const C&, const C&);
+    bool operator<(const C&) const = default; // OK, function is defaulted
+};
+
+   Similarly, operator!= can be defaulted. It is deleted if overload
+   resolution over x == y (considering also operator== with reversed order
+   of parameters) fails, or if the result of x == y does not have type
+   bool. The defaulted operator!= calls !(x == y) or !(y == x) as selected
+   by overload resolution.
+
+   Defaulting the relational operators can be useful in order to create
+   functions whose addresses may be taken. For other uses, it is
+   sufficient to provide only operator<=> and operator==.
+
+Custom comparisons and comparison categories
+
+   When the default semantics are not suitable, such as when the members
+   must be compared out of order, or must use a comparison that's
+   different from their natural comparison, then the programmer can write
+   operator<=> and let the compiler generate the appropriate two-way
+   comparison operators. The kind of two-way comparison operators
+   generated depends on the return type of the user-defined operator<=>.
+
+   There are three available return types:
+        Return type      Equivalent values are.. Incomparable values are..
+   std::strong_ordering  indistinguishable       not allowed
+   std::weak_ordering    distinguishable         not allowed
+   std::partial_ordering distinguishable         allowed
+
+Strong ordering
+
+   An example of a custom operator<=> that returns std::strong_ordering is
+   an operator that compares every member of a class, except in order that
+   is different from the default (here: last name first).
+   Run this code
+#include <cassert>
+#include <compare>
+#include <set>
+#include <string>
+
+struct Base
+{
+    std::string zip;
+    auto operator<=>(const Base&) const = default;
+};
+
+struct TotallyOrdered : Base
+{
+    std::string tax_id;
+    std::string first_name;
+    std::string last_name;
+public:
+    // custom operator<=> because we want to compare last names first:
+    std::strong_ordering operator<=>(const TotallyOrdered& that) const
+    {
+        if (auto cmp = (Base&)(*this) <=> (Base&)that; cmp != 0)
+            return cmp;
+        if (auto cmp = last_name <=> that.last_name; cmp != 0)
+            return cmp;
+        if (auto cmp = first_name <=> that.first_name; cmp != 0)
+            return cmp;
+        return tax_id <=> that.tax_id;
+    }
+    // ... non-comparison functions ...
+};
+// compiler generates all four relational operators
+
+int main()
+{
+    TotallyOrdered to1{"a", "b", "c", "d"}, to2{"a", "b", "d", "c"};
+    std::set<TotallyOrdered> s; // OK
+    s.insert(to1); // OK
+    assert(to2 <= to1); // OK, single call to <=>
+}
+
+   Note: an operator that returns a std::strong_ordering should compare
+   every member, because if any member is left out, substitutability can
+   be compromised: it becomes possible to distinguish two values that
+   compare equal.
+
+Weak ordering
+
+   An example of a custom operator<=> that returns std::weak_ordering is
+   an operator that compares string members of a class in case-insensitive
+   manner: this is different from the default comparison (so a custom
+   operator is required) and it is possible to distinguish two strings
+   that compare equal under this comparison:
+class CaseInsensitiveString
+{
+    std::string s;
+public:
+    std::weak_ordering operator<=>(const CaseInsensitiveString& b) const
+    {
+        return case_insensitive_compare(s.c_str(), b.s.c_str());
+    }
+
+    std::weak_ordering operator<=>(const char* b) const
+    {
+        return case_insensitive_compare(s.c_str(), b);
+    }
+    // ... non-comparison functions ...
+};
+
+// Compiler generates all four relational operators
+CaseInsensitiveString cis1, cis2;
+std::set<CaseInsensitiveString> s; // OK
+s.insert(/*...*/); // OK
+if (cis1 <= cis2) { /*...*/ } // OK, performs one comparison operation
+
+// Compiler also generates all eight heterogeneous relational operators
+if (cis1 <= "xyzzy") { /*...*/ } // OK, performs one comparison operation
+if ("xyzzy" >= cis1) { /*...*/ } // OK, identical semantics
+
+   Note that this example demonstrates the effect a heterogeneous
+   operator<=> has: it generates heterogeneous comparisons in both
+   directions.
+
+Partial ordering
+
+   Partial ordering is an ordering that allows incomparable (unordered)
+   values, such as NaN values in floating-point ordering, or, in this
+   example, persons that are not related:
+class PersonInFamilyTree // ...
+{
+public:
+    std::partial_ordering operator<=>(const PersonInFamilyTree& that) const
+    {
+        if (this->is_the_same_person_as(that))
+            return partial_ordering::equivalent;
+        if (this->is_transitive_child_of(that))
+            return partial_ordering::less;
+        if (that. is_transitive_child_of(*this))
+            return partial_ordering::greater;
+        return partial_ordering::unordered;
+    }
+    // ... non-comparison functions ...
+};
+
+// compiler generates all four relational operators
+PersonInFamilyTree per1, per2;
+if (per1 < per2) { /*...*/ } // OK, per2 is an ancestor of per1
+else if (per1 > per2) { /*...*/ } // OK, per1 is an ancestor of per2
+else if (std::is_eq(per1 <=> per2)) { /*...*/ } // OK, per1 is per2
+else { /*...*/ } // per1 and per2 are unrelated
+
+if (per1 <= per2) { /*...*/ } // OK, per2 is per1 or an ancestor of per1
+if (per1 >= per2) { /*...*/ } // OK, per1 is per2 or an ancestor of per2
+if (std::is_neq(per1 <=> per2)) { /*...*/ } // OK, per1 is not per2
+
+See also
+
+     * overload resolution in a call to an overloaded operator
+     * Built-in three-way comparison operator
+     * Operator overloading for comparison operators
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/language/default
+   _comparisons&oldid=168714"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 14 January 2024, at 16:48.
+     * This page has been accessed 333,438 times.

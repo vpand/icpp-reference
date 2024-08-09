@@ -1,0 +1,169 @@
+std::queue<T,Container>::size
+
+   From cppreference.com
+   < cpp | container | queue
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::queue
+   Member functions
+   queue::queue
+   queue::~queue
+   queue::operator=
+   Element access
+   queue::front
+   queue::back
+   Capacity
+   queue::empty
+   queue::size
+   Modifiers
+   queue::push
+   queue::push_range
+   (C++23)
+   queue::emplace
+   (C++11)
+   queue::pop
+   queue::swap
+   (C++11)
+   Non-member functions
+   swap(std::queue)
+   (C++11)
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (C++20)
+   Helper classes
+   uses_allocator<std::queue>
+   (C++11)
+   formatter<std::queue>
+   (C++23)
+   Deduction guides(C++17)
+
+   size_type size() const;
+
+   Returns the number of elements in the container adaptor. Equivalent to
+   return c.size().
+
+Parameters
+
+   (none)
+
+Return value
+
+   The number of elements in the container adaptor.
+
+Complexity
+
+   Constant.
+
+Example
+
+   Run this code
+#include <algorithm>
+#include <cassert>
+#include <queue>
+
+int main()
+{
+    std::queue<int> queue;
+
+    assert(queue.size() == 0);
+
+    const int count = 8;
+
+    for (int i = 0; i != count; ++i)
+        queue.push(i);
+
+    assert(queue.size() == count);
+}
+
+See also
+
+   empty
+   checks whether the container adaptor is empty
+   (public member function)
+   sizessize
+   (C++17)(C++20)
+   returns the size of a container or array
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/queue/
+   size&oldid=135387"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 20 November 2021, at 08:13.
+     * This page has been accessed 56,461 times.

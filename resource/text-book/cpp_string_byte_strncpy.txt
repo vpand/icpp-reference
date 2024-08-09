@@ -1,0 +1,172 @@
+std::strncpy
+
+   From cppreference.com
+   < cpp | string | byte
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated byte strings
+   Functions
+   Character manipulation
+   isalnum
+   isalpha
+   islower
+   isupper
+   isdigit
+   isxdigit
+   isblank
+   (C++11)
+   iscntrl
+   isgraph
+   isspace
+   isprint
+   ispunct
+   tolower
+   toupper
+   Conversions to numeric formats
+   atof
+   atoiatolatoll
+   (C++11)
+   strtolstrtoll
+   (C++11)
+   strtoulstrtoull
+   (C++11)
+   strtofstrtodstrtold
+   (C++11)(C++11)
+   strtoimaxstrtouimax
+   (C++11)(C++11)
+   String manipulation
+   strcpy
+   strncpy
+   strxfrm
+   strcat
+   strncat
+   String examination
+   strlen
+   strcmp
+   strncmp
+   strcoll
+   strchr
+   strrchr
+   strspn
+   strcspn
+   strpbrk
+   strstr
+   strtok
+   Memory manipulation
+   memchr
+   memcmp
+   memset
+   memcpy
+   memmove
+   Miscellaneous
+   strerror
+
+   Defined in header <cstring>
+   char* strncpy( char* dest, const char* src, std::size_t count );
+
+   Copies at most count characters of the byte string pointed to by src
+   (including the terminating null character) to character array pointed
+   to by dest.
+
+   If count is reached before the entire string src was copied, the
+   resulting character array is not null-terminated.
+
+   If, after copying the terminating null character from src, count is not
+   reached, additional null characters are written to dest until the total
+   of count characters have been written.
+
+   If the strings overlap, the behavior is undefined.
+
+Parameters
+
+   dest  - pointer to the character array to copy to
+   src   - pointer to the byte string to copy from
+   count - maximum number of characters to copy
+
+Return value
+
+   dest
+
+Example
+
+   Run this code
+#include <cstring>
+#include <iostream>
+
+int main()
+{
+    const char* src = "hi";
+    char dest[6] = {'a', 'b', 'c', 'd', 'e', 'f'};
+    std::strncpy(dest, src, 5);
+
+    std::cout << "The contents of dest are: ";
+    for (char c : dest)
+    {
+        if (c)
+            std::cout << c << ' ';
+        else
+            std::cout << "\\0" << ' ';
+    }
+    std::cout << '\n';
+}
+
+   Output:
+The contents of dest are: h i \0 \0 \0 f
+
+See also
+
+   strcpy
+   copies one string to another
+   (function)
+   memcpy
+   copies one buffer to another
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/byte/strn
+   cpy&oldid=152888"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 6 June 2023, at 15:39.
+     * This page has been accessed 195,068 times.

@@ -1,3 +1,6 @@
-[submodule "third/lexbor"]
-	path = third/lexbor
-	url = https://github.com/lexbor/lexbor.git
+[submodule "third/Lynx"]
+	path = third/Lynx
+	url = https://github.com/kurtchen/Lynx.git
+[submodule "third/ncurses"]
+	path = third/ncurses
+	url = https://github.com/mirror/ncurses.git

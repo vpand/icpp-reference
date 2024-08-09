@@ -1,0 +1,182 @@
+std::array<T,N>::max_size
+
+   From cppreference.com
+   < cpp | container | array
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::array
+   Member types
+   Member functions
+   Element access
+   array::at
+   array::operator[]
+   array::front
+   array::back
+   array::data
+   Iterators
+   array::beginarray::cbegin
+   array::endarray::cend
+   array::rbeginarray::crbegin
+   array::rendarray::crend
+   Capacity
+   array::empty
+   array::size
+   array::max_size
+   Operations
+   array::fill
+   array::swap
+   Non-member functions
+   get(std::array)
+   (C++11)
+   swap(std::array)
+   (C++11)
+   to_array
+   (C++20)
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (C++11)(C++11)(until C++20)(C++11)(until C++20)(C++11)(until
+   C++20)(C++11)(until C++20)(C++11)(until C++20)(C++20)
+   Helper classes
+   tuple_size<std::array>
+   (C++11)
+   tuple_element<std::array>
+   (C++11)
+   Deduction guides (C++17)
+
+   constexpr size_type max_size() const noexcept;
+                                                 (since C++11)
+
+   Returns the maximum number of elements the container is able to hold
+   due to system or library implementation limitations, i.e.
+   std::distance(begin(), end()) for the largest container.
+
+Parameters
+
+   (none)
+
+Return value
+
+   Maximum number of elements.
+
+Complexity
+
+   Constant.
+
+Notes
+
+   Because each std::array<T, N> is a fixed-size container, the value
+   returned by max_size equals N (which is also the value returned by
+   size).
+
+Example
+
+   Run this code
+#include <iostream>
+#include <locale>
+#include <array>
+
+int main()
+{
+    std::array<char, 10> p;
+    std::array<long, 10> q;
+
+    std::cout.imbue(std::locale("en_US.UTF-8"));
+    std::cout << std::uppercase
+              << "p.max_size() = " << std::dec << p.max_size() << " = 0x"
+              << std::hex << p.max_size() << '\n'
+              << "q.max_size() = " << std::dec << q.max_size() << " = 0x"
+              << std::hex << q.max_size() << '\n';
+}
+
+   Output:
+10 = 0xA
+10 = 0xA
+
+See also
+
+   size
+   returns the number of elements
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/array/
+   max_size&oldid=122759"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 29 September 2020, at 16:32.
+     * This page has been accessed 88,539 times.

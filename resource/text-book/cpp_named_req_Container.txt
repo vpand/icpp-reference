@@ -1,0 +1,323 @@
+C++ named requirements: Container
+
+   From cppreference.com
+   < cpp | named req
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ named requirements
+   Basic
+   DefaultConstructible
+   CopyAssignable
+   CopyConstructible
+   MoveAssignable
+   (C++11)
+   MoveConstructible
+   (C++11)
+   Destructible
+   Type properties
+   ScalarType
+   TriviallyCopyable
+   (C++11)
+   StandardLayoutType
+   (C++11)
+   PODType
+   TrivialType
+   (C++11)
+   ImplicitLifetimeType
+   Library-Wide
+   EqualityComparable
+   LessThanComparable
+   Swappable
+   ValueSwappable
+   (C++11)
+   NullablePointer
+   (C++11)
+   Hash
+   (C++11)
+   Allocator
+   FunctionObject
+   Callable
+   Predicate
+   BinaryPredicate
+   Compare
+   Container
+   Container
+   SequenceContainer
+   ContiguousContainer
+   (C++17)
+   ReversibleContainer
+   AssociativeContainer
+   AllocatorAwareContainer
+   UnorderedAssociativeContainer
+   (C++11)
+   Container Elements
+   DefaultInsertable
+   (C++11)
+   CopyInsertable
+   (C++11)
+   MoveInsertable
+   (C++11)
+   EmplaceConstructible
+   (C++11)
+   Erasable
+   (C++11)
+   Iterator
+   LegacyIterator
+   LegacyOutputIterator
+   LegacyInputIterator
+   LegacyForwardIterator
+   LegacyBidirectionalIterator
+   LegacyRandomAccessIterator
+   LegacyContiguousIterator
+   (C++17)
+   ConstexprIterator
+   (C++20)
+   Stream I/O
+   FormattedInputFunction
+   UnformattedInputFunction
+   FormattedOutputFunction
+   UnformattedOutputFunction
+   Formatters
+   BasicFormatter
+   (C++20)
+   Formatter
+   (C++20)
+   Random Numbers
+   SeedSequence
+   (C++11)
+   RandomNumberEngine
+   (C++11)
+   RandomNumberDistribution
+   (C++11)
+   UniformRandomBitGenerator
+   (C++11)
+   RandomNumberEngineAdaptor
+   (C++11)
+   Concurrency
+   BasicLockable
+   (C++11)
+   Lockable
+   (C++11)
+   TimedLockable
+   (C++11)
+   SharedLockable
+   (C++14)
+   SharedTimedLockable
+   (C++14)
+   Mutex
+   (C++11)
+   TimedMutex
+   (C++11)
+   SharedMutex
+   (C++17)
+   SharedTimedMutex
+   (C++14)
+   Ranges
+   RangeAdaptorObject
+   (C++20)
+   RangeAdaptorClosureObject
+   (C++20)
+   Other
+   CharTraits
+   RegexTraits
+   (C++11)
+   BitmaskType
+   LiteralType
+   (C++11)
+   NumericType
+   UnaryTypeTrait
+   (C++11)
+   BinaryTypeTrait
+   (C++11)
+   TransformationTrait
+   (C++11)
+   Clock
+   (C++11)
+   TrivialClock
+   (C++11)
+
+   A Container is an object used to store other objects and taking care of
+   the management of the memory used by the objects it contains.
+
+Requirements
+
+     * T, an element type;
+     * C, a Container type containing elements of type T;
+     * a and b, objects of type C;
+     * i and j, values of (possibly const) type C::iterator;
+     * rv, a prvalue expression of type C.
+
+Types
+
+   Name Type Requirements
+   value_type T CopyConstructible(until C++11)Erasable(since C++11)
+   reference T&
+   const_reference const T&
+   iterator Iterator whose value type is T LegacyForwardIterator
+   convertible to const_iterator
+   const_iterator Constant iterator whose value type is T
+   LegacyForwardIterator
+   difference_type Signed integer Must be the same as
+   iterator_traits::difference_type for iterator and const_iterator
+   size_type Unsigned integer Large enough to represent all positive
+   values of difference_type
+
+Member functions and operators
+
+   Expression Return type Semantics Conditions Complexity
+   C() C Creates an empty container Post: C().empty()
+   == true Constant
+   C(a) C Creates a copy of a Pre: T must be CopyInsertable
+   Post: a == C(a) Linear
+   C(rv)
+   (since C++11) C Moves rv Post: equal to the value rv had before this
+   construction Constant^[1]
+   a = b C& Destroys or copy-assigns all elements of a from elements of b
+   Post: a == b Linear
+   a = rv
+   (since C++11) C& Destroys or move-assigns all elements of a from
+   elements of rv Post: if a and rv do not refer the same object, a is
+   equal to the value rv had before this assignment Linear
+   a.~C() void Destroys all elements of a and frees all memory Linear
+   a.begin() (const_)iterator Iterator to the first element of a Constant
+   a.end() (const_)iterator Iterator to one past the last element of a
+   Constant
+   a.cbegin()
+   (since C++11) const_iterator const_cast<const C&>(a).begin() Constant
+   a.cend()
+   (since C++11) const_iterator const_cast<const C&>(a).end() Constant
+   i <=> j
+   (since C++20) strong_ordering Three-way comparison of container
+   iterators C::iterator meets the random access iterator requirements
+   Constant
+   a == b Convertible to bool
+   a.size() == b.size() &&
+
+       std::equal(a.begin(),
+           a.end(), b.begin())
+                           (until C++14)
+   std::equal(a.begin(), a.end(),
+       b.begin(), b.end()) (since C++14)
+   Pre: T must be EqualityComparable Constant^[2] if a.size() !=
+   b.size(), linear otherwise
+   a != b convertible to bool !(a == b) Linear
+   a.swap(b) void Exchanges the values of a and b Constant^[1]^[3]
+   swap(a, b) void a.swap(b) Constant^[1]
+   a.size() size_type std::distance(a.begin(), a.end()) Constant^[3]
+   a.max_size() size_type b.size() where b is the largest possible
+   container Constant^[3]
+   a.empty() Convertible to bool a.begin() == a.end() Constant
+   Notes
+    1. ^| ^1.0 ^1.1 ^1.2 (since C++11) Linear for std::array
+    2. ^| Always linear for std::forward_list
+    3. ^| ^3.0 ^3.1 ^3.2 (until C++11) Not strictly constant
+
+   Given
+     * i and j, objects of a container's iterator type,
+
+   in the expressions i == j, i != j, i < j, i <= j, i >= j, i > j, i - j,
+   either or both may be replaced by an object of the container's
+   const_iterator type referring to the same element with no change in
+   semantics.
+
+Optional container requirements (since C++20)
+
+   The following operations are provided only for some types of
+   containers.
+
+   If the iterators passed to std::lexicographical_compare_three_way meet
+   the ConstexprIterator then the operations described below are
+   implemented by constexpr functions.
+   Category Description
+   Expression a <=> b
+   Returns std::lexicographical_compare_three_way(a.begin(), a.end(),
+                                          b.begin(), b.end(),
+                                          /*synth-three-way*/)
+   Result /*synth-three-way-result*/<C::value_type>
+   Preconditions Either T models three_way_comparable, or < is defined for
+   values of (possibly const) type T and < is a total ordering
+   relationship.
+   Complexity Linear
+
+Container data races
+
+   See container thread safety.
+
+Other requirements
+
+   C (Container)
+     * DefaultConstructible
+     * CopyConstructible
+     * EqualityComparable
+     * Swappable
+
+   T (Type)
+     * CopyInsertable
+     * EqualityComparable
+     * Destructible
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 179 C++98 iterator and const_iterator types might be incomparable
+   required to be comparable
+   LWG 276 C++98 T was required to be CopyAssignable T is required to be
+   CopyConstructible
+   LWG 322 C++98 the value types of iterator and const_iterator were not
+   specified specified as T
+   LWG 774 C++98 there was no requirement on swap(a, b) added
+   LWG 883 C++98 a.swap(b) was defined as swap(a, b),
+   resulted in circular definition defined as exchanging
+   the values of a and b
+   LWG 1319 C++98 iterator and const_iterator
+   might not have multipass guarantee they are required to satisfy
+   the requirements of
+   LegacyForwardIterator
+   LWG 2263 C++11 the resolution of LWG issue 179 was accidentally dropped
+   in C++11 restored
+   LWG 2839 C++11 self move assignment of standard containers was not
+   allowed allowed but the
+   result is unspecified
+
+See also
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/named_req/Contai
+   ner&oldid=172089"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 24 May 2024, at 05:43.
+     * This page has been accessed 221,690 times.

@@ -1,0 +1,451 @@
+Standard library header <variant> (C++17)
+
+   From cppreference.com
+   < cpp | header
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Standard library headers
+   Language support
+   <cstddef>
+   <cstdlib>
+   <version> (C++20)
+   <limits>
+   <climits>
+   <cfloat>
+   <cstdint> (C++11)
+   <stdfloat> (C++23)
+   <new>
+   <typeinfo>
+   <source_location> (C++20)
+   <exception>
+   <initializer_list> (C++11)
+   <compare> (C++20)
+   <coroutine> (C++20)
+   <csignal>
+   <csetjmp>
+   <cstdarg>
+   Concepts
+   <concepts> (C++20)
+   Diagnostics
+   <stdexcept>
+   <stacktrace> (C++23)
+   <cassert>
+   <cerrno>
+   <system_error> (C++11)
+   Memory management
+   <memory>
+   <memory_resource> (C++17)
+   <scoped_allocator> (C++11)
+   Metaprogramming
+   <type_traits> (C++11)
+   <ratio> (C++11)
+   General utilities
+   <utility>
+   <tuple> (C++11)
+   <optional> (C++17)
+   <variant> (C++17)
+   <any> (C++17)
+   <debugging> (C++26)
+   <expected> (C++23)
+   <bitset>
+   <functional>
+   <typeindex> (C++11)
+   <execution> (C++17)
+   <charconv> (C++17)
+   <format> (C++20)
+   <bit> (C++20)
+   Strings
+   <string_view> (C++17)
+   <string>
+   <cctype>
+   <cwctype>
+   <cstring>
+   <cwchar>
+   <cuchar> (C++11)
+   Containers
+   <array> (C++11)
+   <deque>
+   <forward_list> (C++11)
+   <list>
+   <vector>
+   <map>
+   <set>
+   <unordered_map> (C++11)
+   <unordered_set> (C++11)
+   <queue>
+   <stack>
+   <flat_map> (C++23)
+   <flat_set> (C++23)
+   <span> (C++20)
+   <mdspan> (C++23)
+   Iterators
+   <iterator>
+   Ranges
+   <ranges> (C++20)
+   <generator> (C++23)
+   Algorithms
+   <algorithm>
+   <numeric>
+   Numerics
+   <cfenv> (C++11)
+   <complex>
+   <random> (C++11)
+   <valarray>
+   <cmath>
+   <linalg> (C++26)
+   <numbers> (C++20)
+   Time
+   <chrono> (C++11)
+   <ctime>
+   Localization
+   <locale>
+   <clocale>
+   <codecvt> (C++11/17/26*)
+   <text_encoding> (C++26)
+   Input/output
+   <iosfwd>
+   <iostream>
+   <ios>
+   <streambuf>
+   <istream>
+   <ostream>
+   <iomanip>
+   <print> (C++23)
+   <sstream>
+   <spanstream> (C++23)
+   <fstream>
+   <syncstream> (C++20)
+   <filesystem> (C++17)
+   <cstdio>
+   <cinttypes> (C++11)
+   <strstream> (C++98/26*)
+   Regular expressions
+   <regex> (C++11)
+   Concurrency support
+   <stop_token> (C++20)
+   <thread> (C++11)
+   <atomic> (C++11)
+   <rcu> (C++26)
+   <stdatomic.h> (C++23)
+   <mutex> (C++11)
+   <shared_mutex> (C++14)
+   <condition_variable> (C++11)
+   <semaphore> (C++20)
+   <latch> (C++20)
+   <barrier> (C++20)
+   <future> (C++11)
+   <hazard_pointer> (C++26)
+   C compatibility
+   <cstdbool> (C++11/17/20*)
+   <ccomplex> (C++11/17/20*)
+   <ctgmath> (C++11/17/20*)
+   <cstdalign> (C++11/17/20*)
+   <ciso646> (until C++20)
+
+   This header is part of the general utility library.
+
+Includes
+
+   <compare>
+   (C++20)
+   Three-way comparison operator support
+
+Classes
+
+   variant
+   (C++17)
+   a type-safe discriminated union
+   (class template)
+   monostate
+   (C++17)
+   placeholder type for use as the first alternative in a variant of
+   non-default-constructible types
+   (class)
+   bad_variant_access
+   (C++17)
+   exception thrown on invalid accesses to the value of a variant
+   (class)
+   variant_sizevariant_size_v
+   (C++17)
+   obtains the size of the variant's list of alternatives at compile time
+   (class template) (variable template)
+   variant_alternativevariant_alternative_t
+   (C++17)
+   obtains the type of the alternative specified by its index, at compile
+   time
+   (class template) (alias template)
+   std::hash<std::variant>
+   (C++17)
+   hash support for std::variant
+   (class template specialization)
+
+Constants
+
+   variant_npos
+   (C++17)
+   index of the variant in the invalid state
+   (constant)
+
+Functions
+
+   visit
+   (C++17)
+   calls the provided functor with the arguments held by one or more
+   variants
+   (function template)
+   holds_alternative
+   (C++17)
+   checks if a variant currently holds a given type
+   (function template)
+   get(std::variant)
+   (C++17)
+   reads the value of the variant given the index or the type (if the type
+   is unique), throws on error
+   (function template)
+   get_if
+   (C++17)
+   obtains a pointer to the value of a pointed-to variant given the index
+   or the type (if unique), returns null on error
+   (function template)
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (C++17)(C++17)(C++17)(C++17)(C++17)(C++17)(C++20)
+   compares variant objects as their contained values
+   (function template)
+   std::swap(std::variant)
+   (C++17)
+   specializes the std::swap algorithm
+   (function template)
+
+Synopsis
+
+#include <compare>
+
+namespace std {
+  // class template variant
+  template<class... Types>
+    class variant;
+
+  // variant helper classes
+  template<class T> struct variant_size;                        // not defined
+  template<class T> struct variant_size<const T>;
+  template<class T>
+    inline constexpr size_t variant_size_v = variant_size<T>::value;
+
+  template<class... Types>
+    struct variant_size<variant<Types...>>;
+
+  template<size_t I, class T> struct variant_alternative;       // not defined
+  template<size_t I, class T> struct variant_alternative<I, const T>;
+  template<size_t I, class T>
+    using variant_alternative_t = typename variant_alternative<I, T>::type;
+
+  template<size_t I, class... Types>
+    struct variant_alternative<I, variant<Types...>>;
+
+  inline constexpr size_t variant_npos = -1;
+
+  // value access
+  template<class T, class... Types>
+    constexpr bool holds_alternative(const variant<Types...>&) noexcept;
+
+  template<size_t I, class... Types>
+    constexpr variant_alternative_t<I, variant<Types...>>& get(variant<Types...>
+&);
+  template<size_t I, class... Types>
+    constexpr variant_alternative_t<I, variant<Types...>>&& get(variant<Types...
+>&&);
+  template<size_t I, class... Types>
+    constexpr const variant_alternative_t<I, variant<Types...>>&
+      get(const variant<Types...>&);
+  template<size_t I, class... Types>
+    constexpr const variant_alternative_t<I, variant<Types...>>&&
+      get(const variant<Types...>&&);
+
+  template<class T, class... Types>
+    constexpr T& get(variant<Types...>&);
+  template<class T, class... Types>
+    constexpr T&& get(variant<Types...>&&);
+  template<class T, class... Types>
+    constexpr const T& get(const variant<Types...>&);
+  template<class T, class... Types>
+    constexpr const T&& get(const variant<Types...>&&);
+
+  template<size_t I, class... Types>
+    constexpr add_pointer_t<variant_alternative_t<I, variant<Types...>>>
+      get_if(variant<Types...>*) noexcept;
+  template<size_t I, class... Types>
+    constexpr add_pointer_t<const variant_alternative_t<I, variant<Types...>>>
+      get_if(const variant<Types...>*) noexcept;
+
+  template<class T, class... Types>
+    constexpr add_pointer_t<T>
+      get_if(variant<Types...>*) noexcept;
+  template<class T, class... Types>
+    constexpr add_pointer_t<const T>
+      get_if(const variant<Types...>*) noexcept;
+
+  // relational operators
+  template<class... Types>
+    constexpr bool operator==(const variant<Types...>&, const variant<Types...>&
+);
+  template<class... Types>
+    constexpr bool operator!=(const variant<Types...>&, const variant<Types...>&
+);
+  template<class... Types>
+    constexpr bool operator<(const variant<Types...>&, const variant<Types...>&)
+;
+  template<class... Types>
+    constexpr bool operator>(const variant<Types...>&, const variant<Types...>&)
+;
+  template<class... Types>
+    constexpr bool operator<=(const variant<Types...>&, const variant<Types...>&
+);
+  template<class... Types>
+    constexpr bool operator>=(const variant<Types...>&, const variant<Types...>&
+);
+  template<class... Types> requires (three_way_comparable<Types> && ...)
+    constexpr common_comparison_category_t<compare_three_way_result_t<Types>...>
+      operator<=>(const variant<Types...>&, const variant<Types...>&);
+
+  // visitation
+  template<class Visitor, class... Variants>
+    constexpr /* see description */ visit(Visitor&&, Variants&&...);
+  template<class R, class Visitor, class... Variants>
+    constexpr R visit(Visitor&&, Variants&&...);
+
+  // class monostate
+  struct monostate;
+
+  // monostate relational operators
+  constexpr bool operator==(monostate, monostate) noexcept;
+  constexpr strong_ordering operator<=>(monostate, monostate) noexcept;
+
+  // specialized algorithms
+  template<class... Types>
+    constexpr void swap(variant<Types...>&,
+                        variant<Types...>&) noexcept(/* see description */);
+
+  // class bad_variant_access
+  class bad_variant_access;
+
+  // hash support
+  template<class T> struct hash;
+  template<class... Types> struct hash<variant<Types...>>;
+  template<> struct hash<monostate>;
+}
+
+// deprecated
+namespace std {
+  template<class T> struct variant_size<volatile T>;
+  template<class T> struct variant_size<const volatile T>;
+
+  template<size_t I, class T> struct variant_alternative<I, volatile T>;
+  template<size_t I, class T> struct variant_alternative<I, const volatile T>;
+}
+
+Class template std::variant
+
+namespace std {
+  template<class... Types>
+  class variant {
+  public:
+    // constructors
+    constexpr variant() noexcept(/* see description */);
+    constexpr variant(const variant&);
+    constexpr variant(variant&&) noexcept(/* see description */);
+
+    template<class T>
+      constexpr variant(T&&) noexcept(/* see description */);
+
+    template<class T, class... Args>
+      constexpr explicit variant(in_place_type_t<T>, Args&&...);
+    template<class T, class U, class... Args>
+      constexpr explicit variant(in_place_type_t<T>, initializer_list<U>, Args&&
+...);
+
+    template<size_t I, class... Args>
+      constexpr explicit variant(in_place_index_t<I>, Args&&...);
+    template<size_t I, class U, class... Args>
+      constexpr explicit variant(in_place_index_t<I>, initializer_list<U>, Args&
+&...);
+
+    // destructor
+    constexpr ~variant();
+
+    // assignment
+    constexpr variant& operator=(const variant&);
+    constexpr variant& operator=(variant&&) noexcept(/* see description */);
+
+    template<class T> constexpr variant& operator=(T&&) noexcept(/* see descript
+ion */);
+
+    // modifiers
+    template<class T, class... Args>
+      constexpr T& emplace(Args&&...);
+    template<class T, class U, class... Args>
+      constexpr T& emplace(initializer_list<U>, Args&&...);
+    template<size_t I, class... Args>
+      constexpr variant_alternative_t<I, variant<Types...>>& emplace(Args&&...);
+    template<size_t I, class U, class... Args>
+      constexpr variant_alternative_t<I, variant<Types...>>&
+        emplace(initializer_list<U>, Args&&...);
+
+    // value status
+    constexpr bool valueless_by_exception() const noexcept;
+    constexpr size_t index() const noexcept;
+
+    // swap
+    constexpr void swap(variant&) noexcept(/* see description */);
+  };
+}
+
+Class std::monostate
+
+struct monostate{};
+
+Class std::bad_variant_access
+
+class bad_variant_access : public exception {
+public:
+  // see [exception] for the specification of the special member functions
+  const char* what() const noexcept override;
+};
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/header/variant&o
+   ldid=163939"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 November 2023, at 07:57.
+     * This page has been accessed 83,599 times.

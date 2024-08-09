@@ -1,0 +1,130 @@
+std::regex_token_iterator<BidirIt,CharT,Traits>::operator++, operator++(int)
+
+   From cppreference.com
+   < cpp | regex | regex token iterator
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Regular expressions library
+   Classes
+   basic_regex
+   (C++11)
+   sub_match
+   (C++11)
+   match_results
+   (C++11)
+   Algorithms
+   regex_match
+   (C++11)
+   regex_search
+   (C++11)
+   regex_replace
+   (C++11)
+   Iterators
+   regex_iterator
+   (C++11)
+   regex_token_iterator
+   (C++11)
+   Exceptions
+   regex_error
+   (C++11)
+   Traits
+   regex_traits
+   (C++11)
+   Constants
+   syntax_option_type
+   (C++11)
+   match_flag_type
+   (C++11)
+   error_type
+   (C++11)
+   Regex Grammar
+   Modified ECMAScript-262
+   (C++11)
+
+   std::regex_token_iterator
+   Member functions
+   regex_token_iterator::regex_token_iterator
+   regex_token_iterator::operator=
+   Comparisons
+   regex_token_iterator::operator==regex_token_iterator::operator!=
+   (until C++20)
+   Observers
+   regex_token_iterator::operator*regex_token_iterator::operator->
+   Modifiers
+   regex_token_iterator::operator++regex_token_iterator::operator++(int)
+
+   regex_token_iterator& operator++();
+                                          (since C++11)
+   regex_token_iterator operator++( int );
+                                          (since C++11)
+
+   Advances the iterator on the next sub match.
+   This section is incomplete
+   Reason: Explain better. For example, subs is an exposition-only vector
+   of matched sub-expressions.
+
+   If *this is a suffix iterator, sets *this to an end-of-sequence
+   iterator.
+
+   Otherwise, if N + 1 < subs.size(), increments N and sets result to the
+   address of the current match.
+
+   Otherwise, sets N to 0 and increments position. If position is not an
+   end-of-sequence iterator the operator sets result to the address of the
+   current match.
+
+   Otherwise, if any of the values stored in subs is equal to -1 and
+   prev->suffix().length() is not 0 the operator sets *this to a suffix
+   iterator that points to the range [prev->suffix().first,
+   prev->suffix().second).
+
+   Otherwise, sets *this to an end-of-sequence iterator.
+
+   The behavior is undefined if the iterator is end-of-sequence iterator.
+
+Parameters
+
+   (none)
+
+Return value
+
+   1) *this
+   2) The previous value of the iterator.
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/regex/regex_toke
+   n_iterator/operator_arith&oldid=160538"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 11 October 2023, at 11:01.
+     * This page has been accessed 15,575 times.

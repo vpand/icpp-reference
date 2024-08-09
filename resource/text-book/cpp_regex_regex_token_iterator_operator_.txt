@@ -1,0 +1,105 @@
+std::regex_token_iterator<BidirIt,CharT,Traits>::operator=
+
+   From cppreference.com
+   < cpp | regex | regex token iterator
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Regular expressions library
+   Classes
+   basic_regex
+   (C++11)
+   sub_match
+   (C++11)
+   match_results
+   (C++11)
+   Algorithms
+   regex_match
+   (C++11)
+   regex_search
+   (C++11)
+   regex_replace
+   (C++11)
+   Iterators
+   regex_iterator
+   (C++11)
+   regex_token_iterator
+   (C++11)
+   Exceptions
+   regex_error
+   (C++11)
+   Traits
+   regex_traits
+   (C++11)
+   Constants
+   syntax_option_type
+   (C++11)
+   match_flag_type
+   (C++11)
+   error_type
+   (C++11)
+   Regex Grammar
+   Modified ECMAScript-262
+   (C++11)
+
+   std::regex_token_iterator
+   Member functions
+   regex_token_iterator::regex_token_iterator
+   regex_token_iterator::operator=
+   Comparisons
+   regex_token_iterator::operator==regex_token_iterator::operator!=
+   (until C++20)
+   Observers
+   regex_token_iterator::operator*regex_token_iterator::operator->
+   Modifiers
+   regex_token_iterator::operator++regex_token_iterator::operator++(int)
+
+   regex_token_iterator& operator=( const regex_token_iterator& other );
+   (since C++11)
+
+   Assigns the contents of other.
+
+Parameters
+
+   other - regex token iterator to assign
+
+Return value
+
+   *this
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/regex/regex_toke
+   n_iterator/operator%3D&oldid=161046"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 21 October 2023, at 08:55.
+     * This page has been accessed 11,643 times.

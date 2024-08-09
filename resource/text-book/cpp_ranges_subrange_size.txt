@@ -1,0 +1,234 @@
+std::ranges::subrange<I,S,K>::size
+
+   From cppreference.com
+   < cpp | ranges | subrange
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   std::ranges::subrange
+   Member functions
+   subrange::subrange
+   subrange::operator PairLike
+   Observers
+   subrange::begin
+   subrange::end
+   subrange::empty
+   subrange::size
+   Iterator operations
+   subrange::advance
+   subrange::next
+   subrange::prev
+   Deduction guides
+   Non-member functions
+   get(std::ranges::subrange)
+   Helper types
+   subrange_kind
+   tuple_size<std::ranges::subrange>
+   tuple_element<std::ranges::subrange>
+
+   constexpr /* see below */ size() const
+       requires (K == ranges::subrange_kind::sized);
+                                         (since C++20)
+
+   Obtains the number of elements in the subrange.
+
+   The return type is the corresponding unsigned version of
+   std::iter_difference_t<I>.
+
+Parameters
+
+   (none)
+
+Return value
+
+   s_ - i_ explicitly converted to the return type, where i_ and s_ are
+   the stored iterator and sentinel respectively, if the size is not
+   stored.
+
+   Otherwise, the stored size.
+
+Notes
+
+   The size is stored into a subrange if and only if K ==
+   ranges::subrange_kind::sized but std::sized_sentinel_for<S, I> is not
+   satisfied.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   empty
+   (C++20)
+   checks whether the subrange is empty
+   (public member function)
+   sizessize
+   (C++17)(C++20)
+   returns the size of a container or array
+   (function template)
+   ranges::size
+   (C++20)
+   returns an integer equal to the size of a range
+   (customization point object)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/subrange/
+   size&oldid=129337"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 4 June 2021, at 10:19.
+     * This page has been accessed 5,554 times.

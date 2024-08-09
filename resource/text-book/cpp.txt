@@ -1,0 +1,213 @@
+C++ reference
+
+   From cppreference.com
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++11, C++14, C++17, C++20, C++23, C++26  |  Compiler support C++11,
+   C++14, C++17, C++20, C++23, C++26
+
+   Language
+
+   Keywords - Preprocessor
+   ASCII chart
+   Basic concepts
+       Comments
+       Names (lookup)
+       Types (fundamental types)
+       The main function
+   Expressions
+       Value categories
+       Evaluation order
+       Operators (precedence)
+       Conversions - Literals
+   Statements
+       if - switch
+       for - range-for (C++11)
+       while - do-while
+   Declarations - Initialization
+   Functions - Overloading
+   Classes (unions)
+   Templates - Exceptions
+   Freestanding implementations
+
+   Standard library (headers)
+
+   Named requirements
+
+   Feature test macros (C++20)
+
+   Language support library
+
+   Program utilities
+   source_location (C++20)
+   Coroutine support (C++20)
+   Three-way comparison (C++20)
+   Type support
+   numeric_limits - type_info
+   initializer_list (C++11)
+
+   Concepts library (C++20)
+
+   Diagnostics library
+
+   exception - System error
+   basic_stacktrace (C++23)
+
+   Memory management library
+
+   unique_ptr (C++11)
+   shared_ptr (C++11)
+   weak_ptr (C++11)
+   Memory resources (C++17)
+   Allocators - Low level management
+
+   Metaprogramming library (C++11)
+
+   Type traits - ratio
+   integer_sequence (C++14)
+
+   General utilities library
+
+   Function objects - hash (C++11)
+   Swap - Type operations (C++11)
+   Integer comparison (C++20)
+   pair - tuple (C++11)
+   optional (C++17)
+   expected (C++23)
+   variant (C++17) - any (C++17)
+   String conversions (C++17)
+   Formatting (C++20)
+   bitset - Bit manipulation (C++20)
+   Debugging support (C++26)
+
+   Strings library
+
+   basic_string - char_traits
+   basic_string_view (C++17)
+   Null-terminated strings:
+       byte - multibyte - wide
+
+   Containers library
+
+   vector - deque - array (C++11)
+   list - forward_list (C++11)
+   map - multimap - set - multiset
+   unordered_map (C++11)
+   unordered_multimap (C++11)
+   unordered_set (C++11)
+   unordered_multiset (C++11)
+   Container adaptors
+   span (C++20) - mdspan (C++23)
+
+   Iterators library
+
+   Ranges library (C++20)
+
+   Algorithms library
+
+   Execution policies (C++17)
+   Constrained algorithms (C++20)
+
+   Numerics library
+
+   Common math functions
+   Mathematical special functions (C++17)
+   Mathematical constants (C++20)
+   Basic linear algebra algorithms (C++26)
+   Numeric algorithms
+   Pseudo-random number generation
+   Floating-point environment (C++11)
+   complex - valarray
+
+   Date and time library
+
+   Calendar (C++20) - Time zone (C++20)
+
+   Localization library
+
+   locale - Character classification
+   text_encoding (C++26)
+
+   Input/output library
+
+   Print functions (C++23)
+   Stream-based I/O - I/O manipulators
+   basic_istream - basic_ostream
+   Synchronized output (C++20)
+   File systems (C++17)
+
+   Regular expressions library (C++11)
+
+   basic_regex - Algorithms
+   Default regular expression grammar
+
+   Concurrency support library (C++11)
+
+   thread - jthread (C++20)
+   atomic - atomic_flag
+   atomic_ref (C++20) -  memory_order
+   Mutual exclusion - Semaphores (C++20)
+   Condition variables - Futures
+   latch (C++20) - barrier (C++20)
+   Safe Reclamation (C++26)
+   Technical specifications
+
+     Standard library extensions  (library fundamentals TS)
+
+   resource_adaptor - invocation_type
+
+     Standard library extensions v2  (library fundamentals TS v2)
+
+   propagate_const - ostream_joiner -  randint
+   observer_ptr - Detection idiom
+
+     Standard library extensions v3  (library fundamentals TS v3)
+
+   scope_exit - scope_fail - scope_success - unique_resource
+
+     Parallelism library extensions v2  (parallelism TS v2)
+
+   simd
+
+     Concurrency library extensions  (concurrency TS)
+     Transactional Memory  (TM TS)
+     Reflection  (reflection TS)
+   External Links  -  Non-ANSI/ISO Libraries  -  Index  -  std Symbol
+   Index
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp&oldid=97601"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 16 December 2017, at 23:24.
+     * This page has been accessed 6,386,653 times.

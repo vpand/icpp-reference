@@ -1,0 +1,258 @@
+C99
+
+   From cppreference.com
+   < c
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Versions
+   C89
+   C95
+   C99
+   C11
+   C17
+   C23
+   Current Status
+
+   ISO/IEC 9899:1999, a.k.a. C99, is a previous revision of the C
+   standard.
+   This section is incomplete
+   Reason: core/library features, TC1~TC3, DRs
+
+Obsolete
+
+Removed
+
+     * Implicit int in declarations
+     * Implicit function declarations
+
+Deprecated
+
+     * gets()
+
+New language features
+
+     * Universal-character-names in identifiers
+     * Increased translation limits
+     * // comments
+     * restrict pointers
+     * Enhanced arithmetic types
+          + _Bool
+          + long long and unsigned long long
+          + Extended integer types
+          + _Complex types (float _Complex, double _Complex, and long
+            double _Complex)
+          + _Imaginary types (float _Imaginary, double _Imaginary, and
+            long double _Imaginary)
+     * Flexible array members
+     * Variable-length array (VLA) types and variably-modified (VM) types
+     * Improvements of braced-init-list for array, struct and union types
+          + Non-constant initializers
+          + Designated initializers
+     * Idempotent cvr-qualifiers
+     * Trailing comma in enumerator-list
+     * Hexadecimal floating constants
+     * Compound literals
+     * Floating-point environment
+     * Requiring truncation for divisions of signed integer types
+     * Implicit return 0; in the main() function
+     * Declarations and statements in mixed order
+     * init-statement in for loops
+     * inline functions
+     * Predefined variable __func__
+     * Cvr-qualifiers and static in [] within function declarations
+     * Variadic macros
+     * _Pragma preprocessor operator
+     * Standard pragmas for floating-point evaluation
+          + STDC FENV_ACCESS
+          + STDC FP_CONTRACT
+          + STDC CX_LIMITED_RANGE
+
+Feature test macros for optional features
+
+     * __STDC_IEC_559__
+          + Indicates IEEE-754 binary floating-point arithmetic and
+            required math functions are supported.
+     * __STDC_IEC_559_COMPLEX__
+          + Indicates IEEE-754 complex arithmetic and required math
+            functions are supported.
+     * __STDC_HOSTED__
+          + Indicates that the implementation is hosted.
+     * __STDC_ISO_10646__
+          + Indicates that Unicode is used by the wide literal encodings
+            and expands to the latest supported revision.
+     * __STDC_MB_MIGHT_NEQ_WC__
+          + Indicates that there are some characters in the basic
+            character set having different code unit values in ordinary
+            and wide literal encodings.
+
+New library features
+
+New headers
+
+     * <complex.h>
+     * <fenv.h>
+     * <inttypes.h>
+     * <stdbool.h>
+     * <stdint.h>
+     * <tgmath.h>
+
+Library features
+
+     * Aliases for integer types
+          + Integer types with exact width (intN_t and uintN_t)
+          + Fastest integer types with at least given width (int_fastN_t
+            and uint_fastN_t)
+          + Smallest integer types with at least given width (int_leastN_t
+            and uint_leastN_t)
+          + Integer types capable for cast between object pointers
+            (intptr_t and uintptr_t)
+          + Integer types with maximum width (intmax_t and uintmax_t)
+     * Operations on long long and intmax_t
+          + llabs()
+          + imaxabs()
+          + lldiv()
+          + imaxdiv()
+     * Floating-point environment access
+     * Extended floating-point math functions
+          + New floating-point math functions
+          + -f and -l variants for existing and new floating-point math
+            functions
+          + Math error handling
+     * Complex functions
+     * _Exit()
+     * Formatting support for long long, unsigned long long, intmax_t, and
+       uintmax_t
+          + atoll()
+          + strtoimax()
+          + strtoll()
+          + strtoull
+          + strtoumax()
+          + wcstoimax()
+          + wcstoll()
+          + wcstoull()
+          + wcstoumax()
+     * isblank() and iswblank()
+     * snprintf() and vsnprintf()
+     * vfscanf() and vfwscanf() function families
+     * Extensions for fscanf() and fprintf() function families
+          + ll length modifier for long long and unsigned long long
+          + hh length modifier for signed char and unsigned char
+          + l length modifier for double
+          + z length modifier for size_t and its signed version
+          + t length modifier for ptrdiff_t and its unsigned version
+          + j length modifier for intmax_t and uintmax_t
+          + a conversion specifier for floating-point types
+     * Numeric limit macros for long long and unsigned long long
+     * Numeric limit macros corresponding to existing and new aliases for
+       integer types
+     * Format string macros for integer types
+     * va_copy
+     * Type-generic math macros
+     * Floating-point comparison macros
+     * Floating-point classification macros
+     * Compatibility macros for _Bool (bool, true, and false)
+
+Defect reports
+
+   Template:c/language/history/DR99
+
+Compiler support
+
+C99 core language features
+
+   This section is incomplete
+   Reason: needs to list C compilers, verification
+   C99 feature
+     Paper(s)
+
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+   Universal-character-names in identifiers N/A 3.1 Yes Yes
+   Increased translation limits N590 0.9 N/A
+   // comments N644 2.7 Yes Yes
+   restrict pointers N448 2.95 Yes partial*
+   Enhanced arithmetic types N815
+   N601
+   N620
+   N638
+   N657
+   N694
+   N809 Yes partial Maybe
+   Flexible array members N/A 3.0 Yes Yes
+   Variable-length array (VLA) types N683 0.9 Yes
+   Variably-modified (VM) types N2778 N/A Yes
+   Designated initializers N494 3.0 Yes Yes
+   Non-constant initializers N/A 1.21 N/A
+   Idempotent cvr-qualifiers N505 3.0 N/A
+   Trailing comma in enumerator-list N/A 0.9 Yes Yes
+   Hexadecimal floating constants N308 2.8 Yes Yes
+   Compound literals N716 3.1 Yes Yes
+   Floating-point environment N/A partial partial
+   Requiring truncation for divisions of signed integer types N617 0.9 N/A
+   Implicit return 0; in the main() function N/A Yes Yes Yes
+   Declarations and statements in mixed order N740 3.0 Yes Yes
+   init-statement in for loops N/A Yes Yes Yes
+   inline functions N741 4.3 Yes Yes
+   Predefined variable __func__ N611 2.95 Yes Yes
+   Cvr-qualifiers and static in [] within function declarations N/A 3.1
+   Yes
+   Variadic macros N707 2.95 Yes Yes
+   _Pragma preprocessor operator N634 3.0 Yes partial*
+   Standard pragmas for floating-point evaluation N631
+   N696 No No Yes
+
+   C99 feature
+   Paper(s)
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/99&oldid=140860"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 7 July 2022, at 14:29.
+     * This page has been accessed 68,991 times.

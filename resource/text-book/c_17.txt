@@ -1,0 +1,114 @@
+C17
+
+   From cppreference.com
+   < c
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Versions
+   C89
+   C95
+   C99
+   C11
+   C17
+   C23
+   Current Status
+
+   ISO/IEC 9899:2018, a.k.a. C17/C18 (denote the year of completion and
+   publication respectively), is the current revision of the C standard.
+
+   C17 is same as C11, except that it bumps the __STDC_VERSION__
+   predefined macro to 201710L, contains several defect reports, and
+   deprecates some features.
+
+Obsolete
+
+Deprecated
+
+     * ATOMIC_VAR_INIT
+     * Support for calling realloc() with zero size
+
+Defect reports
+
+   Defect Reports fixed in C17 (54 defects)
+     * DR 400
+     * DR 401
+     * DR 402
+     * DR 403
+     * DR 404
+     * DR 405
+     * DR 406
+     * DR 407
+     * DR 410
+     * DR 412
+     * DR 414
+     * DR 415
+     * DR 416
+     * DR 417
+     * DR 419
+     * DR 423
+     * DR 426
+     * DR 428
+     * DR 429
+     * DR 430
+     * DR 431
+     * DR 433
+     * DR 434
+     * DR 436
+     * DR 437
+     * DR 438
+     * DR 439
+     * DR 441
+     * DR 444
+     * DR 445
+     * DR 447
+     * DR 448
+     * DR 450
+     * DR 452
+     * DR 453
+     * DR 457
+     * DR 458
+     * DR 459
+     * DR 460
+     * DR 462
+     * DR 464
+     * DR 465
+     * DR 468
+     * DR 470
+     * DR 471
+     * DR 472
+     * DR 473
+     * DR 475
+     * DR 477
+     * DR 480
+     * DR 481
+     * DR 485
+     * DR 487
+     * DR 491
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/17&oldid=139184"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 5 April 2022, at 09:03.
+     * This page has been accessed 60,431 times.

@@ -1,0 +1,243 @@
+C++ named requirements: SharedMutex (since C++17)
+
+   From cppreference.com
+   < cpp | named req
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ named requirements
+   Basic
+   DefaultConstructible
+   CopyAssignable
+   CopyConstructible
+   MoveAssignable
+   (C++11)
+   MoveConstructible
+   (C++11)
+   Destructible
+   Type properties
+   ScalarType
+   TriviallyCopyable
+   (C++11)
+   StandardLayoutType
+   (C++11)
+   PODType
+   TrivialType
+   (C++11)
+   ImplicitLifetimeType
+   Library-Wide
+   EqualityComparable
+   LessThanComparable
+   Swappable
+   ValueSwappable
+   (C++11)
+   NullablePointer
+   (C++11)
+   Hash
+   (C++11)
+   Allocator
+   FunctionObject
+   Callable
+   Predicate
+   BinaryPredicate
+   Compare
+   Container
+   Container
+   SequenceContainer
+   ContiguousContainer
+   (C++17)
+   ReversibleContainer
+   AssociativeContainer
+   AllocatorAwareContainer
+   UnorderedAssociativeContainer
+   (C++11)
+   Container Elements
+   DefaultInsertable
+   (C++11)
+   CopyInsertable
+   (C++11)
+   MoveInsertable
+   (C++11)
+   EmplaceConstructible
+   (C++11)
+   Erasable
+   (C++11)
+   Iterator
+   LegacyIterator
+   LegacyOutputIterator
+   LegacyInputIterator
+   LegacyForwardIterator
+   LegacyBidirectionalIterator
+   LegacyRandomAccessIterator
+   LegacyContiguousIterator
+   (C++17)
+   ConstexprIterator
+   (C++20)
+   Stream I/O
+   FormattedInputFunction
+   UnformattedInputFunction
+   FormattedOutputFunction
+   UnformattedOutputFunction
+   Formatters
+   BasicFormatter
+   (C++20)
+   Formatter
+   (C++20)
+   Random Numbers
+   SeedSequence
+   (C++11)
+   RandomNumberEngine
+   (C++11)
+   RandomNumberDistribution
+   (C++11)
+   UniformRandomBitGenerator
+   (C++11)
+   RandomNumberEngineAdaptor
+   (C++11)
+   Concurrency
+   BasicLockable
+   (C++11)
+   Lockable
+   (C++11)
+   TimedLockable
+   (C++11)
+   SharedLockable
+   (C++14)
+   SharedTimedLockable
+   (C++14)
+   Mutex
+   (C++11)
+   TimedMutex
+   (C++11)
+   SharedMutex
+   (C++17)
+   SharedTimedMutex
+   (C++14)
+   Ranges
+   RangeAdaptorObject
+   (C++20)
+   RangeAdaptorClosureObject
+   (C++20)
+   Other
+   CharTraits
+   RegexTraits
+   (C++11)
+   BitmaskType
+   LiteralType
+   (C++11)
+   NumericType
+   UnaryTypeTrait
+   (C++11)
+   BinaryTypeTrait
+   (C++11)
+   TransformationTrait
+   (C++11)
+   Clock
+   (C++11)
+   TrivialClock
+   (C++11)
+
+   The SharedMutex requirements extend the Mutex requirements to include
+   shared lock ownership mode.
+
+Requirements
+
+     * Mutex
+
+   Additionally, an object m of SharedMutex type supports another mode of
+   ownership: shared. Multiple threads (or, more generally, execution
+   agents) can simultaneously own this mutex in shared mode, but no thread
+   may obtain shared ownership if there is a thread that owns it in
+   exclusive mode and no thread may obtain exclusive ownership if there is
+   a thread that owns it in shared mode. If more than
+   implementation-defined number of threads (no less than 10000) hold a
+   shared lock, another attempt to acquire the mutex in shared mode blocks
+   until the number of shared owners drops down below that threshold.
+     * The expression m.lock_shared() has the following properties:
+
+          + Behaves as an atomic operation.
+          + Blocks the calling thread until shared ownership of the mutex
+            can be obtained.
+          + Prior m.unlock() operations on the same mutex synchronize-with
+            this lock operation (equivalent to release-acquire
+            std::memory_order).
+          + The behavior is undefined if the calling thread already owns
+            the mutex in any mode.
+          + If an exception is thrown, the shared lock is not acquired.
+
+     * The expression m.try_lock_shared() has the following properties:
+
+          + Behaves as an atomic operation.
+          + Attempts to obtain shared ownership of the mutex for the
+            calling thread without blocking. If ownership is not obtained,
+            returns immediately. The function is allowed to spuriously
+            fail and return even if the mutex is not currently owned by
+            any threads in any mode.
+          + If try_lock_shared() succeeds, prior unlock() operations on
+            the same object synchronize-with this operation (equivalent to
+            release-acquire std::memory_order).
+          + The behavior is undefined if the calling thread already owns
+            the mutex in any mode.
+
+     * The expression m.unlock_shared() has the following properties:
+
+          + Behaves as an atomic operation.
+          + Releases the calling thread's ownership of the mutex and
+            synchronizes-with the subsequent successful lock operations on
+            the same object.
+          + The behavior is undefined if the calling thread does not own
+            the mutex.
+
+     * All lock and unlock operations on a single mutex occur in a single
+       total order.
+
+Library types
+
+   The following standard library types satisfy SharedMutex:
+     * std::shared_mutex(since C++17)
+     * std::shared_timed_mutex(since C++14)
+
+See also
+
+     * Thread support library
+     * Mutex
+     * TimedMutex
+     * SharedTimedMutex
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/named_req/Shared
+   Mutex&oldid=160694"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 14 October 2023, at 14:05.
+     * This page has been accessed 40,050 times.

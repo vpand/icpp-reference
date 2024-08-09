@@ -1,0 +1,215 @@
+wcsrchr
+
+   From cppreference.com
+   < c | string | wide
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Strings library
+   Byte strings
+   Multibyte strings
+   Wide strings
+
+   Null-terminated wide strings
+   Functions
+   Character manipulation
+   iswalnum
+   (C95)
+   iswalpha
+   (C95)
+   iswlower
+   (C95)
+   iswupper
+   (C95)
+   iswdigit
+   (C95)
+   iswxdigit
+   (C95)
+   iswblank
+   (C99)
+   wctype
+   (C95)
+   iswctype
+   (C95)
+   iswcntrl
+   (C95)
+   iswgraph
+   (C95)
+   iswspace
+   (C95)
+   iswprint
+   (C95)
+   iswpunct
+   (C95)
+   towlower
+   (C95)
+   towupper
+   (C95)
+   wctrans
+   (C95)
+   towctrans
+   (C95)
+   Conversions to numeric formats
+   wcstolwcstoll
+   (C95)(C99)
+   wcstoulwcstoull
+   (C95)(C99)
+   wcstofwcstodwcstold
+   (C99)(C95)(C99)
+   wcstoimaxwcstoumax
+   (C99)(C99)
+   String manipulation
+   wcslenwcsnlen_s
+   (C95)(C11)
+   wcscpywcscpy_s
+   (C95)(C11)
+   wcsncpywcsncpy_s
+   (C95)(C11)
+   wcscatwcscat_s
+   (C95)(C11)
+   wcsncatwcsncat_s
+   (C95)(C11)
+   wcsstr
+   (C95)
+   wcscmp
+   (C95)
+   wcsncmp
+   (C95)
+   wcscoll
+   (C95)
+   wcsxfrm
+   (C95)
+   wcschr
+   (C95)
+   wcsrchr
+   (C95)
+   wcspbrk
+   (C95)
+   wcsspn
+   (C95)
+   wcscspn
+   (C95)
+   wcstokwcstok_s
+   (C95)(C11)
+   Array manipulation
+   wmemcpywmemcpy_s
+   (C95)(C11)
+   wmemmovewmemmove_s
+   (C95)(C11)
+   wmemcmp
+   (C95)
+   wmemchr
+   (C95)
+   wmemset
+   (C95)
+
+   Defined in header <wchar.h>
+   wchar_t *wcsrchr( const wchar_t *str, wchar_t ch );
+   (1)                                                    (since C95)
+   /*QWchar_t*/ *wcsrchr( /*QWchar_t*/ *str, wchar_t ch );
+   (2)                                                    (since C23)
+   1) Finds the last occurrence of the wide character ch in the wide
+   string pointed to by str.
+   2) Type-generic function equivalent to (1). Let T be an unqualified
+   wide character object type.
+
+          + If str is of type const T*, the return type is const wchar_t*.
+          + Otherwise, if str is of type T*, the return type is wchar_t*.
+          + Otherwise, the behavior is undefined.
+
+   If a macro definition of each of these generic functions is suppressed
+   to access an actual function (e.g. if (wcsrchr) or a function pointer
+   is used), the actual function declaration (1) becomes visible.
+
+Parameters
+
+   str - pointer to the null-terminated wide string to be analyzed
+   ch  - wide character to search for
+
+Return value
+
+   Pointer to the found character in str, or a null pointer if no such
+   character is found.
+
+Example
+
+   Run this code
+#include <locale.h>
+#include <stdio.h>
+#include <wchar.h>
+
+int main(void)
+{
+    wchar_t arr[] = L"½« « koshki";
+    wchar_t *cat = wcsrchr(arr, L'«');
+    wchar_t *dog = wcsrchr(arr, L'¬');
+
+    setlocale(LC_ALL, "en_US.utf8");
+
+    cat ? printf("The character « found at position %td\n", cat - arr)
+        : puts("The character « not found");
+
+    dog ? printf("The character ¬ found at position %td\n", dog - arr)
+        : puts("The character ¬ not found");
+}
+
+   Output:
+The character « found at position 4
+The character ¬ not found
+
+References
+
+     * C23 standard (ISO/IEC 9899:2023):
+
+          + 7.31.4.6.4 The wcsrchr function (p: TBD)
+
+     * C17 standard (ISO/IEC 9899:2018):
+
+          + 7.29.4.5.4 The wcsrchr function (p: 318)
+
+     * C11 standard (ISO/IEC 9899:2011):
+
+          + 7.29.4.5.4 The wcsrchr function (p: 436)
+
+     * C99 standard (ISO/IEC 9899:1999):
+
+          + 7.24.4.5.4 The wcsrchr function (p: 382)
+
+See also
+
+   wcschr
+   (C95)
+   finds the first occurrence of a wide character in a wide string
+   (function)
+   wcspbrk
+   (C95)
+   finds the first location of any wide character in one wide string, in
+   another wide string
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/string/wide/wcsrch
+   r&oldid=153715"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 18 June 2023, at 08:51.
+     * This page has been accessed 18,048 times.

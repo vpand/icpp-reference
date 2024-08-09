@@ -1,0 +1,561 @@
+std::allocate_shared, std::allocate_shared_for_overwrite
+
+   From cppreference.com
+   < cpp | memory | shared ptr
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Dynamic memory management
+   Uninitialized memory algorithms
+   uninitialized_copy
+   uninitialized_fill
+   uninitialized_move
+   (C++17)
+   uninitialized_default_construct
+   (C++17)
+   uninitialized_value_construct
+   (C++17)
+   destroy
+   (C++17)
+   destroy_at
+   (C++17)
+   voidify
+   (C++20)
+   uninitialized_copy_n
+   (C++11)
+   uninitialized_fill_n
+   uninitialized_move_n
+   (C++17)
+   uninitialized_default_construct_n
+   (C++17)
+   uninitialized_value_construct_n
+   (C++17)
+   destroy_n
+   (C++17)
+   construct_at
+   (C++20)
+   Constrained uninitialized memory algorithms
+   ranges::uninitialized_copy
+   (C++20)
+   ranges::uninitialized_fill
+   (C++20)
+   ranges::uninitialized_move
+   (C++20)
+   ranges::construct_at
+   (C++20)
+   ranges::destroy
+   (C++20)
+   ranges::destroy_n
+   (C++20)
+   ranges::destroy_at
+   (C++20)
+   ranges::uninitialized_copy_n
+   (C++20)
+   ranges::uninitialized_fill_n
+   (C++20)
+   ranges::uninitialized_move_n
+   (C++20)
+   ranges::uninitialized_default_construct
+   (C++20)
+   ranges::uninitialized_value_construct
+   (C++20)
+   ranges::uninitialized_default_construct_n
+   (C++20)
+   ranges::uninitialized_value_construct_n
+   (C++20)
+   Allocators
+   allocator
+   allocator_traits
+   (C++11)
+   allocation_result
+   (C++23)
+   allocator_arg
+   (C++11)
+   uses_allocator
+   (C++11)
+   uses_allocator_construction_args
+   (C++20)
+   make_obj_using_allocator
+   (C++20)
+   uninitialized_construct_using_allocator
+   (C++20)
+   scoped_allocator_adaptor
+   (C++11)
+   pmr::polymorphic_allocator
+   (C++17)
+   Memory resources
+   pmr::memory_resource
+   (C++17)
+   pmr::get_default_resource
+   (C++17)
+   pmr::set_default_resource
+   (C++17)
+   pmr::new_delete_resource
+   (C++17)
+   pmr::null_memory_resource
+   (C++17)
+   pmr::synchronized_pool_resource
+   (C++17)
+   pmr::unsynchronized_pool_resource
+   (C++17)
+   pmr::monotonic_buffer_resource
+   (C++17)
+   pmr::pool_options
+   (C++17)
+   Garbage collection support
+   declare_reachable
+   (C++11)(until C++23)
+   undeclare_reachable
+   (C++11)(until C++23)
+   declare_no_pointers
+   (C++11)(until C++23)
+   undeclare_no_pointers
+   (C++11)(until C++23)
+   pointer_safety
+   (C++11)(until C++23)
+   get_pointer_safety
+   (C++11)(until C++23)
+   Uninitialized storage
+   raw_storage_iterator
+   (until C++20*)
+   get_temporary_buffer
+   (until C++20*)
+   return_temporary_buffer
+   (until C++20*)
+   Explicit lifetime management
+   start_lifetime_asstart_lifetime_as_array
+   (C++23)(C++23)
+   Smart pointers
+   unique_ptr
+   (C++11)
+   shared_ptr
+   (C++11)
+   weak_ptr
+   (C++11)
+   auto_ptr
+   (until C++17*)
+   owner_less
+   (C++11)
+   owner_less<void>
+   (C++17)
+   owner_hash
+   (C++26)
+   owner_equal
+   (C++26)
+   enable_shared_from_this
+   (C++11)
+   bad_weak_ptr
+   (C++11)
+   default_delete
+   (C++11)
+   out_ptr_t
+   (C++23)
+   inout_ptr_t
+   (C++23)
+   Low level memory
+   management
+   operator new
+   operator new[]
+   operator delete
+   operator delete[]
+   get_new_handler
+   set_new_handler
+   launder
+   (C++17)
+   bad_alloc
+   bad_array_new_length
+   nothrow_t
+   align_val_t
+   destroying_delete_t
+   new_handler
+   nothrow
+   Miscellaneous
+   pointer_traits
+   (C++11)
+   to_address
+   (C++20)
+   addressof
+   (C++11)
+   align
+   (C++11)
+   assume_aligned
+   (C++20)
+   C Library
+   malloc
+   calloc
+   realloc
+
+   aligned_alloc
+   (C++17)
+   free
+
+   std::shared_ptr
+   Member functions
+   shared_ptr::shared_ptr
+   shared_ptr::~shared_ptr
+   shared_ptr::operator=
+   Modifiers
+   shared_ptr::reset
+   shared_ptr::swap
+   Observers
+   shared_ptr::get
+   shared_ptr::operator*shared_ptr::operator->
+   shared_ptr::operator[]
+   (C++17)
+   shared_ptr::use_count
+   shared_ptr::unique
+   (until C++20*)
+   shared_ptr::operator bool
+   shared_ptr::owner_before
+   shared_ptr::owner_hash
+   (C++26)
+   shared_ptr::owner_equal
+   (C++26)
+   Non-member functions
+   swap(std::shared_ptr)
+   make_sharedmake_shared_for_overwrite
+   (C++20)
+   allocate_sharedallocate_shared_for_overwrite
+   (C++20)
+   static_pointer_castdynamic_pointer_castconst_pointer_castreinterpret_po
+   inter_cast
+   (C++17)
+   get_deleter
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (until C++20)(until C++20)(until C++20)(until C++20)(until
+   C++20)(C++20)
+   operator<<
+   atomic_xxx
+   functions (until C++26*)
+   atomic<std::shared_ptr>
+   (C++20)
+   hash<std::shared_ptr>
+   Deduction guides(C++17)
+
+   Defined in header <memory>
+   template< class T, class Alloc, class... Args >
+   shared_ptr<T> allocate_shared( const Alloc& alloc, Args&&... args );
+   (1) (since C++11)
+   (T is non-array)
+   template< class T, class Alloc >
+   shared_ptr<T> allocate_shared( const Alloc& alloc, std::size_t N );
+   (2) (since C++20)
+   (T is U[])
+   template< class T, class Alloc >
+   shared_ptr<T> allocate_shared( const Alloc& alloc );
+   (3) (since C++20)
+   (T is U[N])
+   template< class T, class Alloc >
+
+   shared_ptr<T> allocate_shared( const Alloc& alloc, std::size_t N,
+                                  const std::remove_extent_t<T>& u );
+   (4) (since C++20)
+   (T is U[])
+   template< class T, class Alloc >
+
+   shared_ptr<T> allocate_shared( const Alloc& alloc,
+                                  const std::remove_extent_t<T>& u );
+   (5) (since C++20)
+   (T is U[N])
+   template< class T, class Alloc >
+   shared_ptr<T> allocate_shared_for_overwrite( const Alloc& alloc );
+   (6) (since C++20)
+   (T is not U[])
+   template< class T, class Alloc >
+   shared_ptr<T> allocate_shared_for_overwrite( const Alloc& alloc,
+   std::size_t N );
+   (7) (since C++20)
+   (T is U[])
+   1) Constructs an object of type T and wraps it in a std::shared_ptr
+   using args as the parameter list for the constructor of T. The object
+   is constructed as if by the expression ::new (pv) T(v)(until
+   C++20)std::allocator_traits<A2>::construct(a, pv, v)(since C++20),
+   where pv is an internal void* pointer to storage suitable to hold an
+   object of type T and a is a copy of the allocator rebound to
+   std::remove_cv_t<T>. The storage is typically larger than sizeof(T) in
+   order to use one allocation for both the control block of the shared
+   pointer and the T object. The std::shared_ptr constructor called by
+   this function enables shared_from_this with a pointer to the newly
+   constructed object of type T. All memory allocation is done using a
+   copy of alloc, which must satisfy the Allocator requirements. This
+   overload participates in overload resolution only if T is not an array
+   type.
+   2,3) Same as (1), but the object constructed is a
+   possibly-multidimensional array whose every non-array element is
+   initialized as if by the expression
+   std::allocator_traits<A2>::construct(a2, pv) where a2 of type A2 is the
+   copy of the allocator rebound to manage objects of type
+   std::remove_cv_t<std::remove_all_extents_t<T>>. The overload (2)
+   creates an array of size N along its first dimension. The array
+   elements are initialized in ascending order of their addresses, and
+   when their lifetime ends are destroyed in the reverse order of their
+   original construction.
+   4,5) Same as (2,3), but the elements of the array are initialized from
+   the default value u. If std::remove_extent_t<T> is not itself an array
+   type, then this is performed as if by the same allocator expression as
+   in (1), except that the allocator is rebound to the
+   std::remove_cv_t<std::remove_all_extents_t<T>>. Otherwise, this is
+   performed as if by initializing every non-array element of the
+   (possibly multidimensional) array with the corresponding element from u
+   using the same allocator expression as in (1), except that the
+   allocator is rebound to the type
+   std::remove_cv_t<std::remove_all_extents_t<T>>. The overload (4)
+   creates an array of size N along the first dimension. The array
+   elements are initialized in ascending order of their addresses, and
+   when their lifetime ends are destroyed in the reverse order of their
+   original construction.
+   6) Same as (1) if T is not an array type and (3) if T is U[N], except
+   that the created object is default-initialized.
+   7) Same as (2), except that the individual array elements are
+   default-initialized.
+
+   For allocate_shared, the object (or the individual array elements for
+   (2-5))(since C++20) are destroyed via the expression
+   std::allocator_traits<A2>::destroy(a, p), where p is a pointer to the
+   object and a is a copy of the allocator passed to allocate_shared,
+   rebound to the type of the object being destroyed.
+
+   For allocate_shared_for_overwrite, the object (or individual elements
+   if T is an array type) will be destroyed by p->~X(), where p is a
+   pointer to the object and X is its type.
+   (since C++20)
+
+Parameters
+
+   alloc - the Allocator to use
+   args... - list of arguments with which an instance of T will be
+   constructed
+   N - array size to use
+   u - the initial value to initialize every element of the array
+
+Return value
+
+   std::shared_ptr of an instance of type T.
+
+Exceptions
+
+   Can throw the exceptions thrown from Alloc::allocate() or from the
+   constructor of T. If an exception is thrown, (1) has no effect. If an
+   exception is thrown during the construction of the array,
+   already-initialized elements are destroyed in reverse order(since
+   C++20).
+
+Notes
+
+   Like std::make_shared, this function typically performs only one
+   allocation, and places both the T object and the control block in the
+   allocated memory block (the standard recommends but does not require
+   this, all known implementations do this). A copy of alloc is stored as
+   part of the control block so that it can be used to deallocate it once
+   both shared and weak reference counts reach zero.
+
+   Unlike the std::shared_ptr constructors, std::allocate_shared does not
+   accept a separate custom deleter: the supplied allocator is used for
+   destruction of the control block and the T object, and for deallocation
+   of their shared memory block.
+
+   std::shared_ptr supports array types (as of C++17), but
+   std::allocate_shared does not. This functionality is supported by
+   boost::allocate_shared.
+   (until C++20)
+
+   A constructor enables shared_from_this with a pointer ptr of type U*
+   means that it determines if U has an unambiguous and accessible(since
+   C++17) base class that is a specialization of
+   std::enable_shared_from_this, and if so, the constructor evaluates the
+   statement:
+if (ptr != nullptr && ptr->weak_this.expired())
+    ptr->weak_this = std::shared_ptr<std::remove_cv_t<U>>(
+                         *this, const_cast<std::remove_cv_t<U>*>(ptr));
+
+   Where weak_this is the hidden mutable std::weak_ptr member of
+   std::enable_shared_from_this. The assignment to the weak_this member is
+   not atomic and conflicts with any potentially concurrent access to the
+   same object. This ensures that future calls to shared_from_this() would
+   share ownership with the std::shared_ptr created by this raw pointer
+   constructor.
+
+   The test ptr->weak_this.expired() in the exposition code above makes
+   sure that weak_this is not reassigned if it already indicates an owner.
+   This test is required as of C++17.
+   Feature-test macro Value Std Feature
+   __cpp_lib_smart_ptr_for_overwrite 202002L (C++20) Smart pointer
+   creation with default initialization
+   (std::allocate_shared_for_overwrite, std::make_shared_for_overwrite,
+   std::make_unique_for_overwrite); overloads (6,7)
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   (constructor)
+   constructs new shared_ptr
+   (public member function)
+   make_sharedmake_shared_for_overwrite
+   (C++20)
+   creates a shared pointer that manages a new object
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/memory/shared_pt
+   r/allocate_shared&oldid=159319"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 18 September 2023, at 04:24.
+     * This page has been accessed 149,936 times.

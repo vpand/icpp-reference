@@ -1,0 +1,176 @@
+std::uses_allocator<std::priority_queue>
+
+   From cppreference.com
+   < cpp | container | priority queue
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::priority_queue
+   Member functions
+   priority_queue::priority_queue
+   priority_queue::~priority_queue
+   priority_queue::operator=
+   Element access
+   priority_queue::top
+   Capacity
+   priority_queue::empty
+   priority_queue::size
+   Modifiers
+   priority_queue::push
+   priority_queue::push_range
+   (C++23)
+   priority_queue::emplace
+   (C++11)
+   priority_queue::pop
+   priority_queue::swap
+   (C++11)
+   Non-member functions
+   swap(std::priority_queue)
+   (C++11)
+   Helper classes
+   uses_allocator<std::priority_queue>
+   (C++11)
+   formatter<std::priority_queue>
+   (C++23)
+   Deduction guides(C++17)
+
+   Defined in header <queue>
+   template< class T, class Container, class Compare, class Alloc >
+
+   struct uses_allocator<std::priority_queue<T, Compare, Container>,
+   Alloc>
+       : std::uses_allocator<Container, Alloc>::type {};
+                                                                   (since C++11)
+
+   Provides a transparent specialization of the std::uses_allocator type
+   trait for std::priority_queue: the container adaptor uses allocator if
+   and only if the underlying container does.
+
+Inherited from std::integral_constant
+
+Member constants
+
+   value
+   [static]
+   true
+   (public static member constant)
+
+Member functions
+
+   operator bool
+   converts the object to bool, returns value
+   (public member function)
+   operator()
+   (C++14)
+   returns value
+   (public member function)
+
+Member types
+
+   Type       Definition
+   value_type bool
+   type       std::integral_constant<bool, value>
+
+Example
+
+   Run this code
+#include <memory>
+#include <queue>
+
+static_assert(
+    std::uses_allocator<std::priority_queue<int>, void>::value == false &&
+    std::uses_allocator<std::priority_queue<int>, std::allocator<int>>::value ==
+ true
+);
+
+int main() {}
+
+See also
+
+   uses_allocator
+   (C++11)
+   checks if the specified type supports uses-allocator construction
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/priori
+   ty_queue/uses_allocator&oldid=161978"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 4 November 2023, at 03:01.
+     * This page has been accessed 21,143 times.

@@ -1,0 +1,161 @@
+std::match_results<BidirIt,Alloc>::match_results
+
+   From cppreference.com
+   < cpp | regex | match results
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Regular expressions library
+   Classes
+   basic_regex
+   (C++11)
+   sub_match
+   (C++11)
+   match_results
+   (C++11)
+   Algorithms
+   regex_match
+   (C++11)
+   regex_search
+   (C++11)
+   regex_replace
+   (C++11)
+   Iterators
+   regex_iterator
+   (C++11)
+   regex_token_iterator
+   (C++11)
+   Exceptions
+   regex_error
+   (C++11)
+   Traits
+   regex_traits
+   (C++11)
+   Constants
+   syntax_option_type
+   (C++11)
+   match_flag_type
+   (C++11)
+   error_type
+   (C++11)
+   Regex Grammar
+   Modified ECMAScript-262
+   (C++11)
+
+   std::match_results
+   Member functions
+   match_results::match_results
+   match_results::~match_results
+   match_results::operator=
+   match_results::get_allocator
+   State
+   match_results::ready
+   Element access
+   match_results::size
+   match_results::max_size
+   match_results::empty
+   match_results::length
+   match_results::position
+   match_results::str
+   match_results::operator[]
+   match_results::prefix
+   match_results::suffix
+   Iterators
+   match_results::beginmatch_results::cbegin
+   match_results::endmatch_results::cend
+   Format
+   match_results::format
+   Modifiers
+   match_results::swap
+   Non-member functions
+   operator==operator!=
+   (until C++20)
+   swap(std::match_results)
+
+   match_results() : match_results(Allocator()) {}
+   (1)                                                           (since C++11)
+   explicit match_results( const Allocator& a );
+   (2)                                                           (since C++11)
+   match_results( const match_results& rhs );
+   (3)                                                           (since C++11)
+   match_results( const match_results& rhs, const Allocator& a );
+   (4)                                                           (since C++11)
+   match_results( match_results&& rhs ) noexcept;
+   (5)                                                           (since C++11)
+   match_results( match_results&& rhs, const Allocator& a );
+   (6)                                                           (since C++11)
+   1) Default constructor. Constructs a match result with no established
+   result state (ready() != true).
+   2) Constructs a match result with no established result state (ready()
+   != true) using a copy of a as the allocator.
+   3) Copy constructor. Constructs a match result with a copy of rhs.
+   4) Constructs a match result with a copy of rhs, and uses a copy of a
+   as the allocator.
+   5) Move constructor. Constructs a match result with the contents of rhs
+   using move semantics. rhs is in valid, but unspecified state after the
+   call.
+   6) Constructs a match result with the contents of rhs using move
+   semantics, and uses a copy of a as the allocator. rhs is in valid, but
+   unspecified state after the call.
+
+Parameters
+
+   a - allocator to use for all memory allocations of this container
+   rhs - another match_results to use as source to initialize the
+   match_results with
+
+Exceptions
+
+   1-4) May throw implementation-defined exceptions.
+   6) Throws nothing if a == rhs.get_allocator() is true.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 2195 C++11 the constructors required by AllocatorAwareContainer
+   were missing added
+   P0935R0 C++11 default constructor was explicit made implicit
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/regex/match_resu
+   lts/match_results&oldid=150024"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 3 April 2023, at 00:11.
+     * This page has been accessed 20,613 times.

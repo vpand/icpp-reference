@@ -1,0 +1,387 @@
+Experimental library header <experimental/optional>
+
+   From cppreference.com
+   < cpp | header | experimental
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Standard library headers
+   Language support
+   <cstddef>
+   <cstdlib>
+   <version> (C++20)
+   <limits>
+   <climits>
+   <cfloat>
+   <cstdint> (C++11)
+   <stdfloat> (C++23)
+   <new>
+   <typeinfo>
+   <source_location> (C++20)
+   <exception>
+   <initializer_list> (C++11)
+   <compare> (C++20)
+   <coroutine> (C++20)
+   <csignal>
+   <csetjmp>
+   <cstdarg>
+   Concepts
+   <concepts> (C++20)
+   Diagnostics
+   <stdexcept>
+   <stacktrace> (C++23)
+   <cassert>
+   <cerrno>
+   <system_error> (C++11)
+   Memory management
+   <memory>
+   <memory_resource> (C++17)
+   <scoped_allocator> (C++11)
+   Metaprogramming
+   <type_traits> (C++11)
+   <ratio> (C++11)
+   General utilities
+   <utility>
+   <tuple> (C++11)
+   <optional> (C++17)
+   <variant> (C++17)
+   <any> (C++17)
+   <debugging> (C++26)
+   <expected> (C++23)
+   <bitset>
+   <functional>
+   <typeindex> (C++11)
+   <execution> (C++17)
+   <charconv> (C++17)
+   <format> (C++20)
+   <bit> (C++20)
+   Strings
+   <string_view> (C++17)
+   <string>
+   <cctype>
+   <cwctype>
+   <cstring>
+   <cwchar>
+   <cuchar> (C++11)
+   Containers
+   <array> (C++11)
+   <deque>
+   <forward_list> (C++11)
+   <list>
+   <vector>
+   <map>
+   <set>
+   <unordered_map> (C++11)
+   <unordered_set> (C++11)
+   <queue>
+   <stack>
+   <flat_map> (C++23)
+   <flat_set> (C++23)
+   <span> (C++20)
+   <mdspan> (C++23)
+   Iterators
+   <iterator>
+   Ranges
+   <ranges> (C++20)
+   <generator> (C++23)
+   Algorithms
+   <algorithm>
+   <numeric>
+   Numerics
+   <cfenv> (C++11)
+   <complex>
+   <random> (C++11)
+   <valarray>
+   <cmath>
+   <linalg> (C++26)
+   <numbers> (C++20)
+   Time
+   <chrono> (C++11)
+   <ctime>
+   Localization
+   <locale>
+   <clocale>
+   <codecvt> (C++11/17/26*)
+   <text_encoding> (C++26)
+   Input/output
+   <iosfwd>
+   <iostream>
+   <ios>
+   <streambuf>
+   <istream>
+   <ostream>
+   <iomanip>
+   <print> (C++23)
+   <sstream>
+   <spanstream> (C++23)
+   <fstream>
+   <syncstream> (C++20)
+   <filesystem> (C++17)
+   <cstdio>
+   <cinttypes> (C++11)
+   <strstream> (C++98/26*)
+   Regular expressions
+   <regex> (C++11)
+   Concurrency support
+   <stop_token> (C++20)
+   <thread> (C++11)
+   <atomic> (C++11)
+   <rcu> (C++26)
+   <stdatomic.h> (C++23)
+   <mutex> (C++11)
+   <shared_mutex> (C++14)
+   <condition_variable> (C++11)
+   <semaphore> (C++20)
+   <latch> (C++20)
+   <barrier> (C++20)
+   <future> (C++11)
+   <hazard_pointer> (C++26)
+   C compatibility
+   <cstdbool> (C++11/17/20*)
+   <ccomplex> (C++11/17/20*)
+   <ctgmath> (C++11/17/20*)
+   <cstdalign> (C++11/17/20*)
+   <ciso646> (until C++20)
+
+   Experimental library headers
+   Execution P2300
+   <experimental/execution>
+   Filesystem TS
+   <experimental/filesystem>
+   Parallelism TS (v1, v2)
+   experimental/algorithm
+   experimental/execution_policy
+   experimental/exception_list
+   experimental/numeric
+   <experimental/simd>
+   experimental/task_block
+   Library Fundamentals TS (v1, v2, v3)
+   experimental/algorithm
+   <experimental/any>
+   experimental/array
+   experimental/chrono
+   experimental/deque
+   experimental/forward_list
+   <experimental/functional>
+   experimental/future
+   experimental/iterator
+   experimental/list
+   experimental/map
+   experimental/memory
+   <experimental/memory_resource>
+   experimental/numeric
+   <experimental/optional>
+   experimental/propagate_const
+   experimental/random
+   experimental/ratio
+   experimental/regex
+   experimental/scope
+   experimental/set
+   experimental/source_location
+   experimental/string
+   <experimental/string_view>
+   experimental/system_error
+   experimental/tuple
+   experimental/type_traits
+   experimental/unordered_map
+   experimental/unordered_set
+   experimental/utility
+   experimental/vector
+   Concurrency TS
+   experimental/atomic
+   experimental/barrier
+   experimental/future
+   experimental/latch
+   Ranges TS
+   <experimental/ranges/algorithm>
+   <experimental/ranges/concepts>
+   <experimental/ranges/functional>
+   <experimental/ranges/iterator>
+   <experimental/ranges/random>
+   <experimental/ranges/tuple>
+   <experimental/ranges/type_traits>
+   <experimental/ranges/utility>
+   Coroutines TS
+   experimental/coroutine
+   Networking TS
+   experimental/buffer
+   experimental/executor
+   experimental/internet
+   experimental/io_context
+   <experimental/net>
+   experimental/netfwd
+   experimental/socket
+   experimental/timer
+   Reflection TS
+   <experimental/reflect>
+
+   This header is part of the Library Fundamentals TS (v1, v2).
+
+Classes
+
+   Name Description
+   optional
+   (library fundamentals TS)
+   a wrapper that may or may not hold an object
+   (class template)
+   bad_optional_access
+   (library fundamentals TS)
+   exception indicating checked access to an optional that doesn't contain
+   a value
+   (class)
+   in_place_t
+   (library fundamentals TS)
+   disambiguation tag type for in-place construction of optional types
+   (class)
+   std::hash<std::experimental::optional>
+   specializes the std::hash algorithm
+   (class template specialization)
+   nullopt_t
+   (library fundamentals TS)
+   indicator of optional type with uninitialized state
+   (class)
+
+Functions
+
+Comparison
+
+   operator==operator!=operator<operator<=operator>operator>=
+   compares optional objects
+   (function template)
+
+Specialized algorithms
+
+   std::swap(std::experimental::optional)
+   specializes the std::swap algorithm
+   (function)
+   make_optional
+   creates an optional object
+   (function template)
+
+Hash support
+
+Synopsis
+
+namespace std {
+  namespace experimental {
+  inline namespace fundamentals_v1 {
+
+    // 5.4, optional for object types
+    template <class T> class optional;
+
+    // 5.5, In-place construction
+    struct in_place_t{};
+    constexpr in_place_t in_place{};
+
+    // 5.6, Disengaged state indicator
+    struct nullopt_t{see below};
+    constexpr nullopt_t nullopt(unspecified);
+
+    // 5.7, Class bad_optional_access
+    class bad_optional_access;
+
+    // 5.8, Relational operators
+    template <class T>
+      constexpr bool operator==(const optional<T>&, const optional<T>&);
+    template <class T>
+      constexpr bool operator!=(const optional<T>&, const optional<T>&);
+    template <class T>
+      constexpr bool operator<(const optional<T>&, const optional<T>&);
+    template <class T>
+      constexpr bool operator>(const optional<T>&, const optional<T>&);
+    template <class T>
+      constexpr bool operator<=(const optional<T>&, const optional<T>&);
+    template <class T>
+      constexpr bool operator>=(const optional<T>&, const optional<T>&);
+
+    // 5.9, Comparison with nullopt
+    template <class T> constexpr bool operator==(const optional<T>&, nullopt_t)
+noexcept;
+    template <class T> constexpr bool operator==(nullopt_t, const optional<T>&)
+noexcept;
+    template <class T> constexpr bool operator!=(const optional<T>&, nullopt_t)
+noexcept;
+    template <class T> constexpr bool operator!=(nullopt_t, const optional<T>&)
+noexcept;
+    template <class T> constexpr bool operator<(const optional<T>&, nullopt_t) n
+oexcept;
+    template <class T> constexpr bool operator<(nullopt_t, const optional<T>&) n
+oexcept;
+    template <class T> constexpr bool operator<=(const optional<T>&, nullopt_t)
+noexcept;
+    template <class T> constexpr bool operator<=(nullopt_t, const optional<T>&)
+noexcept;
+    template <class T> constexpr bool operator>(const optional<T>&, nullopt_t) n
+oexcept;
+    template <class T> constexpr bool operator>(nullopt_t, const optional<T>&) n
+oexcept;
+    template <class T> constexpr bool operator>=(const optional<T>&, nullopt_t)
+noexcept;
+    template <class T> constexpr bool operator>=(nullopt_t, const optional<T>&)
+noexcept;
+
+    // 5.10, Comparison with T
+    template <class T> constexpr bool operator==(const optional<T>&, const T&);
+    template <class T> constexpr bool operator==(const T&, const optional<T>&);
+    template <class T> constexpr bool operator!=(const optional<T>&, const T&);
+    template <class T> constexpr bool operator!=(const T&, const optional<T>&);
+    template <class T> constexpr bool operator<(const optional<T>&, const T&);
+    template <class T> constexpr bool operator<(const T&, const optional<T>&);
+    template <class T> constexpr bool operator<=(const optional<T>&, const T&);
+    template <class T> constexpr bool operator<=(const T&, const optional<T>&);
+    template <class T> constexpr bool operator>(const optional<T>&, const T&);
+    template <class T> constexpr bool operator>(const T&, const optional<T>&);
+    template <class T> constexpr bool operator>=(const optional<T>&, const T&);
+    template <class T> constexpr bool operator>=(const T&, const optional<T>&);
+
+    // 5.11, Specialized algorithms
+    template <class T> void swap(optional<T>&, optional<T>&) noexcept(see below)
+;
+    template <class T> constexpr optional<see below> make_optional(T&&);
+
+  } // namespace fundamentals_v1
+  } // namespace experimental
+
+  // 5.12, Hash support
+  template <class T> struct hash;
+  template <class T> struct hash<experimental::optional<T>>;
+
+} // namespace std
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/header/experimen
+   tal/optional&oldid=112242"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 23 August 2019, at 05:40.
+     * This page has been accessed 32,440 times.

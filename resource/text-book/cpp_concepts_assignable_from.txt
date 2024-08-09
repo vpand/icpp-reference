@@ -1,0 +1,139 @@
+std::assignable_from
+
+   From cppreference.com
+   < cpp | concepts
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Concepts library
+   Core language concepts
+   same_as
+   derived_from
+   convertible_to
+   common_reference_with
+
+   common_with
+   integral
+   signed_integral
+   unsigned_integral
+   floating_point
+   swappableswappable_with
+   destructible
+   constructible_from
+   default_initializable
+   move_constructible
+   copy_constructible
+   assignable_from
+   Comparison concepts
+   equality_comparableequality_comparable_with
+   totally_orderedtotally_ordered_with
+   Object concepts
+   movable
+   copyable
+   semiregular
+   regular
+   Callable concepts
+   invocableregular_invocable
+   predicate
+   relation
+   equivalence_relation
+   strict_weak_order
+   Exposition-only concepts
+   boolean-testable
+
+   Defined in header <concepts>
+   template< class LHS, class RHS >
+
+   concept assignable_from =
+       std::is_lvalue_reference_v<LHS> &&
+       std::common_reference_with<
+           const std::remove_reference_t<LHS>&,
+           const std::remove_reference_t<RHS>&> &&
+       requires(LHS lhs, RHS&& rhs) {
+           { lhs = std::forward<RHS>(rhs) } -> std::same_as<LHS>;
+       };
+                                   (since C++20)
+
+   The concept assignable_from<LHS, RHS> specifies that an expression of
+   the type and value category specified by RHS can be assigned to an
+   lvalue expression whose type is specified by LHS.
+
+Semantic requirements
+
+   Given
+     * lhs, an lvalue that refers to an object lcopy such that
+       decltype((lhs)) is LHS,
+     * rhs, an expression such that decltype((rhs)) is RHS,
+     * rcopy, a distinct object that is equal to rhs,
+
+   assignable_from<LHS, RHS> is modeled only if
+     * std::addressof(lhs = rhs) == std::addressof(lcopy) (i.e., the
+       assignment expression yields an lvalue referring to the left
+       operand);
+     * After evaluating lhs = rhs:
+          + lhs is equal to rcopy, unless rhs is a non-const xvalue that
+            refers to lcopy (i.e., the assignment is a
+            self-move-assignment),
+          + if rhs is a glvalue:
+               o If it is a non-const xvalue, the object to which it
+                 refers is in a valid but unspecified state;
+               o Otherwise, the object it refers to is not modified;
+
+Equality preservation
+
+   Expressions declared in requires expressions of the standard library
+   concepts are required to be equality-preserving (except where stated
+   otherwise).
+
+Notes
+
+   Assignment need not be a total function. In particular, if assigning to
+   some object x can cause some other object y to be modified, then x = y
+   is likely not in the domain of =. This typically happens if the right
+   operand is owned directly or indirectly by the left operand (e.g., with
+   smart pointers to nodes in a node-based data structure, or with
+   something like std::vector<std::any>).
+
+See also
+
+   is_assignableis_trivially_assignableis_nothrow_assignable
+   (C++11)(C++11)(C++11)
+   checks if a type has an assignment operator for a specific argument
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/concepts/assigna
+   ble_from&oldid=160404"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 9 October 2023, at 11:41.
+     * This page has been accessed 29,406 times.

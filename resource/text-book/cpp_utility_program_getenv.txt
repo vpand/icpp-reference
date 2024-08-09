@@ -1,0 +1,259 @@
+std::getenv
+
+   From cppreference.com
+   < cpp | utility | program
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Program support utilities
+   Program termination
+   abort
+   exit
+   quick_exit
+   (C++11)
+   _Exit
+   (C++11)
+   atexit
+   at_quick_exit
+   (C++11)
+   EXIT_SUCCESSEXIT_FAILURE
+   Unreachable control flow
+   unreachable
+   (C++23)
+   Communicating with the environment
+   system
+   getenv
+   Signals
+   signal
+   raise
+   sig_atomic_t
+   SIG_DFLSIG_IGN
+   SIG_ERR
+   Signal types
+   SIGABRTSIGFPESIGILL
+   SIGINTSIGSEGVSIGTERM
+   Non-local jumps
+   setjmp
+   longjmp
+   Types
+   jmp_buf
+
+   Defined in header <cstdlib>
+   char* getenv( const char* env_var );
+
+   Searches the environment list provided by the host environment (the
+   OS), for a string that matches the C string pointed to by env_var and
+   returns a pointer to the C string that is associated with the matched
+   environment list member.
+
+   This function is not required to be thread-safe. Another call to
+   getenv, as well as a call to the POSIX functions setenv(), unsetenv(),
+   and putenv() may invalidate the pointer returned by a previous call or
+   modify the string obtained from a previous call.
+   (until C++11)
+
+   This function is thread-safe (calling it from multiple threads does not
+   introduce a data race) as long as no other function modifies the host
+   environment. In particular, the POSIX functions setenv(), unsetenv(),
+   and putenv() would introduce a data race if called without
+   synchronization.
+   (since C++11)
+
+   Modifying the string returned by getenv invokes undefined behavior.
+
+Parameters
+
+   env_var - null-terminated character string identifying the name of the
+   environmental variable to look for
+
+Return value
+
+   Character string identifying the value of the environmental variable or
+   null pointer if such variable is not found.
+
+Notes
+
+   On POSIX systems, the environment variables are also accessible through
+   the global variable environ, declared as extern char** environ; in
+   <unistd.h>, and through the optional third argument, envp, of the main
+   function.
+
+Example
+
+   Run this code
+#include <cstdlib>
+#include <iostream>
+
+int main()
+{
+    if (const char* env_p = std::getenv("PATH"))
+        std::cout << "Your PATH is: " << env_p << '\n';
+}
+
+   Possible output:
+Your PATH is: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/
+games
+
+See also
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/utility/program/
+   getenv&oldid=160651"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 13 October 2023, at 13:34.
+     * This page has been accessed 466,672 times.

@@ -1,0 +1,127 @@
+std::regex_traits<CharT>::regex_traits
+
+   From cppreference.com
+   < cpp | regex | regex traits
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Regular expressions library
+   Classes
+   basic_regex
+   (C++11)
+   sub_match
+   (C++11)
+   match_results
+   (C++11)
+   Algorithms
+   regex_match
+   (C++11)
+   regex_search
+   (C++11)
+   regex_replace
+   (C++11)
+   Iterators
+   regex_iterator
+   (C++11)
+   regex_token_iterator
+   (C++11)
+   Exceptions
+   regex_error
+   (C++11)
+   Traits
+   regex_traits
+   (C++11)
+   Constants
+   syntax_option_type
+   (C++11)
+   match_flag_type
+   (C++11)
+   error_type
+   (C++11)
+   Regex Grammar
+   Modified ECMAScript-262
+   (C++11)
+
+   std::regex_traits
+   Member functions
+   regex_traits::regex_traits
+   regex_traits::length
+   regex_traits::translate
+   regex_traits::translate_nocase
+   regex_traits::transform
+   regex_traits::transform_primary
+   regex_traits::lookup_collatename
+   regex_traits::lookup_classname
+   regex_traits::isctype
+   regex_traits::value
+   regex_traits::imbue
+   regex_traits::getloc
+
+   regex_traits();
+
+   Default-constructs the std::regex_traits object, including
+   default-constructing the private std::locale member or any other
+   internal state as necessary.
+
+Parameters
+
+   (none)
+
+Return value
+
+   (none)
+
+Example
+
+   Run this code
+#include <iostream>
+#include <regex>
+
+int main()
+{
+    std::locale::global(std::locale("en_US.utf8"));
+    std::regex_traits<char> r1;
+    std::regex_traits<wchar_t> r2;
+    std::cout << "The regex locale is " << r1.getloc().name() << '\n';
+}
+
+   Output:
+The regex locale is en_US.utf8
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/regex/regex_trai
+   ts/regex_traits&oldid=149545"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 22 March 2023, at 16:56.
+     * This page has been accessed 11,760 times.

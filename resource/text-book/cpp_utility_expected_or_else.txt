@@ -1,0 +1,283 @@
+std::expected<T,E>::or_else
+
+   From cppreference.com
+   < cpp | utility | expected
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   std::expected
+   Member functions
+   expected::expected
+   expected::~expected
+   expected::operator=
+   Observers
+   expected::operator->expected::operator*
+   expected::operator boolexpected::has_value
+   expected::value
+   expected::error
+   expected::value_or
+   Monadic operations
+   expected::and_then
+   expected::or_else
+   expected::transform
+   expected::transform_error
+   Modifiers
+   expected::emplace
+   expected::swap
+   Non-member functions
+   operator==
+   swap(std::expected)
+   Helper classes
+   unexpected
+   bad_expected_access
+   unexpect_tunexpect
+
+   template< class F >
+   constexpr auto or_else( F&& f ) &;
+   (1)                (since C++23)
+   template< class F >
+   constexpr auto or_else( F&& f ) const&;
+   (2)                (since C++23)
+   template< class F >
+   constexpr auto or_else( F&& f ) &&;
+   (3)                (since C++23)
+   template< class F >
+   constexpr auto or_else( F&& f ) const&&;
+   (4)                (since C++23)
+
+   If *this contains an unexpected value, invokes f with the argument
+   error() and returns its result; otherwise, returns a std::expected
+   object that contains a copy of the contained expected value (obtained
+   from operator*).
+   1,2) Given type G as std::remove_cvref_t<std::invoke_result_t<F,
+   decltype(error())>>.
+   If G is not a specialization of std::expected, or
+   std::is_same_v<G::value_type, T> is false, the program is ill-formed.
+   The effect is equivalent to
+if (has_value())
+{
+    if constexpr (std::is_void_v<T>)
+        return G();
+    else
+        return G(std::in_place, **this);
+}
+else
+    return std::invoke(std::forward<F>(f), error());
+
+   These overloads participate in overload resolution only if
+   std::is_void_v<T> or std::is_constructible_v<T, decltype(**this)> is
+   true.
+   3,4) Given type G as std::remove_cvref_t<std::invoke_result_t<F,
+   decltype(std::move(error()))>>.
+   If G is not a specialization of std::expected, or
+   std::is_same_v<G::value_type, T> is false, the program is ill-formed.
+   The effect is equivalent to
+if (has_value())
+{
+    if constexpr (std::is_void_v<T>)
+        return G();
+    else
+        return G(std::in_place, std::move(**this));
+}
+else
+    return std::invoke(std::forward<F>(f), std::move(error()));
+
+   These overloads participate in overload resolution only if
+   std::is_void_v<T> or std::is_constructible_v<T,
+   decltype(std::move(**this))> is true.
+
+Parameters
+
+   f - a suitable function or Callable object that returns a std::expected
+
+Return value
+
+   The result of f, or a std::expected object that contains a copy of the
+   expected value, as described above.
+
+Notes
+
+   Feature-test macro  Value    Std                 Feature
+   __cpp_lib_expected 202211L (C++23) Monadic functions for std::expected
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 3938 C++23 or_else was ill-formed if T is not (possibly
+   cv-qualified) void and E is not copyable made well-formed
+
+See also
+
+   transform_error
+   returns the expected itself if it contains an expected value;
+   otherwise, returns an expected containing the transformed unexpected
+   value
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/utility/expected
+   /or_else&oldid=162401"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 10 November 2023, at 01:54.
+     * This page has been accessed 5,890 times.

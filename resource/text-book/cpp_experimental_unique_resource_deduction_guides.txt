@@ -1,0 +1,102 @@
+deduction guides for std::experimental::unique_resource
+
+   From cppreference.com
+   < cpp | experimental | unique resource
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Library fundamentals v3
+   experimental::scope_exit
+   experimental::scope_fail
+   experimental::scope_success
+   experimental::unique_resource
+
+   std::experimental::unique_resource
+   Member functions
+   unique_resource::unique_resource
+   unique_resource::~unique_resource
+   unique_resource::operator=
+   Modifiers
+   unique_resource::release
+   unique_resource::reset
+   Observers
+   unique_resource::get
+   unique_resource::get_deleter
+   unique_resource::operator*unique_resource::operator->
+   Non-member functions
+   make_unique_resource_checked
+   Deduction guides
+
+   Defined in header <experimental/scope>
+   template< class R, class D >
+   unique_resource( R, D ) -> unique_resource<R, D>;
+                                         (library fundamentals TS v3)
+
+   One deduction guide is provided for std::experimental::unique_resource
+   to permit deduction from given resource handle and deleter.
+
+   The arguments (after array-to-pointer and function-to-pointer decay, if
+   any) are copied or moved into the constructed unique_resource.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/uni
+   que_resource/deduction_guides&oldid=156348"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 6 August 2023, at 23:37.
+     * This page has been accessed 6,621 times.

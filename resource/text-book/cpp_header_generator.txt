@@ -1,0 +1,334 @@
+Standard library header <generator> (C++23)
+
+   From cppreference.com
+   < cpp | header
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Standard library headers
+   Language support
+   <cstddef>
+   <cstdlib>
+   <version> (C++20)
+   <limits>
+   <climits>
+   <cfloat>
+   <cstdint> (C++11)
+   <stdfloat> (C++23)
+   <new>
+   <typeinfo>
+   <source_location> (C++20)
+   <exception>
+   <initializer_list> (C++11)
+   <compare> (C++20)
+   <coroutine> (C++20)
+   <csignal>
+   <csetjmp>
+   <cstdarg>
+   Concepts
+   <concepts> (C++20)
+   Diagnostics
+   <stdexcept>
+   <stacktrace> (C++23)
+   <cassert>
+   <cerrno>
+   <system_error> (C++11)
+   Memory management
+   <memory>
+   <memory_resource> (C++17)
+   <scoped_allocator> (C++11)
+   Metaprogramming
+   <type_traits> (C++11)
+   <ratio> (C++11)
+   General utilities
+   <utility>
+   <tuple> (C++11)
+   <optional> (C++17)
+   <variant> (C++17)
+   <any> (C++17)
+   <debugging> (C++26)
+   <expected> (C++23)
+   <bitset>
+   <functional>
+   <typeindex> (C++11)
+   <execution> (C++17)
+   <charconv> (C++17)
+   <format> (C++20)
+   <bit> (C++20)
+   Strings
+   <string_view> (C++17)
+   <string>
+   <cctype>
+   <cwctype>
+   <cstring>
+   <cwchar>
+   <cuchar> (C++11)
+   Containers
+   <array> (C++11)
+   <deque>
+   <forward_list> (C++11)
+   <list>
+   <vector>
+   <map>
+   <set>
+   <unordered_map> (C++11)
+   <unordered_set> (C++11)
+   <queue>
+   <stack>
+   <flat_map> (C++23)
+   <flat_set> (C++23)
+   <span> (C++20)
+   <mdspan> (C++23)
+   Iterators
+   <iterator>
+   Ranges
+   <ranges> (C++20)
+   <generator> (C++23)
+   Algorithms
+   <algorithm>
+   <numeric>
+   Numerics
+   <cfenv> (C++11)
+   <complex>
+   <random> (C++11)
+   <valarray>
+   <cmath>
+   <linalg> (C++26)
+   <numbers> (C++20)
+   Time
+   <chrono> (C++11)
+   <ctime>
+   Localization
+   <locale>
+   <clocale>
+   <codecvt> (C++11/17/26*)
+   <text_encoding> (C++26)
+   Input/output
+   <iosfwd>
+   <iostream>
+   <ios>
+   <streambuf>
+   <istream>
+   <ostream>
+   <iomanip>
+   <print> (C++23)
+   <sstream>
+   <spanstream> (C++23)
+   <fstream>
+   <syncstream> (C++20)
+   <filesystem> (C++17)
+   <cstdio>
+   <cinttypes> (C++11)
+   <strstream> (C++98/26*)
+   Regular expressions
+   <regex> (C++11)
+   Concurrency support
+   <stop_token> (C++20)
+   <thread> (C++11)
+   <atomic> (C++11)
+   <rcu> (C++26)
+   <stdatomic.h> (C++23)
+   <mutex> (C++11)
+   <shared_mutex> (C++14)
+   <condition_variable> (C++11)
+   <semaphore> (C++20)
+   <latch> (C++20)
+   <barrier> (C++20)
+   <future> (C++11)
+   <hazard_pointer> (C++26)
+   C compatibility
+   <cstdbool> (C++11/17/20*)
+   <ccomplex> (C++11/17/20*)
+   <ctgmath> (C++11/17/20*)
+   <cstdalign> (C++11/17/20*)
+   <ciso646> (until C++20)
+
+Classes
+
+   generator
+   (C++23)
+   A view that represents synchronous coroutine generator
+   (class template)
+
+Synopsis
+
+namespace std {
+  // class template generator
+  template<class Ref, class V = void, class Allocator = void>
+  class generator;
+
+  namespace pmr {
+    template<class Ref, class V = void>
+    using generator = std::generator<Ref, V, polymorphic_allocator<>>;
+  }
+}
+
+Class template std::generator
+
+namespace std {
+  template<class Ref, class V = void, class Allocator = void>
+  class generator : public ranges::view_interface<generator<Ref, V, Allocator>>
+{
+  private:
+    using value = conditional_t<is_void_v<V>,
+                                remove_cvref_t< Ref >, V>;          // expositio
+n only
+    using reference = conditional_t<is_void_v<V>, Ref&&, Ref>;      // expositio
+n only
+
+    // class generator::iterator
+    class iterator;                                                 // expositio
+n only
+
+  public:
+    using yielded =
+      conditional_t<is_reference_v<reference>, reference, const reference&>;
+
+    // class generator::promise_type
+    class promise_type;
+
+    generator(const generator&) = delete;
+    generator(generator&& other) noexcept;
+
+    ~generator();
+
+    generator& operator=(generator other) noexcept;
+
+    iterator begin();
+    default_sentinel_t end() const noexcept;
+
+  private:
+    coroutine_handle<promise_type> coroutine_ = nullptr;  // exposition only
+    unique_ptr<stack<coroutine_handle<>>> active_;        // exposition only
+  };
+}
+
+Class std::generator::promise_type
+
+namespace std {
+  template<class Ref, class V, class Allocator>
+  class generator<Ref, V, Allocator>::promise_type {
+  public:
+    generator get_return_object() noexcept;
+
+    suspend_always initial_suspend() const noexcept { return {}; }
+    auto final_suspend() noexcept;
+
+    suspend_always yield_value(yielded val) noexcept;
+
+    auto yield_value(const remove_reference_t<yielded>& lval)
+      requires is_rvalue_reference_v<yielded> &&
+        constructible_from<remove_cvref_t<yielded>, const remove_reference_t<yie
+lded>&>;
+
+    template<class R2, class V2, class Alloc2, class Unused>
+      requires same_as<typename generator<R2, V2, Alloc2>::yielded, yielded>
+      auto yield_value(ranges::elements_of<generator<R2, V2, Alloc2>&&,
+                       Unused> g) noexcept;
+
+    template<ranges::input_range R, class Alloc>
+      requires convertible_to<ranges::range_reference_t<R>, yielded>
+      auto yield_value(ranges::elements_of<R, Alloc> r) noexcept;
+
+    void await_transform() = delete;
+
+    void return_void() const noexcept {}
+    void unhandled_exception();
+
+    void* operator new(size_t size)
+      requires same_as<Allocator, void> || default_initializable<Allocator>;
+
+    template<class Alloc, class... Args>
+      requires same_as<Allocator, void> || convertible_to<const Alloc&, Allocato
+r>
+      void* operator new(size_t size, allocator_arg_t, const Alloc& alloc,
+                         const Args&...);
+
+    template<class This, class Alloc, class... Args>
+      requires same_as<Allocator, void> || convertible_to<const Alloc&, Allocato
+r>
+      void* operator new(size_t size, const This&, allocator_arg_t, const Alloc&
+ alloc,
+                         const Args&...);
+
+    void operator delete(void* pointer, size_t size) noexcept;
+
+  private:
+    add_pointer_t<yielded> value_ = nullptr;    // exposition only
+    exception_ptr except_;                      // exposition only
+  };
+}
+
+Class std::generator::iterator
+
+namespace std {
+  template<class Ref, class V, class Allocator>
+  class generator<Ref, V, Allocator>::iterator {
+  public:
+    using value_type = value;
+    using difference_type = ptrdiff_t;
+
+    iterator(iterator&& other) noexcept;
+    iterator& operator=(iterator&& other) noexcept;
+
+    reference operator*() const noexcept(is_nothrow_copy_constructible_v<referen
+ce>);
+    iterator& operator++();
+    void operator++(int);
+
+    friend bool operator==(iterator i, default_sentinel_t);
+
+  private:
+    coroutine_handle<promise_type> coroutine_; // exposition only
+  };
+}
+
+References
+
+     * C++23 standard (ISO/IEC 14882:2023):
+
+          + 26.8.2 Header <generator> synopsis [generator.syn]
+
+          + 26.8.3 Class template generator [coro.generator.class]
+
+          + 26.8.5 Class generator::promise_type [coro.generator.promise]
+
+          + 26.8.6 Class generator::iterator [coro.generator.iterator]
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/header/generator
+   &oldid=163907"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 November 2023, at 07:27.
+     * This page has been accessed 30,126 times.

@@ -1,0 +1,166 @@
+std::wcscat
+
+   From cppreference.com
+   < cpp | string | wide
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated wide strings
+   Functions
+   Character manipulation
+   iswalnum
+   iswalpha
+   iswlower
+   iswupper
+   iswdigit
+   iswxdigit
+   iswblank
+   (C++11)
+   wctype
+   iswctype
+   iswcntrl
+   iswgraph
+   iswspace
+   iswprint
+   iswpunct
+   towlower
+   towupper
+   wctrans
+   towctrans
+   Conversions to numeric formats
+   wcstolwcstoll
+   (C++11)
+   wcstoulwcstoull
+   (C++11)
+   wcstofwcstodwcstold
+   (C++11)(C++11)
+   wcstoimaxwcstouimax
+   (C++11)(C++11)
+   String manipulation
+   wcslen
+   wcscpy
+   wcsncpy
+   wcscat
+   wcsncat
+   wcscmp
+   wcscoll
+   wcsncmp
+   wcsxfrm
+   wcschr
+   wcsrchr
+   wcspbrk
+   wcsspn
+   wcscspn
+   wcsstr
+   wcstok
+   Array manipulation
+   wmemcpy
+   wmemmove
+   wmemcmp
+   wmemchr
+   wmemset
+
+   Defined in header <cwchar>
+   wchar_t* wcscat( wchar_t* dest, const wchar_t* src );
+
+   Appends a copy of the wide string pointed to by src to the end of the
+   wide string pointed to by dest. The wide character src[0] replaces the
+   null terminator at the end of dest. The resulting wide string is
+   null-terminated.
+
+   The behavior is undefined if the destination array is not large enough
+   for the contents of both src and dest and the terminating null wide
+   character.
+
+   The behavior is undefined if the strings overlap.
+
+Parameters
+
+   dest - pointer to the null-terminated wide string to append to
+   src  - pointer to the null-terminated wide string to copy from
+
+Return value
+
+   Returns a copy of dest.
+
+Example
+
+   Run this code
+#include <clocale>
+#include <cwchar>
+#include <iostream>
+
+int main(void)
+{
+    wchar_t str[50] = L"Zemlya, proschaj.";
+    std::wcscat(str, L" ");
+    std::wcscat(str, L"V dobryj put'.");
+
+    std::setlocale(LC_ALL, "en_US.utf8");
+    std::wcout.imbue(std::locale("en_US.utf8"));
+    std::wcout << str << '\n';
+}
+
+   Possible output:
+Zemlya, proschaj. V dobryj put'.
+
+See also
+
+   wcsncat
+   appends a certain amount of wide characters from one wide string to
+   another
+   (function)
+   strcat
+   concatenates two strings
+   (function)
+   wcscpy
+   copies one wide string to another
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/wide/wcsc
+   at&oldid=153736"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 18 June 2023, at 14:28.
+     * This page has been accessed 22,167 times.

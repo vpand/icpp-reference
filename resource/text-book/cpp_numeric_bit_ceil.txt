@@ -1,0 +1,219 @@
+std::bit_ceil
+
+   From cppreference.com
+   < cpp | numeric
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Numerics library
+   Common mathematical functions
+   Mathematical special functions (C++17)
+   Mathematical constants (C++20)
+   Basic linear algebra algorithms (C++26)
+   Floating-point environment (C++11)
+   Complex numbers
+   Numeric arrays
+   Pseudo-random number generation
+   Factor operations
+   gcd
+   (C++17)
+   lcm
+   (C++17)
+   Interpolations
+   midpoint
+   (C++20)
+   lerp
+   (C++20)
+   Saturation arithmetic
+   add_sat
+   (C++26)
+   sub_sat
+   (C++26)
+   saturate_cast
+   (C++26)
+   mul_sat
+   (C++26)
+   div_sat
+   (C++26)
+   Generic numeric operations
+   iota
+   (C++11)
+   ranges::iota
+   (C++23)
+   accumulate
+   inner_product
+   adjacent_difference
+   partial_sum
+   reduce
+   (C++17)
+   transform_reduce
+   (C++17)
+   inclusive_scan
+   (C++17)
+   exclusive_scan
+   (C++17)
+   transform_inclusive_scan
+   (C++17)
+   transform_exclusive_scan
+   (C++17)
+   Bit operations
+   has_single_bit
+   (C++20)
+   bit_cast
+   (C++20)
+   bit_ceil
+   (C++20)
+   bit_floor
+   (C++20)
+   bit_width
+   (C++20)
+   rotl
+   (C++20)
+   rotr
+   (C++20)
+   popcount
+   (C++20)
+   countl_zero
+   (C++20)
+   countl_one
+   (C++20)
+   countr_zero
+   (C++20)
+   countr_one
+   (C++20)
+   byteswap
+   (C++23)
+   endian
+   (C++20)
+
+   Defined in header <bit>
+   template< class T >
+   constexpr T bit_ceil( T x );
+                          (since C++20)
+
+   Calculates the smallest integral power of two that is not smaller than
+   x.
+
+   If that value is not representable in T, the behavior is undefined.
+   Call to this function is permitted in constant evaluation only if the
+   undefined behavior does not occur.
+
+   This overload participates in overload resolution only if T is an
+   unsigned integer type (that is, unsigned char, unsigned short, unsigned
+   int, unsigned long, unsigned long long, or an extended unsigned integer
+   type).
+
+Parameters
+
+   x - value of unsigned integer type
+
+Return value
+
+   The smallest integral power of two that is not smaller than x.
+
+Exceptions
+
+   Throws nothing.
+
+Notes
+
+   Feature-test macro  Value    Std              Feature
+   __cpp_lib_int_pow2 202002L (C++20) Integral power-of-2 operations
+
+Possible implementation
+
+   See possible implementations in libstdc++ (gcc) and libc++ (clang).
+template<std::unsigned_integral T>
+    requires !std::same_as<T, bool> && !std::same_as<T, char> &&
+             !std::same_as<T, char8_t> && !std::same_as<T, char16_t> &&
+             !std::same_as<T, char32_t> && !std::same_as<T, wchar_t>
+constexpr T bit_ceil(T x) noexcept
+{
+    if (x <= 1u)
+        return T(1);
+    if constexpr (std::same_as<T, decltype(+x)>)
+        return T(1) << std::bit_width(T(x - 1));
+    else
+    {   // for types subject to integral promotion
+        constexpr int offset_for_ub =
+            std::numeric_limits<unsigned>::digits - std::numeric_limits<T>::digi
+ts;
+        return T(1u << (std::bit_width(T(x - 1)) + offset_for_ub) >> offset_for_
+ub);
+    }
+}
+
+Example
+
+   Run this code
+#include <bit>
+#include <bitset>
+#include <iostream>
+
+int main()
+{
+    using bin = std::bitset<8>;
+
+    for (unsigned x{0}; x != 10; ++x)
+    {
+        unsigned const z = std::bit_ceil(x); // `ceil2` before P1956R1
+        std::cout << "bit_ceil( " << bin(x) << " ) = " << bin(z) << '\n';
+    }
+}
+
+   Output:
+bit_ceil( 00000000 ) = 00000001
+bit_ceil( 00000001 ) = 00000001
+bit_ceil( 00000010 ) = 00000010
+bit_ceil( 00000011 ) = 00000100
+bit_ceil( 00000100 ) = 00000100
+bit_ceil( 00000101 ) = 00001000
+bit_ceil( 00000110 ) = 00001000
+bit_ceil( 00000111 ) = 00001000
+bit_ceil( 00001000 ) = 00001000
+bit_ceil( 00001001 ) = 00010000
+
+See also
+
+   bit_floor
+   (C++20)
+   finds the largest integral power of two not greater than the given
+   value
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/numeric/bit_ceil
+   &oldid=151458"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 7 May 2023, at 00:28.
+     * This page has been accessed 44,445 times.

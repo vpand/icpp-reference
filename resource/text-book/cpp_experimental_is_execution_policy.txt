@@ -1,0 +1,137 @@
+std::experimental::parallel::is_execution_policy
+
+   From cppreference.com
+   < cpp | experimental
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Extensions for parallelism
+   Execution policies
+   parallel::execution_policy
+   parallel::sequential_execution_policyparallel::parallel_execution_polic
+   yparallel::parallel_vector_execution_policy
+   parallel::seqparallel::parparallel::par_vec
+   Parallel algorithms
+   Parallel exceptions
+   parallel::exception_list
+   Parallelized version of existing algorithms
+   New algorithms
+   parallel::for_eachparallel::for_each_n
+   parallel::reduce
+   parallel::exclusive_scan
+   parallel::inclusive_scan
+   parallel::transform_reduce
+   parallel::transform_exclusive_scan
+   parallel::transform_inclusive_scan
+
+   Defined in header <experimental/execution_policy>
+   template< class T >
+   struct is_execution_policy;
+                                                    (parallelism TS)
+
+   Checks whether T is a standard or implementation-defined execution
+   policy type.
+
+   Provides the member constant value which is equal to true, if T is
+   execution_policy, sequential_execution_policy,
+   parallel_execution_policy, parallel_vector_execution_policy, or an
+   implementation-defined execution policy type. Otherwise, value is equal
+   to false.
+
+   The behavior of a program that adds specializations for
+   is_execution_policy is undefined.
+
+Template parameters
+
+   T - a type to check
+
+Helper template
+
+   Defined in header <experimental/execution_policy>
+   template< class T >
+   constexpr bool is_execution_policy_v = is_execution_policy<T>::value;
+                                                    (parallelism TS)
+
+Inherited from std::integral_constant
+
+Member constants
+
+   value
+   [static]
+   true if T is a standard or implementation-defined execution policy
+   type, false otherwise
+   (public static member constant)
+
+Member functions
+
+   operator bool
+   converts the object to bool, returns value
+   (public member function)
+   operator()
+   (C++14)
+   returns value
+   (public member function)
+
+Member types
+
+   Type       Definition
+   value_type bool
+   type       std::integral_constant<bool, value>
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/is_
+   execution_policy&oldid=149648"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 24 March 2023, at 03:01.
+     * This page has been accessed 11,409 times.

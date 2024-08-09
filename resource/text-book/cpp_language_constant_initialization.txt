@@ -1,0 +1,272 @@
+Constant initialization
+
+   From cppreference.com
+   < cpp | language
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ language
+   General topics
+   Preprocessor
+   Comments
+   Keywords
+   Escape sequences
+   Flow control
+   Conditional execution statements
+   if
+   switch
+   Iteration statements (loops)
+   for
+   range-for (C++11)
+   while
+   do-while
+   Jump statements
+   continue - break
+   goto - return
+   Functions
+   Function declaration
+   Lambda function expression
+   inline specifier
+   Dynamic exception specifications (until C++17*)
+   noexcept specifier (C++11)
+   Exceptions
+   throw-expression
+   try block
+   handler
+   Namespaces
+   Namespace declaration
+   Namespace aliases
+   Types
+   Fundamental types
+   Enumeration types
+   Function types
+   Class/struct types
+   Union types
+   Specifiers
+   const/volatile
+   decltype (C++11)
+   auto (C++11)
+   constexpr (C++11)
+   consteval (C++20)
+   constinit (C++20)
+   Storage duration specifiers
+   Initialization
+   Default-initialization
+   Value-initialization
+   Zero-initialization
+   Copy-initialization
+   Direct-initialization
+   Aggregate initialization
+   List-initialization (C++11)
+   Constant initialization
+   Reference initialization
+   Expressions
+   Value categories
+   Order of evaluation
+   Operators
+   Operator precedence
+   Alternative representations
+   Literals
+   Boolean - Integer - Floating-point
+   Character - String - nullptr (C++11)
+   User-defined (C++11)
+   Utilities
+   Attributes (C++11)
+   Types
+   typedef declaration
+   Type alias declaration (C++11)
+   Casts
+   Implicit conversions
+   static_cast
+   const_cast
+   Explicit conversions
+   dynamic_cast
+   reinterpret_cast
+   Memory allocation
+   new expression
+   delete expression
+   Classes
+   Class declaration
+   Constructors
+   this pointer
+   Access specifiers
+   friend specifier
+   Class-specific function properties
+   Virtual function
+   override specifier (C++11)
+   final specifier (C++11)
+   explicit (C++11)
+   static
+   Special member functions
+   Default constructor
+   Copy constructor
+   Move constructor (C++11)
+   Copy assignment
+   Move assignment (C++11)
+   Destructor
+   Templates
+   Class template
+   Function template
+   Template specialization
+   Parameter packs (C++11)
+   Miscellaneous
+   Inline assembly
+   History of C++
+
+   Initialization
+   Initializer
+   Default initialization
+   Value initialization
+   Direct initialization
+   Copy-initialization
+   List initialization (C++11)
+   Aggregate initialization
+   Reference initialization
+   Copy elision
+   Static initialization
+   Zero initialization
+   Constant initialization
+   Dynamic non-local initialization
+   Ordered dynamic initialization
+   Unordered dynamic initialization
+   Class member initialization
+   Member initializer list
+   Default member initializer (C++11)
+
+   Sets the initial values of the static variables to a compile-time
+   constant.
+
+Explanation
+
+   If a static or thread-local(since C++11) variable is
+   constant-initialized (see below), constant initialization is performed
+   instead of zero initialization before all other initializations.
+
+   A variable or temporary object obj is constant-initialized if
+     * either it has an initializer or its default-initialization results
+       in some initialization being performed, and
+     * its initialization full-expression is a constant expression, except
+       that if obj is an object, that full-expression may also invoke
+       constexpr constructors for obj and its subobjects even if those
+       objects are of non-literal class types(since C++11).
+
+   The effects of constant initialization are the same as the effects of
+   the corresponding initialization, except that it's guaranteed that it
+   is complete before any other initialization of a static or
+   thread-local(since C++11) object begins, and it may be performed at
+   compile time.
+
+Notes
+
+   The compiler is permitted to initialize other static and
+   thread-local(since C++11) objects using constant initialization, if it
+   can guarantee that the value would be the same as if the standard order
+   of initialization was followed.
+
+   In practice, constant initialization is performed at compile time, and
+   pre-calculated object representations are stored as part of the program
+   image (e.g. in the .data section). If a variable is both const and
+   constant initialized, its object representation may be stored in a
+   read-only section of the program image (e.g. the .rodata section)
+
+Example
+
+   Run this code
+#include <iostream>
+#include <array>
+
+struct S
+{
+    static const int c;
+};
+
+const int d = 10 * S::c; // not a constant expression: S::c has no preceding
+                         // initializer, this initialization happens after const
+const int S::c = 5;      // constant initialization, guaranteed to happen first
+
+int main()
+{
+    std::cout << "d = " << d << '\n';
+    std::array<int, S::c> a1; // OK: S::c is a constant expression
+//  std::array<int, d> a2;    // error: d is not a constant expression
+}
+
+   Output:
+d = 50
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   CWG 441 C++98 references could not be constant initialized made
+   constant initializable
+   CWG 1489 C++98 it was unclear whether value-initializing
+   an object can be a constant initialization it can
+   CWG 1747 C++98 binding a reference to a function could not be constant
+   initialization it can
+   CWG 1834 C++11 binding a reference to an xvalue could not be constant
+   initialization it can
+   CWG 2026 C++98 zero-initialization was specified to always
+   occur first, even before constant initialization no zero-initialization
+   if
+   constant initialization applies
+   CWG 2366 C++98 default-initialization could not be constant
+   initialization (constant initializers were required) it can
+
+See also
+
+     * constexpr
+     * constructor
+     * converting constructor
+     * copy constructor
+     * default constructor
+     * explicit
+     * initialization
+          + aggregate initialization
+          + copy initialization
+          + default initialization
+          + direct initialization
+          + list initialization
+          + reference initialization
+          + value initialization
+          + zero initialization
+     * move constructor
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/language/constan
+   t_initialization&oldid=141377"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 26 July 2022, at 00:32.
+     * This page has been accessed 227,640 times.

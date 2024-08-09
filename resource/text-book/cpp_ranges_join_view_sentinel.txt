@@ -1,0 +1,231 @@
+std::ranges::join_view<V>::sentinel
+
+   From cppreference.com
+   < cpp | ranges | join view
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   std::ranges::join_view
+   Member functions
+   join_view::join_view
+   join_view::base
+   join_view::begin
+   join_view::end
+   Deduction guides
+   Iterator
+   join_view::iterator::iterator
+   join_view::iterator::operator*
+   join_view::iterator::operator->
+   join_view::iterator::operator++
+   join_view::iterator::operator++(int)
+   join_view::iterator::operator--
+   join_view::iterator::operator--(int)
+   join_view::iterator::satisfy
+   operator==(join_view::iterator)
+   iter_move(join_view::iterator)
+   iter_swap(join_view::iterator)
+   Sentinel
+   join_view::sentinel::sentinel
+   operator==(join_view::iterator,join_view::sentinel)
+
+   template< bool Const >
+   class /*sentinel*/
+   (since C++20)
+   (exposition only*)
+
+   The return type of join_view::end when either of the underlying ranges
+   (V or ranges::range_reference_t<V>) is not a common_range, or when the
+   parent join_view is not a forward_range.
+
+   If V is not a simple view, Const is true for sentinels returned from
+   the const overloads, and false otherwise. If V is a simple view, Const
+   is true.
+
+Member types
+
+   Member type Definition
+   Parent (private) const ranges::join_view<V> if Const is true, otherwise
+   ranges::join_view<V>
+   (exposition-only member type*)
+   Base (private) const V if Const is true, otherwise V
+   (exposition-only member type*)
+
+Data members
+
+   Member object Definition
+   end_ (private) A sentinel of type std::sentinel_t<Base> obtained from
+   (possibly const-qualified) V.
+   (exposition-only member object*)
+
+Member functions
+
+   (constructor)
+   constructs a sentinel
+   (public member function)
+
+Non-member functions
+
+   operator==
+   (C++20)
+   compares a sentinel with an iterator returned from join_view::begin
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/join_view
+   /sentinel&oldid=157816"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 3 September 2023, at 15:01.
+     * This page has been accessed 4,602 times.

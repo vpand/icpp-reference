@@ -1,0 +1,325 @@
+std::forward_list<T,Allocator>::forward_list
+
+   From cppreference.com
+   < cpp | container | forward list
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::forward_list
+   Member functions
+   forward_list::forward_list
+   forward_list::~forward_list
+
+   forward_list::operator=
+   forward_list::assign
+   forward_list::assign_range
+   (C++23)
+   forward_list::get_allocator
+   Element access
+   forward_list::front
+   Iterators
+   forward_list::before_beginforward_list::cbefore_begin
+   forward_list::beginforward_list::cbegin
+   forward_list::endforward_list::cend
+   Capacity
+   forward_list::empty
+   forward_list::max_size
+   Modifiers
+   forward_list::clear
+   forward_list::emplace_front
+   forward_list::push_front
+   forward_list::insert_after
+   forward_list::emplace_after
+   forward_list::erase_after
+   forward_list::insert_range_after
+   (C++23)
+   forward_list::prepend_range
+   (C++23)
+   forward_list::pop_front
+   forward_list::resize
+   forward_list::swap
+   Operations
+   forward_list::merge
+   forward_list::splice_after
+   forward_list::removeforward_list::remove_if
+   forward_list::reverse
+   forward_list::unique
+   forward_list::sort
+   Non-member functions
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (C++11)(C++11)(until C++20)(C++11)(until C++20)(C++11)(until
+   C++20)(C++11)(until C++20)(C++11)(until C++20)(C++20)
+   swap(std::forward_list)
+   (C++11)
+   erase(std::forward_list)erase_if(std::forward_list)
+   (C++20)(C++20)
+   Deduction guides(C++17)
+
+   forward_list();
+   (1) (since C++11)
+   explicit forward_list( const Allocator& alloc );
+   (2) (since C++11)
+   forward_list( size_type count,
+
+                 const T& value,
+                 const Allocator& alloc = Allocator() );
+   (3) (since C++11)
+   (4)
+   explicit forward_list( size_type count );
+   (since C++11)
+   (until C++14)
+   explicit forward_list( size_type count,
+                          const Allocator& alloc = Allocator() );
+   (since C++14)
+   template< class InputIt >
+
+   forward_list( InputIt first, InputIt last,
+                 const Allocator& alloc = Allocator() );
+   (5) (since C++11)
+   forward_list( const forward_list& other );
+   (6) (since C++11)
+   forward_list( const forward_list& other, const Allocator& alloc );
+   (7) (since C++11)
+   forward_list( forward_list&& other );
+   (8) (since C++11)
+   forward_list( forward_list&& other, const Allocator& alloc );
+   (9) (since C++11)
+   forward_list( std::initializer_list<T> init,
+                 const Allocator& alloc = Allocator() );
+   (10) (since C++11)
+   template< container-compatible-range<T> R >
+
+   forward_list( std::from_range_t, R&& rg,
+                 const Allocator& alloc = Allocator() );
+   (11) (since C++23)
+
+   Constructs a new container from a variety of data sources, optionally
+   using a user supplied allocator alloc.
+   1) Default constructor. Constructs an empty container with a
+   default-constructed allocator.
+   2) Constructs an empty container with the given allocator alloc.
+   3) Constructs the container with count copies of elements with value
+   value.
+   4) Constructs the container with count default-inserted instances of T.
+   No copies are made.
+   5) Constructs the container with the contents of the range
+   [first, last). This overload participates in overload resolution only
+   if InputIt satisfies LegacyInputIterator, to avoid ambiguity with the
+   overload (3).
+   6) Copy constructor. Constructs the container with the copy of the
+   contents of other.
+   The allocator is obtained as if by calling
+   std::allocator_traits<allocator_type>::select_on_container_copy_constru
+   ction(
+       other.get_allocator()).
+   7) Constructs the container with the copy of the contents of other,
+   using alloc as the allocator.
+
+   During class template argument deduction, only the first argument
+   contributes to the deduction of the container's Allocator template
+   parameter.
+   (since C++23)
+   8) Move constructor. Constructs the container with the contents of
+   other using move semantics. Allocator is obtained by move-construction
+   from the allocator belonging to other.
+   9) Allocator-extended move constructor. Using alloc as the allocator
+   for the new container, moving the contents from other; if alloc !=
+   other.get_allocator(), this results in an element-wise move.
+
+   During class template argument deduction, only the first argument
+   contributes to the deduction of the container's Allocator template
+   parameter.
+   (since C++23)
+   10) Constructs the container with the contents of the initializer list
+   init.
+   11) Constructs the container with the contents of the range rg.
+
+Parameters
+
+   alloc - allocator to use for all memory allocations of this container
+   count - the size of the container
+   value - the value to initialize elements of the container with
+   first, last - the range [first, last) to copy the elements from
+   other - another container to be used as source to initialize the
+   elements of the container with
+   init - initializer list to initialize the elements of the container
+   with
+   rg - a container compatible range, that is, an input_range whose
+   elements are convertible to T
+
+Complexity
+
+   1,2) Constant.
+   3,4) Linear in count.
+   5) Linear in distance between first and last.
+   6,7) Linear in size of other.
+   8) Constant.
+   9) Linear if alloc != other.get_allocator(), otherwise constant.
+   10) Linear in size of init.
+   11) Linear in ranges::distance(rg).
+
+Exceptions
+
+   Calls to Allocator::allocate may throw.
+
+Notes
+
+   After container move construction (overload (8)), references, pointers,
+   and iterators (other than the end iterator) to other remain valid, but
+   refer to elements that are now in *this. The current standard makes
+   this guarantee via the blanket statement in [container.reqmts]/67, and
+   a more direct guarantee is under consideration via LWG issue 2321.
+   Feature-test macro Value Std Feature
+   __cpp_lib_containers_ranges 202202L (C++23) Ranges-aware construction
+   and insertion; overload (11)
+
+Example
+
+   Run this code
+#include <iostream>
+#include <string>
+#include <forward_list>
+
+template<typename T>
+std::ostream& operator<<(std::ostream& s, const std::forward_list<T>& v)
+{
+    s.put('{');
+    for (char comma[]{'\0', ' ', '\0'}; const auto& e : v)
+        s << comma << e, comma[0] = ',';
+    return s << "}\n";
+}
+
+int main()
+{
+    // C++11 initializer list syntax:
+    std::forward_list<std::string> words1{"the", "frogurt", "is", "also", "curse
+d"};
+    std::cout << "1: " << words1;
+
+    // words2 == words1
+    std::forward_list<std::string> words2(words1.begin(), words1.end());
+    std::cout << "2: " << words2;
+
+    // words3 == words1
+    std::forward_list<std::string> words3(words1);
+    std::cout << "3: " << words3;
+
+    // words4 is {"Mo", "Mo", "Mo", "Mo", "Mo"}
+    std::forward_list<std::string> words4(5, "Mo");
+    std::cout << "4: " << words4;
+
+    auto const rg = {"cat", "cow", "crow"};
+#ifdef __cpp_lib_containers_ranges
+    std::forward_list<std::string> words5(std::from_range, rg); // overload (11)
+#else
+    std::forward_list<std::string> words5(rg.begin(), rg.end()); // overload (5)
+#endif
+    std::cout << "5: " << words5;
+}
+
+   Output:
+1: {the, frogurt, is, also, cursed}
+2: {the, frogurt, is, also, cursed}
+3: {the, frogurt, is, also, cursed}
+4: {Mo, Mo, Mo, Mo, Mo}
+5: {cat, cow, crow}
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+      DR    Applied to        Behavior as published         Correct behavior
+
+   LWG 2193 C++11      the default constructor is explicit made non-explicit
+
+See also
+
+   assign
+   assigns values to the container
+   (public member function)
+   operator=
+   assigns values to the container
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/forwar
+   d_list/forward_list&oldid=156225"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 3 August 2023, at 12:08.
+     * This page has been accessed 48,379 times.

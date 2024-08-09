@@ -1,0 +1,294 @@
+std::time_get<CharT,InputIt>::get_weekday,
+std::time_get<CharT,InputIt>::do_get_weekday
+
+   From cppreference.com
+   < cpp | locale | time get
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Localization library
+   Locales and facets
+   Locales
+   has_facet
+   use_facet
+   locale
+   Facet category base classes
+   ctype_base
+   codecvt_base
+   messages_base
+
+   time_base
+   money_base
+   ctype facets
+   ctype
+   ctype<char>
+   ctype_byname
+   codecvt
+   codecvt_byname
+   numeric facets
+   num_get
+   num_put
+   numpunct
+   numpunct_byname
+   collate facets
+   collate
+   collate_byname
+   time facets
+   time_get
+   time_put
+   time_get_byname
+   time_put_byname
+   monetary facets
+   money_get
+   money_put
+   moneypunct
+   moneypunct_byname
+
+   messages facets
+   messages
+   messages_byname
+   Character classification and conversion
+   Character classification
+   isspace
+   isblank
+   (C++11)
+   iscntrl
+   isupper
+   islower
+   isalpha
+   ispunct
+   isdigit
+   isxdigit
+   isalnum
+   isprint
+   isgraph
+   Character conversions
+   toupper
+
+   tolower
+   String and stream conversions
+   wstring_convert
+   (C++11/17/26*)
+   wbuffer_convert
+   (C++11/17/26*)
+   Text encoding identifications
+   text_encoding
+   (C++26)
+   Unicode conversion facets
+   codecvt_utf8
+   (C++11/17/26*)
+   codecvt_utf16
+   (C++11/17/26*)
+   codecvt_utf8_utf16
+   (C++11/17/26*)
+   codecvt_mode
+   (C++11/17/26*)
+   C library locales
+   LC_ALLLC_COLLATELC_CTYPELC_MONETARYLC_NUMERICLC_TIME
+
+   setlocale
+   localeconv
+   lconv
+
+   std::time_get
+   Member functions
+   time_get::time_get
+   time_get::~time_get
+   time_get::date_ordertime_get::do_date_order
+   time_get::get_timetime_get::do_get_time
+   time_get::get_datetime_get::do_get_date
+   time_get::get_weekdaytime_get::do_get_weekday
+   time_get::get_monthnametime_get::do_get_monthname
+   time_get::get_yeartime_get::do_get_year
+   time_get::gettime_get::do_get
+
+   Defined in header <locale>
+   public:
+
+   iter_type get_weekday( iter_type beg, iter_type end, std::ios_base&
+   str,
+                          std::ios_base::iostate& err, std::tm* t ) const;
+   (1)
+   protected:
+
+   virtual iter_type do_get_weekday( iter_type beg, iter_type end,
+   std::ios_base& str,
+                                     std::ios_base::iostate& err, std::tm*
+   t ) const;
+   (2)
+   1) Public member function, calls the protected virtual member function
+   do_get_weekday of the most derived class.
+   2) Reads successive characters from the sequence [beg, end) and parses
+   out the weekday name (possibly abbreviated), using the default format
+   for weekdays expected by this locale, which is the same format as "%a"
+   as used by the functions std::get_time, time_get::get, and the POSIX
+   function strptime().
+
+   If it finds abbreviated name, followed by the characters that are valid
+   for the full name, it continues reading until it consumes all the
+   characters for the full name or finds a character that is not expected,
+   in which case parsing fails even if the first few characters were a
+   valid abbreviation.
+
+   The parsed weekday is stored in the std::tm field t->tm_wday.
+
+   If the end iterator is reached before a valid weekday name is read, the
+   function sets std::ios_base::eofbit in err. If a parsing error is
+   encountered, the function sets std::ios_base::failbit in err.
+
+Parameters
+
+   beg - iterator designating the start of the sequence to parse
+   end - one past the end iterator for the sequence to parse
+   str - a stream object that this function uses to obtain locale facets
+   when needed, e.g. std::ctype to skip whitespace or std::collate to
+   compare strings
+   err - stream error flags object that is modified by this function to
+   indicate errors
+   t - pointer to the std::tm object that will hold the result of this
+   function call
+
+Return value
+
+   Iterator pointing one past the last character in [beg, end) that was
+   recognized as a part of a valid weekday name.
+
+Notes
+
+   This function is usually case-insensitive.
+
+   If a parsing error is encountered, most implementations of this
+   function leave *t unmodified.
+
+Example
+
+   Run this code
+#include <initializer_list>
+#include <iostream>
+#include <iterator>
+#include <locale>
+#include <sstream>
+#include <string_view>
+
+void try_get_wday(std::string_view s)
+{
+    std::cout << "Parsing the weekday out of '" << s
+              << "' in the locale " << std::locale().name() << '\n';
+    std::istringstream str{s.data()};
+    std::ios_base::iostate err{std::ios_base::goodbit};
+
+    std::tm t;
+    std::time_get<char> const& facet = std::use_facet<std::time_get<char>>(str.g
+etloc());
+    std::istreambuf_iterator<char> ret = facet.get_weekday({str}, {}, str, err,
+&t);
+    str.setstate(err);
+    std::istreambuf_iterator<char> last{};
+
+    if (str)
+    {
+        std::cout << "Successfully parsed, weekday number is " << t.tm_wday;
+
+        if (ret != last)
+        {
+            std::cout << " Remaining content: ";
+            std::copy(ret, last, std::ostreambuf_iterator<char>(std::cout));
+        }
+        else
+            std::cout << " the input was fully consumed";
+    }
+    else
+    {
+        std::cout << "Parse failed. Unparsed string: ";
+        std::copy(ret, last, std::ostreambuf_iterator<char>(std::cout));
+    }
+
+    std::cout << '\n';
+}
+
+void demo(std::string_view locale_name, std::initializer_list<std::string_view>&
+& data)
+{
+    try
+    {
+        std::locale::global(std::locale(locale_name.data()));
+    }
+    catch (std::runtime_error const& ex)
+    {
+        std::cout << "Cannot setup locale: " << locale_name << "\n"
+                     "Exception: " << ex.what() << '\n';
+        return;
+    }
+
+    for (std::string_view const weekday : data)
+        try_get_wday(weekday);
+}
+
+int main()
+{
+    demo("lt_LT.utf8", {"St", "Sestadienis"});
+    demo("en_US.utf8", {"SATELLITE"});
+    demo("ja_JP.utf8", {"¥"});
+}
+
+   Possible output:
+Parsing the weekday out of 'St' in the locale lt_LT.utf8
+Successfully parsed, weekday number is 6 the input was fully consumed
+Parsing the weekday out of 'Sestadienis' in the locale lt_LT.utf8
+Successfully parsed, weekday number is 6 the input was fully consumed
+Parsing the weekday out of 'SATELLITE' in the locale en_US.utf8
+Successfully parsed, weekday number is 6 Remaining content: ELLITE
+Parsing the weekday out of '¥' in the locale ja_JP.utf8
+Successfully parsed, weekday number is 6 the input was fully consumed
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 248 C++98 eofbit was not set upon reaching the end iterator sets
+   eofbit if a valid weekday name has not been read
+
+See also
+
+   get_time
+   (C++11)
+   parses a date/time value of specified format
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/locale/time_get/
+   get_weekday&oldid=160216"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 6 October 2023, at 11:15.
+     * This page has been accessed 14,964 times.

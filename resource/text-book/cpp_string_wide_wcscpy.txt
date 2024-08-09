@@ -1,0 +1,164 @@
+std::wcscpy
+
+   From cppreference.com
+   < cpp | string | wide
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated wide strings
+   Functions
+   Character manipulation
+   iswalnum
+   iswalpha
+   iswlower
+   iswupper
+   iswdigit
+   iswxdigit
+   iswblank
+   (C++11)
+   wctype
+   iswctype
+   iswcntrl
+   iswgraph
+   iswspace
+   iswprint
+   iswpunct
+   towlower
+   towupper
+   wctrans
+   towctrans
+   Conversions to numeric formats
+   wcstolwcstoll
+   (C++11)
+   wcstoulwcstoull
+   (C++11)
+   wcstofwcstodwcstold
+   (C++11)(C++11)
+   wcstoimaxwcstouimax
+   (C++11)(C++11)
+   String manipulation
+   wcslen
+   wcscpy
+   wcsncpy
+   wcscat
+   wcsncat
+   wcscmp
+   wcscoll
+   wcsncmp
+   wcsxfrm
+   wcschr
+   wcsrchr
+   wcspbrk
+   wcsspn
+   wcscspn
+   wcsstr
+   wcstok
+   Array manipulation
+   wmemcpy
+   wmemmove
+   wmemcmp
+   wmemchr
+   wmemset
+
+   Defined in header <cwchar>
+   wchar_t* wcscpy( wchar_t* dest, const wchar_t* src );
+
+   Copies the wide string pointed to by src (including the terminating
+   null wide character) to wide character array pointed to by dest.
+
+   If the strings overlap, the behavior is undefined.
+
+Parameters
+
+   dest - pointer to the wide character array to copy to
+   src  - pointer to the null-terminated wide string to copy from
+
+Return value
+
+   dest
+
+Example
+
+   Run this code
+#include <clocale>
+#include <cwchar>
+#include <iostream>
+#include <memory>
+
+int main()
+{
+    const wchar_t* src = L"¬ means dog";
+//  src[0] = L''; // can't modify string literal
+    auto dst = std::make_unique<wchar_t[]>(std::wcslen(src) + 1); // +1 for the
+null
+    std::wcscpy(dst.get(), src);
+    dst[0] = L'';
+    std::setlocale(LC_ALL, "en_US.utf8");
+    std::wcout.imbue(std::locale(""));
+    std::wcout << src << '\n' << dst.get() << '\n';
+}
+
+   Output:
+¬ means dog
+ means dog
+
+See also
+
+   wcsncpy
+   copies a certain amount of wide characters from one string to another
+   (function)
+   wmemcpy
+   copies a certain amount of wide characters between two non-overlapping
+   arrays
+   (function)
+   strcpy
+   copies one string to another
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/wide/wcsc
+   py&oldid=161099"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 22 October 2023, at 04:46.
+     * This page has been accessed 28,814 times.

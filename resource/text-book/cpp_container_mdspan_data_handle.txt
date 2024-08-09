@@ -1,0 +1,153 @@
+std::mdspan<T,Extents,LayoutPolicy,AccessorPolicy>::data_handle
+
+   From cppreference.com
+   < cpp | container | mdspan
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::mdspan
+   Member functions
+   mdspan::mdspan
+   mdspan::operator=
+   Element access
+   mdspan::operator[]
+   Observers
+   mdspan::size
+   mdspan::empty
+   mdspan::stride
+   mdspan::extents
+   mdspan::data_handle
+   mdspan::mapping
+   mdspan::accessor
+   mdspan::is_uniquemdspan::is_exhaustivemdspan::is_stridedmdspan::is_alwa
+   ys_uniquemdspan::is_always_exhaustivemdspan::is_always_strided
+   Non-member functions
+   swap(std::mdspan)
+   Subviews
+   submdspan_extents
+   (C++26)
+   submdspan
+   (C++26)
+   Helper types and templates
+   extentsdextents
+   layout_right
+   layout_left
+   layout_stride
+   layout_left_padded
+   (C++26)
+   layout_right_padded
+   (C++26)
+   default_accessor
+   Subviews helpers
+   full_extent
+   (C++26)
+   strided_slice
+   (C++26)
+   submdspan_mapping_result
+   (C++26)
+   Deduction guides
+
+   constexpr const data_handle_type& data_handle() const noexcept;
+                                                                  (since C++23)
+
+   Returns the underlying data handle of data_handle_type. Equivalent to
+   return ptr_;.
+
+Parameters
+
+   (none)
+
+Return value
+
+   A const reference to the underlying data handle.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   This section is incomplete
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/mdspan
+   /data_handle&oldid=152416"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 May 2023, at 15:52.
+     * This page has been accessed 2,463 times.

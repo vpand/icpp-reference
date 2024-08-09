@@ -1,0 +1,186 @@
+std::basic_ios<CharT,Traits>::exceptions
+
+   From cppreference.com
+   < cpp | io | basic ios
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Input/output library
+   I/O manipulators
+   Print functions (C++23)
+   C-style I/O
+   Buffers
+   basic_streambuf
+   basic_filebuf
+   basic_stringbuf
+   basic_spanbuf
+   (C++23)
+   strstreambuf
+   (C++98/26*)
+   basic_syncbuf
+   (C++20)
+   Streams
+   Abstractions
+   ios_base
+   basic_ios
+   basic_istream
+   basic_ostream
+   basic_iostream
+   File I/O
+   basic_ifstream
+   basic_ofstream
+   basic_fstream
+   String I/O
+   basic_istringstream
+   basic_ostringstream
+   basic_stringstream
+   Array I/O
+   basic_ispanstream
+   (C++23)
+   basic_ospanstream
+   (C++23)
+   basic_spanstream
+   (C++23)
+   istrstream
+   (C++98/26*)
+   ostrstream
+   (C++98/26*)
+   strstream
+   (C++98/26*)
+   Synchronized Output
+   basic_osyncstream
+   (C++20)
+   Types
+   streamoff
+   streamsize
+   fpos
+   Error category interface
+   iostream_category
+   (C++11)
+   io_errc
+   (C++11)
+
+   std::basic_ios
+   Member functions
+   basic_ios::basic_ios
+   basic_ios::~basic_ios
+   State functions
+   basic_ios::good
+   basic_ios::eof
+   basic_ios::fail
+   basic_ios::bad
+   basic_ios::operator!
+   basic_ios::operator bool
+   basic_ios::rdstate
+   basic_ios::setstate
+   basic_ios::clear
+   Formatting
+   basic_ios::copyfmt
+   basic_ios::fill
+   Miscellaneous
+   basic_ios::exceptions
+   basic_ios::imbue
+   basic_ios::rdbuf
+   basic_ios::tie
+   basic_ios::narrow
+   basic_ios::widen
+   Protected member functions
+   basic_ios::init
+   basic_ios::move
+   (C++11)
+   basic_ios::swap
+   (C++11)
+   basic_ios::set_rdbuf
+   (C++11)
+
+   std::ios_base::iostate exceptions() const;
+   (1)
+   void exceptions( std::ios_base::iostate except );
+   (2)
+
+   Gets and sets the exception mask of the stream. The exception mask
+   determines which error states trigger exceptions of type failure.
+   1) Returns the exception mask.
+   2) Sets the exception mask to except. If the stream has an error state
+   covered by the exception mask when called, an exception is immediately
+   triggered.
+
+Parameters
+
+   except - exception mask
+
+Return value
+
+   1) The current exception mask.
+   2) (none)
+
+Notes
+
+   This section is incomplete
+   Reason: discuss LWG2349 and link from ios_base::clear, and from
+   (un)formatted(i/o)utputfunction requirement pages (or perhaps the
+   behavior should be fully elaborated on the requirement pages and linked
+   from here). See also stackoverflow.com/a/35089910
+
+Example
+
+   Run this code
+#include <fstream>
+#include <iostream>
+
+int main()
+{
+    int ivalue;
+    try
+    {
+        std::ifstream in("in.txt");
+        in.exceptions(std::ifstream::failbit); // may throw
+        in >> ivalue; // may throw
+    }
+    catch (const std::ios_base::failure& fail)
+    {
+        // handle exception here
+        std::cout << fail.what() << '\n';
+    }
+}
+
+   Possible output:
+basic_ios::clear: iostream error
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ios/exc
+   eptions&oldid=158513"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 9 September 2023, at 00:23.
+     * This page has been accessed 126,345 times.

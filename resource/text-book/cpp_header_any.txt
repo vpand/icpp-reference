@@ -1,0 +1,293 @@
+Standard library header <any> (C++17)
+
+   From cppreference.com
+   < cpp | header
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Standard library headers
+   Language support
+   <cstddef>
+   <cstdlib>
+   <version> (C++20)
+   <limits>
+   <climits>
+   <cfloat>
+   <cstdint> (C++11)
+   <stdfloat> (C++23)
+   <new>
+   <typeinfo>
+   <source_location> (C++20)
+   <exception>
+   <initializer_list> (C++11)
+   <compare> (C++20)
+   <coroutine> (C++20)
+   <csignal>
+   <csetjmp>
+   <cstdarg>
+   Concepts
+   <concepts> (C++20)
+   Diagnostics
+   <stdexcept>
+   <stacktrace> (C++23)
+   <cassert>
+   <cerrno>
+   <system_error> (C++11)
+   Memory management
+   <memory>
+   <memory_resource> (C++17)
+   <scoped_allocator> (C++11)
+   Metaprogramming
+   <type_traits> (C++11)
+   <ratio> (C++11)
+   General utilities
+   <utility>
+   <tuple> (C++11)
+   <optional> (C++17)
+   <variant> (C++17)
+   <any> (C++17)
+   <debugging> (C++26)
+   <expected> (C++23)
+   <bitset>
+   <functional>
+   <typeindex> (C++11)
+   <execution> (C++17)
+   <charconv> (C++17)
+   <format> (C++20)
+   <bit> (C++20)
+   Strings
+   <string_view> (C++17)
+   <string>
+   <cctype>
+   <cwctype>
+   <cstring>
+   <cwchar>
+   <cuchar> (C++11)
+   Containers
+   <array> (C++11)
+   <deque>
+   <forward_list> (C++11)
+   <list>
+   <vector>
+   <map>
+   <set>
+   <unordered_map> (C++11)
+   <unordered_set> (C++11)
+   <queue>
+   <stack>
+   <flat_map> (C++23)
+   <flat_set> (C++23)
+   <span> (C++20)
+   <mdspan> (C++23)
+   Iterators
+   <iterator>
+   Ranges
+   <ranges> (C++20)
+   <generator> (C++23)
+   Algorithms
+   <algorithm>
+   <numeric>
+   Numerics
+   <cfenv> (C++11)
+   <complex>
+   <random> (C++11)
+   <valarray>
+   <cmath>
+   <linalg> (C++26)
+   <numbers> (C++20)
+   Time
+   <chrono> (C++11)
+   <ctime>
+   Localization
+   <locale>
+   <clocale>
+   <codecvt> (C++11/17/26*)
+   <text_encoding> (C++26)
+   Input/output
+   <iosfwd>
+   <iostream>
+   <ios>
+   <streambuf>
+   <istream>
+   <ostream>
+   <iomanip>
+   <print> (C++23)
+   <sstream>
+   <spanstream> (C++23)
+   <fstream>
+   <syncstream> (C++20)
+   <filesystem> (C++17)
+   <cstdio>
+   <cinttypes> (C++11)
+   <strstream> (C++98/26*)
+   Regular expressions
+   <regex> (C++11)
+   Concurrency support
+   <stop_token> (C++20)
+   <thread> (C++11)
+   <atomic> (C++11)
+   <rcu> (C++26)
+   <stdatomic.h> (C++23)
+   <mutex> (C++11)
+   <shared_mutex> (C++14)
+   <condition_variable> (C++11)
+   <semaphore> (C++20)
+   <latch> (C++20)
+   <barrier> (C++20)
+   <future> (C++11)
+   <hazard_pointer> (C++26)
+   C compatibility
+   <cstdbool> (C++11/17/20*)
+   <ccomplex> (C++11/17/20*)
+   <ctgmath> (C++11/17/20*)
+   <cstdalign> (C++11/17/20*)
+   <ciso646> (until C++20)
+
+   This header is part of the general utility library.
+
+Classes
+
+   any
+   (C++17)
+   objects that hold instances of any CopyConstructible type
+   (class)
+   bad_any_cast
+   (C++17)
+   exception thrown by the value-returning forms of any_cast on a type
+   mismatch
+   (class)
+
+Functions
+
+   std::swap(std::any)
+   (C++17)
+   specializes the std::swap algorithm
+   (function)
+   make_any
+   (C++17)
+   creates an any object
+   (function template)
+   any_cast
+   (C++17)
+   type-safe access to the contained object
+   (function template)
+
+Synopsis
+
+namespace std {
+  // class bad_any_cast
+  class bad_any_cast;
+
+  // class any
+  class any;
+
+  // non-member functions
+  void swap(any& x, any& y) noexcept;
+
+  template<class T, class... Args>
+    any make_any(Args&&... args);
+  template<class T, class U, class... Args>
+    any make_any(initializer_list<U> il, Args&&... args);
+
+  template<class T>
+    T any_cast(const any& operand);
+  template<class T>
+    T any_cast(any& operand);
+  template<class T>
+    T any_cast(any&& operand);
+
+  template<class T>
+    const T* any_cast(const any* operand) noexcept;
+  template<class T>
+    T* any_cast(any* operand) noexcept;
+}
+
+Class std::bad_any_cast
+
+namespace std {
+  class bad_any_cast : public bad_cast {
+  public:
+    // see [exception] for the specification of the special member functions
+    const char* what() const noexcept override;
+  };
+}
+
+Class std::any
+
+namespace std {
+  class any {
+  public:
+    // construction and destruction
+    constexpr any() noexcept;
+
+    any(const any& other);
+    any(any&& other) noexcept;
+
+    template<class T>
+      any(T&& value);
+
+    template<class T, class... Args>
+      explicit any(in_place_type_t<T>, Args&&...);
+    template<class T, class U, class... Args>
+      explicit any(in_place_type_t<T>, initializer_list<U>, Args&&...);
+
+    ~any();
+
+    // assignments
+    any& operator=(const any& rhs);
+    any& operator=(any&& rhs) noexcept;
+
+    template<class T>
+      any& operator=(T&& rhs);
+
+    // modifiers
+    template<class T, class... Args>
+      decay_t<T>& emplace(Args&&...);
+    template<class T, class U, class... Args>
+      decay_t<T>& emplace(initializer_list<U>, Args&&...);
+    void reset() noexcept;
+    void swap(any& rhs) noexcept;
+
+    // observers
+    bool has_value() const noexcept;
+    const type_info& type() const noexcept;
+  };
+}
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/header/any&oldid
+   =163941"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 November 2023, at 07:57.
+     * This page has been accessed 69,484 times.

@@ -1,0 +1,100 @@
+std::movable
+
+   From cppreference.com
+   < cpp | concepts
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Concepts library
+   Core language concepts
+   same_as
+   derived_from
+   convertible_to
+   common_reference_with
+
+   common_with
+   integral
+   signed_integral
+   unsigned_integral
+   floating_point
+   swappableswappable_with
+   destructible
+   constructible_from
+   default_initializable
+   move_constructible
+   copy_constructible
+   assignable_from
+   Comparison concepts
+   equality_comparableequality_comparable_with
+   totally_orderedtotally_ordered_with
+   Object concepts
+   movable
+   copyable
+   semiregular
+   regular
+   Callable concepts
+   invocableregular_invocable
+   predicate
+   relation
+   equivalence_relation
+   strict_weak_order
+   Exposition-only concepts
+   boolean-testable
+
+   Defined in header <concepts>
+   template< class T >
+
+   concept movable =
+       std::is_object_v<T> &&
+       std::move_constructible<T> &&
+       std::assignable_from<T&, T> &&
+       std::swappable<T>;
+                               (since C++20)
+
+   The concept movable<T> specifies that T is an object type that can be
+   moved (that is, it can be move constructed, move assigned, and lvalues
+   of type T can be swapped).
+
+See also
+
+   copyable
+   (C++20)
+   specifies that an object of a type can be copied, moved, and swapped
+   (concept)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/concepts/movable
+   &oldid=161757"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 30 October 2023, at 00:47.
+     * This page has been accessed 40,225 times.

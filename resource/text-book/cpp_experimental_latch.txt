@@ -1,0 +1,126 @@
+std::experimental::latch
+
+   From cppreference.com
+   < cpp | experimental
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Extensions for concurrency
+   std::future extensions
+   experimental::future
+   experimental::shared_future
+   experimental::when_all
+   experimental::when_any
+   experimental::make_ready_future
+   experimental::make_exceptional_future
+   Latches and barriers
+   experimental::latch
+   experimental::barrier
+   experimental::flex_barrier
+   Atomic smart pointers
+   experimental::atomic_shared_ptr
+   experimental::atomic_weak_ptr
+
+   std::experimental::latch
+   latch::latch
+   latch::~latch
+   latch::count_down_and_wait
+   latch::count_down
+   latch::is_ready
+   latch::wait
+
+   Defined in header <experimental/latch>
+   class latch;
+                                         (concurrency TS)
+
+   The latch class is a downward counter of type ptrdiff_t which can be
+   used to synchronize threads. The value of the counter is initialized on
+   creation. Threads may block on the latch until the counter is
+   decremented to zero. There is no possibility to increase or reset the
+   counter, which makes the latch a single-use barrier.
+
+   Unlike std::experimental::barrier, std::experimental::latch can be
+   decremented by a participating thread more than once.
+
+Member functions
+
+   (constructor)
+   constructs a latch
+   (public member function)
+   (destructor)
+   destroys the latch
+   (public member function)
+   operator=
+   [deleted]
+   not copy-assignable
+   (public member function)
+   count_down_and_wait
+   decrements the counter by 1 and blocks until it reaches zero
+   (public member function)
+   count_down
+   decrements the counter in a non-blocking manner
+   (public member function)
+   is_ready
+   tests if the internal counter equals zero
+   (public member function)
+   wait
+   blocks until the counter reaches zero
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/lat
+   ch&oldid=164137"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 November 2023, at 00:47.
+     * This page has been accessed 34,711 times.

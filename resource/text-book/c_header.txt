@@ -1,0 +1,131 @@
+C Standard Library header files
+
+   From cppreference.com
+   < c
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Standard Library headers
+   <assert.h>
+   <complex.h> (C99)
+   <ctype.h>
+   <errno.h>
+   <fenv.h> (C99)
+   <float.h>
+   <inttypes.h> (C99)
+   <iso646.h> (C95)
+   <limits.h>
+   <locale.h>
+   <math.h>
+   <setjmp.h>
+   <signal.h>
+   <stdalign.h> (C11)
+   <stdarg.h>
+   <stdatomic.h> (C11)
+   <stdbit.h> (C23)
+   <stdbool.h> (C99)
+   <stdckdint.h> (C23)
+   <stddef.h>
+   <stdint.h> (C99)
+   <stdio.h>
+   <stdlib.h>
+   <stdnoreturn.h> (C11)
+   <string.h>
+   <tgmath.h> (C99)
+   <threads.h> (C11)
+   <time.h>
+   <uchar.h> (C11)
+   <wchar.h> (C95)
+   <wctype.h> (C95)
+
+   The interface of C standard library is defined by the following
+   collection of headers.
+   <assert.h> Conditionally compiled macro that compares its argument to
+   zero
+   <complex.h> (since C99) Complex number arithmetic
+   <ctype.h> Functions to determine the type contained in character data
+   <errno.h> Macros reporting error conditions
+   <fenv.h> (since C99) Floating-point environment
+   <float.h> Limits of floating-point types
+   <inttypes.h> (since C99) Format conversion of integer types
+   <iso646.h> (since C95) Alternative operator spellings
+   <limits.h> Ranges of integer types
+   <locale.h> Localization utilities
+   <math.h> Common mathematics functions
+   <setjmp.h> Nonlocal jumps
+   <signal.h> Signal handling
+   <stdalign.h> (since C11) alignas and alignof convenience macros
+   <stdarg.h> Variable arguments
+   <stdatomic.h> (since C11) Atomic operations
+   <stdbit.h> (since C23) Macros to work with the byte and bit
+   representations of types
+   <stdbool.h> (since C99) Macros for boolean type
+   <stdckdint.h> (since C23) macros for performing checked integer
+   arithmetic
+   <stddef.h> Common macro definitions
+   <stdint.h> (since C99) Fixed-width integer types
+   <stdio.h> Input/output
+   <stdlib.h> General utilities: memory management, program utilities,
+   string conversions, random numbers, algorithms
+   <stdnoreturn.h> (since C11) noreturn convenience macro
+   <string.h> String handling
+   <tgmath.h> (since C99) Type-generic math (macros wrapping math.h and
+   complex.h)
+   <threads.h> (since C11) Thread library
+   <time.h> Time/date utilities
+   <uchar.h> (since C11) UTF-16 and UTF-32 character utilities
+   <wchar.h> (since C95) Extended multibyte and wide character utilities
+   <wctype.h> (since C95) Functions to determine the type contained in
+   wide character data
+
+References
+
+     * C23 standard (ISO/IEC 9899:2023):
+
+          + 7.1.2 Standard headers
+
+     * C17 standard (ISO/IEC 9899:2018):
+
+          + 7.1.2 Standard headers (p: 131-132)
+
+     * C11 standard (ISO/IEC 9899:2011):
+
+          + 7.1.2 Standard headers (p: 181-182)
+
+     * C99 standard (ISO/IEC 9899:1999):
+
+          + 7.1.2 Standard headers (p: 165)
+
+     * C89/C90 standard (ISO/IEC 9899:1990):
+
+          + 4.1.2 Standard headers
+
+See also
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/header&oldid=17198
+   9"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 23 May 2024, at 03:30.
+     * This page has been accessed 1,144,891 times.

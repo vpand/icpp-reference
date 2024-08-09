@@ -1,0 +1,97 @@
+std::experimental::parallel::sequential_execution_policy,
+std::experimental::parallel::parallel_execution_policy,
+std::experimental::parallel::parallel_vector_execution_policy
+
+   From cppreference.com
+   < cpp | experimental
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Extensions for parallelism
+   Execution policies
+   parallel::execution_policy
+   parallel::sequential_execution_policyparallel::parallel_execution_polic
+   yparallel::parallel_vector_execution_policy
+   parallel::seqparallel::parparallel::par_vec
+   Parallel algorithms
+   Parallel exceptions
+   parallel::exception_list
+   Parallelized version of existing algorithms
+   New algorithms
+   parallel::for_eachparallel::for_each_n
+   parallel::reduce
+   parallel::exclusive_scan
+   parallel::inclusive_scan
+   parallel::transform_reduce
+   parallel::transform_exclusive_scan
+   parallel::transform_inclusive_scan
+
+   Defined in header <experimental/execution_policy>
+   class sequential_execution_policy { /* unspecified */ };
+                                                                (parallelism TS)
+   class parallel_execution_policy { /* unspecified */ };
+                                                                (parallelism TS)
+   class parallel_vector_execution_policy { /* unspecified */ };
+                                                                (parallelism TS)
+
+   sequential_execution_policy, parallel_execution_policy and
+   parallel_vector_execution_policy are tag types used to indicate the
+   kinds of parallelism allowed in the execution of a parallel algorithm.
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/exe
+   cution_policy_tag_t&oldid=80069"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 July 2015, at 22:04.
+     * This page has been accessed 20,502 times.

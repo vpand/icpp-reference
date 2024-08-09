@@ -1,0 +1,134 @@
+std::same_as
+
+   From cppreference.com
+   < cpp | concepts
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Concepts library
+   Core language concepts
+   same_as
+   derived_from
+   convertible_to
+   common_reference_with
+
+   common_with
+   integral
+   signed_integral
+   unsigned_integral
+   floating_point
+   swappableswappable_with
+   destructible
+   constructible_from
+   default_initializable
+   move_constructible
+   copy_constructible
+   assignable_from
+   Comparison concepts
+   equality_comparableequality_comparable_with
+   totally_orderedtotally_ordered_with
+   Object concepts
+   movable
+   copyable
+   semiregular
+   regular
+   Callable concepts
+   invocableregular_invocable
+   predicate
+   relation
+   equivalence_relation
+   strict_weak_order
+   Exposition-only concepts
+   boolean-testable
+
+   Defined in header <concepts>
+   template< class T, class U >
+   concept same_as = /* see below */;
+                               (since C++20)
+
+   The concept same_as<T, U> is satisfied if and only if T and U denote
+   the same type.
+
+   std::same_as<T, U> subsumes std::same_as<U, T> and vice versa.
+
+Possible implementation
+
+namespace detail
+{
+    template< class T, class U >
+    concept SameHelper = std::is_same_v<T, U>;
+}
+
+template< class T, class U >
+concept same_as = detail::SameHelper<T, U> && detail::SameHelper<U, T>;
+
+Example
+
+   Run this code
+#include <concepts>
+#include <iostream>
+
+template<typename T, typename ... U>
+concept IsAnyOf = (std::same_as<T, U> || ...);
+
+template<typename T>
+concept IsPrintable = std::integral<T> || std::floating_point<T> ||
+    IsAnyOf<std::remove_cvref_t<std::remove_pointer_t<std::decay_t<T>>>, char, w
+char_t>;
+
+void println(IsPrintable auto const ... arguments)
+{
+    (std::wcout << ... << arguments) << '\n';
+}
+
+int main()
+{
+    println("Example: ", 3.14, " : ", 42, " : [", 'a', L'-', L"Z]");
+}
+
+   Output:
+Example: 3.14 : 42 : [a-Z]
+
+See also
+
+   is_same
+   (C++11)
+   checks if two types are the same
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/concepts/same_as
+   &oldid=161729"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 29 October 2023, at 13:55.
+     * This page has been accessed 144,149 times.

@@ -1,0 +1,138 @@
+std::experimental::source_location::file_name
+
+   From cppreference.com
+   < cpp | experimental | source location
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Library fundamentals v2
+   experimental::propagate_const
+   experimental::not_fn
+   experimental::observer_ptr
+   experimental::make_array
+   experimental::to_array
+   experimental::ostream_joiner
+   experimental::gcd
+   experimental::lcm
+   experimental::source_location
+   experimental::randint
+   detection idiom
+   uniform container erasure
+   logical operator type traits
+
+   std::experimental::source_location
+   Creation
+   source_location::source_location
+   source_location::current
+   Field Access
+   source_location::line
+   source_location::column
+   source_location::file_name
+   source_location::function_name
+
+   constexpr const char* file_name() const noexcept;
+                                                    (library fundamentals TS v2)
+
+   Returns the name of the current source file represented by this object,
+   represented as a null-terminated byte string.
+
+Parameters
+
+   (none)
+
+Return value
+
+   The name of the current source file represented by this object,
+   represented as a null-terminated byte string.
+
+Example
+
+   Run this code
+#include <experimental/source_location>
+#include <iostream>
+
+inline void print_this_file_name(
+    const std::experimental::source_location& location
+        = std::experimental::source_location::current())
+{
+    // Name of file that contains the call-site of this function.
+    std::cout << "File: " << location.file_name() << '\n';
+}
+
+int main()
+{
+    print_this_file_name();
+}
+
+   Possible output:
+File: main.cpp
+
+See also
+
+   line
+   return the line number represented by this object
+   (public member function)
+   column
+   return the column number represented by this object
+   (public member function)
+   function_name
+   return the name of the function represented by this object, if any
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/sou
+   rce_location/file_name&oldid=117882"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 16 April 2020, at 08:43.
+     * This page has been accessed 12,889 times.

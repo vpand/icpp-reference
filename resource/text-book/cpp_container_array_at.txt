@@ -1,0 +1,212 @@
+std::array<T,N>::at
+
+   From cppreference.com
+   < cpp | container | array
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::array
+   Member types
+   Member functions
+   Element access
+   array::at
+   array::operator[]
+   array::front
+   array::back
+   array::data
+   Iterators
+   array::beginarray::cbegin
+   array::endarray::cend
+   array::rbeginarray::crbegin
+   array::rendarray::crend
+   Capacity
+   array::empty
+   array::size
+   array::max_size
+   Operations
+   array::fill
+   array::swap
+   Non-member functions
+   get(std::array)
+   (C++11)
+   swap(std::array)
+   (C++11)
+   to_array
+   (C++20)
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (C++11)(C++11)(until C++20)(C++11)(until C++20)(C++11)(until
+   C++20)(C++11)(until C++20)(C++11)(until C++20)(C++20)
+   Helper classes
+   tuple_size<std::array>
+   (C++11)
+   tuple_element<std::array>
+   (C++11)
+   Deduction guides (C++17)
+
+   reference at( size_type pos );
+   (1) (since C++11)
+   (constexpr since C++17)
+   const_reference at( size_type pos ) const;
+   (2) (since C++11)
+   (constexpr since C++14)
+
+   Returns a reference to the element at specified location pos, with
+   bounds checking.
+
+   If pos is not within the range of the container, an exception of type
+   std::out_of_range is thrown.
+
+Parameters
+
+   pos - position of the element to return
+
+Return value
+
+   Reference to the requested element.
+
+Exceptions
+
+   std::out_of_range if pos >= size().
+
+Complexity
+
+   Constant.
+
+Example
+
+   Run this code
+#include <iostream>
+#include <array>
+#include <stdexcept>
+
+#ifdef __GNUG__
+[[gnu::noinline]]
+#endif
+unsigned int runtime_six() // Emulate runtime input
+{
+    return 6u;
+}
+
+int main()
+{
+    std::array<int, 6> data = {1, 2, 4, 5, 5, 6};
+
+    // Set element 1
+    data.at(1) = 88;
+
+    // Read element 2
+    std::cout << "Element at index 2 has value " << data.at(2) << '\n';
+
+    std::cout << "data size = " << data.size() << '\n';
+
+    try
+    {
+        // Set element 6, where the index is determined at runtime
+        data.at(runtime_six()) = 666;
+    }
+    catch (std::out_of_range const& exc)
+    {
+        std::cout << exc.what() << '\n';
+    }
+
+    // Print final values
+    std::cout << "data:";
+    for (int elem : data)
+        std::cout << ' ' << elem;
+    std::cout << '\n';
+}
+
+   Possible output:
+Element at index 2 has value 4
+data size = 6
+array::at: __n (which is 6) >= _Nm (which is 6)
+data: 1 88 4 5 5 6
+
+See also
+
+   operator[]
+   access specified element
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/array/
+   at&oldid=122662"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 24 September 2020, at 11:13.
+     * This page has been accessed 150,967 times.

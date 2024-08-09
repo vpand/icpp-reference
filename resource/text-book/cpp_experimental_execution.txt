@@ -1,0 +1,339 @@
+Execution library
+
+   From cppreference.com
+   < cpp | experimental
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Execution Library
+   Senders
+   Sender factories
+   Sender adaptors
+   Adaptors for single-shot and multi-shot senders
+   Adaptors for multi-shot senders
+   Sender consumers
+   Eager execution
+
+   The Execution library provides a framework for managing asynchronous
+   execution on generic execution resources, targeting the standard C++
+   library.
+
+   The library aims to provide vocabulary types for async operations and
+   to allow the construction of task execution graphs in a simple,
+   composable way.
+
+Library-wide definitions
+
+     * Sender: A description of asynchronous work to be sent for
+       execution. Produces an operation state (below).
+
+          + Senders asynchronously "send" their results to listeners
+            called "receivers" (below).
+          + Senders can be composed into task graphs using generic
+            algorithms.
+          + Sender factories and adaptors are generic algorithms that
+            capture common async patterns in objects satisfying the sender
+            concept.
+
+     * Receiver: A generalized callback that consumes or "receives" the
+       asynchronous results produced by a sender.
+
+          + Receivers have three different "channels" through which a
+            sender may propagate results: success, failure, and canceled,
+            so-named "value", "error", and "stopped".
+          + Receivers provide an extensible execution environment: a set
+            of key/value pairs that the consumer can use to parameterize
+            the asynchronous operation.
+
+     * Operation State: An object that contains the state needed by the
+       asynchronous operation.
+
+          + A sender and receiver are connected when passed to the
+            std::execution::connect function.
+          + The result of connecting a sender and a receiver is an
+            operation state.
+          + Work is not enqueued for execution until "start" is called on
+            an operation state.
+          + Once started, the operation state's lifetime cannot end before
+            the async operation is complete, and its address must be
+            stable.
+
+     * Scheduler: A lightweight handle to an execution context.
+
+          + An execution context is a source of asynchronous execution
+            such as a thread pool or a GPU stream.
+          + A scheduler is a factory for a sender that completes its
+            receiver from a thread of execution owned by the execution
+            context.
+
+Library utilities
+
+Senders
+
+Sender factories
+
+   A sender factory is a function that returns a sender and whose
+   parameters have types for which the sender concept is false.
+
+   The following are sender factories:
+   Defined in header <execution>
+   Defined in namespace std::execution
+   just
+   Accepts a variadic number of arguments and returns a sender that, when
+   connected and started, completes synchronously by passing the arguments
+   to the receiver's value completion function.
+   (function template)
+   just_error
+   Accepts a single argument and returns a sender that, when connected and
+   started, completes synchronously by passing the argument to the
+   receiver's error completion function.
+   (function template)
+   just_stopped
+   (C++2C)
+   A function callable with no arguments that returns a sender that, when
+   connected and started, completes synchronously by invoking the
+   receiver's stopped completion function.
+   (function)
+   read
+   A function that is callable with a query object (e.g.,
+   std::get_stop_token) and returns a sender that, when connected to a
+   receiver and started, synchronously invokes the query object with the
+   receiver's environment, passing the result to the receiver's value
+   completion function.
+   (function template)
+   schedule
+   A function that accepts a scheduler and returns a sender that, when
+   connected and started, will attempt to enqueue a value completion
+   operation with no result datums to an execution agent belonging to the
+   scheduler's associated execution resource. The operation may also
+   complete with an error (e.g., if the attempt to enqueue work fails) or
+   with stopped (e.g., if stop is requested on the execution resource
+   before the work is dequeued).
+   (function template)
+
+Sender adaptors
+
+   A sender adaptor is a function returning a sender whose parameters
+   include at least one whose type satisfies the sender concept, and for
+   which the returned sender is a parent sender of the adaptor function's
+   sender arguments.
+
+   The following are sender adaptors:
+   Defined in header <execution>
+   Defined in namespace std::execution
+   bulk
+   Creates a multi-shot sender that invokes the function with every index
+   in the provided shape along with the values sent by the input sender.
+   The sender completes once all invocations have completed, or an error
+   has occurred.
+   (function template)
+   ensure_started
+   Eagerly starts a sender, returning a sender that will deliver the
+   results to a receiver to which it is connected and started, if any.
+   When the result sender is not connected to a receiver, or if the
+   resulting operation state is not started, the results are ignored. If
+   such a sender is destroyed before the underlying operation completes,
+   the operation continues running detached.
+   (function template)
+   into_variant
+   Returns a sender which sends a variant of tuples of all the possible
+   sets of types sent by the input sender.
+   (function template)
+   let_error
+   Returns a sender which represents a node chained to the input sender,
+   which invokes the provided function with the error from the input
+   sender, if occurred.
+   (function template)
+   let_value
+   Returns a sender which represents a node chained to the input sender,
+   which when started, invokes the provided function with the values sent
+   by the input sender as arguments.
+   (function template)
+   let_stopped
+   Returns a sender which represents a node chained to the input sender,
+   which invokes the provided function with the stop token from the input
+   sender, if the "stopped" signal is sent.
+   (function template)
+   on
+   Start the provided sender on an execution agent belonging to the
+   execution resource associated with the provided scheduler.
+   (function template)
+   split
+   If the provided sender is a multi-shot sender, returns that sender.
+   Otherwise, returns a multi-shot sender which sends values equivalent to
+   the values sent by the provided sender.
+   (function template)
+   stopped_as_error
+   Returns a sender that maps the stopped channel to an error.
+   (function template)
+   stopped_as_optional
+   Returns a sender that maps the value channel to
+   std::optional<std::decay_t<T>> and the stopped channel to std::nullopt.
+   (function template)
+   then
+   Chains the task graph by the input sender with a node represents
+   invoking the provided function with the values sent by the input sender
+   as arguments.
+   (function template)
+   transfer
+   Returns a sender describes transition from the execution context of the
+   input sender to the execution context of the target scheduler
+   (function template)
+   upon_error
+   Chains the task graph by the input sender with a node representing
+   invoking the provided function with the error sent by the input sender
+   if an error occurred.
+   (function template)
+   upon_stopped
+   Chains the task graph by the input sender with a node representing
+   invoking the provided function with the stopped behavior by the input
+   sender if a "stopped" signal is sent.
+   (function template)
+   when_all
+   Completes once all of the input senders have completed. The values are
+   the values sent by each of the input senders, in order of the arguments
+   passed to when_all. Completes inline on the execution resource on which
+   the last input sender completes.
+   (function template)
+
+Sender consumers
+
+   A sender consumer is an algorithm that takes one or more senders as
+   parameters and that does not return a sender.
+
+   The following are sender consumers:
+   Defined in header <execution>
+   Defined in namespace std::execution
+   start_detached
+   Completes when the provided sender completes, or calls std::terminate
+   if the sender sends an error.
+   (function template)
+
+Functions managing the current thread
+
+   Defined in header <thread>
+   Defined in namespace std::this_thread
+   sync_wait
+   (C++26)
+   blocks current thread until passed sender has completed, and returns
+   values (if any) the sender completed with
+   (function template)
+
+Eager execution
+
+   Allows a fire-and-forget eager submission of an invocable to a
+   scheduler.
+   Defined in header <execution>
+   Defined in namespace std::execution
+   execute
+   Submits the provided function for execution on the provided scheduler.
+   (function template)
+
+Example
+
+   A version of this example is available on godbolt.org, where it uses
+   stdexec, an experimental reference implementation of std::execution.
+   Run this code
+#include <cstdio>
+#include <execution>
+#include <string>
+#include <thread>
+#include <utility>
+using namespace std::literals;
+
+int main()
+{
+    std::execution::run_loop loop;
+
+    std::jthread worker([&](std::stop_token st)
+    {
+        std::stop_callback cb{ st, [&]{ loop.finish(); }};
+        loop.run();
+    });
+
+    std::execution::sender auto hello = std::execution::just("hello world"s);
+    std::execution::sender auto print
+        = std::move(hello)
+        | std::execution::then([](std::string msg)
+        {
+            std::puts(msg.c_str());
+            return 0;
+        });
+
+    std::execution::scheduler auto io_thread = loop.get_scheduler();
+    std::execution::sender auto work = std::execution::on(io_thread, std::move(p
+rint));
+
+    auto [result] = std::this_thread::sync_wait(std::move(work)).value();
+
+    return result;
+}
+
+   Output:
+hello world
+
+See also
+
+   async
+   (C++11)
+   runs a function asynchronously (potentially in a new thread) and
+   returns a std::future that will hold the result
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/exe
+   cution&oldid=171784"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 15 May 2024, at 16:36.
+     * This page has been accessed 3,122 times.

@@ -1,0 +1,297 @@
+C++ named requirements: LegacyForwardIterator
+
+   From cppreference.com
+   < cpp | named req
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ named requirements
+   Basic
+   DefaultConstructible
+   CopyAssignable
+   CopyConstructible
+   MoveAssignable
+   (C++11)
+   MoveConstructible
+   (C++11)
+   Destructible
+   Type properties
+   ScalarType
+   TriviallyCopyable
+   (C++11)
+   StandardLayoutType
+   (C++11)
+   PODType
+   TrivialType
+   (C++11)
+   ImplicitLifetimeType
+   Library-Wide
+   EqualityComparable
+   LessThanComparable
+   Swappable
+   ValueSwappable
+   (C++11)
+   NullablePointer
+   (C++11)
+   Hash
+   (C++11)
+   Allocator
+   FunctionObject
+   Callable
+   Predicate
+   BinaryPredicate
+   Compare
+   Container
+   Container
+   SequenceContainer
+   ContiguousContainer
+   (C++17)
+   ReversibleContainer
+   AssociativeContainer
+   AllocatorAwareContainer
+   UnorderedAssociativeContainer
+   (C++11)
+   Container Elements
+   DefaultInsertable
+   (C++11)
+   CopyInsertable
+   (C++11)
+   MoveInsertable
+   (C++11)
+   EmplaceConstructible
+   (C++11)
+   Erasable
+   (C++11)
+   Iterator
+   LegacyIterator
+   LegacyOutputIterator
+   LegacyInputIterator
+   LegacyForwardIterator
+   LegacyBidirectionalIterator
+   LegacyRandomAccessIterator
+   LegacyContiguousIterator
+   (C++17)
+   ConstexprIterator
+   (C++20)
+   Stream I/O
+   FormattedInputFunction
+   UnformattedInputFunction
+   FormattedOutputFunction
+   UnformattedOutputFunction
+   Formatters
+   BasicFormatter
+   (C++20)
+   Formatter
+   (C++20)
+   Random Numbers
+   SeedSequence
+   (C++11)
+   RandomNumberEngine
+   (C++11)
+   RandomNumberDistribution
+   (C++11)
+   UniformRandomBitGenerator
+   (C++11)
+   RandomNumberEngineAdaptor
+   (C++11)
+   Concurrency
+   BasicLockable
+   (C++11)
+   Lockable
+   (C++11)
+   TimedLockable
+   (C++11)
+   SharedLockable
+   (C++14)
+   SharedTimedLockable
+   (C++14)
+   Mutex
+   (C++11)
+   TimedMutex
+   (C++11)
+   SharedMutex
+   (C++17)
+   SharedTimedMutex
+   (C++14)
+   Ranges
+   RangeAdaptorObject
+   (C++20)
+   RangeAdaptorClosureObject
+   (C++20)
+   Other
+   CharTraits
+   RegexTraits
+   (C++11)
+   BitmaskType
+   LiteralType
+   (C++11)
+   NumericType
+   UnaryTypeTrait
+   (C++11)
+   BinaryTypeTrait
+   (C++11)
+   TransformationTrait
+   (C++11)
+   Clock
+   (C++11)
+   TrivialClock
+   (C++11)
+
+   A LegacyForwardIterator is a LegacyIterator that can read data from the
+   pointed-to element.
+
+   Unlike LegacyInputIterator and LegacyOutputIterator, it can be used in
+   multipass algorithms.
+
+   If a LegacyForwardIterator it originates from a Container, then it's
+   value_type is the same as the container's, so dereferencing (*it)
+   obtains the container's value_type.
+
+Requirements
+
+   The type It satisfies LegacyForwardIterator if
+     * The type It satisfies LegacyInputIterator
+     * The type It satisfies DefaultConstructible
+     * Objects of the type It provide multipass guarantee described below
+     * Let T be the value type of It. The type
+       std::iterator_traits<It>::reference must be either
+
+          + T& or T&&(since C++11) if It satisfies LegacyOutputIterator
+            (It is mutable), or
+          + const T& or const T&&(since C++11) otherwise (It is constant),
+
+          (where T is the type denoted by
+          std::iterator_traits<It>::value_type)
+
+     * Equality and inequality comparison is defined over all iterators
+       for the same underlying sequence and the value
+       initialized-iterators(since C++14).
+
+   And, given
+     * i, dereferenceable lvalue of type It
+     * reference, the type denoted by std::iterator_traits<It>::reference
+
+   The following expressions must be valid and have their specified
+   effects
+   Expression Return type   Equivalent expression
+   i++        It          It ip = i; ++i; return ip;
+   *i++       reference
+
+   A mutable LegacyForwardIterator is a LegacyForwardIterator that
+   additionally satisfies the LegacyOutputIterator requirements.
+
+Multipass guarantee
+
+   Given a and b, dereferenceable iterators of type It:
+     * If a and b compare equal (a == b is contextually convertible to
+       true) then either they are both non-dereferenceable or *a and *b
+       are references bound to the same object.
+     * If *a and *b refer to the same object, then a == b.
+     * Assignment through a mutable ForwardIterator iterator cannot
+       invalidate the iterator (implicit due to reference defined as a
+       true reference).
+     * Incrementing a copy of a does not change the value read from a
+       (formally, either It is a raw pointer type or the expression
+       (void)++It(a), *a is equivalent to the expression *a).
+     * a == b implies ++a == ++b.
+
+Singular iterators
+
+   A value-initialized LegacyForwardIterator behaves like the past-the-end
+   iterator of some unspecified empty container: it compares equal to all
+   value-initialized LegacyForwardIterators of the same type. (since
+   C++14)
+
+Concept
+
+   For the definition of std::iterator_traits, the following
+   exposition-only concept is defined.
+   template<class It>
+
+   concept __LegacyForwardIterator =
+       __LegacyInputIterator<It> && std::constructible_from<It> &&
+       std::is_reference_v<std::iter_reference_t<It>> &&
+       std::same_as<
+           std::remove_cvref_t<std::iter_reference_t<It>>,
+           typename std::indirectly_readable_traits<It>::value_type> &&
+       requires(It it) {
+           {  it++ } -> std::convertible_to<const It&>;
+           { *it++ } -> std::same_as<std::iter_reference_t<It>>;
+       };
+
+   where the exposition-only concept __LegacyInputIterator<T> is described
+   in LegacyInputIterator.
+   (since C++20)
+
+Notes
+
+   Unlike the std::forward_iterator concept, the LegacyForwardIterator
+   requirements requires dereference to return a reference.
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 1212
+   (N3066) C++98 the return type of *i++ did not match the return
+   type of *i-- required by LegacyBidirectionalIterator changed the return
+   type to reference
+   LWG 1311
+   (N3066) C++98 'a == b implies ++a == ++b' alone
+   did not offer multipass guarantee^[1] also requires 'a == b
+   implies ++a != b'^[2]
+   LWG 3798 C++20 __LegacyForwardIterator required
+   std::iter_reference_t<It> to be an lvalue reference type also allows
+   rvalue reference types
+    1. ^| In the scenario where a and b use the same underlying iterator,
+       evaluating the expression ++a == ++b actually increments the
+       underlying container twice, but the result is still true.
+    2. ^| Formally also requires implying ++b != a.
+
+See also
+
+   forward_iterator
+   (C++20)
+   specifies that an input_iterator is a forward iterator, supporting
+   equality comparison and multi-pass
+   (concept)
+   Iterator library provides definitions for iterators, iterator traits,
+   adaptors, and utility functions
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/named_req/Forwar
+   dIterator&oldid=171788"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 16 May 2024, at 00:56.
+     * This page has been accessed 366,563 times.

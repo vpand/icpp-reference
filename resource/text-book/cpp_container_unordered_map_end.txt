@@ -1,0 +1,251 @@
+std::unordered_map<Key,T,Hash,KeyEqual,Allocator>::end,
+std::unordered_map<Key,T,Hash,KeyEqual,Allocator>::cend
+
+   From cppreference.com
+   < cpp | container | unordered map
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::unordered_map
+   Member types
+   Member functions
+   unordered_map::unordered_map
+   unordered_map::~unordered_map
+   unordered_map::operator=
+   unordered_map::get_allocator
+   Iterators
+   unordered_map::beginunordered_map::cbegin
+   unordered_map::endunordered_map::cend
+   Capacity
+   unordered_map::size
+   unordered_map::max_size
+   unordered_map::empty
+   Modifiers
+   unordered_map::clear
+   unordered_map::erase
+   unordered_map::swap
+   unordered_map::extract
+   (C++17)
+   unordered_map::merge
+   (C++17)
+   unordered_map::insert
+   unordered_map::insert_range
+   (C++23)
+   unordered_map::insert_or_assign
+   (C++17)
+   unordered_map::emplace
+   unordered_map::emplace_hint
+   unordered_map::try_emplace
+   (C++17)
+   Lookup
+   unordered_map::at
+   unordered_map::operator[]
+   unordered_map::count
+   unordered_map::find
+   unordered_map::contains
+   (C++20)
+   unordered_map::equal_range
+   Bucket interface
+   unordered_map::begin(size_type)unordered_map::cbegin(size_type)
+   unordered_map::end(size_type)unordered_map::cend(size_type)
+   unordered_map::bucket_count
+   unordered_map::max_bucket_count
+   unordered_map::bucket_size
+   unordered_map::bucket
+   Hash policy
+   unordered_map::load_factor
+   unordered_map::max_load_factor
+
+   unordered_map::rehash
+   unordered_map::reserve
+   Observers
+   unordered_map::hash_function
+   unordered_map::key_eq
+   Non-member functions
+   operator==operator!=
+   (C++11)(C++11)(until C++20)
+   std::swap(std::unordered_map)
+   (C++11)
+   erase_if(std::unordered_map)
+   (C++20)
+   Deduction guides(C++17)
+
+   iterator end() noexcept;
+   (1)                                  (since C++11)
+   const_iterator end() const noexcept;
+   (2)                                  (since C++11)
+   const_iterator cend() const noexcept;
+   (3)                                  (since C++11)
+
+   Returns an iterator to the element following the last element of the
+   unordered_map.
+
+   This element acts as a placeholder; attempting to access it results in
+   undefined behavior.
+
+   range-begin-end.svg
+
+Parameters
+
+   (none)
+
+Return value
+
+   Iterator to the element following the last element.
+
+Complexity
+
+   Constant.
+
+Example
+
+   Run this code
+#include <cmath>
+#include <iostream>
+#include <unordered_map>
+
+struct Node { double x, y; };
+
+int main()
+{
+    Node nodes[3] = {{1, 0}, {2, 0}, {3, 0}};
+
+    // mag is a map mapping the address of a Node to its magnitude in the plane
+    std::unordered_map<Node*, double> mag =
+    {
+        { nodes + 0, 1 },
+        { nodes + 1, 2 },
+        { nodes + 2, 3 }
+    };
+
+    // Change each y-coordinate from 0 to the magnitude
+    for (auto iter = mag.begin(); iter != mag.end(); ++iter)
+    {
+        auto cur = iter->first; // pointer to Node
+        cur->y = mag[cur]; // could also have used cur->y = iter->second;
+    }
+
+    // Update and print the magnitude of each node
+    for (auto iter = mag.begin(); iter != mag.end(); ++iter)
+    {
+        auto cur = iter->first;
+        mag[cur] = std::hypot(cur->x, cur->y);
+        std::cout << "The magnitude of (" << cur->x << ", " << cur->y << ") is "
+;
+        std::cout << iter->second << '\n';
+    }
+
+    // Repeat the above with the range-based for loop
+    for (auto i : mag)
+    {
+        auto cur = i.first;
+        cur->y = i.second;
+        mag[cur] = std::hypot(cur->x, cur->y);
+        std::cout << "The magnitude of (" << cur->x << ", " << cur->y << ") is "
+;
+        std::cout << mag[cur] << '\n';
+        // Note that in contrast to std::cout << iter->second << '\n'; above,
+        // std::cout << i.second << '\n'; will NOT print the updated magnitude
+    }
+}
+
+   Possible output:
+The magnitude of (3, 3) is 4.24264
+The magnitude of (1, 1) is 1.41421
+The magnitude of (2, 2) is 2.82843
+The magnitude of (3, 4.24264) is 5.19615
+The magnitude of (1, 1.41421) is 1.73205
+The magnitude of (2, 2.82843) is 3.4641
+
+See also
+
+   begincbegin
+   returns an iterator to the beginning
+   (public member function)
+   endcend
+   (C++11)(C++14)
+   returns an iterator to the end of a container or array
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/unorde
+   red_map/end&oldid=136029"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 4 December 2021, at 09:07.
+     * This page has been accessed 61,193 times.

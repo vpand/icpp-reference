@@ -1,0 +1,266 @@
+do-while loop
+
+   From cppreference.com
+   < cpp | language
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   C++ language
+   General topics
+   Preprocessor
+   Comments
+   Keywords
+   Escape sequences
+   Flow control
+   Conditional execution statements
+   if
+   switch
+   Iteration statements (loops)
+   for
+   range-for (C++11)
+   while
+   do-while
+   Jump statements
+   continue - break
+   goto - return
+   Functions
+   Function declaration
+   Lambda function expression
+   inline specifier
+   Dynamic exception specifications (until C++17*)
+   noexcept specifier (C++11)
+   Exceptions
+   throw-expression
+   try block
+   handler
+   Namespaces
+   Namespace declaration
+   Namespace aliases
+   Types
+   Fundamental types
+   Enumeration types
+   Function types
+   Class/struct types
+   Union types
+   Specifiers
+   const/volatile
+   decltype (C++11)
+   auto (C++11)
+   constexpr (C++11)
+   consteval (C++20)
+   constinit (C++20)
+   Storage duration specifiers
+   Initialization
+   Default-initialization
+   Value-initialization
+   Zero-initialization
+   Copy-initialization
+   Direct-initialization
+   Aggregate initialization
+   List-initialization (C++11)
+   Constant initialization
+   Reference initialization
+   Expressions
+   Value categories
+   Order of evaluation
+   Operators
+   Operator precedence
+   Alternative representations
+   Literals
+   Boolean - Integer - Floating-point
+   Character - String - nullptr (C++11)
+   User-defined (C++11)
+   Utilities
+   Attributes (C++11)
+   Types
+   typedef declaration
+   Type alias declaration (C++11)
+   Casts
+   Implicit conversions
+   static_cast
+   const_cast
+   Explicit conversions
+   dynamic_cast
+   reinterpret_cast
+   Memory allocation
+   new expression
+   delete expression
+   Classes
+   Class declaration
+   Constructors
+   this pointer
+   Access specifiers
+   friend specifier
+   Class-specific function properties
+   Virtual function
+   override specifier (C++11)
+   final specifier (C++11)
+   explicit (C++11)
+   static
+   Special member functions
+   Default constructor
+   Copy constructor
+   Move constructor (C++11)
+   Copy assignment
+   Move assignment (C++11)
+   Destructor
+   Templates
+   Class template
+   Function template
+   Template specialization
+   Parameter packs (C++11)
+   Miscellaneous
+   Inline assembly
+   History of C++
+
+   Statements
+   Labels
+   label : statement
+   Expression statements
+   expression ;
+   Compound statements
+   { statement... }
+   Selection statements
+   if
+   switch
+   Iteration statements
+   while
+   do while
+   for
+   range for (C++11)
+   Jump statements
+   break
+   continue
+   return
+   goto
+   Declaration statements
+   declaration ;
+   Try blocks
+   try block
+   Transactional memory
+   synchronized, atomic_commit, etc (TM TS)
+
+   Executes a statement repeatedly, until the value of expression becomes
+   false. The test takes place after each iteration.
+
+Syntax
+
+   attr¿(optional) do statement while ( expression ) ;
+   attr - (since C++11) any number of attributes
+   expression - any expression which is contextually convertible to bool.
+   This expression is evaluated after each iteration, and if it yields
+   false, the loop is exited.
+   statement - any statement, typically a compound statement, which is the
+   body of the loop
+
+Explanation
+
+   statement is always executed at least once, even if expression always
+   yields false. If it should not execute in this case, a while or for
+   loop may be used.
+
+   If the execution of the loop needs to be terminated at some point, a
+   break statement can be used as terminating statement.
+
+   If the execution of the loop needs to be continued at the end of the
+   loop body, a continue statement can be used as shortcut.
+
+Notes
+
+   As part of the C++ forward progress guarantee, the behavior is
+   undefined if a loop, unless it is a trivial infinite loop,(since C++26)
+   has no observable behavior (does not make calls to I/O functions,
+   access volatile objects, or perform atomic or synchronization
+   operations) does not terminate. Compilers are permitted to remove such
+   loops.
+
+   A trivial infinite loop is one of the following forms:
+   while ( true-condition ) ;
+   do ; while ( true-condition ) ;
+   do ; while ( true-condition ) { }
+   for ( declaration-or-expression¿(optional) ; true-condition¿(optional)
+   ; expression¿(optional) ) ;
+   for ( declaration-or-expression¿(optional) ; true-condition¿(optional)
+   ; expression¿(optional) ) { }
+
+   and the true-condition is a constant expression that evaluates to true,
+   then its statement is replaced with std::this_thread::yield();; this
+   replacement is implementation-defined in the freestanding
+   implementation.
+   (since C++26)
+
+Keywords
+
+   do, while
+
+Example
+
+   Run this code
+#include <algorithm>
+#include <iostream>
+#include <string>
+
+int main()
+{
+    int j = 2;
+    do // compound statement is the loop body
+    {
+        j += 2;
+        std::cout << j << ' ';
+    }
+    while (j < 9);
+    std::cout << '\n';
+
+    // common situation where do-while loop is used
+    std::string s = "aba";
+    std::sort(s.begin(), s.end());
+
+    do std::cout << s << '\n'; // expression statement is the loop body
+    while (std::next_permutation(s.begin(), s.end()));
+}
+
+   Output:
+4 6 8 10
+aab
+aba
+baa
+
+See also
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/language/do&oldi
+   d=151663"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 14 May 2023, at 03:36.
+     * This page has been accessed 245,229 times.

@@ -1,0 +1,616 @@
+C++23
+
+   From cppreference.com
+   < cpp
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Versions
+   C++98
+   C++03
+   C++11
+   C++14
+   C++17
+   C++20
+   C++23
+   C++26
+   Current Status
+
+   The next generation of the C++ standard.
+
+   See: The current IS schedule for C++23 (2023-05-10).
+   This section is incomplete
+
+New language features
+
+   This section is incomplete
+     * New language feature testing macros
+     * Explicit object parameters, explicit object member functions
+       (deducing this)
+     * if consteval / if not consteval
+     * Multidimensional subscript operator (e.g. v[1, 3, 7] = 42;)
+     * static operator()
+     * static operator[]
+     * auto(x): decay-copy in the language
+     * Attributes on lambda-expressions
+     * Optional extended floating-point types: std::float{16|32|64|128}_t,
+       and std::bfloat16_t.
+     * #elifdef, #elifndef, and #warning
+     * Literal suffix 'Z'/'z' for (signed) std::size_t literals
+     * Assumptions via new attribute [[assume(expression)]]
+     * Named universal character escapes
+     * A portable source file encoding is UTF-8
+     * White-spaces trimming before line splicing.
+
+New library features
+
+   This section is incomplete
+
+New modules
+
+     * std and std.compat
+
+New headers
+
+     * <expected>
+     * <flat_map>
+     * <flat_set>
+     * <generator>
+     * <mdspan>
+     * <print>
+     * <spanstream>
+     * <stacktrace>
+     * <stdfloat>
+
+   C compatibility headers:
+     * <stdatomic.h>
+
+Library features
+
+     * New library feature testing macros
+     * New ranges fold algorithms
+     * String formatting improvements
+     * "flat" container adaptors: std::flat_map, std::flat_multimap,
+       std::flat_set, std::flat_multiset
+     * std::mdspan
+     * std::generator
+     * std::basic_string::contains, std::basic_string_view::contains
+     * Construction of std::string_view from nullptr is disallowed
+     * std::basic_string::resize_and_overwrite
+     * Monadic operations for std::optional: or_else, and_then, transform
+     * Stacktrace library
+     * New ranges algorithms:
+
+       This section is incomplete
+     * New range adaptors (views):
+
+       This section is incomplete
+     * Changes to ranges library
+     * Changes to views library
+     * Marking unreachable code: std::unreachable
+     * New vocabulary type std::expected
+     * std::move_only_function
+     * New I/O stream std::spanstream with program-provided fixed size
+       buffer
+     * std::byteswap
+     * std::to_underlying
+     * Associative containers heterogeneous erasure.
+
+Obsolete
+
+Removed:
+
+   This section is incomplete
+     * Garbage collection support
+
+Deprecated:
+
+   This section is incomplete
+
+Defect reports
+
+Compiler support
+
+   Main Article: C++23 compiler support
+
+C++23 core language features
+
+   C++23 feature
+     Paper(s)
+
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+   Literal suffix for (signed) size_t P0330R8 11 13
+
+   13.1.6*
+   6.5 2022.2
+   Make () more optional for lambdas P1102R2 11 13
+
+   13.1.6*
+   6.3 2022.2
+   if consteval P1938R3 12 14
+
+   14.0.0*
+   6.3 2022.2
+   Removing Garbage Collection Support P2186R2 12 N/A 19.30* N/A
+   Narrowing contextual conversions in static_assert and constexpr if
+   P1401R5 9 13 (partial)*
+   14
+
+   14.0.0*
+   2022.2
+   Trimming whitespaces before line splicing P2223R2 Yes Yes Yes 2022.2
+   Make declaration order layout mandated P1847R4 Yes Yes Yes Yes 2022.2
+   Removing mixed wide string literal concatenation P2201R1 Yes Yes Yes
+   Yes Yes Yes
+   Explicit object parameter (deducing this) P0847R7 14 18
+   19* 19.32*
+   (partial)* 6.3
+   auto(x) and auto{x} P0849R8 12 15
+
+   14.0.3*
+   6.4 2022.2
+   Change scope of lambda trailing-return-type P2036R3 17 2023.2
+   #elifdef and #elifndef P2334R1 12 13
+
+   13.1.6*
+   6.5 2022.2
+   Non-literal variables (and labels and gotos) in constexpr functions
+   P2242R3 12 15
+
+   14.0.3*
+   6.3 2022.2
+   Consistent character literal encoding P2316R2 Yes Yes 19.30* Yes Yes
+   2022.2
+   Character sets and encodings P2314R4 10 Yes Yes 2022.2
+   Extend init-statement (of for loop) to allow alias-declaration P2360R0
+   12 14
+
+   14.0.0*
+   2022.2
+   Multidimensional subscript operator P2128R6 12 15
+
+   14.0.3*
+   2022.2
+   Attributes on lambdas P2173R1 9 13
+
+   13.1.6*
+   6.6 2022.2
+   #warning P2437R1 Yes* Yes
+
+   15.0.0*
+   6.5 2023.2
+   Remove non-encodable wide character literals and multicharacter wide
+   character literals P2362R3 13 14
+
+   15.0.0*
+   2023.2
+   Labels at the end of compound statements P2324R2 13 16 6.5 2023.2
+   Delimited escape sequences P2290R3 13 15
+
+   15.0.0*
+   2023.2
+   Named universal character escapes P2071R2 13 15
+
+   15.0.0*
+   6.7 2023.2
+   Relaxing some constexpr restrictions P2448R2 13 18
+   17 (partial) 2024.0 (partial)
+   Simpler implicit move P2266R3 13 13 2022.2
+   static operator() P1169R4 13 16 2023.2
+   Requirements for optional extended floating-point types P1467R9 13 N/A
+   6.4
+   Class template argument deduction from inherited constructors P2582R1
+   14
+   Attribute [[assume]] P1774R8 13 19
+   Support for UTF-8 as a portable source file encoding P2295R6 13* 15*
+   19.0 (Update 2)**
+
+   15.0.0*
+   2023.2
+   static operator[] P2589R1 13 16 6.7 2023.2
+   Permitting static constexpr variables in constexpr functions P2647R1 13
+   16 2023.2
+   Extending the lifetime of temporaries in range-based for loop
+   initializer P2718R0 19
+   DR20: Meaningful exports P2615R1 15 17 (partial)
+   DR20: consteval needs to propagate up P2564R0 14 17 2024.0
+   DR98: C++ Identifier Syntax using Unicode Standard Annex 31 P1949R7 12
+   14
+
+   14.0.0*
+   6.4 2022.2
+   DR11: Allow duplicate attributes P2156R1 11 13
+
+   13.1.6*
+   6.5
+   DR20: Adjusting the value of feature-test macro __cpp_concepts P2493R0
+   12 19.32* 6.4
+   DR98: Relax requirements on wchar_t to match existing practices P2460R2
+   Yes Yes
+
+   15.0.0*
+   2023.2
+   DR11: Using unknown pointers and references in constant expressions
+   P2280R4 14
+   DR20: The Equality Operator You Are Looking For P2468R2 13 16 2023.2
+   DR20: char8_t Compatibility and Portability Fix P2513R4 13 16 19.34*
+   2023.2
+   DR98/11: Clarify reporting of diagnostic directives and allow
+   static_assert of non-value-dependent expressions in a template context
+   CWG2518 13 17 16.0*
+   (partial)*
+   19.40*
+
+   C++23 feature
+   Paper(s)
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+
+C++23 library features
+
+   C++23 feature
+     Paper(s)
+
+   GCC libstdc++
+   Clang libc++
+   MSVC STL
+   Apple Clang*
+   IBM Open XL C/C++ for AIX*
+   Sun/Oracle C++*
+   Embarcadero C++ Builder*
+   Stacktrace library P0881R7
+   P2301R1 12 (partial)*
+   14* 19.34*
+   <stdatomic.h> P0943R6 12 15 19.31*
+
+   14.0.3*
+   std::is_scoped_enum P1048R1 11 12 19.30*
+
+   13.0.0*
+   std::basic_string::contains(), std::basic_string_view::contains()
+   P1679R3 11 12 19.30*
+
+   13.0.0*
+   std::to_underlying P1682R3 11 13 19.30*
+
+   13.1.6*
+   Relaxing requirements for time_point<>::clock P2212R2 N/A N/A
+   Providing size feedback in the Allocator interface P0401R6 15 19.30*
+
+   14.0.3*
+   <spanstream>: string-stream with std::span-based buffer P0448R4 12
+   19.31*
+   std::out_ptr(), std::inout_ptr() P1132R8 14 19.30*
+   constexpr type_info::operator==() P1328R1 12 17 19.33**
+   19.34*
+
+   15.0.0*
+   Iterator pair constructors for std::stack and std::queue P1425R4 12 14
+   19.31*
+
+   14.0.3*
+   Non-deduction context for allocators in container deduction guides
+   P1518R2 12 13 19.31*
+
+   13.1.6*
+   ranges::starts_with() and ranges::ends_with() P1659R3 17 (partial)*
+   18 19.31*
+   Prohibiting std::basic_string and std::basic_string_view construction
+   from nullptr P2166R1 12 13 19.30*
+
+   13.1.6*
+   std::invoke_r() P2136R3 12 17 19.31*
+
+   15.0.0*
+   Range constructor for std::basic_string_view P1989R2 11 14 19.30*
+
+   14.0.3*
+   Default template arguments for std::pair's forwarding constructor
+   P1951R1 14 14 19.30*
+
+   14.0.3*
+   Remove Garbage Collection and Reachability-Based Leak Detection
+   (library support) P2186R2 12 14 19.30*
+
+   14.0.3*
+   zip: views::zip, views::zip_transform, views::adjacent, and
+   views::adjacent_transform P2321R2 13 15 (partial)* 19.33*(partial)***
+   19.37*
+
+   14.0.3*
+   Heterogeneous erasure overloads for associative containers P2077R3
+   19.32*
+   std::byteswap() P1272R4 12 14 19.31*
+
+   14.0.3*
+   Printing volatile T* P1147R1 11.3 14 19.31*
+
+   14.0.3*
+   basic_string::resize_and_overwrite() P1072R10 12 14 19.31*
+
+   14.0.3*
+   Monadic operations for std::optional P0798R8 12 14 19.32*
+
+   14.0.3*
+   std::move_only_function P0288R9 12 19.32*
+   Add a conditional noexcept specification to std::exchange P2401R0 12 14
+   19.25*
+
+   14.0.3*
+   Require std::span & std::basic_string_view to be TriviallyCopyable
+   P2251R1 Yes Yes Yes Yes
+   Clarifying the status of the "C headers" P2340R1 Yes Yes Yes Yes
+   <expected> P0323R12
+   P2549R1 12 16 19.33*
+
+   15.0.0*
+   constexpr for <cmath> and <cstdlib> P0533R9 4.6 (partial)*
+   std::unreachable() P0627R6 12 15 19.32*
+
+   14.0.3*
+   Deprecating std::aligned_storage and std::aligned_union P1413R3 13 16
+   19.33*
+   std::reference_constructs_from_temporary &
+   std::reference_converts_from_temporary P2255R2 13 (partial)*
+   14
+   constexpr std::unique_ptr P2273R3 12 16 19.33*
+
+   15.0.0*
+   Constructing containers and strings from ranges with ranges::to(),
+   tagged constructors, insert and assign member functions P1206R7 14
+   (partial)* 17 19.34*
+
+   15.0.0*
+   Pipe support for user-defined range adaptors
+   (ranges::range_adaptor_closure, std::bind_back) P2387R3 13 (partial)*
+   14 19 19.34*
+   ranges::iota(), ranges::shift_left(), and ranges::shift_right() P2440R1
+   13 (partial)* 19.34*
+   views::join_with P2441R2 13 19.34*
+   views::chunk and views::slide P2442R1 13 19.33*
+   views::chunk_by P2443R1 13 18 19.33*
+   std::mdspan: a non-owning multidimensional array reference P0009R18
+   P2599R2
+   P2604R0
+   P2613R1
+   P2763R1 17 (partial)*
+   18 19.39*
+
+   15.0.0*
+   <flat_map> P0429R9
+   <flat_set> P1222R4
+   ranges::find_last(), ranges::find_last_if(), and
+   ranges::find_last_if_not() P1223R5 13 19.36*
+   Freestanding Library: Easy <utility>, <ranges>, and <iterator> P1642R11
+   13* N/A
+   views::stride P1899R3 13 19.34*
+   Compatibility between std::tuple and tuple-like objects P2165R4 14 2.9
+   (partial)* 19.36* (partial)*
+   19.37* partial*
+   Rectifying constant iterators, sentinels, and ranges P2278R4 13 19.35*
+   (partial)*
+   19.36*
+   Formatting Ranges P2286R8 16 19.37* (partial)*
+   19.39*(partial)*
+   19.41*(partial)*
+
+   15.0.0*
+   Improve default container formatting P2585R1 16 (partial)*
+   17
+
+   15.0.0*
+   Formatted output library <print> P2093R14
+   P2539R4 14 17 (partial)*
+   18 19.37*
+
+   15.0.0**
+   Formatting std::thread::id and std::stacktrace P2693R1 14 17 (partial)*
+   19.38*
+
+   15.0.0*
+   constexpr for integral overloads of std::to_chars() and
+   std::from_chars(). P2291R3 13 16 19.34*
+
+   15.0.0*
+   ranges::contains() and ranges::contains_subrange() P2302R4 13 19 19.34*
+   Ranges fold algorithms P2322R6 13 19.35*
+   views::cartesian_product P2374R4
+   P2540R1 13 19.37*
+   Adding move-only types support for comparison concepts
+   (equality_comparable, totally_ordered, three_way_comparable) P2404R3
+   19.36*
+   Ranges iterators as inputs to non-ranges algorithms P2408R5 19.34*
+   constexpr std::bitset P2417R2 13 16 19.34*
+
+   15.0.0*
+   basic_string::substr() && P2438R2 16 19.34*
+
+   15.0.0*
+   views::as_rvalue P2446R2 13 16 19.34*
+
+   15.0.0*
+   Standard Library Modules P2465R3 17 (partial)* 19.35*
+   (partial)*
+   19.36*
+   std::forward_like() P2445R1 14 16 19.34*
+
+   15.0.0*
+   Support exclusive mode for std::fstream P2467R1 12 18 19.36*
+   views::repeat P2474R2 13 17 19.36*
+
+   15.0.0*
+   Relaxing range adaptors to allow for move-only types P2494R2 14 17
+   19.34*
+
+   15.0.0*
+   std::basic_string_view range constructor should be explicit P2499R0
+   12.2 16 19.34*
+
+   15.0.0*
+   std::generator: synchronous coroutine generator for ranges P2502R2
+   P2787R0 14
+   Add a conditional noexcept specification to std::apply P2517R1 10 18
+   19.34*
+   Explicit lifetime management (std::start_lifetime_as) P2590R2
+   P2679R2
+   Clarify handling of encodings in localized formatting of chrono types
+   P2419R2 19.34**
+   std::move_iterator should not always be input_iterator P2520R0 12.3*
+   17* 19.34**
+
+   15.0.0*
+   Deduction guides update for explicit object parameter call operators
+   LWG3617 14 19.34*
+   Deduction guides update for static operator() P1169R4 13 16 19.39*
+
+   15.0.0*
+   Standard names and library support for extended floating-point types
+   P1467R9 13 19.37**
+   Monadic operations for std::expected P2505R5 13 17 19.36*
+
+   15.0.0*
+   views::enumerate P2164R9 13 19.37*
+   std::is_implicit_lifetime P2674R1
+   std::common_reference_t of std::reference_wrapper should be a reference
+   type P2655R3 19.37*
+   Disallowing user specialization of std::allocator_traits P2652R2 19
+   19.37*
+   Deprecating std::numeric_limits::has_denorm P2614R2 18 19.37*
+   Making Multi-Param Constructors Of views explicit P2711R1 17 (partial)*
+   19.36**
+
+   15.0.0*
+   Relaxing Ranges Just A Smidge P2609R3 19.37*
+   Stashing Stashing Iterators For Proper Flattening P2770R0 14 18 19.37*
+   DR17: std::visit() for classes derived from std::variant P2162R2 11.3
+   13 19.20**
+   19.30*
+
+   13.1.6*
+   DR20: Conditionally borrowed ranges P2017R1 11 16 19.30*
+   DR20: Repairing input range adaptors and std::counted_iterator P2259R1
+   12 19.30*(partial)*
+   19.31*
+   DR20: views::join should join all views of ranges P2328R1 11.2 15
+   19.30*
+
+   14.0.3*
+   DR20: view does not require default_initializable P2325R3 11.3 16
+   19.30*
+
+   15.0.0*
+   DR20: Range adaptor objects bind arguments by value P2281R1 11 14 19.29
+   (16.10)*
+   (partial)*
+   19.31*
+
+   14.0.3*
+   DR20: constexpr for std::optional and std::variant P2231R1 11.3
+   (partial)*
+   12 13 (partial)*
+   19 19.31*
+
+   13.1.6* (partial)
+   DR20: views::lazy_split and redesigned views::split P2210R2 12 16
+   19.31*
+
+   15.0.0*
+   DR20: Fix ranges::istream_view P2432R1 12 16 19.31*
+
+   15.0.0*
+   DR20: view with ownership P2415R2 12 14 19.31*
+
+   14.0.3*
+   DR20: Fixing locale handling in chrono formatters P2372R3 13 19.31*
+   DR20: Cleaning up integer-class types P2393R1 19.32*
+   DR20: std::format() improvements P2216R3 13 14 (partial)*
+   15 19.32*
+
+   14.0.3*
+   DR20: Add support for non-const-formattable types to std::format
+   P2418R2 13 15 19.32*
+
+   14.0.3*
+   DR20: std::basic_format_string P2508R1 13 15 19.35*
+
+   14.0.3*
+   DR20: Poison Pills are Too Toxic P2602R2 14 19 19.36*
+   DR20: std::format fill character allowances P2572R1 14 17 19.37*
+   DR20: Improving std::format's width estimation P2675R1 14 17 19.38*
+   DR20: std::barrier's phase completion guarantees P2588R3 19.36*
+
+   C++23 feature
+   Paper(s)
+   GCC libstdc++
+   Clang libc++
+   MSVC STL
+   Apple Clang*
+   IBM Open XL C/C++ for AIX*
+   Sun/Oracle C++*
+   Embarcadero C++ Builder*
+
+   * - hover over a cell marked with the star * to see additional pop-up
+   notes.
+   DRnn - the number nn after "DR" denotes target C++ revision the Defect
+   Report is applied to, e.g., DR20 -> C++20.
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/23&oldid=170041"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 3 March 2024, at 13:20.
+     * This page has been accessed 477,136 times.

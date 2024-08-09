@@ -1,0 +1,406 @@
+std::chrono::duration<Rep,Period>::max
+
+   From cppreference.com
+   < cpp | chrono | duration
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Date and time utilities
+   Time point
+   time_point
+   (C++11)
+   clock_time_conversion
+   (C++20)
+   clock_cast
+   (C++20)
+   Duration
+   duration
+   (C++11)
+   Clocks
+   system_clock
+   (C++11)
+   steady_clock
+   (C++11)
+   high_resolution_clock
+   (C++11)
+   is_clock
+   (C++20)
+   utc_clock
+   (C++20)
+   tai_clock
+   (C++20)
+   gps_clock
+   (C++20)
+   file_clock
+   (C++20)
+   local_t
+   (C++20)
+   Time of day
+   is_amis_pm
+   (C++20)(C++20)
+   make12make24
+   (C++20)(C++20)
+   hh_mm_ss
+   (C++20)
+   Calendars
+   day
+   (C++20)
+   month
+   (C++20)
+   year
+   (C++20)
+   weekday
+   (C++20)
+   operator/
+   (C++20)
+   year_month_day
+   (C++20)
+   year_month_day_last
+   (C++20)
+   year_month_weekday
+   (C++20)
+   year_month_weekday_last
+   (C++20)
+   weekday_indexed
+   (C++20)
+   weekday_last
+   (C++20)
+   month_day
+   (C++20)
+   month_day_last
+   (C++20)
+   month_weekday
+   (C++20)
+   month_weekday_last
+   (C++20)
+   year_month
+   (C++20)
+   last_speclast
+   (C++20)(C++20)
+   Time zones
+   tzdb
+   (C++20)
+   tzdb_list
+   (C++20)
+   get_tzdbget_tzdb_listreload_tzdbremote_version
+   (C++20)(C++20)(C++20)(C++20)
+   sys_info
+   (C++20)
+   local_info
+   (C++20)
+   nonexistent_local_time
+   (C++20)
+   ambiguous_local_time
+   (C++20)
+   locate_zone
+   (C++20)
+   current_zone
+   (C++20)
+   time_zone
+   (C++20)
+   choose
+   (C++20)
+   zoned_traits
+   (C++20)
+   zoned_time
+   (C++20)
+   time_zone_link
+   (C++20)
+   leap_second
+   (C++20)
+   leap_second_info
+   (C++20)
+   get_leap_second_info
+   (C++20)
+   chrono I/O
+   parse
+   (C++20)
+   C-style date and time
+
+   std::chrono::duration
+   Member functions
+   duration::duration
+   duration::operator=
+   duration::count
+   duration::zero
+   duration::min
+   duration::max
+   duration::operator+duration::operator-
+   duration::operator++duration::operator--
+   duration::operator+=duration::operator-=duration::operator*=duration::o
+   perator/=duration::operator%=
+   Non-member functions
+   operator+operator-operator*operator/operator%
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (until C++20)(C++20)
+   operator<<
+   (C++20)
+   duration_cast
+   floor
+   (C++17)
+   ceil
+   (C++17)
+   round
+   (C++17)
+   abs
+   (C++17)
+   operator""h
+   (C++14)
+   operator""min
+   (C++14)
+   operator""s
+   (C++14)
+   operator""ms
+   (C++14)
+   operator""us
+   (C++14)
+   operator""ns
+   (C++14)
+   from_stream
+   (C++20)
+   Helper classes
+   common_type
+   treat_as_floating_point
+
+   duration_values
+   formatter<std::chrono::duration>
+   (C++20)
+   hash<std::chrono::duration>
+   (C++26)
+
+   static constexpr duration max();
+                                            (until C++20)
+   static constexpr duration max() noexcept;
+                                            (since C++20)
+
+   Returns a duration with the largest possible value.
+
+   If the representation rep of the duration requires some other
+   implementation to return a maximum-length duration,
+   std::chrono::duration_values can be specialized to return the desired
+   value.
+
+Parameters
+
+   (none)
+
+Return value
+
+   duration(std::chrono::duration_values<rep>::max())
+
+Example
+
+   Run this code
+#include <chrono>
+#include <cstdint>
+#include <iomanip>
+#include <iostream>
+
+int main()
+{
+    constexpr uint64_t chrono_years_max = std::chrono::years::max().count();
+    constexpr uint64_t chrono_seconds_max = std::chrono::seconds::max().count();
+
+    constexpr uint64_t age_of_universe_in_years{13'787'000'000}; // L-CDM ~= k_1
+/H_0 = k_2/42
+    constexpr uint64_t seconds_per_year{365'25 * 24 * 36}; // 365¼ × 24 × 60 × 6
+0
+    constexpr uint64_t age_of_universe_in_seconds{age_of_universe_in_years *
+                                                  seconds_per_year};
+    std::cout
+        << std::scientific << std::setprecision(2)
+        << "The Age of the Universe is ~= "
+        << static_cast<double>(age_of_universe_in_years) << " years or "
+        << static_cast<double>(age_of_universe_in_seconds) << " seconds.\n\n"
+        << "chrono::years::max() = " << chrono_years_max
+        << ", sizeof(chrono::years) = "
+        << sizeof(std::chrono::years) << " bytes.\n" "chrono::years "
+        << (age_of_universe_in_years <= chrono_years_max ? "CAN" : "CANNOT")
+        << " keep the Age of the Universe in YEARS.\n\n"
+        << "chrono::seconds::max() = " << chrono_seconds_max
+        << ", sizeof(chrono::seconds) = "
+        << sizeof(std::chrono::seconds) << " bytes.\n" "chrono::seconds "
+        << (age_of_universe_in_seconds <= chrono_seconds_max ? "CAN" : "CANNOT")
+        << " keep the Age of the Universe in SECONDS.\n";
+}
+
+   Possible output:
+The Age of the Universe is ~= 1.38e+10 years or 4.35e+17 seconds.
+
+chrono::years::max() = 2147483647, sizeof(chrono::years) = 4 bytes.
+chrono::years CANNOT keep the Age of the Universe in YEARS.
+
+chrono::seconds::max() = 9223372036854775807, sizeof(chrono::seconds) = 8 bytes.
+chrono::seconds CAN keep the Age of the Universe in SECONDS.
+
+See also
+
+   zero
+   [static]
+   returns the special duration value zero
+   (public static member function)
+   min
+   [static]
+   returns the special duration value min
+   (public static member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/chrono/duration/
+   max&oldid=161547"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 October 2023, at 00:44.
+     * This page has been accessed 42,303 times.

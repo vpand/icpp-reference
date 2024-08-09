@@ -1,0 +1,399 @@
+std::clock
+
+   From cppreference.com
+   < cpp | chrono | c
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   Date and time utilities
+   Time point
+   time_point
+   (C++11)
+   clock_time_conversion
+   (C++20)
+   clock_cast
+   (C++20)
+   Duration
+   duration
+   (C++11)
+   Clocks
+   system_clock
+   (C++11)
+   steady_clock
+   (C++11)
+   high_resolution_clock
+   (C++11)
+   is_clock
+   (C++20)
+   utc_clock
+   (C++20)
+   tai_clock
+   (C++20)
+   gps_clock
+   (C++20)
+   file_clock
+   (C++20)
+   local_t
+   (C++20)
+   Time of day
+   is_amis_pm
+   (C++20)(C++20)
+   make12make24
+   (C++20)(C++20)
+   hh_mm_ss
+   (C++20)
+   Calendars
+   day
+   (C++20)
+   month
+   (C++20)
+   year
+   (C++20)
+   weekday
+   (C++20)
+   operator/
+   (C++20)
+   year_month_day
+   (C++20)
+   year_month_day_last
+   (C++20)
+   year_month_weekday
+   (C++20)
+   year_month_weekday_last
+   (C++20)
+   weekday_indexed
+   (C++20)
+   weekday_last
+   (C++20)
+   month_day
+   (C++20)
+   month_day_last
+   (C++20)
+   month_weekday
+   (C++20)
+   month_weekday_last
+   (C++20)
+   year_month
+   (C++20)
+   last_speclast
+   (C++20)(C++20)
+   Time zones
+   tzdb
+   (C++20)
+   tzdb_list
+   (C++20)
+   get_tzdbget_tzdb_listreload_tzdbremote_version
+   (C++20)(C++20)(C++20)(C++20)
+   sys_info
+   (C++20)
+   local_info
+   (C++20)
+   nonexistent_local_time
+   (C++20)
+   ambiguous_local_time
+   (C++20)
+   locate_zone
+   (C++20)
+   current_zone
+   (C++20)
+   time_zone
+   (C++20)
+   choose
+   (C++20)
+   zoned_traits
+   (C++20)
+   zoned_time
+   (C++20)
+   time_zone_link
+   (C++20)
+   leap_second
+   (C++20)
+   leap_second_info
+   (C++20)
+   get_leap_second_info
+   (C++20)
+   chrono I/O
+   parse
+   (C++20)
+   C-style date and time
+
+   C-style date and time utilities
+   Functions
+   Time manipulation
+   difftime
+   time
+   clock
+   timespec_get
+   (C++17)
+   Format conversions
+   asctime
+   ctime
+   strftime
+   wcsftime
+   gmtime
+   localtime
+   mktime
+   Constants
+   CLOCKS_PER_SEC
+   Types
+   tm
+   time_t
+   clock_t
+   timespec
+   (C++17)
+
+   Defined in header <ctime>
+   std::clock_t clock();
+
+   Returns the approximate processor time used by the process since the
+   beginning of an implementation-defined era related to the program's
+   execution. To convert result value to seconds divide it by
+   CLOCKS_PER_SEC.
+
+   Only the difference between two values returned by different calls to
+   std::clock is meaningful, as the beginning of the std::clock era does
+   not have to coincide with the start of the program. std::clock time may
+   advance faster or slower than the wall clock, depending on the
+   execution resources given to the program by the operating system. For
+   example, if the CPU is shared by other processes, std::clock time may
+   advance slower than wall clock. On the other hand, if the current
+   process is multithreaded and more than one execution core is available,
+   std::clock time may advance faster than wall clock.
+
+Parameters
+
+   (none)
+
+Return value
+
+   Processor time used by the program so far or std::clock_t(-1) if that
+   information is unavailable or its value cannot be represented.
+
+Exceptions
+
+   Throws nothing.
+
+Notes
+
+   On POSIX-compatible systems, clock_gettime with clock id
+   CLOCK_PROCESS_CPUTIME_ID offers better resolution.
+
+   The value returned by clock() may wrap around on some non-conforming
+   implementations. For example, on such an implementation, if
+   std::clock_t is a signed 32-bit integer and CLOCKS_PER_SEC is
+   1'000'000, it will wrap after about 2147 seconds (about 36 minutes).
+
+Example
+
+   This example demonstrates the difference between clock() time and real
+   time.
+   Run this code
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <iostream>
+#include <thread>
+
+// The function f() does some time-consuming work.
+void f()
+{
+    volatile double d = 0;
+    for (int n = 0; n < 10000; ++n)
+        for (int m = 0; m < 10000; ++m)
+        {
+            double diff = d * n * m;
+            d = diff + d;
+        }
+}
+
+int main()
+{
+    const std::clock_t c_start = std::clock();
+    auto t_start = std::chrono::high_resolution_clock::now();
+    std::thread t1(f);
+    std::thread t2(f); // f() is called on two threads
+    t1.join();
+    t2.join();
+    const std::clock_t c_end = std::clock();
+    const auto t_end = std::chrono::high_resolution_clock::now();
+
+    std::cout << std::fixed << std::setprecision(2) << "CPU time used: "
+              << 1000.0 * (c_end - c_start) / CLOCKS_PER_SEC << "ms\n"
+              << "Wall clock time passed: "
+              << std::chrono::duration<double, std::milli>(t_end - t_start) << '
+\n';
+}
+
+   Possible output:
+CPU time used: 1590.00ms
+Wall clock time passed: 808.23ms
+
+See also
+
+   ctime
+   converts a std::time_t object to a textual representation
+   (function)
+   time
+   returns the current time of the system as time since epoch
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/chrono/c/clock&o
+   ldid=157098"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 22 August 2023, at 00:00.
+     * This page has been accessed 293,710 times.

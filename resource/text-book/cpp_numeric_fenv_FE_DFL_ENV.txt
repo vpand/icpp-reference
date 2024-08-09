@@ -1,0 +1,241 @@
+FE_DFL_ENV
+
+   From cppreference.com
+   < cpp | numeric | fenv
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Numerics library
+   Common mathematical functions
+   Mathematical special functions (C++17)
+   Mathematical constants (C++20)
+   Basic linear algebra algorithms (C++26)
+   Floating-point environment (C++11)
+   Complex numbers
+   Numeric arrays
+   Pseudo-random number generation
+   Factor operations
+   gcd
+   (C++17)
+   lcm
+   (C++17)
+   Interpolations
+   midpoint
+   (C++20)
+   lerp
+   (C++20)
+   Saturation arithmetic
+   add_sat
+   (C++26)
+   sub_sat
+   (C++26)
+   saturate_cast
+   (C++26)
+   mul_sat
+   (C++26)
+   div_sat
+   (C++26)
+   Generic numeric operations
+   iota
+   (C++11)
+   ranges::iota
+   (C++23)
+   accumulate
+   inner_product
+   adjacent_difference
+   partial_sum
+   reduce
+   (C++17)
+   transform_reduce
+   (C++17)
+   inclusive_scan
+   (C++17)
+   exclusive_scan
+   (C++17)
+   transform_inclusive_scan
+   (C++17)
+   transform_exclusive_scan
+   (C++17)
+   Bit operations
+   has_single_bit
+   (C++20)
+   bit_cast
+   (C++20)
+   bit_ceil
+   (C++20)
+   bit_floor
+   (C++20)
+   bit_width
+   (C++20)
+   rotl
+   (C++20)
+   rotr
+   (C++20)
+   popcount
+   (C++20)
+   countl_zero
+   (C++20)
+   countl_one
+   (C++20)
+   countr_zero
+   (C++20)
+   countr_one
+   (C++20)
+   byteswap
+   (C++23)
+   endian
+   (C++20)
+
+   Floating-point environment
+   Functions
+   feclearexcept
+   (C++11)
+   fetestexcept
+   (C++11)
+   feraiseexcept
+   (C++11)
+   fegetexceptflagfesetexceptflag
+   (C++11)(C++11)
+   fegetroundfesetround
+   (C++11)(C++11)
+   fegetenvfesetenv
+   (C++11)(C++11)
+   feholdexcept
+   (C++11)
+   feupdateenv
+   (C++11)
+   Macro constants
+   FE_ALL_EXCEPTFE_DIVBYZEROFE_INEXACTFE_INVALIDFE_OVERFLOWFE_UNDERFLOW
+   (C++11)(C++11)(C++11)(C++11)(C++11)(C++11)
+   FE_DOWNWARDFE_TONEARESTFE_TOWARDZEROFE_UPWARD
+   (C++11)(C++11)(C++11)(C++11)
+   FE_DFL_ENV
+   (C++11)
+
+   Defined in header <cfenv>
+   #define FE_DFL_ENV /*implementation defined*/
+                                                (since C++11)
+
+   The macro constant FE_DFL_ENV expands to an expression of type const
+   std::fenv_t*, which points to a full copy of the default floating-point
+   environment, that is, the environment as loaded at program startup.
+
+   Additional macros that begin with FE_ followed by uppercase letters,
+   and have the type const std::fenv_t*, may be supported by an
+   implementation.
+
+Example
+
+   Run this code
+#include <cfenv>
+#include <iostream>
+// #pragma STDC FENV_ACCESS ON
+
+void show_env()
+{
+    const int e = std::fetestexcept(FE_ALL_EXCEPT);
+    if (e & FE_DIVBYZERO)
+        std::cout << "division by zero is raised\n";
+    if (e & FE_INEXACT)
+        std::cout << "inexact is raised\n";
+    if (e & FE_INVALID)
+        std::cout << "invalid is raised\n";
+    if (e & FE_UNDERFLOW)
+        std::cout << "underflow is raised\n";
+    if (e & FE_OVERFLOW)
+        std::cout << "overflow is raised\n";
+
+    switch (std::fegetround())
+    {
+        case FE_DOWNWARD:
+            std::cout << "rounding down\n";
+            break;
+        case FE_TONEAREST:
+            std::cout << "rounding to nearest\n";
+            break;
+        case FE_TOWARDZERO:
+            std::cout << "rounding to zero\n";
+            break;
+        case FE_UPWARD:
+            std::cout << "rounding up\n";
+            break;
+    }
+}
+
+int main()
+{
+    std::cout << "On startup:\n";
+    show_env();
+
+    std::feraiseexcept(FE_UNDERFLOW | FE_OVERFLOW);
+    std::fesetround(FE_UPWARD);
+
+    std::cout << "\nBefore restoration:\n";
+    show_env();
+
+    std::fesetenv(FE_DFL_ENV);
+
+    std::cout << "\nAfter reset to default:\n";
+    show_env();
+}
+
+   Output:
+On startup:
+rounding to nearest
+
+Before restoration:
+underflow is raised
+overflow is raised
+rounding up
+
+After reset to default:
+rounding to nearest
+
+See also
+
+   fegetenvfesetenv
+   (C++11)
+   saves or restores the current floating-point environment
+   (function)
+   feupdateenv
+   (C++11)
+   restores the floating-point environment and raises the previously
+   raised exceptions
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/numeric/fenv/FE_
+   DFL_ENV&oldid=160714"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 15 October 2023, at 00:18.
+     * This page has been accessed 18,067 times.

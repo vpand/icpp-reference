@@ -1,0 +1,471 @@
+Standard library header <queue>
+
+   From cppreference.com
+   < cpp | header
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Standard library headers
+   Language support
+   <cstddef>
+   <cstdlib>
+   <version> (C++20)
+   <limits>
+   <climits>
+   <cfloat>
+   <cstdint> (C++11)
+   <stdfloat> (C++23)
+   <new>
+   <typeinfo>
+   <source_location> (C++20)
+   <exception>
+   <initializer_list> (C++11)
+   <compare> (C++20)
+   <coroutine> (C++20)
+   <csignal>
+   <csetjmp>
+   <cstdarg>
+   Concepts
+   <concepts> (C++20)
+   Diagnostics
+   <stdexcept>
+   <stacktrace> (C++23)
+   <cassert>
+   <cerrno>
+   <system_error> (C++11)
+   Memory management
+   <memory>
+   <memory_resource> (C++17)
+   <scoped_allocator> (C++11)
+   Metaprogramming
+   <type_traits> (C++11)
+   <ratio> (C++11)
+   General utilities
+   <utility>
+   <tuple> (C++11)
+   <optional> (C++17)
+   <variant> (C++17)
+   <any> (C++17)
+   <debugging> (C++26)
+   <expected> (C++23)
+   <bitset>
+   <functional>
+   <typeindex> (C++11)
+   <execution> (C++17)
+   <charconv> (C++17)
+   <format> (C++20)
+   <bit> (C++20)
+   Strings
+   <string_view> (C++17)
+   <string>
+   <cctype>
+   <cwctype>
+   <cstring>
+   <cwchar>
+   <cuchar> (C++11)
+   Containers
+   <array> (C++11)
+   <deque>
+   <forward_list> (C++11)
+   <list>
+   <vector>
+   <map>
+   <set>
+   <unordered_map> (C++11)
+   <unordered_set> (C++11)
+   <queue>
+   <stack>
+   <flat_map> (C++23)
+   <flat_set> (C++23)
+   <span> (C++20)
+   <mdspan> (C++23)
+   Iterators
+   <iterator>
+   Ranges
+   <ranges> (C++20)
+   <generator> (C++23)
+   Algorithms
+   <algorithm>
+   <numeric>
+   Numerics
+   <cfenv> (C++11)
+   <complex>
+   <random> (C++11)
+   <valarray>
+   <cmath>
+   <linalg> (C++26)
+   <numbers> (C++20)
+   Time
+   <chrono> (C++11)
+   <ctime>
+   Localization
+   <locale>
+   <clocale>
+   <codecvt> (C++11/17/26*)
+   <text_encoding> (C++26)
+   Input/output
+   <iosfwd>
+   <iostream>
+   <ios>
+   <streambuf>
+   <istream>
+   <ostream>
+   <iomanip>
+   <print> (C++23)
+   <sstream>
+   <spanstream> (C++23)
+   <fstream>
+   <syncstream> (C++20)
+   <filesystem> (C++17)
+   <cstdio>
+   <cinttypes> (C++11)
+   <strstream> (C++98/26*)
+   Regular expressions
+   <regex> (C++11)
+   Concurrency support
+   <stop_token> (C++20)
+   <thread> (C++11)
+   <atomic> (C++11)
+   <rcu> (C++26)
+   <stdatomic.h> (C++23)
+   <mutex> (C++11)
+   <shared_mutex> (C++14)
+   <condition_variable> (C++11)
+   <semaphore> (C++20)
+   <latch> (C++20)
+   <barrier> (C++20)
+   <future> (C++11)
+   <hazard_pointer> (C++26)
+   C compatibility
+   <cstdbool> (C++11/17/20*)
+   <ccomplex> (C++11/17/20*)
+   <ctgmath> (C++11/17/20*)
+   <cstdalign> (C++11/17/20*)
+   <ciso646> (until C++20)
+
+   This header is part of the containers library.
+
+Includes
+
+   <compare>
+   (C++20)
+   Three-way comparison operator support
+   <initializer_list>
+   (C++11)
+   std::initializer_list class template
+
+Classes
+
+   queue
+   adapts a container to provide queue (FIFO data structure)
+   (class template)
+   priority_queue
+   adapts a container to provide priority queue
+   (class template)
+   std::uses_allocator<std::queue>
+   (C++11)
+   specializes the std::uses_allocator type trait
+   (class template specialization)
+   std::uses_allocator<std::priority_queue>
+   (C++11)
+   specializes the std::uses_allocator type trait
+   (class template specialization)
+
+Functions
+
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (C++20)
+   lexicographically compares the values of two queues
+   (function template)
+   std::swap(std::queue)
+   (C++11)
+   specializes the std::swap algorithm
+   (function template)
+   std::swap(std::priority_queue)
+   (C++11)
+   specializes the std::swap algorithm
+   (function template)
+
+Synopsis
+
+#include <compare>
+#include <initializer_list>
+
+namespace std {
+  // class template queue
+  template<class T, class Container = deque<T>> class queue;
+
+  template<class T, class Container>
+    bool operator==(const queue<T, Container>& x, const queue<T, Container>& y);
+  template<class T, class Container>
+    bool operator!=(const queue<T, Container>& x, const queue<T, Container>& y);
+  template<class T, class Container>
+    bool operator< (const queue<T, Container>& x, const queue<T, Container>& y);
+  template<class T, class Container>
+    bool operator> (const queue<T, Container>& x, const queue<T, Container>& y);
+  template<class T, class Container>
+    bool operator<=(const queue<T, Container>& x, const queue<T, Container>& y);
+  template<class T, class Container>
+    bool operator>=(const queue<T, Container>& x, const queue<T, Container>& y);
+  template<class T, three_way_comparable Container>
+    compare_three_way_result_t<Container>
+      operator<=>(const queue<T, Container>& x, const queue<T, Container>& y);
+
+  template<class T, class Container>
+    void swap(queue<T, Container>& x, queue<T, Container>& y)
+      noexcept(noexcept(x.swap(y)));
+  template<class T, class Container, class Alloc>
+    struct uses_allocator<queue<T, Container>, Alloc>;
+
+  // class template priority_queue
+  template<class T, class Container = vector<T>,
+           class Compare = less<typename Container::value_type>>
+    class priority_queue;
+
+  template<class T, class Container, class Compare>
+    void swap(priority_queue<T, Container, Compare>& x,
+              priority_queue<T, Container, Compare>& y) noexcept(noexcept(x.swap
+(y)));
+  template<class T, class Container, class Compare, class Alloc>
+    struct uses_allocator<priority_queue<T, Container, Compare>, Alloc>;
+}
+
+Class template std::queue
+
+namespace std {
+  template<class T, class Container = deque<T>>
+  class queue {
+  public:
+    using value_type      = typename Container::value_type;
+    using reference       = typename Container::reference;
+    using const_reference = typename Container::const_reference;
+    using size_type       = typename Container::size_type;
+    using container_type  =          Container;
+
+  protected:
+    Container c;
+
+  public:
+    queue() : queue(Container()) {}
+    explicit queue(const Container&);
+    explicit queue(Container&&);
+    template<class InputIt> queue(InputIt first, InputIt last);
+    template<container-compatible-range<T> R> queue(from_range_t, R&& rg);
+    template<class Alloc> explicit queue(const Alloc&);
+    template<class Alloc> queue(const Container&, const Alloc&);
+    template<class Alloc> queue(Container&&, const Alloc&);
+    template<class Alloc> queue(const queue&, const Alloc&);
+    template<class Alloc> queue(queue&&, const Alloc&);
+    template<class InputIt, class Alloc>
+      queue(InputIt first, InputIt last, const Alloc&);
+    template<container-compatible-range<T> R, class Alloc>
+      queue(from_range_t, R&& rg, const Alloc&);
+
+    [[nodiscard]] bool empty() const    { return c.empty(); }
+    size_type         size()  const     { return c.size(); }
+    reference         front()           { return c.front(); }
+    const_reference   front() const     { return c.front(); }
+    reference         back()            { return c.back(); }
+    const_reference   back() const      { return c.back(); }
+    void push(const value_type& x)      { c.push_back(x); }
+    void push(value_type&& x)           { c.push_back(std::move(x)); }
+    template<container-compatible-range<T> R> void push_range(R&& rg);
+    template<class... Args>
+      decltype(auto) emplace(Args&&... args)
+        { return c.emplace_back(std::forward<Args>(args)...); }
+    void pop()                          { c.pop_front(); }
+    void swap(queue& q) noexcept(is_nothrow_swappable_v<Container>)
+      { using std::swap; swap(c, q.c); }
+  };
+
+  template<class Container>
+    queue(Container) -> queue<typename Container::value_type, Container>;
+
+  template<class InputIt>
+    queue(InputIt, InputIt) -> queue<__iter_value_type<InputIt>>;
+
+  template<ranges::input_range R>
+    queue(from_range_t, R&&) -> queue<ranges::range_value_t<R>>;
+
+  template<class Container, class Allocator>
+    queue(Container, Allocator) -> queue<typename Container::value_type, Contain
+er>;
+
+  template<class InputIt, class Allocator>
+    queue(InputIt, InputIt, Allocator)
+      -> queue<__iter_value_type<InputIt>, deque<__iter_value_type<InputIt>,
+               Allocator>>;
+
+  template<ranges::input_range R, class Allocator>
+    queue(from_range_t, R&&, Allocator)
+      -> queue<ranges::range_value_t<R>, deque<ranges::range_value_t<R>, Allocat
+or>>;
+
+  template<class T, class Container, class Alloc>
+    struct uses_allocator<queue<T, Container>, Alloc>
+      : uses_allocator<Container, Alloc>::type { };
+}
+
+Class template std::priority_queue
+
+namespace std {
+  template<class T, class Container = vector<T>,
+           class Compare = less<typename Container::value_type>>
+  class priority_queue {
+  public:
+    using value_type      = typename Container::value_type;
+    using reference       = typename Container::reference;
+    using const_reference = typename Container::const_reference;
+    using size_type       = typename Container::size_type;
+    using container_type  = Container;
+    using value_compare   = Compare;
+
+  protected:
+    Container c;
+    Compare comp;
+
+  public:
+    priority_queue() : priority_queue(Compare()) {}
+    explicit priority_queue(const Compare& x) : priority_queue(x, Container()) {
+}
+    priority_queue(const Compare& x, const Container&);
+    priority_queue(const Compare& x, Container&&);
+    template<class InputIt>
+      priority_queue(InputIt first, InputIt last, const Compare& x = Compare());
+    template<class InputIt>
+      priority_queue(InputIt first, InputIt last, const Compare& x,
+                     const Container&);
+    template<class InputIt>
+      priority_queue(InputIt first, InputIt last, const Compare& x,
+                     Container&&);
+    template<container-compatible-range<T> R>
+      priority_queue(from_range_t, R&& rg, const Compare& x = Compare());
+    template<class Alloc> explicit priority_queue(const Alloc&);
+    template<class Alloc> priority_queue(const Compare&, const Alloc&);
+    template<class Alloc> priority_queue(const Compare&, const Container&, const
+ Alloc&);
+    template<class Alloc> priority_queue(const Compare&, Container&&, const Allo
+c&);
+    template<class Alloc> priority_queue(const priority_queue&, const Alloc&);
+    template<class Alloc> priority_queue(priority_queue&&, const Alloc&);
+    template<class InputIt, class Alloc>
+      priority_queue(InputIt, InputIt, const Alloc&);
+    template<class InputIt, class Alloc>
+      priority_queue(InputIt, InputIt, const Compare&, const Alloc&);
+    template<class InputIt, class Alloc>
+      priority_queue(InputIt, InputIt, const Compare&, const Container&,
+                     const Alloc&);
+    template<class InputIt, class Alloc>
+      priority_queue(InputIt, InputIt, const Compare&, Container&&, const Alloc&
+);
+    template<container-compatible-range<T> R, class Alloc>
+      priority_queue(from_range_t, R&& rg, const Compare&, const Alloc&);
+    template<container-compatible-range<T> R, class Alloc>
+      priority_queue(from_range_t, R&& rg, const Alloc&);
+
+    [[nodiscard]] bool empty() const { return c.empty(); }
+    size_type size()  const          { return c.size(); }
+    const_reference   top() const    { return c.front(); }
+    void push(const value_type& x);
+    void push(value_type&& x);
+    template<container-compatible-range<T> R>
+      void push_range(R&& rg);
+    template<class... Args> void emplace(Args&&... args);
+    void pop();
+    void swap(priority_queue& q) noexcept(is_nothrow_swappable_v<Container> &&
+                                          is_nothrow_swappable_v<Compare>)
+      { using std::swap; swap(c, q.c); swap(comp, q.comp); }
+  };
+
+  template<class Compare, class Container>
+    priority_queue(Compare, Container)
+      -> priority_queue<typename Container::value_type, Container, Compare>;
+
+  template<class InputIt,
+           class Compare = less<__iter_value_type<InputIt>>,
+           class Container = vector<__iter_value_type<InputIt>>>
+    priority_queue(InputIt, InputIt, Compare = Compare(), Container = Container(
+))
+      -> priority_queue<__iter_value_type<InputIt>, Container, Compare>;
+
+  template<ranges::input_range R, class Compare = less<ranges::range_value_t<R>>
+>
+    priority_queue(from_range_t, R&&, Compare = Compare())
+      -> priority_queue<ranges::range_value_t<R>, vector<ranges::range_value_t<R
+>>,
+                        Compare>;
+
+  template<class Compare, class Container, class Allocator>
+    priority_queue(Compare, Container, Allocator)
+      -> priority_queue<typename Container::value_type, Container, Compare>;
+
+  template<class InputIt, class Allocator>
+    priority_queue(InputIt, InputIt, Allocator)
+      -> priority_queue<__iter_value_type<InputIt>,
+                        vector<__iter_value_type<InputIt>, Allocator>,
+                        less<__iter_value_type<InputIt>>>;
+
+  template<class InputIt, class Compare, class Allocator>
+    priority_queue(InputIt, InputIt, Compare, Allocator)
+      -> priority_queue<__iter_value_type<InputIt>,
+                        vector<__iter_value_type<InputIt>, Allocator>, Compare>;
+
+  template<class InputIt, class Compare, class Container, class Allocator>
+    priority_queue(InputIt, InputIt, Compare, Container, Allocator)
+      -> priority_queue<typename Container::value_type, Container, Compare>;
+
+  template<ranges::input_range R, class Compare, class Allocator>
+    priority_queue(from_range_t, R&&, Compare, Allocator)
+      -> priority_queue<ranges::range_value_t<R>,
+                        vector<ranges::range_value_t<R>, Allocator>,
+                        Compare>;
+
+  template<ranges::input_range R, class Allocator>
+    priority_queue(from_range_t, R&&, Allocator)
+      -> priority_queue<ranges::range_value_t<R>,
+                        vector<ranges::range_value_t<R>, Allocator>>;
+
+  // no equality is provided
+
+  template<class T, class Container, class Compare, class Alloc>
+    struct uses_allocator<priority_queue<T, Container, Compare>, Alloc>
+      : uses_allocator<Container, Alloc>::type { };
+}
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/header/queue&old
+   id=164387"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 29 November 2023, at 04:54.
+     * This page has been accessed 95,557 times.

@@ -1,0 +1,135 @@
+std::basic_fstream<CharT,Traits>::rdbuf
+
+   From cppreference.com
+   < cpp | io | basic fstream
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Input/output library
+   I/O manipulators
+   Print functions (C++23)
+   C-style I/O
+   Buffers
+   basic_streambuf
+   basic_filebuf
+   basic_stringbuf
+   basic_spanbuf
+   (C++23)
+   strstreambuf
+   (C++98/26*)
+   basic_syncbuf
+   (C++20)
+   Streams
+   Abstractions
+   ios_base
+   basic_ios
+   basic_istream
+   basic_ostream
+   basic_iostream
+   File I/O
+   basic_ifstream
+   basic_ofstream
+   basic_fstream
+   String I/O
+   basic_istringstream
+   basic_ostringstream
+   basic_stringstream
+   Array I/O
+   basic_ispanstream
+   (C++23)
+   basic_ospanstream
+   (C++23)
+   basic_spanstream
+   (C++23)
+   istrstream
+   (C++98/26*)
+   ostrstream
+   (C++98/26*)
+   strstream
+   (C++98/26*)
+   Synchronized Output
+   basic_osyncstream
+   (C++20)
+   Types
+   streamoff
+   streamsize
+   fpos
+   Error category interface
+   iostream_category
+   (C++11)
+   io_errc
+   (C++11)
+
+   std::basic_fstream
+   Member functions
+   basic_fstream::basic_fstream
+   basic_fstream::operator=
+   (C++11)
+   basic_fstream::swap
+   (C++11)
+   basic_fstream::rdbuf
+   basic_fstream::native_handle
+   (C++26)
+   File operations
+   basic_fstream::is_open
+   basic_fstream::open
+   basic_fstream::close
+   Non-member functions
+   swap(std::basic_fstream)
+   (C++11)
+
+   std::basic_filebuf<CharT, Traits>* rdbuf() const;
+                                                    (since C++11)
+
+   Returns pointer to the underlying raw file device object.
+
+Parameters
+
+   (none)
+
+Return value
+
+   Pointer to the underlying raw file device.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_fstream
+   /rdbuf&oldid=50834"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 31 May 2013, at 20:41.
+     * This page has been accessed 28,987 times.

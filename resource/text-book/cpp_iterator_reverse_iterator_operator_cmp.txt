@@ -1,0 +1,393 @@
+operator==,!=,<,<=,>,>=,<=>(std::reverse_iterator)
+
+   From cppreference.com
+   < cpp | iterator | reverse iterator
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Iterator library
+   Iterator concepts
+   indirectly_readable
+   (C++20)
+   indirectly_writable
+   (C++20)
+   weakly_incrementable
+   (C++20)
+   incrementable
+   (C++20)
+   input_or_output_iterator
+   (C++20)
+   sentinel_for
+   (C++20)
+   sized_sentinel_for
+   (C++20)
+   input_iterator
+   (C++20)
+   output_iterator
+   (C++20)
+   forward_iterator
+   (C++20)
+   bidirectional_iterator
+   (C++20)
+   random_access_iterator
+   (C++20)
+   contiguous_iterator
+   (C++20)
+   Iterator primitives
+   input_iterator_tagoutput_iterator_tagforward_iterator_tagbidirectional_
+   iterator_tagrandom_access_iterator_tagcontiguous_iterator_tag
+   (C++20)
+   iter_value_titer_difference_titer_reference_titer_const_reference_titer
+   _rvalue_reference_titer_common_reference_t
+   (C++20)(C++20)(C++20)(C++23)(C++20)(C++20)
+   iterator
+   (deprecated in C++17)
+   iterator_traits
+   incrementable_traits
+   (C++20)
+   indirectly_readable_traits
+   (C++20)
+   Algorithm concepts and utilities
+   Indirect callable concepts
+   indirectly_unary_invocableindirectly_regular_unary_invocable
+   (C++20)(C++20)
+   indirect_unary_predicate
+   (C++20)
+   indirect_binary_predicate
+   (C++20)
+   indirect_equivalence_relation
+   (C++20)
+   indirect_strict_weak_order
+   (C++20)
+   Common algorithm requirements
+   indirectly_movable
+   (C++20)
+   indirectly_movable_storable
+   (C++20)
+   indirectly_copyable
+   (C++20)
+   indirectly_copyable_storable
+   (C++20)
+   indirectly_swappable
+   (C++20)
+   indirectly_comparable
+   (C++20)
+   permutable
+   (C++20)
+   mergeable
+   (C++20)
+   sortable
+   (C++20)
+   Utilities
+   indirect_result_t
+   (C++20)
+   projected
+   (C++20)
+   projected_value_t
+   (C++26)
+   Iterator adaptors
+   reverse_iterator
+   make_reverse_iterator
+   (C++14)
+   move_iterator
+   (C++11)
+   make_move_iterator
+   (C++11)
+   default_sentinel_tdefault_sentinel
+   (C++20)(C++20)
+   unreachable_sentinel_tunreachable_sentinel
+   (C++20)(C++20)
+   front_insert_iterator
+   back_insert_iterator
+   inserter
+   insert_iterator
+   front_inserter
+   back_inserter
+   move_sentinel
+   (C++20)
+   common_iterator
+   (C++20)
+   counted_iterator
+   (C++20)
+   basic_const_iterator
+   (C++23)
+   const_iterator
+   (C++23)
+   const_sentinel
+   (C++23)
+   make_const_iterator
+   (C++23)
+   make_const_sentinel
+   (C++23)
+   Stream iterators
+   istream_iterator
+
+   ostream_iterator
+   istreambuf_iterator
+   ostreambuf_iterator
+   Iterator customization points
+   ranges::iter_move
+   (C++20)
+   ranges::iter_swap
+   (C++20)
+   Iterator operations
+   advance
+   distance
+   prev
+   (C++11)
+   next
+   (C++11)
+   ranges::advance
+   (C++20)
+   ranges::distance
+   (C++20)
+   ranges::prev
+   (C++20)
+   ranges::next
+   (C++20)
+   Range access
+   begincbegin
+   (C++11)(C++14)
+   rbegincrbegin
+   (C++14)(C++14)
+   endcend
+   (C++11)(C++14)
+   rendcrend
+   (C++14)(C++14)
+   sizessize
+   (C++17)(C++20)
+   empty
+   (C++17)
+   data
+   (C++17)
+
+   std::reverse_iterator
+   Member functions
+   reverse_iterator::reverse_iterator
+   reverse_iterator::operator=
+   reverse_iterator::base
+   reverse_iterator::operator*reverse_iterator::operator->
+   reverse_iterator::operator[]
+   reverse_iterator::operator++reverse_iterator::operator+reverse_iterator
+   ::operator+=reverse_iterator::operator--reverse_iterator::operator-reve
+   rse_iterator::operator-=
+   Non-member functions
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (C++20)
+   operator+
+   operator-
+   iter_move
+   (C++20)
+   iter_swap
+   (C++20)
+   make_reverse_iterator
+   (C++14)
+
+   (1)
+   template< class Iterator1, class Iterator2 >
+
+   bool operator==( const std::reverse_iterator<Iterator1>& lhs,
+                    const std::reverse_iterator<Iterator2>& rhs );
+   (until C++17)
+   template< class Iterator1, class Iterator2 >
+
+   constexpr bool operator==( const std::reverse_iterator<Iterator1>& lhs,
+                              const std::reverse_iterator<Iterator2>& rhs
+   );
+   (since C++17)
+   (2)
+   template< class Iterator1, class Iterator2 >
+
+   bool operator!=( const std::reverse_iterator<Iterator1>& lhs,
+                    const std::reverse_iterator<Iterator2>& rhs );
+   (until C++17)
+   template< class Iterator1, class Iterator2 >
+
+   constexpr bool operator!=( const std::reverse_iterator<Iterator1>& lhs,
+                              const std::reverse_iterator<Iterator2>& rhs
+   );
+   (since C++17)
+   (3)
+   template< class Iterator1, class Iterator2 >
+
+   bool operator<( const std::reverse_iterator<Iterator1>& lhs,
+                   const std::reverse_iterator<Iterator2>& rhs );
+   (until C++17)
+   template< class Iterator1, class Iterator2 >
+
+   constexpr bool operator<( const std::reverse_iterator<Iterator1>& lhs,
+                             const std::reverse_iterator<Iterator2>& rhs
+   );
+   (since C++17)
+   (4)
+   template< class Iterator1, class Iterator2 >
+
+   bool operator<=( const std::reverse_iterator<Iterator1>& lhs,
+                    const std::reverse_iterator<Iterator2>& rhs );
+   (until C++17)
+   template< class Iterator1, class Iterator2 >
+
+   constexpr bool operator<=( const std::reverse_iterator<Iterator1>& lhs,
+                              const std::reverse_iterator<Iterator2>& rhs
+   );
+   (since C++17)
+   (5)
+   template< class Iterator1, class Iterator2 >
+
+   bool operator>( const std::reverse_iterator<Iterator1>& lhs,
+                   const std::reverse_iterator<Iterator2>& rhs );
+   (until C++17)
+   template< class Iterator1, class Iterator2 >
+
+   constexpr bool operator>( const std::reverse_iterator<Iterator1>& lhs,
+                             const std::reverse_iterator<Iterator2>& rhs
+   );
+   (since C++17)
+   (6)
+   template< class Iterator1, class Iterator2 >
+
+   bool operator>=( const std::reverse_iterator<Iterator1>& lhs,
+                    const std::reverse_iterator<Iterator2>& rhs );
+   (until C++17)
+   template< class Iterator1, class Iterator2 >
+
+   constexpr bool operator>=( const std::reverse_iterator<Iterator1>& lhs,
+                              const std::reverse_iterator<Iterator2>& rhs
+   );
+   (since C++17)
+   template< class Iterator1, std::three_way_comparable_with<Iterator1>
+   Iterator2 >
+
+   constexpr std::compare_three_way_result_t<Iterator1, Iterator2>
+       operator<=>( const std::reverse_iterator<Iterator1>& lhs,
+                    const std::reverse_iterator<Iterator2>& rhs );
+   (7) (since C++20)
+
+   Compares the underlying iterators. Inverse comparisons are applied in
+   order to take into account that the iterator order is reversed.
+
+   (1-6) Only participate in overload resolution if their underlying
+   comparison expressions (see below) are well-formed and convertible to
+   bool.
+   (since C++20)
+
+Parameters
+
+   lhs, rhs - iterator adaptors to compare
+
+Return value
+
+   1) lhs.base() == rhs.base()
+   2) lhs.base() != rhs.base()
+   3) lhs.base() > rhs.base()
+   4) lhs.base() >= rhs.base()
+   5) lhs.base() < rhs.base()
+   6) lhs.base() <= rhs.base()
+   7) rhs.base() <=> lhs.base()
+
+Example
+
+   Run this code
+#include <compare>
+#include <iostream>
+#include <iterator>
+
+int main()
+{
+    int a[]{0, 1, 2, 3};
+    //            ^|  +----- x, y
+    //            +-------- z
+
+    std::reverse_iterator<int*>
+        x{std::rend(a) - std::size(a)},
+        y{std::rend(a) - std::size(a)},
+        z{std::rbegin(a) + 1};
+
+    std::cout
+        << std::boolalpha
+        << "*x == " << *x << '\n' // 3
+        << "*y == " << *y << '\n' // 3
+        << "*z == " << *z << '\n' // 2
+        << "x == y ? " << (x == y) << '\n' // true
+        << "x != y ? " << (x != y) << '\n' // false
+        << "x <  y ? " << (x <  y) << '\n' // false
+        << "x <= y ? " << (x <= y) << '\n' // true
+        << "x == z ? " << (x == z) << '\n' // false
+        << "x != z ? " << (x != z) << '\n' // true
+        << "x <  z ? " << (x <  z) << '\n' // true
+        << "x <= z ? " << (x <= z) << '\n' // true
+        << "x <=> y == 0 ? " << (x <=> y == 0) << '\n' // true
+        << "x <=> y <  0 ? " << (x <=> y <  0) << '\n' // false
+        << "x <=> y >  0 ? " << (x <=> y >  0) << '\n' // false
+        << "x <=> z == 0 ? " << (x <=> z == 0) << '\n' // false
+        << "x <=> z <  0 ? " << (x <=> z <  0) << '\n' // true
+        << "x <=> z >  0 ? " << (x <=> z >  0) << '\n' // false
+        ;
+}
+
+   Output:
+*x == 3
+*y == 3
+*z == 2
+x == y ? true
+x != y ? false
+x <  y ? false
+x <= y ? false
+x == z ? false
+x != z ? true
+x <  z ? true
+x <= z ? true
+x <=> y == 0 ? true
+x <=> y <  0 ? false
+x <=> y >  0 ? false
+x <=> z == 0 ? false
+x <=> z <  0 ? true
+x <=> z >  0 ? false
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 280 C++98 an std::reverse_iterator could only compare with another
+   std::reverse_iterator with the same underlying iterator type allowed
+   comparisons of std::reverse_iterator
+   with different underlying iterator types
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/iterator/reverse
+   _iterator/operator_cmp&oldid=115741"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 31 January 2020, at 04:15.
+     * This page has been accessed 25,126 times.

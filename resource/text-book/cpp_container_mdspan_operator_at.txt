@@ -1,0 +1,192 @@
+std::mdspan<T,Extents,LayoutPolicy,AccessorPolicy>::operator[]
+
+   From cppreference.com
+   < cpp | container | mdspan
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::mdspan
+   Member functions
+   mdspan::mdspan
+   mdspan::operator=
+   Element access
+   mdspan::operator[]
+   Observers
+   mdspan::size
+   mdspan::empty
+   mdspan::stride
+   mdspan::extents
+   mdspan::data_handle
+   mdspan::mapping
+   mdspan::accessor
+   mdspan::is_uniquemdspan::is_exhaustivemdspan::is_stridedmdspan::is_alwa
+   ys_uniquemdspan::is_always_exhaustivemdspan::is_always_strided
+   Non-member functions
+   swap(std::mdspan)
+   Subviews
+   submdspan_extents
+   (C++26)
+   submdspan
+   (C++26)
+   Helper types and templates
+   extentsdextents
+   layout_right
+   layout_left
+   layout_stride
+   layout_left_padded
+   (C++26)
+   layout_right_padded
+   (C++26)
+   default_accessor
+   Subviews helpers
+   full_extent
+   (C++26)
+   strided_slice
+   (C++26)
+   submdspan_mapping_result
+   (C++26)
+   Deduction guides
+
+   template< class... OtherIndexTypes >
+   constexpr reference operator[]( OtherIndexTypes... indices ) const;
+   (1)                                 (since C++23)
+   template< class OtherIndexType >
+
+   constexpr reference operator[]
+       ( std::span<OtherIndexType, rank()> indices ) const;
+   (2)                                 (since C++23)
+   template< class OtherIndexType >
+
+   constexpr reference operator[]
+       ( const std::array<OtherIndexType, rank()>& indices ) const;
+   (3)                                 (since C++23)
+
+   Returns a reference to the indices^th element of the mdspan.
+   1) Equivalent to return acc_.access(ptr_,
+   map_(static_cast<index_type>(std::move(indices))...));.
+   This overload participates in overload resolution only if:
+     * (std::is_convertible_v<OtherIndexTypes, index_type> && ...) is
+       true,
+     * (std::is_nothrow_constructible_v<index_type, OtherIndexTypes> &&
+       ...) is true, and
+     * sizeof...(OtherIndexTypes) == rank() is true.
+
+   Let I be extents_type::index-cast(std::move(indices)). Then the
+   behavior is undefined if I is not a multidimensional index in
+   extents(), i.e., map_(I) < map_.required_span_size() is false.
+   2,3) Let P be a parameter pack such that
+   std::is_same_v<make_index_sequence<rank()>, index_sequence<P...>> is
+   true, then the operator is equivalent to return
+   operator[](extents_type::index-cast(std::as_const(indices[P]))...);.
+   This overload participates in overload resolution only if:
+     * std::is_convertible_v<const OtherIndexType&, index_type> is true,
+       and
+     * std::is_nothrow_constructible_v<index_type, const OtherIndexType&>
+       is true.
+
+Parameters
+
+   indices - the indices of the element to access
+
+Return value
+
+   A reference to the element.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+Defect reports
+
+   The following behavior-changing defect reports were applied
+   retroactively to previously published C++ standards.
+   DR Applied to Behavior as published Correct behavior
+   LWG 3974 C++23 overloads (2,3) did not apply extents_type::index-cast
+   applies
+
+See also
+
+   This section is incomplete
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/mdspan
+   /operator_at&oldid=169865"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 20 February 2024, at 00:28.
+     * This page has been accessed 4,481 times.

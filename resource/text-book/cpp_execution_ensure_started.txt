@@ -1,0 +1,112 @@
+std::execution::ensure_started
+
+   From cppreference.com
+   < cpp
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Execution Library
+   Senders
+   Sender factories
+   Sender adaptors
+   Adaptors for single-shot and multi-shot senders
+   Adaptors for multi-shot senders
+   Sender consumers
+   Eager execution
+
+   Defined in header <execution>
+   execution::sender auto ensure_started(
+
+       execution::sender auto sender
+   );
+                                         (since C++26)
+
+Parameters
+
+   sender - input sender of which the stopped channel is mapped into err
+
+Return value
+
+   Returns a sender which completes when the provided sender completes and
+   sends values equivalent to those of the provided sender.
+
+Notes
+
+     * Once ensure_started returns, it is known that the provided sender
+       has been connected and start has been called on the resulting
+       operation state. In other words, the work described by the provided
+       sender has been submitted for execution on the appropriate
+       execution resources.
+
+     * If the returned sender is destroyed before execution::connect() is
+       called, or if execution::connect() is called but the returned
+       operation-state is destroyed before execution::start() is called,
+       then a stop-request is sent to the eagerly launched operation and
+       the operation is detached and will run to completion in the
+       background.
+
+     * In such a case, the operation's result will be discarded when it is
+       eventually complete.
+
+     * Note that the application will need to make sure that resources are
+       kept alive in the case that the operation detaches (e.g. by holding
+       a std::shared_ptr to those resources).
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/execution/ensure
+   _started&oldid=169749"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 11 February 2024, at 11:24.
+     * This page has been accessed 506 times.

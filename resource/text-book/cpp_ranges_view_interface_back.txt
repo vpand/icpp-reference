@@ -1,0 +1,244 @@
+std::ranges::view_interface<D>::back
+
+   From cppreference.com
+   < cpp | ranges | view interface
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   std::ranges::view_interface
+   Member functions
+   empty
+   cbegin
+   (C++23)
+   cend
+   (C++23)
+   operator bool
+   data
+   size
+   front
+   back
+   operator[]
+
+   constexpr decltype(auto) back()
+       requires ranges::bidirectional_range<D> && ranges::common_range<D>;
+   (1)                                  (since C++20)
+   constexpr decltype(auto) back() const
+       requires ranges::bidirectional_range<const D> &&
+   ranges::common_range<const D>;
+   (2)                                  (since C++20)
+
+   The default implementation of back() member function returns the last
+   element in the view of the derived type. Whether the element is
+   returned by value or by reference depends on the operator* of the
+   iterator type.
+   1) Let derived be static_cast<D&>(*this). Equivalent to return
+   *ranges::prev(ranges::end(derived));. The behavior is undefined if
+   empty() is true (i.e. the beginning iterator compares equal to the
+   sentinel), even if the iterator obtained in the same way is
+   dereferenceable.
+   2) Same as (1), except that derived is static_cast<const D&>(*this).
+
+Parameters
+
+   (none)
+
+Return value
+
+   The last element in the view.
+
+Notes
+
+   In C++20, no type derived from std::ranges::view_interface in the
+   standard library provides their own back() member function.
+
+   However, following derived types cannot use the default
+   implementations, as they never satisfy neither bidirectional_range nor
+   common_range:
+     * std::ranges::basic_istream_view
+     * std::ranges::lazy_split_view
+     * std::ranges::split_view
+     * std::ranges::take_while_view
+
+   The inherited back() member function is available for
+   std::ranges::empty_view, but a call to it always results in undefined
+   behavior.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   rbegincrbegin
+   (C++14)
+   returns a reverse iterator to the beginning of a container or array
+   (function template)
+   ranges::rbegin
+   (C++20)
+   returns a reverse iterator to a range
+   (customization point object)
+   ranges::crbegin
+   (C++20)
+   returns a reverse iterator to a read-only range
+   (customization point object)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/view_inte
+   rface/back&oldid=137470"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 23 January 2022, at 07:18.
+     * This page has been accessed 6,191 times.

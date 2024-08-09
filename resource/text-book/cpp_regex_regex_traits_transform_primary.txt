@@ -1,0 +1,164 @@
+std::regex_traits<CharT>::transform_primary
+
+   From cppreference.com
+   < cpp | regex | regex traits
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Regular expressions library
+   Classes
+   basic_regex
+   (C++11)
+   sub_match
+   (C++11)
+   match_results
+   (C++11)
+   Algorithms
+   regex_match
+   (C++11)
+   regex_search
+   (C++11)
+   regex_replace
+   (C++11)
+   Iterators
+   regex_iterator
+   (C++11)
+   regex_token_iterator
+   (C++11)
+   Exceptions
+   regex_error
+   (C++11)
+   Traits
+   regex_traits
+   (C++11)
+   Constants
+   syntax_option_type
+   (C++11)
+   match_flag_type
+   (C++11)
+   error_type
+   (C++11)
+   Regex Grammar
+   Modified ECMAScript-262
+   (C++11)
+
+   std::regex_traits
+   Member functions
+   regex_traits::regex_traits
+   regex_traits::length
+   regex_traits::translate
+   regex_traits::translate_nocase
+   regex_traits::transform
+   regex_traits::transform_primary
+   regex_traits::lookup_collatename
+   regex_traits::lookup_classname
+   regex_traits::isctype
+   regex_traits::value
+   regex_traits::imbue
+   regex_traits::getloc
+
+   template< class ForwardIt >
+   string_type transform_primary( ForwardIt first, ForwardIt last ) const;
+
+   For the character sequence [first, last), obtains the primary sort key
+   in the imbued locale's collating order, that is, the sort key that is
+   based on the positions of the letters and collation units in the
+   national alphabet, ignoring case, diacritics, variants, etc. If a
+   primary sort key compares less than another primary sort key with
+   operator<, then the character sequence that produced the first sort key
+   comes before the character sequence that produced the second sort key,
+   in the currently imbued locale's primary collation order.
+
+   The regex library uses this trait to match characters against
+   equivalence classes. For example, the regex [[=a=]] is equivalent to
+   the character c1 if traits.transform_primary(c1) is equivalent to
+   traits.transform_primary("a") (which is true for any c1 from
+   "A¿¡¬√ƒ≈a‡·‚„‰Â" in the U.S. English locale). Note that
+   transform_primary() takes a character sequence argument because
+   equivalence classes may be multicharacter, such as [[=ch=]] in Czech or
+   [[=dzs=]] in Hungarian.
+
+   There is no portable way to define primary sort key in terms of
+   std::locale since the conversion from the collation key returned by
+   std::collate::transform() to the primary equivalence key is
+   locale-specific, and if the user replaces the std::collate facet, that
+   conversion is no longer known to the standard library's
+   std::regex_traits. Standard library specializations of
+   std::regex_traits return an empty string unless the std::collate facet
+   of the currently-imbued locale was not replaced by the user, and still
+   matches the system-supplied std::collate facet), in which case
+   std::collate_byname<CharT>::transform(first, last) is executed and the
+   sort key it produces is converted to the expected primary sort key
+   using a locale-specific conversion.
+
+Parameters
+
+   first, last - a pair of iterators which determines the sequence of
+   characters to compare
+   Type requirements
+   -
+   ForwardIt must meet the requirements of LegacyForwardIterator.
+
+Return value
+
+   The primary sort key for the character sequence [first, last) in the
+   currently imbued locale, ignoring case, variant, diacritics, etc.
+
+Example
+
+   Demonstrates the regex feature that works through transform_primary().
+   Run this code
+#include <iostream>
+#include <regex>
+
+int main()
+{
+    std::locale::global(std::locale("en_US.UTF-8"));
+    std::wstring str = L"A¿¡¬√ƒ≈a‡·‚„‰Â";
+    std::wregex re(L"[[=a=]]*", std::regex::basic);
+    std::cout << std::boolalpha << std::regex_match(str, re) << '\n';
+}
+
+   Possible output:
+true
+
+   This section is incomplete
+   Reason: could use an example with user-defined regex_traits supplying
+   user-defined transform_primary
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/regex/regex_trai
+   ts/transform_primary&oldid=161053"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 21 October 2023, at 10:18.
+     * This page has been accessed 15,808 times.

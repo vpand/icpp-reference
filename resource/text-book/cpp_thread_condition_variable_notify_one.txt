@@ -1,0 +1,346 @@
+std::condition_variable::notify_one
+
+   From cppreference.com
+   < cpp | thread | condition variable
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Concurrency support library
+   Threads
+   thread
+   (C++11)
+   jthread
+   (C++20)
+   stop_token
+   (C++20)
+   stop_source
+   (C++20)
+   stop_callback
+   (C++20)
+   hardware_destructive_interference_sizehardware_constructive_interferenc
+   e_size
+   (C++17)(C++17)
+   this_thread namespace
+   get_id
+   (C++11)
+   yield
+   (C++11)
+   sleep_for
+   (C++11)
+   sleep_until
+   (C++11)
+   Mutual exclusion
+   mutex
+   (C++11)
+   recursive_mutex
+   (C++11)
+   shared_mutex
+   (C++17)
+   timed_mutex
+   (C++11)
+   recursive_timed_mutex
+   (C++11)
+   shared_timed_mutex
+   (C++14)
+   Generic lock management
+   lock_guard
+   (C++11)
+   scoped_lock
+   (C++17)
+   unique_lock
+   (C++11)
+   shared_lock
+   (C++14)
+   defer_lock_ttry_to_lock_tadopt_lock_t
+   (C++11)(C++11)(C++11)
+   lock
+   (C++11)
+   try_lock
+   (C++11)
+   defer_locktry_to_lockadopt_lock
+   (C++11)(C++11)(C++11)
+   once_flag
+   (C++11)
+   call_once
+   (C++11)
+   Condition variables
+   condition_variable
+   (C++11)
+   condition_variable_any
+   (C++11)
+   notify_all_at_thread_exit
+   (C++11)
+   cv_status
+   (C++11)
+   Semaphores
+   counting_semaphorebinary_semaphore
+   (C++20)(C++20)
+   Latches and Barriers
+   latch
+   (C++20)
+   barrier
+   (C++20)
+   Futures
+   promise
+   (C++11)
+   future
+   (C++11)
+   shared_future
+   (C++11)
+   packaged_task
+   (C++11)
+   async
+   (C++11)
+   launch
+   (C++11)
+   future_status
+   (C++11)
+   future_error
+   (C++11)
+   future_category
+   (C++11)
+   future_errc
+   (C++11)
+   Safe Reclamation
+   rcu_obj_base
+   (C++26)
+   rcu_domain
+   (C++26)
+   rcu_default_domain
+   (C++26)
+   rcu_synchronize
+   (C++26)
+   rcu_barrier
+   (C++26)
+   rcu_retire
+   (C++26)
+   Hazard Pointers
+   hazard_pointer_obj_base
+   (C++26)
+   hazard_pointer
+   (C++26)
+   make_hazard_pointer
+   (C++26)
+   Atomic types
+   atomic
+   (C++11)
+   atomic_ref
+   (C++20)
+   atomic_flag
+   (C++11)
+   Initialization of atomic types
+   atomic_init
+   (C++11)(deprecated in C++20)
+   ATOMIC_VAR_INIT
+   (C++11)(deprecated in C++20)
+   ATOMIC_FLAG_INIT
+   (C++11)
+   Memory ordering
+   memory_order
+   (C++11)
+   kill_dependency
+   (C++11)
+   atomic_thread_fence
+   (C++11)
+   atomic_signal_fence
+   (C++11)
+   Free functions for atomic operations
+   atomic_storeatomic_store_explicit
+   (C++11)(C++11)
+   atomic_loadatomic_load_explicit
+   (C++11)(C++11)
+   atomic_exchangeatomic_exchange_explicit
+   (C++11)(C++11)
+   atomic_compare_exchange_weakatomic_compare_exchange_weak_explicitatomic
+   _compare_exchange_strongatomic_compare_exchange_strong_explicit
+   (C++11)(C++11)(C++11)(C++11)
+   atomic_fetch_addatomic_fetch_add_explicit
+   (C++11)(C++11)
+   atomic_fetch_subatomic_fetch_sub_explicit
+   (C++11)(C++11)
+   atomic_fetch_andatomic_fetch_and_explicit
+   (C++11)(C++11)
+   atomic_fetch_oratomic_fetch_or_explicit
+   (C++11)(C++11)
+   atomic_fetch_xoratomic_fetch_xor_explicit
+   (C++11)(C++11)
+   atomic_fetch_maxatomic_fetch_max_explicit
+   (C++26)(C++26)
+   atomic_fetch_minatomic_fetch_min_explicit
+   (C++26)(C++26)
+   atomic_is_lock_free
+   (C++11)
+   atomic_waitatomic_wait_explicit
+   (C++20)(C++20)
+   atomic_notify_one
+   (C++20)
+   atomic_notify_all
+   (C++20)
+   Free functions for atomic flags
+   atomic_flag_test_and_setatomic_flag_test_and_set_explicit
+   (C++11)(C++11)
+   atomic_flag_clearatomic_flag_clear_explicit
+   (C++11)(C++11)
+   atomic_flag_testatomic_flag_test_explicit
+   (C++20)(C++20)
+   atomic_flag_waitatomic_flag_wait_explicit
+   (C++20)(C++20)
+   atomic_flag_notify_one
+   (C++20)
+   atomic_flag_notify_all
+   (C++20)
+
+   std::condition_variable
+   Member functions
+   condition_variable::condition_variable
+   condition_variable::~condition_variable
+   Notification
+   condition_variable::notify_one
+   condition_variable::notify_all
+   Waiting
+   condition_variable::wait
+   condition_variable::wait_for
+   condition_variable::wait_until
+   Native handle
+   condition_variable::native handle
+
+   void notify_one() noexcept;
+                              (since C++11)
+
+   If any threads are waiting on *this, calling notify_one unblocks one of
+   the waiting threads.
+
+Parameters
+
+   (none)
+
+Return value
+
+   (none)
+
+Notes
+
+   The effects of notify_one()/notify_all() and each of the three atomic
+   parts of wait()/wait_for()/wait_until() (unlock+wait, wakeup, and lock)
+   take place in a single total order that can be viewed as modification
+   order of an atomic variable: the order is specific to this individual
+   condition variable. This makes it impossible for notify_one() to, for
+   example, be delayed and unblock a thread that started waiting just
+   after the call to notify_one() was made.
+
+   The notifying thread does not need to hold the lock on the same mutex
+   as the one held by the waiting thread(s); in fact doing so is a
+   pessimization, since the notified thread would immediately block again,
+   waiting for the notifying thread to release the lock. However, some
+   implementations (in particular many implementations of pthreads)
+   recognize this situation and avoid this "hurry up and wait" scenario by
+   transferring the waiting thread from the condition variable's queue
+   directly to the queue of the mutex within the notify call, without
+   waking it up.
+
+   Notifying while under the lock may nevertheless be necessary when
+   precise scheduling of events is required, e.g. if the waiting thread
+   would exit the program if the condition is satisfied, causing
+   destruction of the notifying thread's condition variable. A spurious
+   wakeup after mutex unlock but before notify would result in notify
+   called on a destroyed object.
+
+Example
+
+   Run this code
+#include <chrono>
+#include <condition_variable>
+#include <iostream>
+#include <thread>
+using namespace std::chrono_literals;
+
+std::condition_variable cv;
+std::mutex cv_m;
+int i = 0;
+bool done = false;
+
+void waits()
+{
+    std::unique_lock<std::mutex> lk(cv_m);
+    std::cout << "Waiting... \n";
+    cv.wait(lk, []{ return i == 1; });
+    std::cout << "...finished waiting; i == " << i << '\n';
+    done = true;
+}
+
+void signals()
+{
+    std::this_thread::sleep_for(200ms);
+    std::cout << "Notifying falsely...\n";
+    cv.notify_one(); // waiting thread is notified with i == 0.
+                     // cv.wait wakes up, checks i, and goes back to waiting
+
+    std::unique_lock<std::mutex> lk(cv_m);
+    i = 1;
+    while (!done)
+    {
+        std::cout << "Notifying true change...\n";
+        lk.unlock();
+        cv.notify_one(); // waiting thread is notified with i == 1, cv.wait retu
+rns
+        std::this_thread::sleep_for(300ms);
+        lk.lock();
+    }
+}
+
+int main()
+{
+    std::thread t1(waits), t2(signals);
+    t1.join();
+    t2.join();
+}
+
+   Possible output:
+Waiting...
+Notifying falsely...
+Notifying true change...
+...finished waiting; i == 1
+
+See also
+
+   notify_all
+   notifies all waiting threads
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/thread/condition
+   _variable/notify_one&oldid=133351"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 4 September 2021, at 11:55.
+     * This page has been accessed 286,584 times.

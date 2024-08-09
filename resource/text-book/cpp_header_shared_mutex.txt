@@ -1,0 +1,329 @@
+Standard library header <shared_mutex> (C++14)
+
+   From cppreference.com
+   < cpp | header
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Standard library headers
+   Language support
+   <cstddef>
+   <cstdlib>
+   <version> (C++20)
+   <limits>
+   <climits>
+   <cfloat>
+   <cstdint> (C++11)
+   <stdfloat> (C++23)
+   <new>
+   <typeinfo>
+   <source_location> (C++20)
+   <exception>
+   <initializer_list> (C++11)
+   <compare> (C++20)
+   <coroutine> (C++20)
+   <csignal>
+   <csetjmp>
+   <cstdarg>
+   Concepts
+   <concepts> (C++20)
+   Diagnostics
+   <stdexcept>
+   <stacktrace> (C++23)
+   <cassert>
+   <cerrno>
+   <system_error> (C++11)
+   Memory management
+   <memory>
+   <memory_resource> (C++17)
+   <scoped_allocator> (C++11)
+   Metaprogramming
+   <type_traits> (C++11)
+   <ratio> (C++11)
+   General utilities
+   <utility>
+   <tuple> (C++11)
+   <optional> (C++17)
+   <variant> (C++17)
+   <any> (C++17)
+   <debugging> (C++26)
+   <expected> (C++23)
+   <bitset>
+   <functional>
+   <typeindex> (C++11)
+   <execution> (C++17)
+   <charconv> (C++17)
+   <format> (C++20)
+   <bit> (C++20)
+   Strings
+   <string_view> (C++17)
+   <string>
+   <cctype>
+   <cwctype>
+   <cstring>
+   <cwchar>
+   <cuchar> (C++11)
+   Containers
+   <array> (C++11)
+   <deque>
+   <forward_list> (C++11)
+   <list>
+   <vector>
+   <map>
+   <set>
+   <unordered_map> (C++11)
+   <unordered_set> (C++11)
+   <queue>
+   <stack>
+   <flat_map> (C++23)
+   <flat_set> (C++23)
+   <span> (C++20)
+   <mdspan> (C++23)
+   Iterators
+   <iterator>
+   Ranges
+   <ranges> (C++20)
+   <generator> (C++23)
+   Algorithms
+   <algorithm>
+   <numeric>
+   Numerics
+   <cfenv> (C++11)
+   <complex>
+   <random> (C++11)
+   <valarray>
+   <cmath>
+   <linalg> (C++26)
+   <numbers> (C++20)
+   Time
+   <chrono> (C++11)
+   <ctime>
+   Localization
+   <locale>
+   <clocale>
+   <codecvt> (C++11/17/26*)
+   <text_encoding> (C++26)
+   Input/output
+   <iosfwd>
+   <iostream>
+   <ios>
+   <streambuf>
+   <istream>
+   <ostream>
+   <iomanip>
+   <print> (C++23)
+   <sstream>
+   <spanstream> (C++23)
+   <fstream>
+   <syncstream> (C++20)
+   <filesystem> (C++17)
+   <cstdio>
+   <cinttypes> (C++11)
+   <strstream> (C++98/26*)
+   Regular expressions
+   <regex> (C++11)
+   Concurrency support
+   <stop_token> (C++20)
+   <thread> (C++11)
+   <atomic> (C++11)
+   <rcu> (C++26)
+   <stdatomic.h> (C++23)
+   <mutex> (C++11)
+   <shared_mutex> (C++14)
+   <condition_variable> (C++11)
+   <semaphore> (C++20)
+   <latch> (C++20)
+   <barrier> (C++20)
+   <future> (C++11)
+   <hazard_pointer> (C++26)
+   C compatibility
+   <cstdbool> (C++11/17/20*)
+   <ccomplex> (C++11/17/20*)
+   <ctgmath> (C++11/17/20*)
+   <cstdalign> (C++11/17/20*)
+   <ciso646> (until C++20)
+
+   This header is part of the thread support library.
+
+Classes
+
+   shared_mutex
+   (C++17)
+   provides shared mutual exclusion facility
+   (class)
+   shared_timed_mutex
+   (C++14)
+   provides shared mutual exclusion facility and implements locking with a
+   timeout
+   (class)
+   shared_lock
+   (C++14)
+   implements movable shared mutex ownership wrapper
+   (class template)
+
+Functions
+
+   std::swap(std::shared_lock)
+   (C++14)
+   specialization of std::swap for shared_lock
+   (function template)
+
+Synopsis
+
+namespace std {
+  class shared_mutex;
+  class shared_timed_mutex;
+  template<class Mutex> class shared_lock;
+  template<class Mutex>
+    void swap(shared_lock<Mutex>& x, shared_lock<Mutex>& y) noexcept;
+}
+
+Class std::shared_mutex
+
+namespace std {
+  class shared_mutex {
+  public:
+    shared_mutex();
+    ~shared_mutex();
+
+    shared_mutex(const shared_mutex&) = delete;
+    shared_mutex& operator=(const shared_mutex&) = delete;
+
+    // exclusive ownership
+    void lock();                // blocking
+    bool try_lock();
+    void unlock();
+
+    // shared ownership
+    void lock_shared();         // blocking
+    bool try_lock_shared();
+    void unlock_shared();
+
+    using native_handle_type = /* implementation-defined */;
+    native_handle_type native_handle();
+  };
+}
+
+Class std::shared_timed_mutex
+
+namespace std {
+  class shared_timed_mutex {
+  public:
+    shared_timed_mutex();
+    ~shared_timed_mutex();
+
+    shared_timed_mutex(const shared_timed_mutex&) = delete;
+    shared_timed_mutex& operator=(const shared_timed_mutex&) = delete;
+
+    // exclusive ownership
+    void lock();                // blocking
+    bool try_lock();
+    template<class Rep, class Period>
+      bool try_lock_for(const chrono::duration<Rep, Period>& rel_time);
+    template<class Clock, class Duration>
+      bool try_lock_until(const chrono::time_point<Clock, Duration>& abs_time);
+    void unlock();
+
+    // shared ownership
+    void lock_shared();         // blocking
+    bool try_lock_shared();
+    template<class Rep, class Period>
+      bool try_lock_shared_for(const chrono::duration<Rep, Period>& rel_time);
+    template<class Clock, class Duration>
+      bool try_lock_shared_until(const chrono::time_point<Clock, Duration>& abs_
+time);
+    void unlock_shared();
+  };
+}
+
+Class template std::shared_lock
+
+namespace std {
+  template<class Mutex>
+  class shared_lock {
+  public:
+    using mutex_type = Mutex;
+
+    // construct/copy/destroy
+    shared_lock() noexcept;
+    explicit shared_lock(mutex_type& m);        // blocking
+    shared_lock(mutex_type& m, defer_lock_t) noexcept;
+    shared_lock(mutex_type& m, try_to_lock_t);
+    shared_lock(mutex_type& m, adopt_lock_t);
+    template<class Clock, class Duration>
+      shared_lock(mutex_type& m, const chrono::time_point<Clock, Duration>& abs_
+time);
+    template<class Rep, class Period>
+      shared_lock(mutex_type& m, const chrono::duration<Rep, Period>& rel_time);
+    ~shared_lock();
+
+    shared_lock(const shared_lock&) = delete;
+    shared_lock& operator=(const shared_lock&) = delete;
+
+    shared_lock(shared_lock&& u) noexcept;
+    shared_lock& operator=(shared_lock&& u) noexcept;
+
+    // locking
+    void lock();                                // blocking
+    bool try_lock();
+    template<class Rep, class Period>
+      bool try_lock_for(const chrono::duration<Rep, Period>& rel_time);
+    template<class Clock, class Duration>
+      bool try_lock_until(const chrono::time_point<Clock, Duration>& abs_time);
+    void unlock();
+
+    // modifiers
+    void swap(shared_lock& u) noexcept;
+    mutex_type* release() noexcept;
+
+    // observers
+    bool owns_lock() const noexcept;
+    explicit operator bool () const noexcept;
+    mutex_type* mutex() const noexcept;
+
+  private:
+    mutex_type* pm;                             // exposition only
+    bool owns;                                  // exposition only
+  };
+
+  template<class Mutex>
+    void swap(shared_lock<Mutex>& x, shared_lock<Mutex>& y) noexcept;
+}
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/header/shared_mu
+   tex&oldid=163986"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 27 November 2023, at 08:18.
+     * This page has been accessed 75,039 times.

@@ -1,0 +1,141 @@
+std::experimental::erase (std::forward_list)
+
+   From cppreference.com
+   < cpp | experimental
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Library fundamentals v2
+   experimental::propagate_const
+   experimental::not_fn
+   experimental::observer_ptr
+   experimental::make_array
+   experimental::to_array
+   experimental::ostream_joiner
+   experimental::gcd
+   experimental::lcm
+   experimental::source_location
+   experimental::randint
+   detection idiom
+   uniform container erasure
+   logical operator type traits
+
+   Defined in header <experimental/forward_list>
+   template< class T, class A, class U >
+   void erase( std::forward_list<T, A>& c, const U& value );
+                                                (library fundamentals TS v2)
+
+   Erases all elements that compare equal to value from the container.
+   Equivalent to c.remove_if([&](auto& elem) { return elem == value; });.
+
+Parameters
+
+   c     - container from which to erase
+   value - value to be removed
+
+Complexity
+
+   Linear.
+
+Example
+
+   Run this code
+#include <experimental/forward_list>
+#include <iostream>
+
+auto show = [](const auto& container)
+{
+    for (auto e : container)
+        std::cout << e;
+    std::cout << '\n';
+};
+
+int main()
+{
+    std::forward_list<int> data{1, 1, 1, 4, 1, 1, 1, 2, 1, 1, 1};
+    show(data);
+    std::experimental::erase(data, 1);
+    show(data);
+}
+
+   Output:
+11141112111
+42
+
+Notes
+
+   Unlike std::forward_list::remove, this function template accepts
+   heterogeneous types and does not force a conversion to the container's
+   value type before invoking the == operator.
+
+See also
+
+   removeremove_if
+   removes elements satisfying specific criteria
+   (function template)
+   removeremove_if
+   removes elements satisfying specific criteria
+   (public member function of std::forward_list<T,Allocator>)
+   erase_if (std::forward_list)
+   (library fundamentals 2 TS)
+   erases all elements satisfying a predicate from a std::forward_list
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/for
+   ward_list/erase&oldid=98552"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 January 2018, at 21:14.
+     * This page has been accessed 13,258 times.

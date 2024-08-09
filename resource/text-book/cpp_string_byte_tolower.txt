@@ -1,0 +1,194 @@
+std::tolower
+
+   From cppreference.com
+   < cpp | string | byte
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated byte strings
+   Functions
+   Character manipulation
+   isalnum
+   isalpha
+   islower
+   isupper
+   isdigit
+   isxdigit
+   isblank
+   (C++11)
+   iscntrl
+   isgraph
+   isspace
+   isprint
+   ispunct
+   tolower
+   toupper
+   Conversions to numeric formats
+   atof
+   atoiatolatoll
+   (C++11)
+   strtolstrtoll
+   (C++11)
+   strtoulstrtoull
+   (C++11)
+   strtofstrtodstrtold
+   (C++11)(C++11)
+   strtoimaxstrtouimax
+   (C++11)(C++11)
+   String manipulation
+   strcpy
+   strncpy
+   strxfrm
+   strcat
+   strncat
+   String examination
+   strlen
+   strcmp
+   strncmp
+   strcoll
+   strchr
+   strrchr
+   strspn
+   strcspn
+   strpbrk
+   strstr
+   strtok
+   Memory manipulation
+   memchr
+   memcmp
+   memset
+   memcpy
+   memmove
+   Miscellaneous
+   strerror
+
+   Defined in header <cctype>
+   int tolower( int ch );
+
+   Converts the given character to lowercase according to the character
+   conversion rules defined by the currently installed C locale.
+
+   In the default "C" locale, the following uppercase letters
+   ABCDEFGHIJKLMNOPQRSTUVWXYZ are replaced with respective lowercase
+   letters abcdefghijklmnopqrstuvwxyz.
+
+Parameters
+
+   ch - character to be converted. If the value of ch is not representable
+   as unsigned char and does not equal EOF, the behavior is undefined
+
+Return value
+
+   Lowercase version of ch or unmodified ch if no lowercase version is
+   listed in the current C locale.
+
+Notes
+
+   Like all other functions from <cctype>, the behavior of std::tolower is
+   undefined if the argument's value is neither representable as unsigned
+   char nor equal to EOF. To use these functions safely with plain chars
+   (or signed chars), the argument should first be converted to unsigned
+   char:
+char my_tolower(char ch)
+{
+    return static_cast<char>(std::tolower(static_cast<unsigned char>(ch)));
+}
+
+   Similarly, they should not be directly used with standard algorithms
+   when the iterator's value type is char or signed char. Instead, convert
+   the value to unsigned char first:
+std::string str_tolower(std::string s)
+{
+    std::transform(s.begin(), s.end(), s.begin(),
+                // static_cast<int(*)(int)>(std::tolower)         // wrong
+                // [](int c){ return std::tolower(c); }           // wrong
+                // [](char c){ return std::tolower(c); }          // wrong
+                   [](unsigned char c){ return std::tolower(c); } // correct
+                  );
+    return s;
+}
+
+Example
+
+   Run this code
+#include <cctype>
+#include <clocale>
+#include <iostream>
+
+int main()
+{
+    unsigned char c = '\xb4'; // the character Z in ISO-8859-15
+                              // but ´ (acute accent) in ISO-8859-1
+
+    std::setlocale(LC_ALL, "en_US.iso88591");
+    std::cout << std::hex << std::showbase;
+    std::cout << "in iso8859-1, tolower('0xb4') gives "
+              << std::tolower(c) << '\n';
+    std::setlocale(LC_ALL, "en_US.iso885915");
+    std::cout << "in iso8859-15, tolower('0xb4') gives "
+              << std::tolower(c) << '\n';
+}
+
+   Possible output:
+in iso8859-1, tolower('0xb4') gives 0xb4
+in iso8859-15, tolower('0xb4') gives 0xb8
+
+See also
+
+   toupper
+   converts a character to uppercase
+   (function)
+   tolower(std::locale)
+   converts a character to lowercase using the ctype facet of a locale
+   (function template)
+   towlower
+   converts a wide character to lowercase
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/byte/tolo
+   wer&oldid=152869"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 6 June 2023, at 10:09.
+     * This page has been accessed 460,942 times.

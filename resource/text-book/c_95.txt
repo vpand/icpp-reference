@@ -1,0 +1,58 @@
+C95
+
+   From cppreference.com
+   < c
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Versions
+   C89
+   C95
+   C99
+   C11
+   C17
+   C23
+   Current Status
+
+   ISO/IEC 9899/AMD1:1995, a.k.a. C95, is a previous revision of the C
+   standard.
+
+New language features
+
+     * Digraphs
+     * __STDC_VERSION__
+
+New library features
+
+New headers
+
+     * <iso646.h>
+     * <wctype.h>
+     * <wchar.h>
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/95&oldid=143830"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 28 September 2022, at 02:10.
+     * This page has been accessed 15,380 times.

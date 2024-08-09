@@ -1,0 +1,131 @@
+std::floating_point
+
+   From cppreference.com
+   < cpp | concepts
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Concepts library
+   Core language concepts
+   same_as
+   derived_from
+   convertible_to
+   common_reference_with
+
+   common_with
+   integral
+   signed_integral
+   unsigned_integral
+   floating_point
+   swappableswappable_with
+   destructible
+   constructible_from
+   default_initializable
+   move_constructible
+   copy_constructible
+   assignable_from
+   Comparison concepts
+   equality_comparableequality_comparable_with
+   totally_orderedtotally_ordered_with
+   Object concepts
+   movable
+   copyable
+   semiregular
+   regular
+   Callable concepts
+   invocableregular_invocable
+   predicate
+   relation
+   equivalence_relation
+   strict_weak_order
+   Exposition-only concepts
+   boolean-testable
+
+   Defined in header <concepts>
+   template< class T >
+   concept floating_point = std::is_floating_point_v<T>;
+                               (since C++20)
+
+   The concept floating_point<T> is satisfied if and only if T is a
+   floating-point type.
+
+Example
+
+   Run this code
+#include <concepts>
+#include <iostream>
+#include <type_traits>
+
+constexpr std::floating_point auto x2(std::floating_point auto x)
+{
+    return x + x;
+}
+
+constexpr std::integral auto x2(std::integral auto x)
+{
+    return x << 1;
+}
+
+int main()
+{
+    constexpr auto d = x2(1.1);
+    static_assert(std::is_same_v<double const, decltype(d)>);
+    std::cout << d << '\n';
+
+    constexpr auto f = x2(2.2f);
+    static_assert(std::is_same_v<float const, decltype(f)>);
+    std::cout << f << '\n';
+
+    constexpr auto i = x2(444);
+    static_assert(std::is_same_v<int const, decltype(i)>);
+    std::cout << i << '\n';
+}
+
+   Output:
+2.2
+4.4
+888
+
+See also
+
+   is_floating_point
+   (C++11)
+   checks if a type is a floating-point type
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/concepts/floatin
+   g_point&oldid=161737"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 29 October 2023, at 14:09.
+     * This page has been accessed 42,364 times.

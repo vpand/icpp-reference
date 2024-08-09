@@ -1,0 +1,143 @@
+std::wctrans
+
+   From cppreference.com
+   < cpp | string | wide
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Strings library
+   Null-terminated strings
+   Byte strings
+   Multibyte strings
+   Wide strings
+   Classes
+   basic_string
+   basic_string_view
+   (C++17)
+   char_traits
+
+   Null-terminated wide strings
+   Functions
+   Character manipulation
+   iswalnum
+   iswalpha
+   iswlower
+   iswupper
+   iswdigit
+   iswxdigit
+   iswblank
+   (C++11)
+   wctype
+   iswctype
+   iswcntrl
+   iswgraph
+   iswspace
+   iswprint
+   iswpunct
+   towlower
+   towupper
+   wctrans
+   towctrans
+   Conversions to numeric formats
+   wcstolwcstoll
+   (C++11)
+   wcstoulwcstoull
+   (C++11)
+   wcstofwcstodwcstold
+   (C++11)(C++11)
+   wcstoimaxwcstouimax
+   (C++11)(C++11)
+   String manipulation
+   wcslen
+   wcscpy
+   wcsncpy
+   wcscat
+   wcsncat
+   wcscmp
+   wcscoll
+   wcsncmp
+   wcsxfrm
+   wcschr
+   wcsrchr
+   wcspbrk
+   wcsspn
+   wcscspn
+   wcsstr
+   wcstok
+   Array manipulation
+   wmemcpy
+   wmemmove
+   wmemcmp
+   wmemchr
+   wmemset
+
+   Defined in header <cwctype>
+   std::wctrans_t wctrans( const char* str );
+
+   Constructs a value of type std::wctrans_t that describes a LC_CTYPE
+   category of wide character mapping. It may be one of the standard
+   mappings, or a locale-specific mapping, such as "tojhira" or "tojkata".
+
+Parameters
+
+   str - C string holding the name of the desired mapping.
+
+   The following values of str are supported in all C locales:
+   Value of str Effect
+   "toupper"    identifies the mapping used by towupper
+   "tolower"    identifies the mapping used by towlower
+
+Return value
+
+   std::wctrans_t object suitable for use with std::towctrans to map wide
+   characters according to the named mapping of the current C locale or
+   zero if str does not name a mapping supported by the current C locale.
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   towctrans
+   performs character mapping according to the specified LC_CTYPE mapping
+   category
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/string/wide/wctr
+   ans&oldid=153716"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 18 June 2023, at 09:00.
+     * This page has been accessed 22,871 times.

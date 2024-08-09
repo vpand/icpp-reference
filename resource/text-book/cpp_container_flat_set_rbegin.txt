@@ -1,0 +1,213 @@
+std::flat_set<Key,Compare,KeyContainer>::rbegin,
+std::flat_set<Key,Compare,KeyContainer>::crbegin
+
+   From cppreference.com
+   < cpp | container | flat set
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::flat_set
+   Member types
+   Member functions
+   flat_set::flat_set
+   flat_set::operator=
+   Iterators
+   flat_set::beginflat_set::cbegin
+   flat_set::endflat_set::cend
+   flat_set::rbeginflat_set::crbegin
+   flat_set::rendflat_set::crend
+   Capacity
+   flat_set::size
+   flat_set::max_size
+   flat_set::empty
+   Modifiers
+   flat_set::clear
+   flat_set::insert
+   flat_set::insert_range
+
+   flat_set::emplace
+   flat_set::emplace_hint
+   flat_set::erase
+   flat_set::swap
+   flat_set::extract
+   flat_set::replace
+   Lookup
+   flat_set::count
+   flat_set::find
+   flat_set::contains
+   flat_set::equal_range
+   flat_set::lower_bound
+   flat_set::upper_bound
+   Observers
+   flat_set::key_comp
+   flat_set::value_comp
+   Non-member functions
+   operator==operator<=>
+   (C++23)(C++23)
+   swap(std::flat_set)
+   (C++23)
+   erase_if(std::flat_set)
+   (C++23)
+   Helper classes
+   uses_allocator<std::flat_set>
+   (C++23)
+   Tags
+   sorted_unique
+   (C++23)
+   sorted_unique_t
+   (C++23)
+   Deduction guides
+
+   reverse_iterator rbegin() noexcept;
+   (1)                                             (since C++23)
+   const_reverse_iterator rbegin() const noexcept;
+   (2)                                             (since C++23)
+   const_reverse_iterator crbegin() const noexcept;
+   (3)                                             (since C++23)
+
+   Returns a reverse iterator to the first element of the reversed
+   flat_set. It corresponds to the last element of the non-reversed
+   flat_set. If the flat_set is empty, the returned iterator is equal to
+   rend().
+
+   range-rbegin-rend.svg
+
+Parameters
+
+   (none)
+
+Return value
+
+   Reverse iterator to the first element.
+
+Complexity
+
+   Constant.
+
+Notes
+
+   Because both iterator and const_iterator are constant iterators (and
+   may in fact be the same type), it is not possible to mutate the
+   elements of the container through an iterator returned by any of these
+   member functions.
+
+   The underlying iterator of the returned reverse iterator is the end
+   iterator. Hence the returned iterator is invalidated if and when the
+   end iterator is invalidated.
+
+Example
+
+   Run this code
+#include <iostream>
+#include <flat_set>
+
+int main()
+{
+    std::flat_set<unsigned> rep{1, 2, 3, 4, 1, 2, 3, 4};
+
+    for (auto it = rep.crbegin(); it != rep.crend(); ++it)
+    {
+        for (auto n = *it; n > 0; --n)
+            std::cout << "¼" << ' ';
+        std::cout << '\n';
+    }
+}
+
+   Output:
+¼ ¼ ¼ ¼
+¼ ¼ ¼
+¼ ¼
+¼
+
+See also
+
+   rendcrend
+   returns a reverse iterator to the end
+   (public member function)
+   rbegincrbegin
+   (C++14)
+   returns a reverse iterator to the beginning of a container or array
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/flat_s
+   et/rbegin&oldid=168836"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 21 January 2024, at 14:58.
+     * This page has been accessed 667 times.

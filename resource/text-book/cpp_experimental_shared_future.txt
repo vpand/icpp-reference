@@ -1,0 +1,162 @@
+std::experimental::shared_future
+
+   From cppreference.com
+   < cpp | experimental
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Extensions for concurrency
+   std::future extensions
+   experimental::future
+   experimental::shared_future
+   experimental::when_all
+   experimental::when_any
+   experimental::make_ready_future
+   experimental::make_exceptional_future
+   Latches and barriers
+   experimental::latch
+   experimental::barrier
+   experimental::flex_barrier
+   Atomic smart pointers
+   experimental::atomic_shared_ptr
+   experimental::atomic_weak_ptr
+
+   std::experimental::shared_future
+   shared_future::shared_future
+   shared_future::operator=
+   shared_future::is_ready
+   shared_future::then
+
+   Defined in header <experimental/shared_future>
+   template< class T > class shared_future;
+   (1)                                           (concurrency TS)
+   template< class T > class shared_future<T&>;
+   (2)                                           (concurrency TS)
+   template<>          class shared_future<void>;
+   (3)                                           (concurrency TS)
+
+   The class template std::experimental::shared_future extends
+   std::shared_future with the following operations:
+     * an unwrapping constructor from future<shared_future<T>>;
+     * a member function is_ready to query whether the associated shared
+       state is ready; and
+     * a member function then to attach a continuation to the future.
+
+   There is no interoperation between std::experimental::shared_future and
+   std::shared_future.
+
+Member functions
+
+   (constructor)
+   constructs a shared_future
+   (public member function)
+   is_ready
+   checks if the shared state is ready
+   (public member function)
+   then
+   attaches a continuation to a shared_future
+   (public member function)
+   operator=
+   assigns the contents
+   (public member function)
+
+Members identical to std::shared_future
+
+Member functions
+
+   (destructor)
+   destructs the future object
+   (public member function of std::shared_future<T>)
+
+Getting the result
+
+   get
+   returns the result
+   (public member function of std::shared_future<T>)
+
+State
+
+   valid
+   checks if the future has a shared state
+   (public member function of std::shared_future<T>)
+   wait
+   waits for the result to become available
+   (public member function of std::shared_future<T>)
+   wait_for
+   waits for the result, returns if it is not available for the specified
+   timeout duration
+   (public member function of std::shared_future<T>)
+   wait_until
+   waits for the result, returns if it is not available until specified
+   time point has been reached
+   (public member function of std::shared_future<T>)
+
+Example
+
+   This section is incomplete
+   Reason: no example
+
+See also
+
+   future
+   (concurrency TS)
+   a version of std::future enhanced with continuations and other features
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/sha
+   red_future&oldid=164515"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 1 December 2023, at 02:48.
+     * This page has been accessed 18,249 times.

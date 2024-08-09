@@ -1,0 +1,200 @@
+std::flat_map<Key,T,Compare,KeyContainer,MappedContainer>::empty
+
+   From cppreference.com
+   < cpp | container | flat map
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::flat_map
+   Member types
+   Member functions
+   flat_map::flat_map
+   flat_map::operator=
+   Element access
+   flat_map::at
+   flat_map::operator[]
+   Iterators
+   flat_map::beginflat_map::cbegin
+   flat_map::endflat_map::cend
+   flat_map::rbeginflat_map::crbegin
+   flat_map::rendflat_map::crend
+   Capacity
+   flat_map::size
+   flat_map::max_size
+   flat_map::empty
+   Modifiers
+   flat_map::clear
+   flat_map::erase
+   flat_map::swap
+   flat_map::emplace
+   flat_map::extract
+   flat_map::replace
+   flat_map::insert
+   flat_map::insert_range
+   flat_map::insert_or_assign
+   flat_map::emplace_hint
+   flat_map::try_emplace
+   Lookup
+   flat_map::count
+   flat_map::find
+   flat_map::contains
+   flat_map::equal_range
+   flat_map::lower_bound
+   flat_map::upper_bound
+   Observers
+   flat_map::key_comp
+   flat_map::keys
+   flat_map::value_comp
+   flat_map::values
+   Non-member functions
+   operator==operator<=>
+   (C++23)(C++23)
+   swap(std::flat_map)
+   (C++23)
+   erase_if(std::flat_map)
+   (C++23)
+   Helper classes
+   uses_allocator<std::flat_map>
+   (C++23)
+   Tags
+   sorted_unique
+   (C++23)
+   sorted_unique_t
+   (C++23)
+   Deduction guides
+
+   [[nodiscard]] bool empty() const noexcept;
+                                             (since C++23)
+
+   Checks if the underlying containers have no elements. Equivalent to
+   return begin() == end();.
+
+Parameters
+
+   (none)
+
+Return value
+
+   true if the underlying containers are empty, false otherwise.
+
+Complexity
+
+   Constant.
+
+Example
+
+   The following code uses empty to check if a std::flat_map<int, int>
+   contains any elements:
+   Run this code
+#include <iostream>
+#include <flat_map>
+#include <utility>
+
+int main()
+{
+    std::flat_map<int,int> numbers;
+    std::cout << std::boolalpha;
+    std::cout << "Initially, numbers.empty(): " << numbers.empty() << '\n';
+
+    numbers.emplace(42, 13);
+    numbers.insert(std::make_pair(13317, 123));
+    std::cout << "After adding elements, numbers.empty(): " << numbers.empty() <
+< '\n';
+}
+
+   Output:
+Initially, numbers.empty(): true
+After adding elements, numbers.empty(): false
+
+See also
+
+   size
+   returns the number of elements
+   (public member function)
+   empty
+   (C++17)
+   checks whether the container is empty
+   (function template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/flat_m
+   ap/empty&oldid=167470"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 26 December 2023, at 23:00.
+     * This page has been accessed 817 times.

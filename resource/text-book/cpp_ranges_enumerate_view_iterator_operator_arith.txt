@@ -1,0 +1,247 @@
+std::ranges::enumerate_view<V>::iterator<Const>::operator++,--,+=,-=
+
+   From cppreference.com
+   < cpp | ranges | enumerate view | iterator
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Ranges library
+   Range access
+   begin
+   cbegin
+   end
+   cend
+   rbegin
+   crbegin
+   rend
+   crend
+   size
+   ssize
+   data
+   cdata
+   empty
+   Range conversions
+   std::from_range_t
+   std::from_range
+   (C++23)(C++23)
+   to
+   (C++23)
+   Range primitives
+   range_size_trange_difference_trange_value_trange_reference_t
+   iterator_tconst_iterator_tsentinel_tconst_sentinel_t
+   (C++23)(C++23)
+   range_const_reference_trange_rvalue_reference_trange_common_reference_t
+   (C++23)
+   elements_of
+   (C++23)
+   Dangling iterator handling
+   dangling
+   borrowed_iterator_t
+   borrowed_subrange_t
+   Range concepts
+   range
+   borrowed_range
+   sized_range
+   constant_range
+   (C++23)
+   common_range
+   view
+   viewable_range
+   input_range
+   output_range
+   forward_range
+   bidirectional_range
+   random_access_range
+   contiguous_range
+   Views
+   view_interface
+   subrange
+   Range factories
+   empty_viewviews::empty
+   single_viewviews::single
+   iota_viewviews::iota
+   repeat_viewviews::repeat
+   (C++23)(C++23)
+   basic_istream_viewviews::istream
+   Range adaptors
+   views::all_tviews::all
+   ref_view
+   owning_view
+   as_rvalue_viewviews::as_rvalue
+   (C++23)(C++23)
+   filter_viewviews::filter
+   transform_viewviews::transform
+   take_viewviews::take
+   take_while_viewviews::take_while
+   concat_viewviews::concat
+   (C++26)(C++26)
+   drop_viewviews::drop
+   drop_while_viewviews::drop_while
+   join_viewviews::join
+   join_with_viewviews::join_with
+   (C++23)(C++23)
+   lazy_split_viewviews::lazy_split
+   split_viewviews::split
+   views::counted
+   common_viewviews::common
+   reverse_viewviews::reverse
+   as_const_viewviews::as_const
+   (C++23)(C++23)
+   elements_viewviews::elements
+   keys_viewviews::keys
+   values_viewviews::values
+   enumerate_viewviews::enumerate
+   (C++23)(C++23)
+   zip_viewviews::zip
+   (C++23)(C++23)
+   zip_transform_viewviews::zip_transform
+   (C++23)(C++23)
+   adjacent_viewviews::adjacent
+   (C++23)(C++23)
+   views::pairwise
+   (C++23)
+   adjacent_transform_viewviews::adjacent_transform
+   (C++23)(C++23)
+   views::pairwise_transform
+   (C++23)
+   chunk_viewviews::chunk
+   (C++23)(C++23)
+   slide_viewviews::slide
+   (C++23)(C++23)
+   chunk_by_viewviews::chunk_by
+   (C++23)(C++23)
+   stride_viewviews::stride
+   (C++23)(C++23)
+   cartesian_product_viewviews::cartesian_product
+   (C++23)(C++23)
+   Range generators
+   std::generator
+   (C++23)
+   Range adaptor objects
+   Range adaptor closure objects
+   range_adaptor_closure
+   (C++23)
+   Helper items
+   copyable-box
+   movable-box
+   (until C++23)(C++23)
+   simple-view
+   non-propagating-cache
+
+   std::ranges::enumerate_view
+   Member functions
+   enumerate_view::enumerate_view
+   enumerate_view::base
+   enumerate_view::begin
+   enumerate_view::end
+   enumerate_view::size
+   Deduction guides
+   Nested classes
+   Iterator
+   enumerate_view::iterator::iterator
+   enumerate_view::iterator::base
+   enumerate_view::iterator::index
+   enumerate_view::iterator::operator*
+   enumerate_view::iterator::operator[]
+   enumerate_view::iterator::operator++
+   enumerate_view::iterator::operator++(int)
+   enumerate_view::iterator::operator--
+   enumerate_view::iterator::operator--(int)
+   enumerate_view::iterator::operator+=
+   enumerate_view::iterator::operator-=
+   operator==(enumerate_view::iterator)
+   operator<=>(enumerate_view::iterator)
+   operator+(enumerate_view::iterator)
+   operator-(enumerate_view::iterator)
+   iter_move(enumerate_view::iterator)
+   Sentinel
+   enumerate_view::sentinel::sentinel
+   enumerate_view::sentinel::base
+   operator==(enumerate_view::iterator,enumerate_view::sentinel)
+   operator-(enumerate_view::iterator,enumerate_view::sentinel)
+
+   constexpr /*iterator*/& operator++();
+   (1)                                                    (since C++23)
+   constexpr void operator++( int );
+   (2)                                                    (since C++23)
+   constexpr /*iterator*/ operator++( int )
+     requires ranges::forward_range<Base>;
+   (3)                                                    (since C++23)
+   constexpr /*iterator*/& operator--()
+     requires ranges::bidirectional_range<Base>;
+   (4)                                                    (since C++23)
+   constexpr /*iterator*/ operator--( int )
+     requires ranges::bidirectional_range<Base>;
+   (5)                                                    (since C++23)
+   constexpr /*iterator*/& operator+=( difference_type n )
+     requires ranges::random_access_range<Base>;
+   (6)                                                    (since C++23)
+   constexpr /*iterator*/& operator-=( difference_type n )
+     requires ranges::random_access_range<Base>;
+   (7)                                                    (since C++23)
+
+   Increments or decrements the iterator.
+
+   Let current_ be the underlying iterator and pos_ be the underlying
+   index.
+   1) Equivalent to ++current_; ++pos_; return *this;
+   2) Equivalent to ++current_;
+   3) Equivalent to auto tmp = *this; ++*this; return tmp;
+   4) Equivalent to --current_; --pos_; return *this;
+   5) Equivalent to auto tmp = *this; --*this; return tmp;
+   6) Equivalent to current_ += n; pos_ += n; return *this;
+   7) Equivalent to current_ -= n; pos_ -= n; return *this;
+
+Parameters
+
+   n - position relative to current location
+
+Return value
+
+   1,4,6,7) *this
+   2) (none)
+   3,5) a copy of *this that was made before the change
+
+See also
+
+   operator+operator-
+   (C++23)
+   performs iterator arithmetic
+   (function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/ranges/enumerate
+   _view/iterator/operator_arith&oldid=150715"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 19 April 2023, at 09:13.
+     * This page has been accessed 1,338 times.

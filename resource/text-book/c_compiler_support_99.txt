@@ -1,0 +1,109 @@
+Compiler support for C99
+
+   From cppreference.com
+   < c | compiler support
+
+   C
+   Language
+   Headers
+   Type support
+   Program utilities
+   Variadic function support
+   Error handling
+   Dynamic memory management
+   Strings library
+   Algorithms
+   Numerics
+   Date and time utilities
+   Input/output support
+   Localization support
+   Concurrency support (C11)
+   Technical Specifications
+   Symbol index
+
+   Compiler support
+   C99
+   C23
+
+C99 core language features
+
+   This section is incomplete
+   Reason: needs to list C compilers, verification
+   C99 feature
+     Paper(s)
+
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+   Universal-character-names in identifiers N/A 3.1 Yes Yes
+   Increased translation limits N590 0.9 N/A
+   // comments N644 2.7 Yes Yes
+   restrict pointers N448 2.95 Yes partial*
+   Enhanced arithmetic types N815
+   N601
+   N620
+   N638
+   N657
+   N694
+   N809 Yes partial Maybe
+   Flexible array members N/A 3.0 Yes Yes
+   Variable-length array (VLA) types N683 0.9 Yes
+   Variably-modified (VM) types N2778 N/A Yes
+   Designated initializers N494 3.0 Yes Yes
+   Non-constant initializers N/A 1.21 N/A
+   Idempotent cvr-qualifiers N505 3.0 N/A
+   Trailing comma in enumerator-list N/A 0.9 Yes Yes
+   Hexadecimal floating constants N308 2.8 Yes Yes
+   Compound literals N716 3.1 Yes Yes
+   Floating-point environment N/A partial partial
+   Requiring truncation for divisions of signed integer types N617 0.9 N/A
+   Implicit return 0; in the main() function N/A Yes Yes Yes
+   Declarations and statements in mixed order N740 3.0 Yes Yes
+   init-statement in for loops N/A Yes Yes Yes
+   inline functions N741 4.3 Yes Yes
+   Predefined variable __func__ N611 2.95 Yes Yes
+   Cvr-qualifiers and static in [] within function declarations N/A 3.1
+   Yes
+   Variadic macros N707 2.95 Yes Yes
+   _Pragma preprocessor operator N634 3.0 Yes partial*
+   Standard pragmas for floating-point evaluation N631
+   N696 No No Yes
+
+   C99 feature
+   Paper(s)
+   GCC
+   Clang
+   MSVC
+   Apple Clang
+   EDG eccp
+   Intel C++
+   IBM XL C++
+   IBM Open XL C++ for AIX
+   IBM Open XL C++ for z/OS
+   Sun/Oracle C++
+   Embarcadero C++ Builder
+   Cray
+   Nvidia HPC C++ (ex PGI)*
+   Nvidia nvcc
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=c/compiler_support/9
+   9&oldid=145576"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 11 December 2022, at 19:29.
+     * This page has been accessed 6,088 times.

@@ -1,0 +1,184 @@
+std::experimental::filesystem::path::empty
+
+   From cppreference.com
+   < cpp | experimental | fs | path
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Experimental
+   Technical Specification
+   Filesystem library (filesystem TS)
+   Library fundamentals (library fundamentals TS)
+   Library fundamentals 2 (library fundamentals TS v2)
+   Library fundamentals 3 (library fundamentals TS v3)
+   Extensions for parallelism (parallelism TS)
+   Extensions for parallelism 2 (parallelism TS v2)
+   Extensions for concurrency (concurrency TS)
+   Extensions for concurrency 2 (concurrency TS v2)
+   Concepts (concepts TS)
+   Ranges (ranges TS)
+   Reflection (reflection TS)
+   Mathematical special functions (special functions TR)
+   Experimental Non-TS
+   Pattern Matching
+   Linear Algebra
+   std::execution
+   Contracts
+   2D Graphics
+
+   Filesystem library
+   Classes
+   filesystem::path
+   filesystem::filesystem_error
+   filesystem::directory_entry
+   filesystem::directory_iterator
+   filesystem::recursive_directory_iterator
+   filesystem::file_status
+   filesystem::space_info
+   filesystem::file_type
+   filesystem::perms
+   filesystem::copy_options
+   filesystem::directory_options
+   filesystem::file_time_type
+   Functions
+   filesystem::absolute
+   filesystem::system_complete
+   filesystem::canonical
+   filesystem::copy
+   filesystem::copy_file
+   filesystem::copy_symlink
+   filesystem::create_directory
+   filesystem::create_directories
+   filesystem::create_hard_link
+   filesystem::create_symlink
+   filesystem::create_directory_symlink
+   filesystem::current_path
+   filesystem::exists
+   filesystem::equivalent
+   filesystem::file_size
+   filesystem::hard_link_count
+   filesystem::last_write_time
+   filesystem::permissions
+   filesystem::read_symlink
+   filesystem::remove
+   filesystem::remove_all
+   filesystem::rename
+   filesystem::resize_file
+   filesystem::space
+   filesystem::status
+   filesystem::symlink_status
+   filesystem::temp_directory_path
+   File types
+   filesystem::is_block_file
+   filesystem::is_character_file
+   filesystem::is_directory
+   filesystem::is_empty
+   filesystem::status_known
+   filesystem::is_fifo
+   filesystem::is_other
+   filesystem::is_regular_file
+   filesystem::is_socket
+   filesystem::is_symlink
+
+   path
+   Member functions
+   path::path
+   path::~path
+   path::operator=
+   path::assign
+   path::appendoperator /=
+   path::concatoperator +=
+   path::clear
+   path::make_preferred
+   path::remove_filename
+   path::replace_filename
+   path::replace_extension
+   path::swap
+   path::compare
+   path::c_strpath::nativeoperator string_type
+   path::stringpath::u8stringpath::u16stringpath::u32stringpath::wstring
+   path::generic_stringpath::generic_u8stringpath::generic_u16stringpath::
+   generic_u32stringpath::generic_wstring
+   path::beginpath::end
+   Path decomposition
+   path::root_name
+   path::root_directory
+   path::root_path
+   path::relative_path
+   path::parent_path
+   path::filename
+   path::stem
+   path::extension
+   path::empty
+   path::has_root_pathpath::has_root_namepath::has_root_directorypath::has
+   _relative_pathpath::has_parent_pathpath::has_filenamepath::has_stempath
+   ::has_extension
+   path::is_absolutepath::is_relative
+   Non-member functions
+   swap(path)
+   operator==operator!=operator<operator<=operator>operator>=
+   operator/
+   operator<<operator>>
+   u8path
+
+   bool empty() const;
+                      (filesystem TS)
+
+   Checks if the path is empty.
+
+Parameters
+
+   (none)
+
+Return value
+
+   true if the path is empty, false otherwise.
+
+Exceptions
+
+   noexcept specification:
+   noexcept
+
+See also
+
+   has_root_pathhas_root_namehas_root_directoryhas_relative_pathhas_parent
+   _pathhas_filenamehas_stemhas_extension
+   checks if the corresponding path element is not empty
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/experimental/fs/
+   path/empty&oldid=91585"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 31 March 2017, at 12:50.
+     * This page has been accessed 11,790 times.

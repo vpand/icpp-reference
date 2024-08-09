@@ -1,0 +1,152 @@
+std::match_results<BidirIt,Alloc>::ready
+
+   From cppreference.com
+   < cpp | regex | match results
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Regular expressions library
+   Classes
+   basic_regex
+   (C++11)
+   sub_match
+   (C++11)
+   match_results
+   (C++11)
+   Algorithms
+   regex_match
+   (C++11)
+   regex_search
+   (C++11)
+   regex_replace
+   (C++11)
+   Iterators
+   regex_iterator
+   (C++11)
+   regex_token_iterator
+   (C++11)
+   Exceptions
+   regex_error
+   (C++11)
+   Traits
+   regex_traits
+   (C++11)
+   Constants
+   syntax_option_type
+   (C++11)
+   match_flag_type
+   (C++11)
+   error_type
+   (C++11)
+   Regex Grammar
+   Modified ECMAScript-262
+   (C++11)
+
+   std::match_results
+   Member functions
+   match_results::match_results
+   match_results::~match_results
+   match_results::operator=
+   match_results::get_allocator
+   State
+   match_results::ready
+   Element access
+   match_results::size
+   match_results::max_size
+   match_results::empty
+   match_results::length
+   match_results::position
+   match_results::str
+   match_results::operator[]
+   match_results::prefix
+   match_results::suffix
+   Iterators
+   match_results::beginmatch_results::cbegin
+   match_results::endmatch_results::cend
+   Format
+   match_results::format
+   Modifiers
+   match_results::swap
+   Non-member functions
+   operator==operator!=
+   (until C++20)
+   swap(std::match_results)
+
+   bool ready() const;
+                      (since C++11)
+
+   Indicates if the match results are ready (valid) or not.
+
+   A default-constructed match result has no result state (is not ready),
+   and can only be made ready by one of the regex algorithms. The ready
+   state implies that all match results have been fully established.
+
+   The result of calling most member functions of the match_results object
+   that is not ready is undefined.
+
+Return value
+
+   true if the match results are ready, false otherwise.
+
+Example
+
+   Run this code
+#include <iostream>
+#include <regex>
+#include <string>
+
+int main()
+{
+    std::string target("pattern");
+    std::smatch sm;
+    std::cout << "default constructed smatch is "
+              << (sm.ready() ? "ready\n" : "not ready\n");
+
+    std::regex re1("tte");
+    std::regex_search(target, sm, re1);
+
+    std::cout << "after search, smatch is "
+              << (sm.ready() ? "ready\n" : "not ready\n");
+}
+
+   Output:
+default constructed smatch is not ready
+after search, smatch is ready
+
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/regex/match_resu
+   lts/ready&oldid=161013"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 21 October 2023, at 00:28.
+     * This page has been accessed 17,347 times.

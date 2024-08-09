@@ -1,0 +1,314 @@
+std::tuple_element<std::tuple>
+
+   From cppreference.com
+   < cpp | utility | tuple
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Utilities library
+   Language support
+   Type support (basic types, RTTI)
+   Library feature-test macros (C++20)
+   Dynamic memory management
+   Program utilities
+   Coroutine support (C++20)
+   Variadic functions
+   is_constant_evaluated
+   (C++20)
+   is_within_lifetime
+   (C++26)
+   initializer_list
+   (C++11)
+   source_location
+   (C++20)
+   Debugging support
+   is_debugger_present
+   (C++26)
+   breakpoint_if_debugging
+   (C++26)
+   breakpoint
+   (C++26)
+   Three-way comparison
+   three_way_comparablethree_way_comparable_with
+   (C++20)(C++20)
+   strong_ordering
+   (C++20)
+   weak_ordering
+   (C++20)
+   partial_ordering
+   (C++20)
+   common_comparison_category
+   (C++20)
+   compare_three_way_result
+   (C++20)
+   compare_three_way
+   (C++20)
+   strong_order
+   (C++20)
+   weak_order
+   (C++20)
+   partial_order
+   (C++20)
+   compare_strong_order_fallback
+   (C++20)
+   compare_weak_order_fallback
+   (C++20)
+   compare_partial_order_fallback
+   (C++20)
+   is_eqis_ltis_lteq
+   (C++20)(C++20)(C++20)
+   is_neqis_gtis_gteq
+   (C++20)(C++20)(C++20)
+   General utilities
+   Date and time
+   Function objects
+   Formatting library (C++20)
+   bitset
+   hash
+   (C++11)
+   Relational operators (deprecated in C++20)
+   rel_ops::operator!=rel_ops::operator>
+
+   rel_ops::operator<=rel_ops::operator>=
+   Integer comparison functions
+   cmp_equalcmp_lesscmp_less_than
+   (C++20)(C++20)(C++20)
+   cmp_not_equalcmp_greatercmp_greater_than
+   (C++20)(C++20)(C++20)
+   in_range
+   (C++20)
+   Swap and type operations
+   swap
+   ranges::swap
+   (C++20)
+   exchange
+   (C++14)
+   declval
+   (C++11)
+   to_underlying
+   (C++23)
+   forward
+   (C++11)
+   forward_like
+   (C++23)
+   move
+   (C++11)
+   move_if_noexcept
+   (C++11)
+   as_const
+   (C++17)
+   Common vocabulary types
+   pair
+   tuple
+   (C++11)
+   optional
+   (C++17)
+   any
+   (C++17)
+   variant
+   (C++17)
+   tuple_size
+   (C++11)
+   tuple_element
+   (C++11)
+   apply
+   (C++17)
+   make_from_tuple
+   (C++17)
+   expected
+   (C++23)
+   Elementary string conversions
+   to_chars
+   (C++17)
+   from_chars
+   (C++17)
+   chars_format
+   (C++17)
+   to_chars_result
+   (C++17)
+   from_chars_result
+   (C++17)
+
+   std::tuple
+   Member functions
+   tuple::tuple
+   tuple::operator=
+   tuple::swap
+   Non-member functions
+   make_tuple
+   tie
+   forward_as_tuple
+   tuple_cat
+   operator==operator!=operator<operator<=operator>operator>=operator<=>
+   (until C++20)(until C++20)(until C++20)(until C++20)(until
+   C++20)(C++20)
+   swap(std::tuple)
+   get(std::tuple)
+   Helper concepts
+   tuple-like
+   (C++23)
+   Helper classes
+   tuple_size<std::tuple>
+   tuple_element<std::tuple>
+   uses_allocator<std::tuple>
+   basic_common_reference<std::tuple>
+   (C++23)
+   common_type<std::tuple>
+   (C++23)
+   formatter<std::tuple>
+   (C++23)
+   ignore
+   Deduction guides(C++17)
+
+   Defined in header <tuple>
+   template< std::size_t I, class... Types >
+   struct tuple_element< I, std::tuple<Types...> >;
+                                            (since C++11)
+
+   Provides compile-time indexed access to the types of the elements of
+   the tuple.
+
+Member types
+
+   Member type Definition
+   type the type of I^th element of the tuple, where I is in
+   [0, sizeof...(Types))
+
+Possible implementation
+
+template<std::size_t I, class T>
+struct tuple_element;
+
+#ifndef __cpp_pack_indexing
+// recursive case
+template<std::size_t I, class Head, class... Tail>
+struct tuple_element<I, std::tuple<Head, Tail...>>
+    : std::tuple_element<I - 1, std::tuple<Tail...>>
+{ };
+
+// base case
+template<class Head, class... Tail>
+struct tuple_element<0, std::tuple<Head, Tail...>>
+{
+    using type = Head;
+};
+
+#else
+// C++26 implementation using pack indexing
+template<std::size_t I, class... Ts>
+struct tuple_element<I, std::tuple<Ts...>>
+{
+    using type = Ts...[I];
+};
+#endif
+
+Example
+
+   Run this code
+#include <cstddef>
+#include <iostream>
+#include <string>
+#include <tuple>
+#include <typeinfo>
+#include <type_traits>
+#include <utility>
+
+namespace details
+{
+    template<class TupleLike, std::size_t I>
+    void printTypeAtIndex()
+    {
+        std::cout << "  The type at index " << I << " is: ";
+        using SelectedType = std::tuple_element_t<I, TupleLike>;
+        std::cout << typeid(SelectedType).name() << '\n';
+    }
+}
+
+template<typename TupleLike, std::size_t I = 0>
+void printTypes()
+{
+    if constexpr (I == 0)
+        std::cout << typeid(TupleLike).name() << '\n';
+
+    if constexpr (I < std::tuple_size_v<TupleLike>)
+    {
+        details::printTypeAtIndex<TupleLike, I>();
+        printTypes<TupleLike, I + 1>();
+    }
+}
+
+struct MyStruct {};
+
+using MyTuple = std::tuple<int, long, char, bool, std::string, MyStruct>;
+
+using MyPair = std::pair<char, bool>;
+
+static_assert
+(
+    std::is_same_v<std::tuple_element_t<0, MyPair>, char> &&
+    std::is_same_v<std::tuple_element_t<1, MyPair>, bool>
+);
+
+int main()
+{
+    printTypes<MyTuple>();
+    printTypes<MyPair>();
+}
+
+   Possible output:
+St5tupleIJilcbNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE8MyStructEE
+  The type at index 0 is: i
+  The type at index 1 is: l
+  The type at index 2 is: c
+  The type at index 3 is: b
+  The type at index 4 is: NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  The type at index 5 is: 8MyStruct
+St4pairIcbE
+  The type at index 0 is: c
+  The type at index 1 is: b
+
+See also
+
+   Structured binding (C++17) binds the specified names to sub-objects or
+   tuple elements of the initializer
+   tuple_element
+   (C++11)
+   obtains the element types of a tuple-like type
+   (class template)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/utility/tuple/tu
+   ple_element&oldid=163737"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 26 November 2023, at 22:23.
+     * This page has been accessed 244,164 times.

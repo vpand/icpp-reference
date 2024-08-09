@@ -1,0 +1,221 @@
+std::map<Key,T,Compare,Allocator>::value_comp
+
+   From cppreference.com
+   < cpp | container | map
+
+
+   C++
+   Compiler support
+   Freestanding and hosted
+   Language
+   Standard library
+   Standard library headers
+   Named requirements
+   Feature test macros (C++20)
+   Language support library
+   Concepts library (C++20)
+   Metaprogramming library (C++11)
+   Diagnostics library
+   General utilities library
+   Strings library
+   Containers library
+   Iterators library
+   Ranges library (C++20)
+   Algorithms library
+   Numerics library
+   Localizations library
+   Input/output library
+   Filesystem library (C++17)
+   Regular expressions library (C++11)
+   Concurrency support library (C++11)
+   Technical specifications
+   Symbols index
+   External libraries
+
+   Containers library
+   Sequence
+   array
+   (C++11)
+   vector
+   vector<bool>
+   deque
+   forward_list
+   (C++11)
+   list
+   Associative
+   set
+   multiset
+   map
+   multimap
+   Unordered associative
+   unordered_set
+   (C++11)
+   unordered_multiset
+   (C++11)
+   unordered_map
+   (C++11)
+   unordered_multimap
+   (C++11)
+   Adaptors
+   stack
+   queue
+   priority_queue
+   flat_set
+   (C++23)
+   flat_multiset
+   (C++23)
+   flat_map
+   (C++23)
+   flat_multimap
+   (C++23)
+   Views
+   span
+   (C++20)
+   mdspan
+   (C++23)
+   Iterator invalidation
+   Member function table
+   Non-member function table
+
+   std::map
+   Member functions
+   map::map
+   map::~map
+   map::operator=
+   map::get_allocator
+   Element access
+   map::at
+   map::operator[]
+   Iterators
+   map::beginmap::cbegin
+   (C++11)
+   map::endmap::cend
+   (C++11)
+   map::rbeginmap::crbegin
+   (C++11)
+   map::rendmap::crend
+   (C++11)
+   Capacity
+   map::size
+   map::max_size
+   map::empty
+   Modifiers
+   map::clear
+   map::insert
+   map::erase
+   map::swap
+   map::extract
+   (C++17)
+   map::merge
+   (C++17)
+   map::insert_range
+   (C++23)
+   map::insert_or_assign
+   (C++17)
+   map::emplace
+   (C++11)
+   map::emplace_hint
+   (C++11)
+   map::try_emplace
+   (C++17)
+   Lookup
+   map::count
+   map::find
+   map::contains
+   (C++20)
+   map::equal_range
+   map::lower_bound
+   map::upper_bound
+   Observers
+   map::key_comp
+   map::value_comp
+   Non-member functions
+   operator==operator!=operator<operator>operator<=operator>=operator<=>
+   (until C++20)(until C++20)(until C++20)(until C++20)(until
+   C++20)(C++20)
+   std::swap(std::map)
+   erase_if(std::map)
+   (C++20)
+   Deduction guides (C++17)
+
+   std::map::value_compare value_comp() const;
+
+   Returns a function object that compares objects of type
+   std::map::value_type (key-value pairs) by using key_comp to compare the
+   first components of the pairs.
+
+Parameters
+
+   (none)
+
+Return value
+
+   The value comparison function object.
+
+Complexity
+
+   Constant.
+
+Example
+
+   Run this code
+#include <iostream>
+#include <map>
+#include <utility>
+
+// Example module 97 key compare function
+struct ModCmp
+{
+    bool operator()(int lhs, int rhs) const
+    {
+        return (lhs % 97) < (rhs % 97);
+    }
+};
+
+int main()
+{
+    std::map<int, char, ModCmp> cont;
+    cont = {{1, 'a'}, {2, 'b'}, {3, 'c'}, {4, 'd'}, {5, 'e'}};
+
+    auto comp_func = cont.value_comp();
+
+    for (const std::pair<int, char> val = {100, 'a'}; auto it : cont)
+    {
+        const bool before = comp_func(it, val);
+        const bool after = comp_func(val, it);
+
+        std::cout << '(' << it.first << ',' << it.second << ") ";
+        if (!before && !after)
+            std::cout << "equivalent to key (" << val.first << ")\n";
+        else if (before)
+            std::cout << "goes before key (" << val.first << ")\n";
+        else if (after)
+            std::cout << "goes after key (" << val.first << ")\n";
+        else
+            std::unreachable();
+    }
+}
+
+   Output:
+(1,a) goes before key (100)
+(2,b) goes before key (100)
+(3,c) equivalent to key (100)
+(4,d) goes after key (100)
+(5,e) goes after key (100)
+
+See also
+
+   key_comp
+   returns the function that compares keys
+   (public member function)
+   Retrieved from
+   "https://en.cppreference.com/mwiki/index.php?title=cpp/container/map/va
+   lue_comp&oldid=135935"
+
+Navigation
+
+     * Online version
+     * Offline version retrieved 2024-06-10 08:17.
+
+     * This page was last modified on 29 November 2021, at 19:51.
+     * This page has been accessed 52,012 times.
