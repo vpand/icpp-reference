@@ -9,6 +9,42 @@
 // generated with: icpp ../tool/index.cc
 #include "text-book.inc"
 
+constexpr bool logging = false;
+
+#define log(format, ...)                                                       \
+  if (logging) {                                                               \
+    icpp::prints(format, __VA_ARGS__);                                         \
+  }
+
+struct match_context {
+  match_context(size_t start, size_t end,
+                const std::vector<std::string_view> &list,
+                const std::regex &pattern)
+      : start_(start), end_(end), list_(list), pattern_(pattern) {}
+
+  void dump() {
+    log("match context {}: [{} {})\n", static_cast<const void *>(this), start_,
+        end_);
+  }
+
+  void match() {
+    for (size_t i = start_; i < end_; i++) {
+      auto t = list_[i];
+      if (std::regex_search(t.data(), t.data() + t.size(), pattern_))
+        result.push_back(i);
+    }
+    log("match context {}: found {}.\n", static_cast<const void *>(this),
+        result.size());
+  }
+
+  std::vector<size_t> result;
+
+private:
+  size_t start_, end_;
+  const std::vector<std::string_view> &list_;
+  const std::regex &pattern_;
+};
+
 int main(int argc, const char *argv[]) {
   if (argc == 1) {
     icpp::prints("Module CppReference(v1.0.0) usage: icpp refs regex\n"
@@ -43,10 +79,7 @@ int main(int argc, const char *argv[]) {
     }
   }
 
-  std::regex pattern(expr, std::regex_constants::extended |
-                               std::regex_constants::icase);
-  std::vector<std::string_view> founds;
-  bool prefix_matched = false;
+  std::vector<std::string_view> prefounds, founds;
   for (auto &t : text_book_list) {
     if (!wildcard) {
       if (t.find(prefix) != std::string_view::npos)
@@ -54,21 +87,49 @@ int main(int argc, const char *argv[]) {
       continue;
     }
 
-    if (!prefix_matched) {
-      if (t.find(prefix) == std::string_view::npos)
-        continue;
-      prefix_matched = true;
-    } else if (t.find(prefix) == std::string_view::npos) {
-      prefix_matched = false;
-      continue;
-    }
-
-    if (std::regex_search(t.data(), t.data() + t.size(), pattern))
-      founds.push_back(t);
+    if (t.find(prefix) != std::string_view::npos)
+      prefounds.push_back(t);
   }
-  if (founds.size() == 0) {
+  if (prefounds.size() == 0 && founds.size() == 0) {
     icpp::prints("Nothing found for '{}'.\n", expr);
     return -1;
+  }
+
+  if (prefounds.size()) {
+    std::regex pattern(expr, std::regex_constants::extended |
+                                 std::regex_constants::icase);
+    auto threads = std::thread::hardware_concurrency();
+    auto eachnum = prefounds.size() / threads;
+    size_t start = 0;
+    std::vector<match_context> mcontexts;
+    for (unsigned i = 0; i < threads - 1; i++) {
+      mcontexts.push_back(
+          std::move(match_context(start, start + eachnum, prefounds, pattern)));
+      start += eachnum;
+    }
+    mcontexts.push_back(
+        std::move(match_context(start, prefounds.size(), prefounds, pattern)));
+    for (auto &m : mcontexts)
+      m.dump();
+
+    std::thread **ths = new std::thread *[threads];
+    log("Create and run {} threads...\n", threads);
+    for (int i = 0; i < threads; i++)
+      ths[i] = new std::thread([&mcontexts, i] { mcontexts[i].match(); });
+    for (int i = 0; i < threads; i++) {
+      ths[i]->join();
+      delete ths[i];
+    }
+    delete[] ths;
+    log("{}\n", "Done.");
+
+    for (auto &m : mcontexts)
+      for (auto i : m.result)
+        founds.push_back(prefounds[i]);
+    if (founds.size() == 0) {
+      icpp::prints("Nothing found for '{}'.\n", expr);
+      return -1;
+    }
   }
 
   size_t sel = 0;
