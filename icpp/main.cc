@@ -19,7 +19,7 @@ constexpr bool logging = false;
 struct match_context {
   match_context(size_t start, size_t end,
                 const std::vector<std::string_view> &list,
-                const std::regex &pattern)
+                const icpp::regex &pattern)
       : start_(start), end_(end), list_(list), pattern_(pattern) {}
 
   void dump() {
@@ -30,7 +30,7 @@ struct match_context {
   void match() {
     for (size_t i = start_; i < end_; i++) {
       auto t = list_[i];
-      if (std::regex_search(t.data(), t.data() + t.size(), pattern_))
+      if (pattern_.search(t))
         result.push_back(i);
     }
     log("match context {}: found {}.\n", static_cast<const void *>(this),
@@ -42,7 +42,7 @@ struct match_context {
 private:
   size_t start_, end_;
   const std::vector<std::string_view> &list_;
-  const std::regex &pattern_;
+  const icpp::regex &pattern_;
 };
 
 int main(int argc, const char *argv[]) {
@@ -63,7 +63,7 @@ int main(int argc, const char *argv[]) {
 
   auto prefix = ""s;
   bool wildcard = false;
-  for (auto ptr = expr; *ptr && std::isalpha(*ptr); prefix += *ptr++)
+  for (auto ptr = expr; *ptr && std::isalpha(*ptr); ptr++)
     ;
   for (auto ptr = expr; *ptr && !wildcard; ptr++) {
     switch (*ptr) {
@@ -71,13 +71,18 @@ int main(int argc, const char *argv[]) {
     case '*':
     case '+':
     case '?':
+    case '(':
+    case ')':
+    case '|':
     case '\\':
       wildcard = true;
       break;
     default:
+      prefix += *ptr;
       break;
     }
   }
+  log("Prefix '{}', wildcard {}.\n", prefix, wildcard);
 
   std::vector<std::string_view> prefounds, founds;
   for (auto &t : text_book_list) {
@@ -96,8 +101,8 @@ int main(int argc, const char *argv[]) {
   }
 
   if (prefounds.size()) {
-    std::regex pattern(expr, std::regex_constants::extended |
-                                 std::regex_constants::icase);
+    log("Regular expression '{}'.\n", expr);
+    icpp::regex pattern(expr);
     auto threads = std::thread::hardware_concurrency();
     auto eachnum = prefounds.size() / threads;
     size_t start = 0;
